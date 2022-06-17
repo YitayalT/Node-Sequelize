@@ -2,10 +2,12 @@
  
 <div class="container p-5">
     <h1> Add Users</h1>
-  <form class="row g-3" action="/addUser" method="POST">
+  <form id="form" class="row g-3" action="/addUser" method="POST">
     <div class="col-md-4">
+       <div class="input-control">
       <label for="uid" class="form-label">User Id</label>
       <input type="text" class="form-control" id="uid" name="uid" required />
+    </div>
     </div>
     <div class="col-md-4">
       <label for="fname" class="form-label">First name</label>

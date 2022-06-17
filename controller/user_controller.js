@@ -13,7 +13,8 @@ exports.getUser = (req, res) => {
 
 exports.usersAdd = (req, res) => {
     res.render('create_user', {
-        style: 'user.css'
+        style: 'user.css',
+        script: 'index.js'
     });
 }
 
