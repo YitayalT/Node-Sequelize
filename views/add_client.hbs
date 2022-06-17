@@ -1,0 +1,118 @@
+
+      {{> header}}
+    <div class="container mb-5">
+        <div class="container p-5"> 
+          <h1>Registration</h1>
+            <form id="form" class="row g-3" action="/add" method="POST">
+                <!-- facility name field -->
+                
+                <div class="col-md-4">
+                  <div class="input-control">
+                    <label for="facility_name" class="form-label">Name of Facility</label>
+                    <input type="text" class="form-control" id="facility_name" name="facility_name" required>
+                  <div class="error"></div>
+                  </div>
+                  </div>
+                  <!-- mrn field -->
+                  <div class="col-md-4">
+                    <label for="mrn" class="form-label">Medical Record Number</label>
+                    <input type="text" class="form-control" id="mrn" name="mrn" required>
+                 <div class="error"></div>
+                  </div>
+                 <!-- registration date field -->
+                  <div class="col-md-4 input-control">
+                    <label for="date_of_reg" class="form-label">Date of Registration</label>
+                    <input type="date" class="form-control" id="date_of_reg" name="date_of_reg" required>
+                  <div class="error"></div>
+                  </div>
+                  <!-- first name field -->
+                <div class="col-md-4">
+                  <label for="fname" class="form-label">First name</label>
+                  <input type="text" class="form-control" id="fname" name="fname" required>
+                </div>
+                <!-- last name field -->
+                <div class="col-md-4">
+                  <label for="lname" class="form-label">Last name</label>
+                  <input type="text" class="form-control" id="lname" name="lname" required>
+                </div>
+                <!-- grand father name field -->
+                <div class="col-md-4">
+                  <label for="gfname" class="form-label">Grand Father Name</label>
+                    <input type="text" class="form-control" id="gfname" name="gfname" required>
+                </div>
+                <!-- age field -->
+                <div class="col-md-4">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="number" class="form-control" id="age" name="age" required>
+                </div>
+                <!-- sex field -->
+                <div class="col-md-4">
+                    
+                        <label for="gender" class="form-label">Sex</label>
+                        <select class="custom-select" id="gender" name="gender" required>
+                          <option value="female" >Female</option>
+                          <option value="male">Male</option>
+                          
+                        </select>
+                          
+                    <!-- <div class="row mt-5">
+                       <span class="mr-3"> Sex:</span>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="gender"  checked>
+                        <label class="form-check-label mr-2" for="gender">
+                        Female
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="gender" >
+                        <label class="form-check-label" for="gender">
+                          Male
+                        </label>
+                      </div>
+                    </div> -->
+                </div>
+                <!-- email field -->
+                <div class="col-md-4">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+             <!-- phone field -->
+                <div class="col-md-4">
+                    <label for="phone" class="form-label">Phone No.</label>
+                    <input type="tel" class="form-control" id="phone" name="phone">
+                  </div>
+                <!-- region field -->
+                  <div class="col-md-4">
+                    <label for="region" class="form-label">Region</label>
+                    <input type="text" class="form-control" id="region" name="region">
+                  </div>
+                <!-- city field -->
+                  <div class="col-md-4">
+                    <label for="city" class="form-label">Woreda/SubCity</label>
+                    <input type="text" class="form-control" id="city" name="city" required>
+                  </div>
+              <!-- kebele field -->
+                  <div class="col-md-4">
+                    <label for="kebele" class="form-label">Kebele</label>
+                    <input type="text" class="form-control" id="kebele" name="kebele" required>
+                  </div>
+                   <div class="col-md-4">
+
+                   </div>
+                   <div class="col-md-4">
+
+                   </div>
+                   <div class="col-md-4">
+
+                   </div>
+                   <div class="col-md-4">
+                   
+                  <input type="submit" value="Add Client" class="btn btn-primary">
+                   
+                   </div>
+              </form>
+              <!-- form ends here-->
+        </div>
+    </div>
+{{> footer}}
+  

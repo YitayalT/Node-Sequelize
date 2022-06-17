@@ -1,0 +1,82 @@
+   {{> header}}
+ 
+<div class="container p-5">
+    <h1> Add Users</h1>
+  <form class="row g-3" action="/addUser" method="POST">
+    <div class="col-md-4">
+      <label for="uid" class="form-label">User Id</label>
+      <input type="text" class="form-control" id="uid" name="uid" required />
+    </div>
+    <div class="col-md-4">
+      <label for="fname" class="form-label">First name</label>
+      <input type="text" class="form-control" id="fname" name="fname" required/>
+    </div>
+    <div class="col-md-4">
+      <label for="lname" class="form-label">Last name</label>
+      <input type="text" class="form-control" id="lname" name="lname" required/>
+    </div>
+    <div class="col-md-4">
+      <label for="uname" class="form-label">Username</label>
+      <input type="text" class="form-control" id="uname" name="uname" required/>
+    </div>
+
+    <div class="col-md-4">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" id="city" name="city" required />
+    </div>
+    <div class="col-md-4">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" name="age" required />
+    </div>
+    <div class="col-md-4">             
+   <label for="gender" class="form-label">Sex</label>
+   <select class="custom-select" id="gender" name="gender" required>
+    <option value="female">Female</option>
+    <option value="male">Male</option> 
+   </select>
+    </div>
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="phone" class="form-label">Phone No.</label>
+      <input type="tel" class="form-control" id="phone" name="phone" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="password" class="form-label">password</label>
+      <input type="tel" class="form-control" id="password" name="password" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="department" class="form-label">Department</label>
+      <input type="text" class="form-control" id="department" name="department"/>
+    </div>
+    <div class="col-md-4">
+      <label for="specialization" class="form-label">Specialization</label>
+      <input type="text" class="form-control" id="specialization" name="specialization"/>
+    </div>
+    <div class="col-md-4">
+      <label for="role" class="form-label">Role</label>
+      <select class="custom-select" id="role" name="role" required>
+        <option value="doctor">Doctor</option>
+        <option value="midwife">Midwife</option>
+        <option value="receptionist">Receptionist</option>
+        <option value="laboratory">laboratory</option>
+      </select>
+    </div>
+   <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">                  
+<input type="submit"  value="Add User" class="btn btn-primary"> 
+ </div>
+  </form>
+</div>
+
+{{> footer}}
