@@ -4,7 +4,8 @@ exports.getClient =  (req, res) =>{
   res.render("add_client", {
       style: "style.css",
       script: 'index.js'
-   });
+  });
+    
 }
 exports.clients = (req, res) =>{
     Client.findAll().then( (result) =>{

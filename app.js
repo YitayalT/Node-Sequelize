@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./config/database');
+const classifyingRoute = require('./routes/classifying_route');
 // const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
 // const ancVisit = require('./model/ANCVisit');
@@ -58,6 +59,7 @@ app.get('/', (req, res) =>{
 
 app.use('', router);
 app.use("", user_route);
+app.use('', classifyingRoute);
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
 });

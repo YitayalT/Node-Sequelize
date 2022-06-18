@@ -1,0 +1,432 @@
+ {{> header}}
+ <div class="container p-5 my-5">
+    <div class="row">
+    <div class="col-md-12">
+    <form  id="form" class="row g-3" action="">
+    <div class="col-md-4">
+    <table class="table table-striped table-borderless table-sm">
+        <thead>
+            <tr>
+                <th colspan="5">OBSTETRIC HISTORY</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    Previous stillbirth?:
+                    </td>
+                    <td>
+
+                    <div class="form-check form-check-inline">
+                       <input class="form-check-input" type="radio" name="previous_stillbirth" id="previous_stillbirth" value="Yes">
+                        <label class="form-check-label" for="previous_stillbirth">Yes</label>
+                    </div>
+                    </td>
+
+                    <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="previous_stillbirth" id="previous_stillbirth" value="No">
+                        <label class="form-check-label" for="previous_stillbirth">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                spontaneous abortion?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="spontaneous_abortion" id="spontaneous_abortion" value="Yes">
+                        <label class="form-check-label" for="spontaneous_abortion">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="spontaneous_abortion" id="spontaneous_abortion" value="No">
+                        <label class="form-check-label" for="spontaneous_abortion">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                Bw of last baby &lt;2500g?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="bw_lt_2500g" id="bw_lt_2500g" value="Yes">
+                        <label class="form-check-label" for="bw_lt_2500g">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="bw_lt_2500g" id="bw_lt_2500g" value="No">
+                        <label class="form-check-label" for="bw_lt_2500g">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                Bw of last baby &gt;4000g?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="bw_gt_4000g" id="bw_gt_4000g" value="Yes">
+                        <label class="form-check-label" for="bw_gt_4000g">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="bw_gt_4000g" id="bw_gt_4000g" value="No">
+                        <label class="form-check-label" for="bw_gt_4000g">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Last pregnancy :Eclampsia?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="last_pregnancy_eclampsia" id="last_pregnancy_eclampsia" value="Yes">
+                        <label class="form-check-label" for="last_pregnancy_eclampsia">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="last_pregnancy_eclampsia" id="last_pregnancy_eclampsia" value="No">
+                        <label class="form-check-label" for="last_pregnancy_eclampsia">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Previous surgery?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="previous_surgery" id="previous_surgery" value="Yes">
+                        <label class="form-check-label" for="previous_surgery">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="previous_surgery" id="previous_surgery" value="No">
+                        <label class="form-check-label" for="previous_surgery">No</label>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    </div>
+
+
+    <div class="col-md-4">
+    <table class="table table-striped table-borderless table-sm">
+        <thead>
+            <tr>
+                <th colspan="5">CURRENT PREGNANCEY</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr>
+                <td>
+                    Suspected multiple pregnancy?:
+                </td>
+                <td>
+    
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="multiple_fetus" id="multiple_fetus"
+                            value="Yes">
+                        <label class="form-check-label" for="multiple_fetus">Yes</label>
+                    </div>
+                </td>
+    
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="multiple_fetus" id="multiple_fetus"
+                            value="No">
+                        <label class="form-check-label" for="multiple_fetus">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Age &lt; 16 Years?:
+                </td>
+                <td>           
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="age_lt_16_year" id="age_lt_16_year" value="Yes">
+                        <label class="form-check-label" for="age_lt_16_year	">Yes</label>
+                    </div>
+                </td>           
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="age_lt_16_year" id="age_lt_16_year" value="No">
+                        <label class="form-check-label" for="age_lt_16_year	">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                Age&gt; 40 Years?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="age_gt_40_year" id="age_gt_40_year" value="Yes">
+                        <label class="form-check-label" for="age_gt_40_year">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="age_gt_40_year" id="age_gt_40_year" value="No">
+                        <label class="form-check-label" for="age_gt_40_year">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                Isoimmunization Rh(-)?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="isoimmunization_Rh" id="isoimmunization_Rh" value="Yes">
+                        <label class="form-check-label" for="isoimmunization_Rh">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="isoimmunization_Rh" id="isoimmunization_Rh" value="No">
+                        <label class="form-check-label" for="isoimmunization_Rh">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Vaginal bleeding?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="vaginal_bleeding" id="vaginal_bleeding" value="Yes">
+                        <label class="form-check-label" for="vaginal_bleeding">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="vaginal_bleeding" id="vaginal_bleeding" value="No">
+                        <label class="form-check-label" for="vaginal_bleeding">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                Pelvic mass?:
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="pelvic_mass" id="pelvic_mass" value="Yes">
+                        <label class="form-check-label" for="pelvic_mass">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="pelvic_mass" id="pelvic_mass" value="No">
+                        <label class="form-check-label" for="pelvic_mass">No</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Diastolic blood pressere 90mm :
+                </td>
+                <td>
+            
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="diastolic_bp" id="diastolic_bp" value="Yes">
+                        <label class="form-check-label" for="diastolic_bp">Yes</label>
+                    </div>
+                </td>
+            
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="diastolic_bp" id="diastolic_bp" value="No">
+                        <label class="form-check-label" for="diastolic_bp">No</label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+    <div class="col-md-4">
+        <table class="table table-striped table-borderless table-sm">
+            <thead>
+                <tr>
+                    <th colspan="5">GENERAL MEDICAL</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr>
+                    <td>
+                    Diabetes mellitus?:
+                    </td>
+                    <td>
+    
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="diabetes_mellitus" id="diabetes_mellitus"
+                                value="Yes">
+                            <label class="form-check-label" for="diabetes_mellitus">Yes</label>
+                        </div>
+                    </td>
+    
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="diabetes_mellitus" id="diabetes_mellitus"
+                                value="No">
+                            <label class="form-check-label" for="diabetes_mellitus">No</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Renal disease?:
+                    </td>
+                    <td>
+                
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="renal_disease" id="renal_disease" value="Yes">
+                            <label class="form-check-label" for="renal_disease">Yes</label>
+                        </div>
+                    </td>
+                
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="renal_disease" id="renal_disease" value="No">
+                            <label class="form-check-label" for="renal_disease">No</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Cardiac disease?:
+                    </td>
+                    <td>
+                
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cardiac_disease" id="cardiac_disease" value="Yes">
+                            <label class="form-check-label" for="cardiac_disease">Yes</label>
+                        </div>
+                    </td>
+                
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cardiac_disease" id="cardiac_disease" value="No">
+                            <label class="form-check-label" for="cardiac_disease">No</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Chronic Hypertention?:
+                    </td>
+                    <td>
+                
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="chronic_hypertention" id="chronic_hypertention" value="Yes">
+                            <label class="form-check-label" for="chronic_hypertention">Yes</label>
+                        </div>
+                    </td>
+                
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="chronic_hypertention" id="chronic_hypertention" value="No">
+                            <label class="form-check-label" for="chronic_hypertention">No</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Known substance abuse:
+                    </td>
+                    <td>
+                
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="substance_abuse" id="substance_abuse" value="Yes">
+                            <label class="form-check-label" for="substance_abuse">Yes</label>
+                        </div>
+                    </td>
+                
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="substance_abuse" id="substance_abuse" value="No">
+                            <label class="form-check-label" for="substance_abuse">No</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        other severe medical disease?:
+                    </td>
+                    <td>
+                
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="other_medical_disease" id="other_medical_disease" value="Yes">
+                            <label class="form-check-label" for="other_medical_disease">Yes</label>
+                        </div>
+                    </td>
+                
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="other_medical_disease" id="other_medical_disease" value="No">
+                            <label class="form-check-label" for="other_medical_disease">No</label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
+    <!-- form ends here -->
+    </div>
+    </div>
+    </div>
+
+  {{> footer}}
