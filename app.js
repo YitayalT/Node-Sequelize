@@ -58,7 +58,7 @@ app.get('/', (req, res) =>{
 })
 
 app.use('', router);
-app.use("", user_route);
+app.use('', user_route);
 app.use('', classifyingRoute);
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
