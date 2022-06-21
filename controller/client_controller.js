@@ -56,7 +56,7 @@ exports.addClient = (req, res) =>{
     }).catch( (err) =>{
         console.log(err);
     });
-     res.redirect("/");
+     res.status(200).redirect("/addClient");
 }
 
 exports.search = (req, res) =>{

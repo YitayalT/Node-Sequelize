@@ -71,7 +71,11 @@ exports.login = (req, res) => {
         if (!user) {
             console.log('user not found');
         } else {
-              bcrypt.compare(req.body.password, user.password,(error, result) => {
+          let reqPass = req.body.password;
+          console.log(reqPass);
+          let userPass = user.password;
+          console.log(userPass);
+              bcrypt.compare(req.body.password, user.password).then((result) => {
                  if (result) {
                  const token = jwt.sign({
                        user_name: user.user_name,
@@ -103,9 +107,12 @@ exports.login = (req, res) => {
                    }
                    
                  } else {
-                   
-                 console.log(error);
-                }
+                   res.status(400).json({
+                     message: 'Incorrect password'
+                   });
+                 } 
+              }).catch((err) => {
+                console.log(err);
               });     
              }
     }).catch((err) => {
