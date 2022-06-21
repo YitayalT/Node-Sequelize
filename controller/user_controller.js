@@ -2,6 +2,8 @@ const Sequelize = require("sequelize");
 const User = require("../model/User");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+
 
 exports.getUser = (req, res) => {
     User.findAll().then((user) => {
@@ -58,43 +60,65 @@ exports.addUser = (req, res) => {
    return res.redirect("/addUser");
 }
 
+exports.getLoggedIn = (req, res) => {
+  res.render('login', {
+    style: 'user.css'
+  });
+}
+
 exports.login = (req, res) => {
     User.findOne({ where: { user_name: req.body.uname } }).then((user) => {
         if (!user) {
             console.log('user not found');
         } else {
-            if (req.body.role === user.role) {
-                        bcrypt.compare(
-                          req.body.password,
-                          user.password,
-                          (error, result) => {
-                            if (result) {
-                              const token = jwt.sign(
-                                {
-                                  user_name: user.user_name,
-                                      password: user.password,
-                                  
-                                },
-                                "secret",
-                                (er, token) => {
-                                  console.log(token);
-                                  console.log("Authenticated!");
-                                  res.status(200).json({
-                                    message: "success",
-                                    token: token,
-                                  });
-                                }
-                              );
-                            } else {
-                              console.log("failed to login!");
-                            }
-                          }
-                        ); 
-            } else {
-                console.log('not authorized!');
-                 }      
+              bcrypt.compare(req.body.password, user.password,(error, result) => {
+                 if (result) {
+                 const token = jwt.sign({
+                       user_name: user.user_name,
+                       password: user.password,
+                 }, "secret");
+                   
+                   if (token) {
+                     if (req.body.role === "doctor") {
+                       console.log(token);
+                       console.log("Doctor Authenticated!");
+                       res.cookie("access-token", token, {
+                         maxAge: 60 * 60 * 24 * 1000,
+                       });
+                       res.status(200).redirect("/addUser");
+                     } else if (req.body.role === "receptionist") {
+                       console.log(token);
+                       console.log("Receptionist Authenticated!");
+                       res.cookie("access-token", token, {
+                         maxAge: 60 * 60 * 24 * 1000,
+                       });
+                       res.status(200).redirect("/addClient");
+                     } else {
+                       res.status(501).json({
+                         message: "Incorrect role",
+                       });
+                     }
+                   } else {
+                     console.log('no token exist');
+                   }
+                   
+                 } else {
+                   
+                 console.log(error);
+                }
+              });     
              }
     }).catch((err) => {
         console.log(err);
     });
 }
+
+
+exports.logout = async (req, res) => {
+  res.cookie("access-token", "logout", {
+    expires: new Date(Date.now() + 2 * 1000),
+    httpOnly: true,
+  });
+
+  res.status(200).redirect("/login");
+};

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./config/database');
 const classifyingRoute = require('./routes/classifying_route');
+const cookieParser = require("cookie-parser");
 // const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
 // const ancVisit = require('./model/ANCVisit');
@@ -31,11 +32,20 @@ app.engine("hbs",
 app.set('view engine' , 'hbs');
 
 // body parser
-app.use(bodyParser.urlencoded( {extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use("/js", express.static(__dirname + "/public/js"));
 app.use(express.json());
+
+ app.use(function (req, res, next) {
+   res.header(
+     "Access-Control-Allow-Headers",
+     "x-access-token, Origin, Content-Type, Accept"
+   );
+   next();
+ });
 
 //test database connection
 db.authenticate().then( () =>{

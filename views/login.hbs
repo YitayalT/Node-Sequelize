@@ -1,0 +1,27 @@
+
+     {{> header}}
+<div class="container m-5 p-5">
+  <form id="form" class="row g-3" action="/login" method="POST">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+     <label for="uname" class="form-label">Username</label>
+      <input type="text" class="form-control" id="uname" name="uname" required/>
+      <br />
+     <label for="password" class="form-label">password</label>
+     <input type="tel" class="form-control" id="password" name="password" />
+      <br />
+      <label for="role" class="form-label">Role</label>
+      <select class="custom-select" id="role" name="role" required>
+        <option value="doctor">Doctor</option>
+        <option value="midwife">Midwife</option>
+        <option value="receptionist">Receptionist</option>
+        <option value="laboratory">laboratory</option>
+      </select>
+    </div>
+    <div class="col-md-3"></div>
+    <input type="submit"  value="Login" class="btn btn-primary"> 
+  </form>
+</div>
+
+   {{> footer}}
