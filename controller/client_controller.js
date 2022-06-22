@@ -115,5 +115,5 @@ exports.updateClient = (req, res) =>{
     }).catch( (err) =>{
         console.log(err);
     });
-    res.redirect('/');
+    res.status(200).redirect("/clients");
 }

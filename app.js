@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./config/database');
+const dotenv = require('dotenv');
 const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
 // const ClassifyingForm = require('./model/ClasifyingForm');
@@ -19,7 +20,7 @@ const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 // const AncVisit = require('./model/ANCVisit');
 const app = express();
-
+dotenv.config({ path: './.env' });
 //Handlebars
 app.engine("hbs",
   exphbs.engine({

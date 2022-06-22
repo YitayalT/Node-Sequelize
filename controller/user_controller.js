@@ -7,8 +7,9 @@ const cookieParser = require("cookie-parser");
 
 exports.getUser = (req, res) => {
     User.findAll().then((user) => {
-        res.render('users', {
-            user: user
+        res.render('receptionist', {
+          user: user,
+          style: 'user.css'
         });
     }).catch((err) => {
         console.log(err);
@@ -16,14 +17,13 @@ exports.getUser = (req, res) => {
 }
 
 exports.usersAdd = (req, res) => {
-    res.render('create_user', {
+    res.render('receptionist', {
         style: 'user.css',
         script: 'index.js'
     });
 }
 
 exports.addUser = (req, res) => {
-    // const hashedPassword = bcrypt.hashSync(req.body.password, 8);
    User.findOne({ where: { email: req.body.email } }).then((user) => {
        if (user) {
           console.log("user already exists!");
@@ -83,20 +83,26 @@ exports.login = (req, res) => {
                  }, "secret");
                    
                    if (token) {
-                     if (req.body.role === "doctor") {
-                       console.log(token);
-                       console.log("Doctor Authenticated!");
-                       res.cookie("access-token", token, {
-                         maxAge: 60 * 60 * 24 * 1000,
-                       });
-                       res.status(200).redirect("/addUser");
-                     } else if (req.body.role === "receptionist") {
-                       console.log(token);
-                       console.log("Receptionist Authenticated!");
-                       res.cookie("access-token", token, {
-                         maxAge: 60 * 60 * 24 * 1000,
-                       });
-                       res.status(200).redirect("/addClient");
+                     if (req.body.role === user.role) {
+                       if (user.role === 'doctor') {
+                         console.log(token);
+                         console.log("Doctor Authenticated!");
+                         res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.status(200).redirect("/addUser");
+                       } else if (user.role === "receptionist") {
+                         console.log(token);
+                         console.log("Receptionist Authenticated!");
+                         res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.status(200).redirect("/addClient");
+                       } else {
+                         res.status(501).json({
+                           message: "role not found",
+                         });
+                       }
                      } else {
                        res.status(501).json({
                          message: "Incorrect role",
@@ -128,4 +134,5 @@ exports.logout = async (req, res) => {
   });
 
   res.status(200).redirect("/login");
+  console.log('successfully logged out');
 };
