@@ -1,6 +1,6 @@
  {{> header}}
  
- <div class="container-fluid mt-5">
+ <div class="container-fluid">
   <div class="container" style="padding:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
   <div class="col-md-12">
         <nav class="navbar">
@@ -19,6 +19,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#two">Users list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#messages">Messages</a>
             </li>
         </ul>
    
@@ -65,12 +68,6 @@
         </div>
 
             <div class="tab-pane" id="one">
-                {{!-- <div class= "row">
-                    <div class="col">
-                        <h1>Home</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, officiis! Blanditiis velit magnam eius laboriosam cum harum, corrupti facere voluptatibus quos doloribus corporis odio distinctio tenetur ratione quisquam illum vel!</p>
-                    </div>
-                </div> --}}
                  <h1> Add Users</h1>    
   <form id="form" class="row g-3" action="/addUser" method="POST">
     <div class="col-md-4">
@@ -151,6 +148,11 @@
   </form>
    </div>
 
+<div class="tab-pane" id="messages">
+   <div class="h5">
+    Messages tab of Receptionist
+   </div>
+</div>
         
    </div>
  </div>

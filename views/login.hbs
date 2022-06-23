@@ -1,6 +1,7 @@
 
      {{> header}}
-<div class="container m-5 p-5" style="padding:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+     <div class="container-fluid p-5">
+<div class="container" style="padding:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
   <div >
   <form id="form" class="row g-3" action="/login" method="POST">
 
@@ -30,12 +31,13 @@
         <option value="laboratory">laboratory</option>
       </select>
       </div>
-       <input type="submit"  value="Login" class="btn btn-primary"> 
+       <input type="submit"  value="Login" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
     </div>
     <div class="col-md-4"></div>
    
   </form>
   </div>
+</div>
 </div>
 
    {{> footer}}

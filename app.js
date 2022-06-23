@@ -14,6 +14,7 @@ const cookieParser = require("cookie-parser");
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
 // const Client = require('./model/Client');
+const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
 const Handlebars = require('handlebars');
@@ -71,6 +72,7 @@ app.get('/', (req, res) =>{
 app.use('', router);
 app.use('', user_route);
 app.use('', classifyingRoute);
+app.use("", care);
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
 });

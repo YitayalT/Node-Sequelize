@@ -1,16 +1,18 @@
 const Sequelize = require('sequelize');
 const Client = require('../model/Client');
 exports.getClient =  (req, res) =>{
-  res.render("add_client", {
-      style: "style.css",
+  res.render("client-register", {
+      style: "user.css",
       script: 'index.js'
   });
     
 }
 exports.clients = (req, res) =>{
     Client.findAll().then( (result) =>{
-        res.render('client_list', {
-            result: result
+        res.render("client-register", {
+          result: result,
+          style: "style.css",
+          script: "index.js",
         });
     }).catch( (err) =>{
         console.log(err);
