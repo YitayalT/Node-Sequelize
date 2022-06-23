@@ -1,118 +1,31 @@
  {{> header}}
- <div class="container mt-5 p-5">
-        <div class="col-md-12">
-        <nav class="navbar bg-light">
-            <div class="container-fluid">
+ 
+ <div class="container-fluid mt-5">
+  <div class="container" style="padding:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+  <div class="col-md-12">
+        <nav class="navbar">
+            <div class="container-fluid mt-3">
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control shadow-none me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success mx-3" type="submit">Search</button>
                 </form>
             </div>
         </nav>
     </div>
-    </div>
-
- <div class="container mt-5 p-5">
+    <hr>
       <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#one">Home</a>
+                <a class="nav-link" data-toggle="tab" href="#one"> <i class="bi bi-person"></i>Add Users </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#two">Profile</a>
+                <a class="nav-link active" data-toggle="tab" href="#two">Users list</a>
             </li>
         </ul>
    
    <div class="tab-content" >
-            <div class="tab-pane" id="one">
-                {{!-- <div class= "row">
-                    <div class="col">
-                        <h1>Home</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, officiis! Blanditiis velit magnam eius laboriosam cum harum, corrupti facere voluptatibus quos doloribus corporis odio distinctio tenetur ratione quisquam illum vel!</p>
-                    </div>
-                </div> --}}
-                 <h1> Add Users</h1>
-                 
-  <form id="form" class="row g-3" action="/addUser" method="POST">
-    <div class="col-md-4">
-       <div class="input-control">
-      <label for="uid" class="form-label">User Id</label>
-      <input type="text" class="form-control" id="uid" name="uid" required />
-    </div>
-    </div>
-    <div class="col-md-4">
-      <label for="fname" class="form-label">First name</label>
-      <input type="text" class="form-control" id="fname" name="fname" required/>
-    </div>
-    <div class="col-md-4">
-      <label for="lname" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="lname" name="lname" required/>
-    </div>
-    <div class="col-md-4">
-      <label for="uname" class="form-label">Username</label>
-      <input type="text" class="form-control" id="uname" name="uname" required/>
-    </div>
 
-    <div class="col-md-4">
-      <label for="city" class="form-label">City</label>
-      <input type="text" class="form-control" id="city" name="city" required />
-    </div>
-    <div class="col-md-4">
-      <label for="age" class="form-label">Age</label>
-      <input type="number" class="form-control" id="age" name="age" required />
-    </div>
-    <div class="col-md-4">             
-   <label for="gender" class="form-label">Sex</label>
-   <select class="custom-select" id="gender" name="gender" required>
-    <option value="female">Female</option>
-    <option value="male">Male</option> 
-   </select>
-    </div>
-    <div class="col-md-4">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" />
-    </div>
-
-    <div class="col-md-4">
-      <label for="phone" class="form-label">Phone No.</label>
-      <input type="tel" class="form-control" id="phone" name="phone" />
-    </div>
-
-    <div class="col-md-4">
-      <label for="password" class="form-label">password</label>
-      <input type="tel" class="form-control" id="password" name="password" />
-    </div>
-
-    <div class="col-md-4">
-      <label for="department" class="form-label">Department</label>
-      <input type="text" class="form-control" id="department" name="department"/>
-    </div>
-    <div class="col-md-4">
-      <label for="specialization" class="form-label">Specialization</label>
-      <input type="text" class="form-control" id="specialization" name="specialization"/>
-    </div>
-    <div class="col-md-4">
-      <label for="role" class="form-label">Role</label>
-      <select class="custom-select" id="role" name="role" required>
-        <option value="doctor">Doctor</option>
-        <option value="midwife">Midwife</option>
-        <option value="receptionist">Receptionist</option>
-        <option value="laboratory">laboratory</option>
-      </select>
-    </div>
-   <div class="col-md-4">
-  </div>
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-4">                  
-<input type="submit"  value="Add User" class="btn btn-primary"> 
- </div>
-  </form>
-            </div>
-
-        <div class="tab-pane  active" id="two">
-                 <table class="table  table-striped table-bordered">
+  <div class="tab-pane  active" id="two">
+      <table class="table  table-striped table-bordered">
             <thead>
               <tr>
                 <th scope="col">User id</th>
@@ -150,7 +63,96 @@
             </tbody>
           </table>
         </div>
+
+            <div class="tab-pane" id="one">
+                {{!-- <div class= "row">
+                    <div class="col">
+                        <h1>Home</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, officiis! Blanditiis velit magnam eius laboriosam cum harum, corrupti facere voluptatibus quos doloribus corporis odio distinctio tenetur ratione quisquam illum vel!</p>
+                    </div>
+                </div> --}}
+                 <h1> Add Users</h1>    
+  <form id="form" class="row g-3" action="/addUser" method="POST">
+    <div class="col-md-4">
+       <div class="input-control">
+      <label for="uid" class="form-label">User Id</label>
+      <input type="text" class="form-control shadow-none" id="uid" name="uid" required />
+    </div>
+    </div>
+    <div class="col-md-4">
+      <label for="fname" class="form-label">First name</label>
+      <input type="text" class="form-control shadow-none" id="fname" name="fname" required/>
+    </div>
+    <div class="col-md-4">
+      <label for="lname" class="form-label">Last name</label>
+      <input type="text" class="form-control shadow-none" id="lname" name="lname" required/>
+    </div>
+    <div class="col-md-4">
+      <label for="uname" class="form-label">Username</label>
+      <input type="text" class="form-control shadow-none" id="uname" name="uname" required/>
+    </div>
+
+    <div class="col-md-4">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control shadow-none" id="city" name="city" required />
+    </div>
+    <div class="col-md-4">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control shadow-none" id="age" name="age" required />
+    </div>
+    <div class="col-md-4">             
+   <label for="gender" class="form-label">Sex</label>
+   <select class="custom-select shadow-none" id="gender" name="gender" required>
+    <option value="female">Female</option>
+    <option value="male">Male</option> 
+   </select>
+    </div>
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control shadow-none" id="email" name="email" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="phone" class="form-label">Phone No.</label>
+      <input type="tel" class="form-control shadow-none" id="phone" name="phone" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="password" class="form-label">password</label>
+      <input type="tel" class="form-control shadow-none" id="password" name="password" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="department" class="form-label">Department</label>
+      <input type="text" class="form-control shadow-none" id="department" name="department"/>
+    </div>
+    <div class="col-md-4">
+      <label for="specialization" class="form-label">Specialization</label>
+      <input type="text" class="form-control shadow-none" id="specialization" name="specialization"/>
+    </div>
+    <div class="col-md-4">
+      <label for="role" class="form-label">Role</label>
+      <select class="custom-select shadow-none" id="role" name="role" required>
+        <option value="doctor">Doctor</option>
+        <option value="midwife">Midwife</option>
+        <option value="receptionist">Receptionist</option>
+        <option value="laboratory">laboratory</option>
+      </select>
+    </div>
+   <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">                  
+<input type="submit"  value="Add User" class="btn btn-primary"> 
+ </div>
+  </form>
+   </div>
+
+        
    </div>
  </div>
-
+</div>
  {{> footer}}

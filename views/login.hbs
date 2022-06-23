@@ -1,6 +1,6 @@
 
      {{> header}}
-<div class="container m-5 p-5">
+<div class="container m-5 p-5" style="padding:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
   <div >
   <form id="form" class="row g-3" action="/login" method="POST">
 
@@ -11,18 +11,22 @@
     <div class="col-md-4 p-5">
       <div class="form-group row">
       <label for="uname" class="form-label">Username</label>
-      <input type="text" class="form-control" id="uname" name="uname" required/>
+      <input type="text" class="form-control shadow-none" id="uname" name="uname" required/>
       </div>
        <div class="form-group row">
      <label for="password" class="form-label">password</label>
-     <input type="tel" class="form-control" id="password" name="password" />
+     <input type="tel" class="form-control shadow-none" id="password" name="password" />
       </div>
       <div class="form-group row">
       <label for="role" class="form-label">Role</label>
-      <select class="custom-select" id="role" name="role" required>
+      <select class="custom-select shadow-none" id="role" name="role" required>
         <option value="doctor">Doctor</option>
         <option value="midwife">Midwife</option>
         <option value="receptionist">Receptionist</option>
+        <option value="laboratory">laboratory</option>
+        <option value="doctor">Radiologist</option>
+        <option value="midwife">Dataclerk</option>
+        <option value="receptionist">HMIS officer</option>
         <option value="laboratory">laboratory</option>
       </select>
       </div>

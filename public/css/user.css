@@ -1,6 +1,10 @@
 .container{
     background-color: rgba(224, 232, 232, 0.798);
 }
+.container-fluid{
+    background-color: rgba(224, 232, 232, 0.798);
+    padding: 0 100px 0 100px;
+}
 h1{
     color:brown ;
     text-align: center;
