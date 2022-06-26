@@ -9,6 +9,9 @@ const AncVisit = db.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
+    UserId: {
+      type: Sequelize.STRING,
+    },
     Anc_no: {
       type: Sequelize.STRING,
       primaryKey: true,
@@ -26,10 +29,7 @@ const AncVisit = db.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
-    weight: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
+
     pallor: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -90,6 +90,10 @@ const AncVisit = db.define(
       type: Sequelize.DATE,
       allowNull: false,
     },
+    weight: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    }
   },
   {
     freezeTableName: true,

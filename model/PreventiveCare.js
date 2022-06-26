@@ -1,46 +1,56 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
 
-const PreventiveCare = db.define("preventiveCare",{
+const PreventiveCare = db.define(
+  "preventiveCare",
+  {
     MRN: {
       type: Sequelize.STRING,
       primaryKey: true,
       allowNull: false,
     },
     Pallor: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     Jaundice: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     Chest_Abn: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     Heart_Abn: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     HIV_Test_Performed: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     HIV_Test_result: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     Vulvar_Ulcer: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
+    },
+    vaginal_discharge: {
+      type: Sequelize.STRING,
     },
     pelvic_mass: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
       allowNull: false,
     },
+   
     Danger_Signs_Advised: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+      Birth_preparedness_advised: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
   },

@@ -8,8 +8,8 @@ const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
 // const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
-// const ancVisit = require('./model/ANCVisit');
-// const PreventiveCare = require('./model/PreventiveCare');
+const ancVisit = require('./model/ANCVisit');
+const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
@@ -17,6 +17,8 @@ const cookieParser = require("cookie-parser");
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
+const ancRoute = require('./routes/anc_route');
+const delivery_route = require('./routes/delivery-route');
 const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 // const AncVisit = require('./model/ANCVisit');
@@ -38,7 +40,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use("/js", express.static(__dirname + "/public/js"));
 app.use(express.json());
 
  app.use(function (req, res, next) {
@@ -57,7 +58,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// db.sync({force: true}).then( () =>{
+// ancVisit.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -73,6 +74,8 @@ app.use('', router);
 app.use('', user_route);
 app.use('', classifyingRoute);
 app.use("", care);
+app.use("", ancRoute);
+app.use("", delivery_route);
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
 });

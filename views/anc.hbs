@@ -1,0 +1,161 @@
+<div class="page">
+    {{> sidebar}}
+    {{> header}}
+    <div class="content container-fluid" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+       <form action="/ancVisit" method="post">
+        <div class="col-9" >
+           
+            <div class="container-fluid p-5 m-2">
+                <h3 class="p-2">Anc Visit</h3>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-borderless table-sm">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">Pregnancy Followup</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MRN</td>
+                                    <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn"></td>
+                                    <td>UserId</td>
+                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid"></td>
+                                </tr>
+
+                                <tr>
+                                   <td>Anc Id</td>
+                                    <td><input class="form-control shadow-none" type="text" name="anc_no" id="anc_no"></td>
+                                    <td>Date of Visit</td>
+                                    <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date"></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Blood pressure</td>
+                                    <td><input class="form-control shadow-none" type="text" id="bp" name="bp"></td>
+                                    <td>Gestation age(LMP)</td>
+                                    <td><input class="form-control shadow-none" type="date" id="gast_age" name="gast_age"></td>
+                                </tr>
+                                <tr>
+                                    <td>Pallor</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="pallor" id="pallor">
+                                            <option value="mild">mild</option>
+                                            <option value="moderate">moderate</option>
+                                            <option value="severe">severe</option>
+                                        </select>
+                                    </td>
+                                    <td>Uterine Height(Wks)</td>
+                                    <td><input class="form-control shadow-none" type="text" name="uterine_height" id="uterine_height"></td>
+                                </tr>
+                                <tr>
+                                    <td>Urine test for infection</td>
+                               <td><input class="form-control shadow-none" type="text" name="urine_test_infection" id="urine_test_infection"></td>
+                                    <td>Urine test for protein</td>
+                                    <td><input class="form-control shadow-none" type="text" name="urine_test_protein" id="urine_test_protein"></td>
+                                </tr>
+                                <tr>
+                                    <td>Fetal Heart Beat</td>
+                                    <td><input class="form-control shadow-none" type="text" name="fetal_heart_beat" id="fetal_heart_beat"></td>
+                                    <td>Rapid syphilis test</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="rapid_syphilis_test" id="rapid_syphilis_test"> 
+                                            <option value="negative">negative</option>
+                                            <option value="positive">positive</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Hemoglobin</td>
+                                    <td><input class="form-control shadow-none" type="text" name="hemoglobin" id="hemoglobin"></td>
+                                    <td>Blood Group and RH</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="blood_group" id="blood_group">
+                                            <option value="A" >A+</option>
+                                            <option value="A" >A-</option>
+                                            <option value="B">B+</option>
+                                            <option value="B">B-</option>
+                                            <option value="AB">AB+</option>
+                                            <option value="AB">AB-</option>
+                                            <option value="O">O+</option>
+                                            <option value="O">O-</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>TT(dose)</td>
+                        <td><select class="custom-select shadow-none" name="tt" id="tt">
+                                            <option value="Td1" >Td1</option>
+                                            <option value="Td2" >Td2</option>
+                                            <option value="Td3">Td3</option>
+                                            <option value="Td4">Td4</option>
+                                            <option value="Td5">Td5</option>
+
+                                        </select>
+                                    </td>
+                                    <td>Iron/Folic Acid</td>
+                                    
+                                       <td><input class="form-control shadow-none" type="text" name="iron_folic_acid" id="iron_folic_acid" placeholder="20mg"></td> 
+                                   
+                                </tr>
+                                <tr>
+                                    <td>Presentation</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="presentation" id="presentation">
+                                            <option value="complete">complete</option>
+                                            <option value="Incomplete">Incomplete</option>
+                                            <option value="frank">frank</option>
+                                        </select>
+                                    </td>
+                                    <td>Mebendazole</td>
+                                    
+                                         <td><input class="form-control shadow-none" type="text" name="mebendazole" id="Mebendazole" placeholder="100mg"></td> 
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Hepatitus</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="hepatitus" id="hepatitus">
+                                            <option value="Hepatitus B"> Hepatitus B</option>
+                                            <option value="Hepatitus A">Hepatitus A</option>
+                                            <option value="Hepatitus C">Hepatitus C</option>
+                                            <option value="Hepatitus D">Hepatitus D</option>
+                                            <option value="Hepatitus E">Hepatitus E</option>
+                                            <option value="Hepatitus G">Hepatitus G</option>
+                                        </select>
+                                    </td>
+                                    <td>Weight(kg)</td>
+                                    <td><input class="form-control shadow-none" type="text" name="weight" id="weight"></td>
+                                </tr>
+                                <tr>
+                                    <td>Visit</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="visit" id="visit">
+                                            <option value="1st" >1<sup>st</sup></option>
+                                            <option value="2nd">2<sup>nd</sup></option>
+                                            <option value="3rd">3<sup>rd</sup></option>
+                                            <option value="4th">4<sup>th</sup></option>
+                                            <option value="5th">5<sup>th</sup></option>
+                                            <option value="6th">6<sup>th</sup></option>
+                                            <option value="7th">7<sup>th</sup></option>
+                                            <option value="8th">8<sup>th</sup></option>
+                                        </select>
+                                    </td>
+                                    <td>Next Appointment</td>
+                                    <td><input class="form-control shadow-none" type="date" name="appointment" id="appointment"></td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex m-4 gap-3">
+            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
+        </form>
+    </div>
+    {{> footer}}
+</div>

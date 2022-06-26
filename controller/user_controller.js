@@ -90,7 +90,7 @@ exports.login = (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/addUser");
+                         res.status(200).redirect("/preventiveCare");
                        } else if (user.role === "receptionist") {
                          console.log(token);
                          console.log("Receptionist Authenticated!");

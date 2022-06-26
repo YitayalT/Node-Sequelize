@@ -1,10 +1,19 @@
 <div class="page">
     {{> sidebar}}
     {{> header}}
-    <div class="content">
-        <div class="col-9">
-            <h3 class="p-2">Prevantive Care</h3>
-            <div class="container p-4 m-2">
+    <div class="content container-fluid" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+       <form action="/preventiveCare" method="post">
+        <div class="col-md-12 mt-5">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                 <label for="mrn" class="form-label">Medical Record Number</label>
+                    <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+         <div class="col-9">
+            <div class="container-fluid p-5 m-2">
+            <h3 class="p-2">Preventive Care</h3>
                 <div class="row">
                     <div class="col">
                         <table class="table table-borderless table-sm">
@@ -16,8 +25,7 @@
                             <tbody>
                                 <tr>
                                     <td>Pallor</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="pallor" id="pallor">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -25,8 +33,7 @@
                                 </tr>
                                 <tr>
                                     <td>Jaundice</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="jaundice" id="pallor">   
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -34,8 +41,7 @@
                                 </tr>
                                 <tr>
                                     <td>Chest Abn.</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="chest_abn" id="chest_abn">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -44,8 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td>Heart Abn.</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="heart_abn" id="heart_abn">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -53,18 +58,18 @@
                                 </tr>
                                 <tr>
                                     <td>HIV Test Performed</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="0" selected>-Ve</option>
-                                            <option value="1">+Ve</option>
+                                    <td><select class="custom-select shadow-none" id="hiv_test_performed" name="hiv_test_performed">
+                                            
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>HIV Test Result</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                    <td><select class="custom-select shadow-none" name="hiv_test_result" id="hiv_test_result">
+                                            <option value="0">Negative</option>
+                                            <option value="1">Positive</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -81,8 +86,7 @@
                             <tbody>
                                 <tr>
                                     <td>Vulvar Ulcer</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="vulvar_ulcer" id="vulvar_ulcer">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -90,8 +94,7 @@
                                 </tr>
                                 <tr>
                                     <td>Vaginal Discharge</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="vaginal_discharge" id="vaginal_discharge">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -99,26 +102,23 @@
                                 </tr>
                                 <tr>
                                     <td>Pelvic Mass</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="pelvic_mass">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                {{!-- <tr>
                                     <td>Cervical Lesion</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="cervical">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
                                     </td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td>Danger Signs Advised</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="danger_signs" id="danger_signs">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -126,8 +126,7 @@
                                 </tr>
                                 <tr>
                                     <td>Birth Preparedness Advised</td>
-                                    <td><select class="form-select" aria-label="Default select example">
-                                            <option value="null" selected>Choose one</option>
+                                    <td><select class="custom-select shadow-none" name="birth_preparedness" id="birth_preparedness" >
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -140,9 +139,10 @@
             </div>
         </div>
         <div class="d-flex m-4 gap-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button> &nbsp; &nbsp; &nbsp;
             <button type="reset" class="btn btn-primary">Reset</button>
         </div>
     </div>
+    </form>
     {{> footer}}
 </div>
