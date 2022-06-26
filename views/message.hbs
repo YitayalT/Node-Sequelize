@@ -1,0 +1,44 @@
+   <div class="page">
+   {{> header}}
+   {{> sidebar}}
+<div class="content container-fluid" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+    <div class="container-fluid p-5 m-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4"></div>
+       <form id="form"  action="/addMessage" method="POST">
+        <h3 class="p-2">Messaging</h3>
+                <!-- facility name field -->
+                
+                <div class="col-md-4">
+                    <label for="message_type" class="form-label">Message Type</label>
+                    <input type="text" class="form-control shadow-none" id="message_type" name="message_type" required>
+               
+                  </div>
+                  <div class="col-md-4">
+                  <label for="fullname" class="form-label">Full name</label>
+                  <input type="text" class="form-control shadow-none" id="fullname" name="fullname" required>
+                </div>
+                  <!-- mrn field -->
+                  <div class="col-md-4">
+                    <label for="mrn" class="form-label">Medical Record Number</label>
+                    <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>
+                 
+                  </div>
+                 <!-- registration date field -->
+                  <div class="col-md-4">
+                    <label for="date_of_reg" class="form-label">Date of Registration</label>
+                    <input type="date" class="form-control shadow-none" id="date_of_reg" name="date_of_reg" required>
+                 
+                  </div>
+                  
+                <div class="col-md-4"></div>
+            </form>
+            </div>
+        </div>            
+    </div>        
+</div>
+ </div>
+
+   {{> footer}}
+  

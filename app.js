@@ -19,9 +19,11 @@ const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
 const ancRoute = require('./routes/anc_route');
 const delivery_route = require('./routes/delivery-route');
+const message = require('./routes/message-route');
 const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 // const AncVisit = require('./model/ANCVisit');
+ const Message = require('./model/Message');
 const app = express();
 dotenv.config({ path: './.env' });
 //Handlebars
@@ -58,7 +60,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// ancVisit.sync({force: true}).then( () =>{
+// Message.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -76,6 +78,7 @@ app.use('', classifyingRoute);
 app.use("", care);
 app.use("", ancRoute);
 app.use("", delivery_route);
+app.use('', message);
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
 });
