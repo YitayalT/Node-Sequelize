@@ -14,7 +14,7 @@ const NewBorn = db.define("newBorn",{
       primaryKey: true,
     },
     time: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
     },
     firstName: {
       type: Sequelize.STRING,

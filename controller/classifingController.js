@@ -37,5 +37,5 @@ exports.fillForm = (req, res) => {
         console.log(err);
     });
 
-    res.redirect('/');
+    res.status(200).redirect("/classifying");
 }

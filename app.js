@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 // const NewBorn = require('./model/NewBorn');
 const ancVisit = require('./model/ANCVisit');
 const PreventiveCare = require('./model/PreventiveCare');
-// const Delivery = require('./model/Delivery');
+ const Delivery = require('./model/Delivery');
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
 // const Client = require('./model/Client');
@@ -23,7 +23,7 @@ const message = require('./routes/message-route');
 const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 // const AncVisit = require('./model/ANCVisit');
- const Message = require('./model/Message');
+//  const Message = require('./model/Message');
 const app = express();
 dotenv.config({ path: './.env' });
 //Handlebars
@@ -60,7 +60,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// Message.sync({force: true}).then( () =>{
+// Delivery.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -72,13 +72,15 @@ app.get('/', (req, res) =>{
     });
 })
 
-app.use('', router);
-app.use('', user_route);
-app.use('', classifyingRoute);
+app.use("", router);
+app.use("", user_route);
+app.use("", classifyingRoute);
 app.use("", care);
 app.use("", ancRoute);
 app.use("", delivery_route);
-app.use('', message);
+app.use("", message);
+
+// listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
 });

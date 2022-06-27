@@ -1,7 +1,9 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
 
-const Delivery = db.define("delivery", {
+const Delivery = db.define(
+  "delivery",
+  {
     MRN: {
       type: Sequelize.STRING,
     },
@@ -32,12 +34,13 @@ const Delivery = db.define("delivery", {
     Pre_eclampisa: {
       type: Sequelize.BOOLEAN,
     },
-    APH: {
-      type: Sequelize.BOOLEAN,
-    },
     Eclampisa: {
       type: Sequelize.BOOLEAN,
     },
+    APH: {
+      type: Sequelize.BOOLEAN,
+    },
+
     PPH: {
       type: Sequelize.BOOLEAN,
     },

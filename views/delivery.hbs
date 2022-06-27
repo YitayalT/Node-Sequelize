@@ -1,9 +1,11 @@
 <div class="page">
     {{> header}}
-    {{> sidebar}}
-    <div class="content" style="padding-top:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
-        <div class="container-fluid">
+    {{> delivery-sidebar}}
+    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+        <div class="container-fluid p-5 my-5">
+            <form action="/addDelivery" method="post">
             <div class="row">
+               
             <div class="col">
                 <table class="table table-borderless table-sm">
                     <thead>
@@ -12,25 +14,38 @@
                         </tr>
                     </thead>
                     <tbody>
+                         <tr>
+                            <td>MRN</td>
+                            <td><input class="form-control shadow-none" type="text" name="mrn" id="mrn"></td>
+                        </tr>
                         <tr>
                             <td>User ID</td>
                             <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id"></td>
                         </tr>
+                       
                         <tr>
-                            <td>MRN</td>
-                            <td><input class="form-control shadow-none" type="text" name="mrn" id="mrn"></td>
+                             <td>Anc Id</td>
+                                    <td><input class="form-control shadow-none" type="text" name="anc_no" id="anc_no"></td>
                         </tr>
                         <tr>
                             <td>Date</td>
                             <td><input class="form-control shadow-none" name="date" id="date" type="date"></td>
                         </tr>
                         <tr>
-                            <td>Partograph Used</td>
+                            <td><label for="gender" class="form-label">Partograph Used </label></td>
                             <td>
-                                Yes
-                                <input type="radio" name="heart_abn" id="heart_abn">
+                                {{!-- Yes
+                                <input type="radio" name="partograph" id="partograph" value="1">
                                 No
-                                <input type="radio" name="heart_abn" id="heart_abn">
+                                <input type="radio" name="partograph" id="partograph" value="0"> --}}
+
+                      
+                        <select class="custom-select shadow-none" id="partograph" name="partograph" required>
+                          <option value="1" >Yes</option>
+                          <option value="0">No</option>
+                          
+                        </select>
+
                             </td>
 
                         </tr>
@@ -38,10 +53,10 @@
                             <td>Mode of Delivery</td>
                             <td>
                                 <select class="custom-select shadow-none" name="mode_of_delivery" id="mode_of_delivery">
-                                    <option selected>C/Section</option>
-                                    <option value="2">Vacuum/Forceps</option>
-                                    <option value="3">Episiotomy</option>
-                                    <option value="4">Other</option>
+                                    <option value="Ceserean section">C/Section</option>
+                                    <option value="Forceps">Forceps</option>
+                                    <option value="Episiotomy">Episiotomy</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </td>
                         </tr>
@@ -49,9 +64,9 @@
                             <td>AMTSL</td>
                             <td>
                                 <select class="custom-select shadow-none" name="amtsl" id="amtsl">
-                                    <option selected>Ergometrne</option>
-                                    <option value="2">Oxytocine</option>
-                                    <option value="3">Misoprosol</option>
+                                    <option value="Ergometrne">Ergometrne</option>
+                                    <option value="Oxytocine">Oxytocine</option>
+                                    <option value="Misoprosol">Misoprosol</option>
                                 </select>
                             </td>
                         </tr>
@@ -59,10 +74,10 @@
                             <td>Placenta</td>
                             <td>
                                 <select class="custom-select shadow-none" name="placenta" id="placenta">
-                                    <option selected>Completed</option>
-                                    <option value="2">Incompleted</option>
-                                    <option value="3">CCT</option>
-                                    <option value="4">MRP</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Incompleted">Incompleted</option>
+                                    <option value="CCT">CCT</option>
+                                    <option value="MRP">MRP</option>
                                 </select>
                             </td>
                         </tr>
@@ -70,9 +85,9 @@
                             <td>Maternal Status</td>
                             <td>
                                 <select class="custom-select shadow-none" name="maternal_status" id="maternal_status">
-                                    <option selected>Stable</option>
-                                    <option value="2">Unstable</option>
-                                    <option value="3">Died</option>
+                                    <option value="Stable">Stable</option>
+                                    <option value="Unstable">Unstable</option>
+                                    <option value="Died">Died</option>
                                 </select>
                             </td>
                         </tr>
@@ -89,28 +104,34 @@
                     <tbody>
                         <tr>
                             <td>Pre-eclampisa</td>
-                            <td><input class="form-check-input" type="checkbox" name="pre-eclampisa"></td>
+                            <td><input class="form-check-input" type="checkbox" name="pre_eclampisa" value="1"></td>
+                        </tr>
+                        <tr>
                             <td>Eclampisa</td>
-                            <td><input class="form-check-input" type="checkbox" name="eclampisa"></td>
+                            <td><input class="form-check-input" type="checkbox" name="eclampisa" value="1"></td>
                         </tr>
                         <tr>
                             <td>APH</td>
-                            <td><input class="form-check-input" type="checkbox" name="aph"></td>
+                            <td><input class="form-check-input" type="checkbox" name="aph" value="1"></td>
+                        </tr>
+                        <tr>
                             <td>PPH</td>
-                            <td><input class="form-check-input" type="checkbox" name="pph"></td>
+                            <td><input class="form-check-input" type="checkbox" name="pph" value="1"></td>
                         </tr>
                         <tr>
                             <td>Referred</td>
-                            <td><input class="form-check-input" type="checkbox" name="referred"></td>
+                            <td><input class="form-check-input" type="checkbox" name="referred" value="1"></td>
+                        </tr>
+                        <tr>
                             <td>Others</td>
-                            <td><input class="form-check-input" type="checkbox" name="others"></td>
+                            <td><input class="form-check-input" type="checkbox" name="others" value="1"></td>
                         </tr>
                         <tr>
                             <td>After Birth</td>
                             <td>
                                 <select class="custom-select shadow-none" name="after_birth">
-                                    <option selected>Normal</option>
-                                    <option>Bleeding</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Bleeding">Bleeding</option>
                                 </select>
                             </td>
                             </td>
@@ -119,9 +140,9 @@
                             <td>Presentation</td>
                             <td>
                                 <select class="custom-select shadow-none" name="presentation">
-                                    <option selected>Cephalic</option>
-                                    <option>Breath</option>
-                                    <option>Others</option>
+                                    <option value="Cephalic">Cephalic</option>
+                                    <option value="Breath">Breath</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </td>
                         </tr>
@@ -129,17 +150,20 @@
                             <td>Delivery Duration</td>
                             <td>
                                 <select class="custom-select shadow-none" name="delivery_duration">
-                                    <option selected> &lt;6hr </option>
-                                    <option>6 ~ 12hr</option>
-                                    <option>12 ~ 24hr</option>
-                                    <option> &gt;24hr </option>
+                                    <option value="< 6hr"> &lt;6hr </option>
+                                    <option value="6 ~ 12hr">6 ~ 12hr</option>
+                                    <option value="12 ~ 24hr">12 ~ 24hr</option>
+                                    <option value="> 24hr"> &gt;24hr </option>
                                 </select>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <input type="submit" value="Submit" class="btn btn-outline-primary btn-sm">
             </div>
+            
         </div>
+        </form>
         </div>
     </div>
 </div>
