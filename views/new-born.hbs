@@ -1,0 +1,124 @@
+<div class="page">
+    {{> header}}
+    {{> delivery-sidebar}}
+   <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+     <div class="container-fluid p-5 my-5">
+    <form action="/addNewBorn" method="post">
+     <div class="row">
+        {{!-- <div class="col-md-12"> --}}
+            <div class="col-md-6">
+             <table class="table table-borderless table-sm">
+             <thead>
+                <tr>
+                <th colspan="10">New Born SUMMARY</th>
+                </tr>
+             </thead>
+               <tbody>
+             <tr>
+                <td>User ID</td>
+                    <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id"></td>
+                </tr>
+                <tr>
+                <td>MRN</td>
+                 <td><input class="form-control shadow-none" type="text" name="mrn" id="mrn"></td>
+                </tr>
+                <tr>
+                <td>Baby Id</td>
+                 <td><input class="form-control shadow-none" type="text" name="baby_id" id="baby_id"></td>
+                </tr>
+                <tr>
+                <td>Born time</td>
+                 <td><input class="form-control shadow-none" type="date" name="born_time" id="born_time"></td>
+                </tr>
+                <tr>
+                <td>First Name</td>
+                 <td><input class="form-control shadow-none" type="text" name="fName" id="lName"></td>
+                </tr>
+                <tr>
+                <td>Last Name</td>
+                 <td><input class="form-control shadow-none" type="text" name="lName" id="lName"></td>
+                </tr>
+                <tr>
+                <td>Sex</td>
+                <td>
+                 <select class="custom-select shadow-none" id="gender" name="gender" required>
+                          <option value="Male" >Male</option>
+                          <option value="Female">Female</option>       
+                 </select>
+                 </td>
+                </tr>
+             <tr>
+                <td>Birth Weight</td>
+                 <td><input class="form-control shadow-none" type="text" name="weight" id="weight"></td>
+             </tr>
+             <tr>
+                <td>Birth height</td>
+                 <td><input class="form-control shadow-none" type="text" name="height" id="height"></td>
+                </tr>
+             
+              <td>cephalic Circum.</td>
+                 <td><input class="form-control shadow-none" type="text" name="cepha_circ" id="cepha_circ"></td>
+                </tr>
+               </tbody>
+             </table>
+            </div>
+            {{!-- second table --}}
+            <div class="col-md-6">
+            <table class="table table-borderless table-sm">
+            <tbody>
+                <thead>
+                    <tr>
+                        <th>New Born summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                            <td>still Birth</td>
+                            <td><input class="form-check-input" type="checkbox" name="stillBirth" value="1"></td>
+                 </tr>
+                        <tr>
+                            <td>alive</td>
+                            <td><input class="form-check-input" type="checkbox" name="alive" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>died</td>
+                            <td><input class="form-check-input" type="checkbox" name="died" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>Ointment</td>
+                            <td><input class="form-check-input" type="checkbox" name="ointment" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>BCG Vaccine</td>
+                            <td><input class="form-check-input" type="checkbox" name="BCGVaccine" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>Polio Vaccine</td>
+                            <td><input class="form-check-input" type="checkbox" name="PolioVaccine" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>HepatitisB</td>
+                            <td><input class="form-check-input" type="checkbox" name="HepatitisB" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>VitaminK</td>
+                            <td><input class="form-check-input" type="checkbox" name="VitaminK" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>Chlorhexidine</td>
+                            <td><input class="form-check-input" type="checkbox" name="Chlorhexidine" value="1"></td>
+                        </tr>
+            </tbody>
+            </table>
+             
+            </div>
+        </div>
+         <input type="submit"  value="Add NewBorn" class="btn btn-outline-primary btn-sm" style="margin: auto ; align-items: center;"> 
+     </div>
+    </form>
+    </div>
+   {{!-- </div> --}}
+   
+   {{> footer}}
+
+    </div>

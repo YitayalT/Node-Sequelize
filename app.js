@@ -12,12 +12,14 @@ const ancVisit = require('./model/ANCVisit');
 const PreventiveCare = require('./model/PreventiveCare');
  const Delivery = require('./model/Delivery');
 // const Bed = require('./model/Bed');
-// const Pnc = require('./model/PNC');
+const Pnc = require('./model/PNC');
 // const Client = require('./model/Client');
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
+const newBornRoute = require('./routes/newBorn-route');
 const ancRoute = require('./routes/anc_route');
+const pncRoute = require('./routes/pnc-route');
 const delivery_route = require('./routes/delivery-route');
 const message = require('./routes/message-route');
 const Handlebars = require('handlebars');
@@ -60,7 +62,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// Delivery.sync({force: true}).then( () =>{
+// Pnc.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -79,7 +81,8 @@ app.use("", care);
 app.use("", ancRoute);
 app.use("", delivery_route);
 app.use("", message);
-
+app.use("", newBornRoute);
+app.use("", pncRoute);
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');

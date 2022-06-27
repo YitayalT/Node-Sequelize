@@ -1,0 +1,123 @@
+<div class="page">
+    {{> sidebar}}
+    {{> header}}
+    <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
+            <div class="container-fluid p-5 m-2">
+                <form action="/addPnc" method="post">
+                <div class="col-12" >
+                <h3 class="p-2">Pnc Visit</h3>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-borderless table-sm">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">PNC Followup</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MRN</td>
+                                    <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn"></td>
+                                    <td>UserId</td>
+                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid"></td>
+                                </tr>
+
+                                <tr>
+                                   <td>Anc Id</td>
+                                    <td><input class="form-control shadow-none" type="text" name="anc_no" id="anc_no"></td>
+                                    <td>Date of Visit</td>
+                                    <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date"></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Blood pressure</td>
+                                    <td><input class="form-control shadow-none" type="text" id="bp" name="bp"></td>
+                                    <td>Temprature</td>
+                                    <td><input class="form-control shadow-none" type="text" id="temp" name="temp"></td>
+                                </tr>
+                                <tr>
+                                    <td>look for pph</td>
+                                    <td><input class="form-control shadow-none" type="text" id="pph" name="pph"></td>
+                                    <td>Dribbling</td>
+                                    <td><input class="form-control shadow-none" type="text" name="dribbling" id="dribbling"></td>
+                                </tr>
+                                <tr>
+                                    <td>Anemia</td>
+                                    <td><input class="form-control shadow-none" type="text" name="anemia" id="anemia"></td>
+                                    <td>Vaginal Discharge</td>
+                                    <td><input class="form-control shadow-none" type="text" name="VaginalDischarge" id="VaginalDischarge"></td>
+                                </tr>
+                                <tr>
+                                    <td>pelvic Exam</td>
+                                    <td><input class="form-control shadow-none" type="text" name="pelvicExam" id="pelvicExam"></td>
+                                    <td>Breast</td>
+                                   <td><input class="form-control shadow-none" type="text" name="breast" id="breast"></td>
+                                </tr>
+                                <tr>
+                                    <td>VitaminA</td>
+                                    <td><input class="form-control shadow-none" type="text" name="VitaminA" id="VitaminA"></td>
+                                    <td>Baby Breathing</td>                                   
+                                 <td><input class="form-control shadow-none" type="text" name="baby_breathing" id="baby_breathing"></td>                               
+                                </tr>
+                                <tr>
+                                    <td>Baby Breast Feeding</td>
+                                    <td><input class="form-control shadow-none" type="text" name="baby_feeding" id="baby_feeding"></td>
+                                    <td>BabyWt</td>
+                                  <td><input class="form-control shadow-none" type="text" name="BabyWt" id="BabyWt"></td> 
+                                   
+                                </tr>
+                                <tr>
+                                    <td>Immunization</td>
+                                    
+                                         <td><input class="form-control shadow-none" type="text" name="Immunization" id="Immunization"></td> 
+                                    
+                                    <td>HIV Tasted</td>
+                                    
+                                         <td><input class="form-control shadow-none" type="text" name="HIVTasted" id="HIVTasted"></td> 
+                                    
+                                </tr>
+                                <tr>
+                                    <td>HIV Test Result</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="hiv_result" id="hiv_result">
+                                            <option value="Negative"> Negative</option>
+                                            <option value="Positive">Positive A</option> 
+                                        </select>
+                                    </td>
+                                    <td>ARVPx For Mother</td>
+                                    <td><input class="form-control shadow-none" type="text" name="ARVPxForMother" id="ARVPxForMother"></td>
+                                </tr>
+                                <tr>
+                                    <td>Visit</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="visit" id="visit">
+                                            <option value="1st" >1<sup>st</sup></option>
+                                            <option value="2nd">2<sup>nd</sup></option>
+                                            <option value="3rd">3<sup>rd</sup></option>
+                                            <option value="4th">4<sup>th</sup></option>
+                                            <option value="5th">5<sup>th</sup></option>
+                                            <option value="6th">6<sup>th</sup></option>
+                                            <option value="7th">7<sup>th</sup></option>
+                                            <option value="8th">8<sup>th</sup></option>
+                                        </select>
+                                    </td>
+                                    <td>Next Appointment</td>
+                                    <td><input class="form-control shadow-none" type="date" name="appointment" id="appointment"></td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+           <div class="d-flex m-4 gap-3">
+            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
+                </form>
+        </div>
+     
+    </div>
+    {{> footer}}
+</div>
