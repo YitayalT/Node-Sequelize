@@ -18,6 +18,7 @@ const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
 const newBornRoute = require('./routes/newBorn-route');
+const radiologyRoute = require('./routes/radiology-route');
 const ancRoute = require('./routes/anc_route');
 const pncRoute = require('./routes/pnc-route');
 const prescriptionRoute = require('./routes/prescription-route');
@@ -88,6 +89,7 @@ app.use("", newBornRoute);
 app.use("", pncRoute);
 app.use("", prescriptionRoute);
 app.use("", labExamRoute);
+app.use("", radiologyRoute);
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');

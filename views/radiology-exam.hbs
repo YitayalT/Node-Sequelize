@@ -1,0 +1,44 @@
+<div class="page">
+   {{> header}}
+   {{> sidebar}}
+<div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+<div class="container-fluid p-5 m-2">
+         <h1>Radiology Exam</h1>
+          <form id="form" class="row g-2" action="/addLabExam" method="POST">
+      <div class="col-md-4">
+        <label for="uid" class="form-label">MRN</label>
+        <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>        
+        </div>
+         <div class="col-md-4">
+        <label for="uid" class="form-label">User Id</label>
+        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
+        </div>
+
+        <div class="col-md-4">
+        <label for="date" class="form-label">Date of Exam</label>
+        <input type="date" class="form-control shadow-none" id="date" name="date" required>        
+        </div>
+
+       <div class="col-md-4">
+        <label for="exam_type" class="form-label">Type of Exam</label>
+        <input type="text" class="form-control shadow-none" id="exam_type" name="exam_type" placeholder="x-ray, EMI" required>        
+        </div>
+        <div class="col-md-4">
+        <label for="technique" class="form-label">Technique</label>
+        <input type="technique" class="form-control shadow-none" id="technique" name="technique" placeholder="2-view x-ray" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="impression" class="form-label">Impression</label>
+        <input type="text" class="form-control shadow-none" id="impression" name="impression" required>        
+        </div>
+         <div class="col-md-12">
+        <label for="finding" class="form-label">Finding</label>
+        <textarea class="form-control shadow-none" name="finding" id="finding" cols="125" rows="3"></textarea>        
+        </div>
+
+          </form>
+</div>
+</div>
+{{> footer}}
+</div>
