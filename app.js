@@ -20,12 +20,15 @@ const user_route = require('./routes/user_route');
 const newBornRoute = require('./routes/newBorn-route');
 const ancRoute = require('./routes/anc_route');
 const pncRoute = require('./routes/pnc-route');
+const prescriptionRoute = require('./routes/prescription-route');
 const delivery_route = require('./routes/delivery-route');
+const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
 const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 // const AncVisit = require('./model/ANCVisit');
 //  const Message = require('./model/Message');
+const Prescription = require('./model/Prescription');
 const app = express();
 dotenv.config({ path: './.env' });
 //Handlebars
@@ -62,7 +65,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// Pnc.sync({force: true}).then( () =>{
+// Prescription.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -83,6 +86,8 @@ app.use("", delivery_route);
 app.use("", message);
 app.use("", newBornRoute);
 app.use("", pncRoute);
+app.use("", prescriptionRoute);
+app.use("", labExamRoute);
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');

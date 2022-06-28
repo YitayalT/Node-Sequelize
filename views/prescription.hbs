@@ -1,0 +1,66 @@
+<div class="page">
+   {{> header}}
+   {{> sidebar}}
+<div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+<div class="container-fluid p-5 m-2">
+      
+       <div class="row">
+      <div class="col-md-12">
+           <div class="col-md-4"></div>
+           <form id="form"  action="/addPrescription" method="POST">
+           <h3 class="p-2">Prescription</h3>
+        <div class="col-md-4">
+        <label for="mrn" class="form-label">Medical Record Number</label>
+        <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>        
+        </div>
+   {{!-- doctor id --}}
+        <div class="col-md-4">
+        <label for="uid" class="form-label">User Id</label>
+        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
+        </div>
+        <div class="col-md-4">
+        <label for="date" class="form-label">Prescription Date</label>
+        <input type="date" class="form-control shadow-none" id="date" name="date" required>        
+        </div>
+        {{!-- drug name --}}
+        <div class="col-md-4">
+        <label for="drug_name" class="form-label">Drug Name</label>
+        <input type="text" class="form-control shadow-none" id="drug_name" name="drug_name" required>        
+        </div>
+        {{!-- drug dosage --}}
+        <div class="col-md-4">
+        <label for="dosage" class="form-label">Dosage</label>
+        <input type="text" class="form-control shadow-none" id="dosage" name="dosage" required>        
+        </div>
+        {{!-- route taken --}}
+        <div class="col-md-4">
+        <label for="route_taken" class="form-label">Route Taken</label>
+        <input type="text" class="form-control shadow-none" id="route_taken" name="route_taken" required>        
+        </div>
+        {{!-- frequency --}}
+        <div class="col-md-4">
+        <label for="frequency" class="form-label">Frequency</label>
+        <select class="custom-select shadow-none" id="frequency" name="frequency" required>
+        <option value="qDay">qDay</option>
+        <option value="BiD">BiD</option>
+        <option value="TiD">TiD</option>
+        <option value="QiD">QiD</option>
+      </select>
+        </div>
+   {{!-- amount dispensed --}}
+        <div class="col-md-4">
+        <label for="amount" class="form-label">Amount Dispensed</label>
+        <input type="text" class="form-control shadow-none" id="amount" name="amount" required>        
+        </div>
+
+        <div class="col-md-4 mt-5">
+         <input type="submit"  value="Prescribe" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
+        </div>
+
+       </form>
+       </div>
+     </div> 
+</div>
+</div>
+{{> footer}}
+</div> 
