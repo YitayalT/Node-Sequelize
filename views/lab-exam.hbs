@@ -3,42 +3,126 @@
    {{> sidebar}}
 <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
 <div class="container-fluid p-5 m-2">
-    <div class="row">
-    <div class="col-md-12">
-       <div class="col-md-6">
+         <h1>Lab Exam</h1>
+            <form id="form" class="row g-2" action="/addLabExam" method="POST">
+
+       {{!-- <div class="col-md-6"> --}}
         <div class="col-md-4">
-        <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
+        <label for="uid" class="form-label">MRN</label>
+        <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>        
         </div>
-                <div class="col-md-4">
+         <div class="col-md-4">
         <label for="uid" class="form-label">User Id</label>
         <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
         </div>
 
         <div class="col-md-4">
-        <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
+        <label for="uid" class="form-label">Total WBC</label>
+        <input type="number" class="form-control shadow-none" id="wbc" name="wbc" placeholder="4000 - 11000" required>        
+        </div>
+       {{!-- </div> --}}
+
+       {{!-- <div class="col-md-6"> --}}
+        <div class="col-md-4">
+        <label for="uid" class="form-label">Neutrophils</label>
+        <input type="text" class="form-control shadow-none" id="neutrophils" name="neutrophils" placeholder="45-74%" required>        
+        </div>
+
+        <div class="col-md-4">
+        <label for="uid" class="form-label">Lymphocytes</label>
+        <input type="text" class="form-control shadow-none" id="lymphocytes" name="lymphocytes" placeholder="25-40%" required>        
+        </div>
+
+        <div class="col-md-4">
+        <label for="uid" class="form-label">Eusinophils</label>
+        <input type="text" class="form-control shadow-none" id="eusinophils" name="eusinophils" placeholder="1-6%" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Monocytes</label>
+        <input type="text" class="form-control shadow-none" id="monocytes" name="monocytes" placeholder="0-8%" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Basophils</label>
+        <input type="text" class="form-control shadow-none" id="basophils" name="basophils" placeholder="0-3%" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Hemoglobin</label>
+        <input type="text" class="form-control shadow-none" id="hemoglobin" name="hemoglobin" placeholder="11-14gm% for female" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Malaria Parasite</label>
+        <input type="text" class="form-control shadow-none" id="malaria" name="malaria">        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Random Blood Sugar</label>
+        <input type="text" class="form-control shadow-none" id="sugar" name="sugar" placeholder="80-120gm%" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Urea</label>
+        <input type="text" class="form-control shadow-none" id="urea" name="urea" placeholder="20-45%" >        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Creatinine</label>
+        <input type="text" class="form-control shadow-none" id="creatinine" name="creatinine" placeholder="0.4-1.4mg%" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="sgpt" class="form-label">SGPT</label>
+        <input type="text" class="form-control shadow-none" id="sgpt" name="sgpt" placeholder="5-37U/L" required>        
+        </div>
+
+         <div class="col-md-4">
+        <label for="sgot" class="form-label">SGOT</label>
+        <input type="text" class="form-control shadow-none" id="sgot" name="sgot" placeholder="3-45U/L" required>        
+        </div>
+{{!-- RBC test --}}
+         <div class="col-md-4">
+        <label for="uid" class="form-label">RBC</label>
+        <input type="text" class="form-control shadow-none" id="rbc" name="rbc" placeholder="M cells/ul">        
+        </div>
+
+         <div class="col-md-4">
+        <label for="pregnancy" class="form-label">Pregnancy Test</label>
+        <input type="text" class="form-control shadow-none" id="pregnancy" name="pregnancy">        
+        </div>
+
+         <div class="col-md-4">
+        <label for="pusCells" class="form-label">Pus cells</label>
+        <input type="text" class="form-control shadow-none" id="pusCells" name="pusCells" placeholder="0.4-1.4mg%">        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Epithelial Cells</label>
+        <input type="text" class="form-control shadow-none" id="Epithelial" name="Epithelial">        
+        </div>
+
+         <div class="col-md-4">
+        <label for="uid" class="form-label">Others</label>
+        <input type="text" class="form-control shadow-none" id="others" name="others" placeholder="e.g opiates">        
+        </div>
+
+        <div class="col-md-4">
+        <label for="uid" class="form-label">Mantoux Test</label>
+        <select class="custom-select shadow-none" name="mantoux" id="mantoux">
+      <option value="Positive">Positive</option>
+      <option value="Negative">Negative</option>
+        </select>       
         </div>
        </div>
-
-       <div class="col-md-6">
-        <div class="col-md-4">
-        <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
-        </div>
-
-        <div class="col-md-4">
-        <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
-        </div>
-
-                <div class="col-md-4">
-        <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
-        </div>
+        
        </div>
+       
     </div>
     </div>
 </div>
 </div>
+
+{{> footer}}
 </div>
