@@ -8,12 +8,17 @@ const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
 // const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
-const ancVisit = require('./model/ANCVisit');
-const PreventiveCare = require('./model/PreventiveCare');
- const Delivery = require('./model/Delivery');
+// const ancVisit = require('./model/ANCVisit');
+// const PreventiveCare = require('./model/PreventiveCare');
+// const Delivery = require('./model/Delivery');
+// const AncVisit = require('./model/ANCVisit');
+// const Message = require('./model/Message');
+// const Prescription = require('./model/Prescription');
+// const Radiology = require('./model/Radiology');
 // const Bed = require('./model/Bed');
-const Pnc = require('./model/PNC');
+// const Pnc = require('./model/PNC');
 // const Client = require('./model/Client');
+const LabResult = require('./model/LabResult');
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
@@ -27,9 +32,7 @@ const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
 const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
-// const AncVisit = require('./model/ANCVisit');
-//  const Message = require('./model/Message');
-const Prescription = require('./model/Prescription');
+
 const app = express();
 dotenv.config({ path: './.env' });
 //Handlebars
@@ -66,7 +69,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// Prescription.sync({force: true}).then( () =>{
+// LabResult.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
