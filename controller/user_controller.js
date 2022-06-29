@@ -69,7 +69,10 @@ exports.getLoggedIn = (req, res) => {
 exports.login = (req, res) => {
     User.findOne({ where: { user_name: req.body.uname } }).then((user) => {
         if (!user) {
-            console.log('user not found');
+             res.status(401).render("login", {
+               message: "User not found",
+               style: "user.css",
+             });
         } else {
           let reqPass = req.body.password;
           console.log(reqPass);
@@ -106,22 +109,31 @@ exports.login = (req, res) => {
                           });
                           res.status(200).redirect("/addUser");
                        } else {
-                         res.status(501).json({
-                           message: "role not found",
+                         res.status(401).render("login", {
+                           message: "No such role",
+                           style: "user.css",
                          });
                        }
                      } else {
-                       res.status(501).json({
-                         message: "Incorrect role",
+                       res.status(401).render("login", {
+                         message: "Incorrect credentials",
+                         style: "user.css",
                        });
                      }
                    } else {
-                     console.log('no token exist');
+                      res.status(401).render("login", {
+                        message: "Not authenticated",
+                        style: "user.css",
+                      });
                    }
                    
                  } else {
-                   res.status(400).json({
-                     message: 'Incorrect password'
+                  //  res.status(400).json({
+                  //    message: 'Incorrect password'
+                  //  });
+                   res.status(401).render("login", {
+                     message: "Incorrect Password",
+                     style: 'user.css'
                    });
                  } 
               }).catch((err) => {
