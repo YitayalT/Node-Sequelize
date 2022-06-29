@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const Client = require('../model/Client');
 exports.getClient =  (req, res) =>{
-  res.render("client-register", {
+  res.render("receptionist", {
       style: "user.css",
       script: 'index.js'
   });
