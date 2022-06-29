@@ -22,3 +22,15 @@ exports.sendMessage = (req, res) => {
 
     res.status(200).redirect('/getMessage');
 }
+
+exports.message = (req, res) => {
+    Message.findAll().then((result) => {
+        res.render("incoming-message", {
+          result: result,
+          style: "user.css",
+          script: "index.js",
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+}

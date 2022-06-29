@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 // const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
 // const AncVisit = require('./model/ANCVisit');
-// const Message = require('./model/Message');
+const Message = require('./model/Message');
 // const Prescription = require('./model/Prescription');
 // const Radiology = require('./model/Radiology');
 // const Bed = require('./model/Bed');
@@ -69,7 +69,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// LabResult.sync({force: true}).then( () =>{
+// Message.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

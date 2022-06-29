@@ -1,25 +1,31 @@
-const Sequelize = require("sequelize");
+const { DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
 
-const Message = db.define('message', {
+class Message extends Model{ }
+Message.init(
+  {
     messageType: {
-        type: Sequelize.STRING,
-        allowNull: false
+      type:DataTypes.STRING,
+      allowNull: false,
     },
     fullName: {
-        type: Sequelize.STRING,
-        allowNull: false
+      type:DataTypes.STRING,
+      allowNull: false,
     },
     MRN: {
-        type: Sequelize.STRING,
-        allowNull: true
+      type:DataTypes.STRING,
+      allowNull: true,
     },
     Date: {
-        type: Sequelize.DATE,
-        allowNull: true
-    }
-}, {
-    freezeTableName: true
-});
+      type:DataTypes.DATE,
+      allowNull: true,
+    },
+  },
+    {
+        sequelize: db,
+        modelName: 'message',
+       freezeTableName: true,
+  });
+// const Message = db.define('message', );
 
 module.exports = Message;
