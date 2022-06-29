@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 
 exports.getUser = (req, res) => {
     User.findAll().then((user) => {
-        res.render('receptionist', {
+        res.render('users', {
           user: user,
           style: 'user.css'
         });
@@ -17,7 +17,7 @@ exports.getUser = (req, res) => {
 }
 
 exports.usersAdd = (req, res) => {
-    res.render('receptionist', {
+    res.render('create_user', {
         style: 'user.css',
         script: 'index.js'
     });
@@ -98,6 +98,13 @@ exports.login = (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/addClient");
+                       } else if (user.role === "Admin") {
+                          console.log(token);
+                          console.log("Admin Authenticated!");
+                          res.cookie("access-token", token, {
+                            maxAge: 60 * 60 * 24 * 1000,
+                          });
+                          res.status(200).redirect("/addUser");
                        } else {
                          res.status(501).json({
                            message: "role not found",
