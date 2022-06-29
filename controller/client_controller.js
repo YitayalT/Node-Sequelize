@@ -53,12 +53,17 @@ exports.addClient = (req, res) =>{
         Woreda,
         Kebele
     }).then( (data) =>{
-     console.log('registered!');
+      console.log("client registered successfully!");
+      return res.render("add_client", {
+        message: "client registered successfully!",
+        style: "user.css",
+        script: "index.js",
+      });
     
     }).catch( (err) =>{
         console.log(err);
     });
-     res.status(200).redirect("/addClient");
+    //  res.status(200).redirect("/addClient");
 }
 
 exports.search = (req, res) =>{

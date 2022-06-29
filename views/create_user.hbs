@@ -4,6 +4,26 @@
 <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
  <div class="container-fluid p-5 m-2">
     <h1> Add Users</h1>
+    <div class="row">
+          {{#if message }}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{message}}!</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+    {{/if}}
+    {{!-- existInfo --}}
+      {{#if existInfo }}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{existInfo}}!</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+    {{/if}}
   <form id="form" class="row g-3" action="/addUser" method="POST">
     <div class="col-md-4">
        <div class="input-control">

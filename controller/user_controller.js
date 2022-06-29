@@ -25,8 +25,13 @@ exports.usersAdd = (req, res) => {
 
 exports.addUser = (req, res) => {
    User.findOne({ where: { email: req.body.email } }).then((user) => {
-       if (user) {
-          console.log("user already exists!");
+     if (user) {
+         console.log('user already exist');
+          return res.render("create_user", {
+            existInfo: "user already exist!",
+            style: "user.css",
+            script: "index.js",
+          });
        } else {
             let newUser = {
               user_id: req.body.uid,
@@ -46,7 +51,13 @@ exports.addUser = (req, res) => {
 
             User.create(newUser)
               .then((result) => {
-                  console.log("user registered successfully!");
+                console.log("user registered successfully!");
+                return res.render("create_user", {
+                  message: "user registered successfully!",
+                  style: "user.css",
+                  script: "index.js",
+                });
+                  
               })
               .catch((err) => {
                 console.log(err);
@@ -57,7 +68,7 @@ exports.addUser = (req, res) => {
         console.log(err);
     });
    
-   return res.redirect("/addUser");
+  //  return res.redirect("/addUser");
 }
 
 exports.getLoggedIn = (req, res) => {
@@ -74,10 +85,10 @@ exports.login = (req, res) => {
                style: "user.css",
              });
         } else {
-          let reqPass = req.body.password;
-          console.log(reqPass);
-          let userPass = user.password;
-          console.log(userPass);
+          // let reqPass = req.body.password;
+          // console.log(reqPass);
+          // let userPass = user.password;
+          // console.log(userPass);
               bcrypt.compare(req.body.password, user.password).then((result) => {
                  if (result) {
                  const token = jwt.sign({
@@ -137,6 +148,10 @@ exports.login = (req, res) => {
                    });
                  } 
               }).catch((err) => {
+                //  res.status(401).render("login", {
+                //    message: "something goes wrong",
+                //    style: "user.css",
+                //  });
                 console.log(err);
               });     
              }
