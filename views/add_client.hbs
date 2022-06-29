@@ -1,7 +1,9 @@
-
-      {{> header}}
-    <div class="container m-5">
-        <div class="container p-5"> 
+ <div class="page">
+ {{> header}}
+ {{> receptionist-sidebar}}
+  <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+  <div class="container-fluid p-5 m-2">
+        {{!-- <div class="container p-5">  --}}
           <h1>Registration</h1>
             <form id="form" class="row g-3" action="/add" method="POST">
                 <!-- facility name field -->
@@ -89,14 +91,15 @@
                    <div class="col-md-4">
 
                    </div>
-                   <div class="col-md-4">
-                   
-                  <input type="submit" value="Add Client" class="btn btn-primary">
-                   
+                   <div class="col-md-4 mt-5 ">
+         <input type="submit"  value="Add Client" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="reset"  value="Reset" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
                    </div>
-              </form>
+            </form>
               <!-- form ends here-->
-        </div>
+        {{!-- </div> --}}
     </div>
+  </div>
 {{> footer}}
+</div>
   

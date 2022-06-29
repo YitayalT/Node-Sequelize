@@ -1,7 +1,9 @@
-
-        {{> header}} 
-    <div class="container mb-5">
-        <div class="container p-5"> 
+ <div class="page">
+ {{> header}}
+ {{> receptionist-sidebar}}
+  <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+  <div class="container-fluid p-5 m-2">
+         <h1>Modify Clients Data</h1>
             {{#if client}}
             <form class="row g-3" action="/update/{{client.MRN}}" method="POST">
                 <!-- facility name field -->
@@ -88,3 +90,4 @@
     </div>
 
   {{> footer}}
+  </div>

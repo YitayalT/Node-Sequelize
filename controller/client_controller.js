@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const Client = require('../model/Client');
 exports.getClient =  (req, res) =>{
-  res.render("receptionist", {
+  res.render("add_client", {
       style: "user.css",
       script: 'index.js'
   });
@@ -9,9 +9,9 @@ exports.getClient =  (req, res) =>{
 }
 exports.clients = (req, res) =>{
     Client.findAll().then( (result) =>{
-        res.render("client-register", {
+        res.render("client_list", {
           result: result,
-          style: "style.css",
+          style: "user.css",
           script: "index.js",
         });
     }).catch( (err) =>{
@@ -83,7 +83,10 @@ exports.edit = (req, res) =>{
     raw:true
 }).then( (client) =>{
 console.log(client);
-   res.render("edit_client", { client: client });   
+    res.render("edit_client", {
+        client: client,
+        style: 'user.css'
+    });   
 }).catch( (err) =>{
         console.log(err);
 });  
