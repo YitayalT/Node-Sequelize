@@ -6,15 +6,24 @@
             {{!-- <div class="row"> --}}
             {{!-- <div class="col-md-12" style="min-height: 500px;"> --}}
            {{!-- <div class="col-md-4"></div> --}}
-           <form id="form" class="row g-3" action="/addMessage" method="POST">
+           <form id="form"  action="/addMessage" method="POST">
            <h1>Fill Bed Details!</h1>
+               
+      {{!-- <div class="col-md-4">
+      <label for="role" class="form-label">Message Type</label>
+      <select class="custom-select shadow-none" id="message_type" name="message_type" required>
+        <option value="ANC">ANC</option>
+        <option value="Delivery">Delivery</option>
+        <option value="PNC">PNC</option>
+      </select>
+      </div> --}}
 
-         <div class="col-md-4">
+       <div class="col-md-4">
          <label for="blockName" class="form-label">Block name</label>
         <input type="text" class="form-control shadow-none" id="blockName" name="blockName" required>
         </div>
                   <!-- mrn field -->
-                <div class="col-md-4">
+                  <div class="col-md-4">
                     <label for="dormNumber" class="form-label">Dorm Number</label>
                     <input type="text" class="form-control shadow-none" id="dormNumber" name="dormNumber" required>
                  
