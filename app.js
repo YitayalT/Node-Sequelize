@@ -6,19 +6,21 @@ const db = require('./config/database');
 const dotenv = require('dotenv');
 const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
+const Handlebars = require("handlebars");
+const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
 // const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
 // const ancVisit = require('./model/ANCVisit');
 // const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
 // const AncVisit = require('./model/ANCVisit');
-const Message = require('./model/Message');
+//const Message = require('./model/Message');
 // const Prescription = require('./model/Prescription');
 // const Radiology = require('./model/Radiology');
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
 // const Client = require('./model/Client');
-const LabResult = require('./model/LabResult');
+//const LabResult = require('./model/LabResult');
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
@@ -30,8 +32,9 @@ const prescriptionRoute = require('./routes/prescription-route');
 const delivery_route = require('./routes/delivery-route');
 const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
-const Handlebars = require('handlebars');
-const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+const bedRoute = require('./routes/bed-route');
+
+
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -93,6 +96,7 @@ app.use("", pncRoute);
 app.use("", prescriptionRoute);
 app.use("", labExamRoute);
 app.use("", radiologyRoute);
+app.use("", bedRoute);
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
