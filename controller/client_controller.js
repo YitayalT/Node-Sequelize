@@ -34,6 +34,7 @@ exports.addClient = (req, res) => {
         });
       } else {
         let newClient = {
+          UserId: req.body.userId,
           name_of_facility: req.body.facility_name,
           MRN: req.body.mrn,
           date_reg: req.body.date_of_reg,
@@ -49,6 +50,7 @@ exports.addClient = (req, res) => {
           Kebele: req.body.kebele,
         };
         let {
+          UserId,
           name_of_facility,
           MRN,
           date_reg,
@@ -65,6 +67,7 @@ exports.addClient = (req, res) => {
         } = newClient;
 
         Client.create({
+          UserId,
           name_of_facility,
           MRN,
           date_reg,

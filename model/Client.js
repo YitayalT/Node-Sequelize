@@ -1,52 +1,59 @@
-const Sequelize = require('sequelize');
+const {Sequelize, DataTypes, Model} = require('sequelize');
 const db = require('../config/database');
 
-const Client = db.define(
-  "client",
+// const Client = db.define(
+//   "client",
+class Client extends Model { }
+Client.init(
   {
+    UserId: {
+      type: DataTypes.STRING,
+    },
     name_of_facility: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     MRN: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       primaryKey: true,
       allowNull: false,
     },
     date_reg: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     first_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     lats_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Grand_Father_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Age: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
     Sex: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Email: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Phone_no: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Region: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Woreda: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Kebele: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
   },
   {
+    sequelize: db,
+    modelName: "client",
     freezeTableName: true,
   }
 );

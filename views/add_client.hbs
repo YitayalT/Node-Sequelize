@@ -6,14 +6,7 @@
         {{!-- <div class="container p-5">  --}}
           <h1>Registration</h1>
           <div class="row">
-                {{#if message }}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}!</strong> 
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-    </div>
-    {{/if}}
+     {{> info}}
 
          {{#if existInfo }}
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -26,6 +19,12 @@
 
    </div>
             <form id="form" class="row g-3" action="/add" method="POST">
+                <div class="col-md-4">
+                
+                    <label for="userId" class="form-label">User Id</label>
+                    <input type="text" class="form-control shadow-none" id="userId" name="userId" required>
+                  {{!-- <div class="error"></div> --}}
+                  </div>
                 <!-- facility name field -->
                 
                 <div class="col-md-4">
@@ -108,9 +107,9 @@
                    <div class="col-md-4">
 
                    </div>
-                   <div class="col-md-4">
+                   {{!-- <div class="col-md-4">
 
-                   </div>
+                   </div> --}}
                    <div class="col-md-4 mt-5 ">
          <input type="submit"  value="Add Client" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> &nbsp;&nbsp;&nbsp;&nbsp;
           <input type="reset"  value="Reset" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 

@@ -19,7 +19,7 @@ const Prescription = require('./model/Prescription');
 // const Radiology = require('./model/Radiology');
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
-// const Client = require('./model/Client');
+const Client = require('./model/Client');
 //const LabResult = require('./model/LabResult');
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
@@ -71,7 +71,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// ClassifyingForm.sync({force: true}).then( () =>{
+// Client.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
