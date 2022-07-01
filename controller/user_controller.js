@@ -126,6 +126,13 @@ exports.login = (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/labExam");
+                       } else if (user.role === "radiology") {
+                         console.log(token);
+                         console.log("Radiology Authenticated!");
+                         res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.status(200).redirect("/Radiology");
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
