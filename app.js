@@ -8,7 +8,7 @@ const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
 const Handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
-// const ClassifyingForm = require('./model/ClasifyingForm');
+const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
 const ancVisit = require('./model/ANCVisit');
 const PreventiveCare = require('./model/PreventiveCare');
@@ -71,11 +71,11 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-Prescription.sync({force: true}).then( () =>{
-    console.log('synced!');
-}).catch( (err) =>{
-    console.log(err);
-});
+// ClassifyingForm.sync({force: true}).then( () =>{
+//     console.log('synced!');
+// }).catch( (err) =>{
+//     console.log(err);
+// });
 
 app.get('/', (req, res) =>{
     res.render('home', {

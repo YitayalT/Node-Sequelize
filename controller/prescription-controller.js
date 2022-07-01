@@ -20,9 +20,14 @@ exports.addPrescription = (req, res) => {
 
     Prescription.create(newPrescription).then((result) => {
         console.log('prescription added!!!');
+         return res.render("prescription", {
+           message: "prescribed successfully!",
+           style: "user.css",
+           script: "index.js",
+         });
     }).catch((err) => {
         console.log(err);
     });
 
-    res.status(200).redirect('/getPrescription');
+    // res.status(200).redirect('/getPrescription');
 }

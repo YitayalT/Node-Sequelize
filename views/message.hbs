@@ -8,14 +8,15 @@
            <div class="col-md-4"></div>
        <form id="form"  action="/addMessage" method="POST">
         <h1 class="p-2">Messaging</h1>
-                {{#if message }}
+        {{!-- {{#if message }}
       <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{{message}}!</strong> 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
     </div>
-    {{/if}}      
+    {{/if}}       --}}
+    {{> info}}
       <div class="col-md-4">
       <label for="role" class="form-label">Message Type</label>
       <select class="custom-select shadow-none" id="message_type" name="message_type" required>

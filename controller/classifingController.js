@@ -10,6 +10,8 @@ exports.classifying = (req, res) => {
 exports.fillForm = (req, res) => {
     let newData = {
         MRN: req.body.mrn,
+        UserId: req.body.userId,
+        Date: req.body.date,
       previous_stillbirth: req.body.previous_stillbirth,
       spontaneous_abortion: req.body.spontaneous_abortion,
       bw_lt_2500g: req.body.bw_lt_2500g,
@@ -33,9 +35,14 @@ exports.fillForm = (req, res) => {
 
     ClassifyingForm.create(newData).then((result) => {
         console.log('added!');
+         return res.render("classifying_form", {
+           message: "successfully collect obstetric history!",
+           style: "user.css",
+           script: "index.js",
+         });
     }).catch((err) => {
         console.log(err);
     });
 
-    res.status(200).redirect("/classifying");
+    // res.status(200).redirect("/classifying");
 }
