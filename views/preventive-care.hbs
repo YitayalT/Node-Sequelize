@@ -3,20 +3,23 @@
     {{> header}}
     <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">   
         <div class="container-fluid p-5 m-2">
-      <form action="/preventiveCare" method="post">
+        <form action="/preventiveCare" method="post">
         <div class="col-md-12 mt-5">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                 <label for="mrn" class="form-label">Medical Record Number</label>
-                    <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>
+                 {{!-- <label for="mrn" class="form-label">Medical Record Number</label> --}}
+                    {{!-- <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required> --}}
             </div>
             <div class="col-md-4"></div>
         </div>
+      
          <div class="col-9">
          
             <h1 class="p-2">Preventive Care</h1>
                 <div class="row">
                     <div class="col">
+                        <label for="mrn" class="form-label">Medical Record Number</label>
+                    <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>
                         <table class="table table-borderless table-sm">
                             <thead>
                                 <tr>
@@ -76,6 +79,8 @@
                         </table>
                     </div>
                     <div class="col">
+                        <label for="userId" class="form-label">User Id</label>
+                        <input type="text" class="form-control shadow-none" id="userId" name="userId" required>
                         <table class="table table-borderless table-sm">
                             <thead>
                                 <tr>
@@ -127,13 +132,16 @@
                         </table>
                     </div>                    
                 </div>
-            </div>
+                
+         </div>
+          <div class="d-flex m-4 gap-3" style="margin: auto ;">
+            <button type="submit" class="btn btn-outline-primary btn-sm" >Submit</button> &nbsp; &nbsp; &nbsp;
+            <button type="reset" class="btn btn-outline-primary btn-sm" >Reset</button>
         </div>
-        <div class="d-flex m-4 gap-3">
-            <button type="submit" class="btn btn-primary">Submit</button> &nbsp; &nbsp; &nbsp;
-            <button type="reset" class="btn btn-primary">Reset</button>
+           </form>
         </div>
+       
     </div>
-    </form>
+    
     {{> footer}}
 </div>

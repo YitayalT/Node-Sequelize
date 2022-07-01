@@ -1,63 +1,74 @@
-const Sequelize = require("sequelize");
+const {Sequelize, Model, DataTypes} = require("sequelize");
 const db = require("../config/database");
 
-const PreventiveCare = db.define(
-  "preventiveCare",
+class PreventiveCare extends Model {}
+// const PreventiveCare = db.define(
+//   "preventiveCare",
+ 
+PreventiveCare.init(
   {
     MRN: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false,
+    },
+    UssrId: {
+      type: DataTypes.STRING,
       primaryKey: true,
       allowNull: false,
     },
     Pallor: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     Jaundice: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     Chest_Abn: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     Heart_Abn: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     HIV_Test_Performed: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     HIV_Test_result: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     Vulvar_Ulcer: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     vaginal_discharge: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     pelvic_mass: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-   
+
     Danger_Signs_Advised: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-      Birth_preparedness_advised: {
-      type: Sequelize.STRING,
+    Birth_preparedness_advised: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
+    sequelize: db,
+    modelName: "preventiveCare",
     freezeTableName: true,
   }
 );
+// );
 
 
 module.exports = PreventiveCare;

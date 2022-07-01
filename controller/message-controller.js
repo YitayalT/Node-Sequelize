@@ -24,13 +24,18 @@ exports.sendMessage = (req, res) => {
 }
 
 exports.message = (req, res) => {
-    Message.findAll().then((result) => {
+    Message.findAll({
+        order: [["createdAt", "DESC"]],
+        limit: 4
+    })
+      .then((result) => {
         res.render("incoming-message", {
           result: result,
           style: "user.css",
           script: "index.js",
         });
-    }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
 }
