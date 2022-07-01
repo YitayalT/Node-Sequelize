@@ -15,12 +15,17 @@ exports.sendMessage = (req, res) => {
     };
 
     Message.create(newMessage).then((result) => {
-        console.log('message added!');
+      console.log('message added!');
+       return res.render("message", {
+         message: "Message sent successfully!",
+         style: "user.css",
+         script: "index.js",
+       });
     }).catch((err) => {
         console.log(err);
     });
 
-    res.status(200).redirect('/getMessage');
+    // res.status(200).redirect('/getMessage');
 }
 
 exports.message = (req, res) => {
