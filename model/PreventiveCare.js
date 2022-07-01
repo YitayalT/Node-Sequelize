@@ -1,4 +1,4 @@
-const {Sequelize, Model, DataTypes} = require("sequelize");
+const { Model, DataTypes} = require("sequelize");
 const db = require("../config/database");
 
 class PreventiveCare extends Model {}
@@ -9,12 +9,10 @@ PreventiveCare.init(
   {
     MRN: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false,
     },
     UssrId: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false,
     },
     Pallor: {

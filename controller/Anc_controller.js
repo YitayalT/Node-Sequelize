@@ -58,11 +58,16 @@ exports.addAncData = (req, res) => {
       Next_Appointment: newAncData.Next_Appointment,
       weight: newAncData.weight,
     }).then((result) => {
-        console.log("data added!");
+      console.log("data added successfully!");
+       return res.render("anc", {
+         message: "data inserted successfully!",
+         style: "user.css",
+         script: "index.js",
+       });
       })
       .catch((err) => {
         console.log(err);
       });
 
-    res.status(200).redirect("/ancVisit");
+    // res.status(200).redirect("/ancVisit");
 }

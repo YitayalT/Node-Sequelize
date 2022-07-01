@@ -10,8 +10,8 @@ const Handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
 // const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
-// const ancVisit = require('./model/ANCVisit');
-// const PreventiveCare = require('./model/PreventiveCare');
+const ancVisit = require('./model/ANCVisit');
+const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
 // const AncVisit = require('./model/ANCVisit');
 //const Message = require('./model/Message');
@@ -33,8 +33,7 @@ const delivery_route = require('./routes/delivery-route');
 const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
 const bedRoute = require('./routes/bed-route');
-
-
+const AncVisit = require('./model/ANCVisit');
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -72,7 +71,7 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// Message.sync({force: true}).then( () =>{
+// AncVisit.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

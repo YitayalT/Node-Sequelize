@@ -10,6 +10,7 @@ exports.getPreventiveCare = (req, res) => {
 exports.addPreventiveCare = (req, res) => {
     let careData = {
       MRN: req.body.mrn,
+      UssrId: req.body.userId,
       Pallor: req.body.pallor,
       Jaundice: req.body.jaundice,
       Chest_Abn: req.body.chest_abn,
@@ -24,10 +25,15 @@ exports.addPreventiveCare = (req, res) => {
     };
   
   PreventiveCare.create(careData).then((result) => {
-    console.log('data inserted!');
+    console.log('data inserted successfully!');
+     return res.render("preventive-care", {
+       message: "data inserted successfully!",
+       style: "user.css",
+       script: "index.js",
+     });
   }).catch((err) => {
     console.log(err);
   });
 
- res.status(200).redirect("/preventiveCare");
+//  res.status(200).redirect("/preventiveCare");
 }

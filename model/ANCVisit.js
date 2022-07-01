@@ -1,103 +1,91 @@
-const Sequelize = require("sequelize");
+const {Sequelize, DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
 
+class AncVisit extends Model{}
+// const AncVisit = db.define(
+//   "ancVisit",
+  AncVisit.init(
+    {
+      MRN: {
+        type: DataTypes.STRING,
+      },
+      UserId: {
+        type: DataTypes.STRING,
+      },
+      // Anc_no: {
+      //   type: Sequelize.STRING,
+      //   primaryKey: true,
+      //   allowNull: false,
+      // },
+      date_of_visit: {
+        type: DataTypes.DATE,
+      },
+      LMP: {
+        type: DataTypes.DATE,
+      },
+      BP: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
 
-const AncVisit = db.define(
-  "ancVisit",
-  {
-    MRN: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    UserId: {
-      type: Sequelize.STRING,
-    },
-    Anc_no: {
-      type: Sequelize.STRING,
-      primaryKey: true,
-      allowNull: false,
-    },
-    date_of_visit: {
-      type: Sequelize.DATE,
-      allowNull: false,
-    },
-    LMP: {
-      type: Sequelize.DATE,
-      allowNull: false,
-    },
-    BP: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
+      pallor: {
+        type: DataTypes.STRING,
+      },
+      Uterine_Height: {
+        type: DataTypes.STRING,
+      },
+      Fetal_Heart_Beat: {
+        type: DataTypes.STRING,
+      },
+      Presentation: {
+        type: DataTypes.STRING,
+      },
+      Urine_test_for_infection: {
+        type: DataTypes.BOOLEAN,
+      },
+      Urine_test_for_protein: {
+        type: DataTypes.BOOLEAN,
+      },
+      Rapid_syphilis_test: {
+        type: DataTypes.STRING,
+      },
+      Hemoglobin: {
+        type: DataTypes.STRING,
+      },
+      BG_and_RH: {
+        type: DataTypes.STRING,
+      },
+      TT: {
+        type: DataTypes.STRING,
+      },
+      Folic_Acid: {
+        type: DataTypes.STRING,
+      },
+      Mebendazole: {
+        type: DataTypes.STRING,
+      },
+      Hepatitus: {
+        type: DataTypes.STRING,
+      },
+      Visit: {
+        type: DataTypes.STRING,
 
-    pallor: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      },
+      Next_Appointment: {
+        type: DataTypes.DATE,
+
+      },
+      weight: {
+        type: DataTypes.STRING,
+
+      },
     },
-    Uterine_Height: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Fetal_Heart_Beat: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Presentation: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Urine_test_for_infection: {
-      type: Sequelize.BOOLEAN,
-      allowNull: false,
-    },
-    Urine_test_for_protein: {
-      type: Sequelize.BOOLEAN,
-      allowNull: false,
-    },
-    Rapid_syphilis_test: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Hemoglobin: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    BG_and_RH: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    TT: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Folic_Acid: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Mebendazole: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Hepatitus: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Visit: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    Next_Appointment: {
-      type: Sequelize.DATE,
-      allowNull: false,
-    },
-    weight: {
-      type: Sequelize.STRING,
-      allowNull: false,
+    {
+      sequelize: db,
+      modelName: "ancVisit",
+      freezeTableName: true,
     }
-  },
-  {
-    freezeTableName: true,
-  }
-);
+  );
+// );
 
 module.exports = AncVisit;

@@ -6,6 +6,14 @@
                 <form action="/ancVisit" method="post">
         <div class="col-9" >
                 <h1 class="p-2">Anc Visit</h1>
+                {{#if message }}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{message}}!</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {{/if}}
                 <div class="row">
                     <div class="col">
                         <table class="table table-borderless table-sm">
@@ -23,8 +31,8 @@
                                 </tr>
 
                                 <tr>
-                                   <td>Anc Id</td>
-                                    <td><input class="form-control shadow-none" type="text" name="anc_no" id="anc_no"></td>
+                                   {{!-- <td>Anc Id</td>
+                                    <td><input class="form-control shadow-none" type="text" name="anc_no" id="anc_no"></td> --}}
                                     <td>Date of Visit</td>
                                     <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date"></td>
                                     
@@ -151,8 +159,8 @@
             </div>
             <div class="col-md-4"></div>
             <div class="d-flex m-4 gap-3">
-            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;
-            <button type="reset" class="btn btn-primary">Reset</button>
+            <input type="submit"  value="Submit" class="btn btn-outline-primary btn-sm"> &nbsp;&nbsp;&nbsp;
+          <input type="reset"  value="Reset" class="btn btn-outline-primary btn-sm"> 
         </div>
 
         </div>
