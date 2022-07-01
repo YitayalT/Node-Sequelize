@@ -1,37 +1,41 @@
-const Sequelize = require("sequelize");
+const {Sequelize, DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
 
-const Prescription = db.define(
-  "prescription",
-  {
-    MRN: {
-      type: Sequelize.STRING,
+class Prescription extends Model{}
+// const Prescription = db.define(
+//   "prescription",
+  Prescription.init(
+    {
+      MRN: {
+        type: DataTypes.STRING,
+      },
+      UserId: {
+        type: DataTypes.STRING,
+      },
+      Date: {
+        type: DataTypes.DATE,
+      },
+      DrugName: {
+        type: DataTypes.STRING,
+      },
+      Dosage: {
+        type: DataTypes.STRING,
+      },
+      RouteTaken: {
+        type: DataTypes.STRING,
+      },
+      Frequency: {
+        type: DataTypes.STRING,
+      },
+      AmountDispensed: {
+        type: DataTypes.STRING,
+      },
     },
-    UserId: {
-      type: Sequelize.STRING,
-    },
-    Date: {
-      type: Sequelize.DATE,
-    },
-    DrugName: {
-      type: Sequelize.STRING,
-    },
-    Dosage: {
-      type: Sequelize.STRING,
-    },
-    RouteTaken: {
-      type: Sequelize.STRING,
-    },
-    Frequency: {
-      type: Sequelize.STRING,
-    },
-    AmountDispensed: {
-      type: Sequelize.STRING,
-    },
-  },
-  {
-    freezeTableName: true,
-  }
-);
+    {
+      freezeTableName: true,
+      sequelize: db,
+      modelName: "prescription",
+    }
+  );
 
 module.exports = Prescription;

@@ -15,7 +15,7 @@ const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
 // const AncVisit = require('./model/ANCVisit');
 //const Message = require('./model/Message');
-// const Prescription = require('./model/Prescription');
+const Prescription = require('./model/Prescription');
 // const Radiology = require('./model/Radiology');
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
@@ -71,11 +71,11 @@ db.authenticate().then( () =>{
      console.log(err)
     });
 
-// AncVisit.sync({force: true}).then( () =>{
-//     console.log('synced!');
-// }).catch( (err) =>{
-//     console.log(err);
-// });
+Prescription.sync({force: true}).then( () =>{
+    console.log('synced!');
+}).catch( (err) =>{
+    console.log(err);
+});
 
 app.get('/', (req, res) =>{
     res.render('home', {
