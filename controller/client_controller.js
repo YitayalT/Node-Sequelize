@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+const {Sequelize, Op} = require("sequelize");
 const Client = require("../model/Client");
 exports.getClient = (req, res) => {
   res.render("add_client", {
@@ -101,12 +101,12 @@ exports.addClient = (req, res) => {
 };
 
 exports.search = (req, res) => {
-  let  mrn  = req.body.mrn;
+  let  mrn  = req.query;
   console.log(mrn);
   // term = term.toLowerCase();
   Client.findOne({
     where: {
-    MRN: mrn
+    MRN: { [Op.like]: '%' + mrn + '%' } 
   }})
     .then((result) => {
       res.render("client_list", {

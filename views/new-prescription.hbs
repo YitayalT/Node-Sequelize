@@ -8,9 +8,13 @@
      
       <div class="col-md-4">
           {{#each result}}
-          <p>{{messageType}}</p>
-          <h5>{{fullName}}</h5>
-          <p>{{Date}}</p>
+          <p>Medical Record Number:{{MRN}}</p>
+          <h5>Prescriber ID:<a href="#">{{UserId}}</a></h5>
+          <p>Date :{{Date}}</p>
+          <p>Drug Name:{{DrugName}}</p>
+          <h5>Dosage: {{Dosage}}</h5>
+          <p>Route Taken: {{RouteTaken}}</p>
+          <p>Frequency:{{Frequency}}</p>
         {{else}}
 
         <p>No Clients available</p>
