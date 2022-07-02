@@ -6,6 +6,21 @@ exports.getPrescription = (req, res) => {
     });
 }
 
+exports.prescription = (req, res) => {
+     Prescription.findAll({
+        order: [["createdAt", "DESC"]],
+        limit: 4
+    }).then((result) => {
+        res.render("new-prescription", {
+          result: result,
+          style: "user.css",
+          script: "index.js",
+        });
+    }).catch((err) => {
+        
+    });
+ }
+
 exports.addPrescription = (req, res) => {
     let newPrescription = {
       MRN: req.body.mrn,

@@ -101,12 +101,17 @@ exports.addClient = (req, res) => {
 };
 
 exports.search = (req, res) => {
-  let { mrn } = req.query;
+  let  mrn  = req.body.mrn;
+  console.log(mrn);
   // term = term.toLowerCase();
-  Client.findByPk(mrn)
+  Client.findOne({
+    where: {
+    MRN: mrn
+  }})
     .then((result) => {
       res.render("client_list", {
         result: result,
+        style: 'user.css'
       });
     })
     .catch((err) => {
