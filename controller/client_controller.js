@@ -101,7 +101,7 @@ exports.addClient = (req, res) => {
 };
 
 exports.search = (req, res) => {
-  let  mrn  = req.query;
+  let  mrn  = req.query.mrn;
   console.log(mrn);
   // term = term.toLowerCase();
   Client.findOne({
