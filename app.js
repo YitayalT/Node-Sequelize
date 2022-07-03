@@ -119,7 +119,7 @@ User.hasMany(PreventiveCare, {
 
 
 app.get('/', (req, res) =>{
-    res.render('home', {
+    res.render('my-home', {
         style: 'user.css'
     });
 })
