@@ -8,18 +8,19 @@ const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
 const Handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
-//const ClassifyingForm = require('./model/ClasifyingForm');
+const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
-//const ancVisit = require('./model/ANCVisit');
+const ancVisit = require('./model/ANCVisit');
 //const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
 // const AncVisit = require('./model/ANCVisit');
 //const Message = require('./model/Message');
-//const Prescription = require('./model/Prescription');
+const Prescription = require('./model/Prescription');
 // const Radiology = require('./model/Radiology');
 // const Bed = require('./model/Bed');
 // const Pnc = require('./model/PNC');
-//const Client = require('./model/Client');
+const Client = require('./model/Client');
+const User = require('./model/User');
 //const LabResult = require('./model/LabResult');
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
@@ -33,6 +34,8 @@ const delivery_route = require('./routes/delivery-route');
 const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
 const bedRoute = require('./routes/bed-route');
+const PreventiveCare = require('./model/PreventiveCare');
+const AncVisit = require('./model/ANCVisit');
 //const AncVisit = require('./model/ANCVisit');
 
 const app = express();
@@ -64,18 +67,56 @@ app.use(express.json());
  });
 
 //test database connection
-db.authenticate().then( () =>{
-    console.log('connected!');
-})
-.catch( (err) =>{
-     console.log(err)
-    });
+// db.authenticate().then( () =>{
+//     console.log('connected!');
+// })
+// .catch( (err) =>{
+//      console.log(err)
+//     });
 
-// Client.sync({force: true}).then( () =>{
+// model relationships
+Client.hasMany(PreventiveCare, {
+  foreignKey: 'MRN'
+});
+
+User.hasMany(PreventiveCare, {
+  foreignKey: 'UserId'
+});
+
+// Client.hasMany(ClassifyingForm, {
+//   foreignKey: 'MRN'
+// });
+
+// User.hasMany(ClassifyingForm, {
+//   foreignKey: 'UserId'
+// })
+
+// Client.hasMany(AncVisit, {
+//   foreignKey: 'MRN'
+// });
+
+// User.hasMany(AncVisit, {
+//   foreignKey: 'UserId'
+// })
+
+// Client.hasMany(Prescription, {
+//   foreignKey: 'MRN'
+// });
+
+// User.hasMany(Prescription, {
+//   foreignKey: 'UserId'
+// })
+
+// User.hasMany(Client, {
+//   foreignKey: 'UserId'
+// })
+
+//  PreventiveCare.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
 // });
+
 
 app.get('/', (req, res) =>{
     res.render('home', {

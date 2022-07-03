@@ -11,9 +11,10 @@ PreventiveCare.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    UssrId: {
+    UserId: {
       type: DataTypes.STRING,
       allowNull: false,
+      
     },
     Pallor: {
       type: DataTypes.STRING,

@@ -10,7 +10,7 @@ exports.getPreventiveCare = (req, res) => {
 exports.addPreventiveCare = (req, res) => {
     let careData = {
       MRN: req.body.mrn,
-      UssrId: req.body.userId,
+      UserId: req.body.userId,
       Pallor: req.body.pallor,
       Jaundice: req.body.jaundice,
       Chest_Abn: req.body.chest_abn,
