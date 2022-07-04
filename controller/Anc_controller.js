@@ -8,6 +8,12 @@ exports.getAncVisit = (req, res) => {
     });
 }
 
+exports.getAncHistory = (req, res) => {
+  res.render("anc-history", {
+    style: "user.css",
+    title: "anc",
+  });
+}
 exports.addAncData = (req, res) => {
     let newAncData = {
       MRN: req.body.mrn,
