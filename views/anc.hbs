@@ -3,17 +3,17 @@
     {{> header}}
     <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
             <div class="container-fluid p-5 m-2">
-                <form action="/ancVisit" method="post">
-        <div class="col-9" >
+             <form action="/ancVisit" method="post">
+             <div class="col-9" >
                 <h1 class="p-2">Anc Visit</h1>
                 {{#if message }}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}!</strong> 
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-    </div>
-    {{/if}}
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+               <strong>{{message}}!</strong> 
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+               </div>
+              {{/if}}
                 <div class="row">
                     <div class="col">
                         <table class="table table-borderless table-sm">
@@ -26,9 +26,11 @@
                                 <tr>
                                     <td>MRN</td>
                                     <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn"></td>
+                                  </tr>
+                                  <tr>
                                     <td>UserId</td>
                                     <td><input class="form-control shadow-none" type="text" name="uid" id="uid"></td>
-                                </tr>
+                                  </tr>
 
                                 <tr>
                                    {{!-- <td>Anc Id</td>
@@ -40,6 +42,8 @@
                                 <tr>
                                     <td>Blood pressure</td>
                                     <td><input class="form-control shadow-none" type="text" id="bp" name="bp"></td>
+                                </tr>
+                                <tr>
                                     <td>Gestation age(LMP)</td>
                                     <td><input class="form-control shadow-none" type="date" id="gast_age" name="gast_age"></td>
                                 </tr>
@@ -52,18 +56,24 @@
                                             <option value="severe">severe</option>
                                         </select>
                                     </td>
+                                    </tr>
+                                    <tr>
                                     <td>Uterine Height(Wks)</td>
                                     <td><input class="form-control shadow-none" type="text" name="uterine_height" id="uterine_height"></td>
                                 </tr>
                                 <tr>
                                     <td>Urine test for infection</td>
                                <td><input class="form-control shadow-none" type="text" name="urine_test_infection" id="urine_test_infection"></td>
+                                    </tr>
+                                    <tr>
                                     <td>Urine test for protein</td>
                                     <td><input class="form-control shadow-none" type="text" name="urine_test_protein" id="urine_test_protein"></td>
                                 </tr>
                                 <tr>
                                     <td>Fetal Heart Beat</td>
                                     <td><input class="form-control shadow-none" type="text" name="fetal_heart_beat" id="fetal_heart_beat"></td>
+                                </tr>
+                                    <tr>
                                     <td>Rapid syphilis test</td>
                                     <td>
                                         <select class="custom-select shadow-none" name="rapid_syphilis_test" id="rapid_syphilis_test"> 
@@ -72,10 +82,28 @@
                                         </select>
                                     </td>
                                 </tr>
+                             </tbody>
+                        </table>
+                    </div>
+                    <div class="col">
+                   <table class="table table-borderless table-sm">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Pregnancy Followup</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    
+                                {{!-- second table --}}
+
+
                                 <tr>
                                     <td>Hemoglobin</td>
                                     <td><input class="form-control shadow-none" type="text" name="hemoglobin" id="hemoglobin"></td>
-                                    <td>Blood Group and RH</td>
+                                    
+                                </tr>
+                                <tr>
+                                <td>Blood Group and RH</td>
                                     <td>
                                         <select class="custom-select shadow-none" name="blood_group" id="blood_group">
                                             <option value="A" >A+</option>
@@ -100,6 +128,7 @@
 
                                         </select>
                                     </td>
+                                    <tr>
                                     <td>Iron/Folic Acid</td>
                                     
                                        <td><input class="form-control shadow-none" type="text" name="iron_folic_acid" id="iron_folic_acid" placeholder="20mg"></td> 
@@ -114,6 +143,8 @@
                                             <option value="frank">frank</option>
                                         </select>
                                     </td>
+                                    </tr>
+                                    <tr>
                                     <td>Mebendazole</td>
                                     
                                          <td><input class="form-control shadow-none" type="text" name="mebendazole" id="Mebendazole" placeholder="100mg"></td> 
@@ -131,6 +162,8 @@
                                             <option value="Hepatitus G">Hepatitus G</option>
                                         </select>
                                     </td>
+                                    </tr>
+                                 <tr>
                                     <td>Weight(kg)</td>
                                     <td><input class="form-control shadow-none" type="text" name="weight" id="weight"></td>
                                 </tr>
@@ -148,6 +181,8 @@
                                             <option value="8th">8<sup>th</sup></option>
                                         </select>
                                     </td>
+                                    </tr>
+                                    <tr>
                                     <td>Next Appointment</td>
                                     <td><input class="form-control shadow-none" type="date" name="appointment" id="appointment"></td>
                                 </tr>
@@ -155,14 +190,15 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
+
             <div class="col-md-4"></div>
             <div class="d-flex m-4 gap-3">
             <input type="submit"  value="Submit" class="btn btn-outline-primary btn-sm"> &nbsp;&nbsp;&nbsp;
-          <input type="reset"  value="Reset" class="btn btn-outline-primary btn-sm"> 
-        </div>
-
+           <input type="reset"  value="Reset" class="btn btn-outline-primary btn-sm"> 
+           </div>
         </div>
         </form>
     </div>

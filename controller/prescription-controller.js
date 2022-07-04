@@ -1,5 +1,6 @@
 const Prescription = require('../model/Prescription');
-
+const User = require('../model/User');
+const {Sequelize} = require('sequelize');
 exports.getPrescription = (req, res) => {
     res.render('prescription', {
         style: 'user.css'
@@ -8,17 +9,27 @@ exports.getPrescription = (req, res) => {
 
 exports.prescription = (req, res) => {
      Prescription.findAll({
-        order: [["createdAt", "DESC"]],
-        limit: 4
-    }).then((result) => {
-        res.render("new-prescription", {
-          result: result,
-          style: "user.css",
-          script: "index.js",
-        });
-    }).catch((err) => {
-        
-    });
+       order: [["createdAt", "DESC"]],
+       limit: 4,
+       include: {
+         model: User,
+        //  where: {
+        //    user_id: Sequelize.col("prescription.UserId"),
+        //  },
+       },
+       raw: true,
+     })
+       .then((result) => {
+         console.log(result);
+         res.render("new-prescription", {
+           result: result,
+           style: "user.css",
+           script: "index.js",
+         });
+       })
+       .catch((err) => {
+         console.log(err);
+       });
  }
 
 exports.addPrescription = (req, res) => {

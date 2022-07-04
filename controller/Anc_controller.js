@@ -12,7 +12,6 @@ exports.addAncData = (req, res) => {
     let newAncData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
-      Anc_no: req.body.anc_no,
       date_of_visit: req.body.visit_date,
       LMP: req.body.gast_age,
       BP: req.body.bp,
@@ -37,11 +36,10 @@ exports.addAncData = (req, res) => {
     ANCVisit.create({
       MRN: newAncData.MRN,
       UserId: newAncData.UserId,
-      Anc_no: newAncData.Anc_no,
       date_of_visit: newAncData.date_of_visit,
       LMP: newAncData.LMP,
       BP: newAncData.BP,
-      pallor:newAncData.pallor,
+      pallor: newAncData.pallor,
       Uterine_Height: newAncData.Uterine_Height,
       Fetal_Heart_Beat: newAncData.Fetal_Heart_Beat,
       Presentation: newAncData.Presentation,
@@ -57,13 +55,14 @@ exports.addAncData = (req, res) => {
       Visit: newAncData.Visit,
       Next_Appointment: newAncData.Next_Appointment,
       weight: newAncData.weight,
-    }).then((result) => {
-      console.log("data added successfully!");
-       return res.render("anc", {
-         message: "data inserted successfully!",
-         style: "user.css",
-         script: "index.js",
-       });
+    })
+      .then((result) => {
+        console.log("data added successfully!");
+        return res.render("anc", {
+          message: "data inserted successfully!",
+          style: "user.css",
+          script: "index.js",
+        });
       })
       .catch((err) => {
         console.log(err);

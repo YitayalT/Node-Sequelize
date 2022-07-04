@@ -10,11 +10,13 @@
           {{#each result}}
           <p>Medical Record Number:{{MRN}}</p>
           <h5>Prescriber ID:<a href="#">{{UserId}}</a></h5>
+          
           <p>Date :{{Date}}</p>
           <p>Drug Name:{{DrugName}}</p>
           <h5>Dosage: {{Dosage}}</h5>
           <p>Route Taken: {{RouteTaken}}</p>
           <p>Frequency:{{Frequency}}</p>
+          <h5>Prescriber name:<a href="#">{{result.user.first_name}}</a></h5>
         {{else}}
 
         <p>No Clients available</p>

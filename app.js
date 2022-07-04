@@ -75,13 +75,13 @@ app.use(express.json());
 //     });
 
 // model relationships
-Client.hasMany(PreventiveCare, {
-  foreignKey: 'MRN'
-});
+// Client.hasMany(PreventiveCare, {
+//   foreignKey: 'MRN'
+// });
 
-User.hasMany(PreventiveCare, {
-  foreignKey: 'UserId'
-});
+// User.hasMany(PreventiveCare, {
+//   foreignKey: 'UserId'
+// });
 
 // Client.hasMany(ClassifyingForm, {
 //   foreignKey: 'MRN'
@@ -99,19 +99,25 @@ User.hasMany(PreventiveCare, {
 //   foreignKey: 'UserId'
 // })
 
-// Client.hasMany(Prescription, {
-//   foreignKey: 'MRN'
-// });
-
-// User.hasMany(Prescription, {
-//   foreignKey: 'UserId'
-// })
+Client.hasMany(Prescription, {
+  foreignKey: 'MRN'
+});
+ 
+Prescription.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+User.hasMany(Prescription, {
+  foreignKey: 'UserId'
+})
+Prescription.belongsTo(User, {
+  foreignKey: "UserId",
+});
 
 // User.hasMany(Client, {
 //   foreignKey: 'UserId'
 // })
 
-//  PreventiveCare.sync({force: true}).then( () =>{
+//  Prescription.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -119,7 +125,7 @@ User.hasMany(PreventiveCare, {
 
 
 app.get('/', (req, res) =>{
-    res.render('my-home', {
+    res.render('home', {
         style: 'user.css'
     });
 })
