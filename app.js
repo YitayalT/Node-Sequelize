@@ -10,10 +10,9 @@ const Handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
 const ClassifyingForm = require('./model/ClasifyingForm');
 // const NewBorn = require('./model/NewBorn');
-const ancVisit = require('./model/ANCVisit');
+// const ancVisit = require('./model/ANCVisit');
 //const PreventiveCare = require('./model/PreventiveCare');
 // const Delivery = require('./model/Delivery');
-// const AncVisit = require('./model/ANCVisit');
 //const Message = require('./model/Message');
 const Prescription = require('./model/Prescription');
 // const Radiology = require('./model/Radiology');
@@ -91,33 +90,39 @@ app.use(express.json());
 //   foreignKey: 'UserId'
 // })
 
-// Client.hasMany(AncVisit, {
-//   foreignKey: 'MRN'
-// });
-
-// User.hasMany(AncVisit, {
-//   foreignKey: 'UserId'
-// })
-
-Client.hasMany(Prescription, {
+Client.hasMany(AncVisit, {
   foreignKey: 'MRN'
 });
- 
-Prescription.belongsTo(Client, {
+
+AncVisit.belongsTo(Client, {
   foreignKey: "MRN",
 });
-User.hasMany(Prescription, {
+User.hasMany(AncVisit, {
   foreignKey: 'UserId'
 })
-Prescription.belongsTo(User, {
+AncVisit.belongsTo(User, {
   foreignKey: "UserId",
 });
+
+// Client.hasMany(Prescription, {
+//   foreignKey: 'MRN'
+// });
+ 
+// Prescription.belongsTo(Client, {
+//   foreignKey: "MRN",
+// });
+// User.hasMany(Prescription, {
+//   foreignKey: 'UserId'
+// })
+// Prescription.belongsTo(User, {
+//   foreignKey: "UserId",
+// });
 
 // User.hasMany(Client, {
 //   foreignKey: 'UserId'
 // })
 
-//  Prescription.sync({force: true}).then( () =>{
+//  AncVisit.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

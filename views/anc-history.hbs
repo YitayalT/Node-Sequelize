@@ -4,6 +4,37 @@
     <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
         <div class="container-fluid p-5 my-5">
            <h1>Anc History</h1>
+           <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+             {{#each result}}
+          <p>Medical Record Number: {{MRN}}</p>
+            <p>User Id:{{UserId}}</p>
+            <p>Date of Visit: {{date_of_visit}}</p>
+            <p>LMP: {{LMP}}</p>
+            <p>Blood Pressure: {{BP}}</p>
+          <h5>Pallor: {{pallor}}</h5>
+          <p>Uterine Height: {{Uterine_Height}}</p>
+          <p>Presentation: {{Presentation}}</p>
+          <p>Rapid Syphilis Test:{{Rapid_syphilis_test}}</p>
+          <p>Blood Group: {{BG_and_RH}}</p>
+          <p>Hemoglobin: {{Hemoglobin}}</p>
+          <p>Folic Acid: {{Folic_Acid}}</p>
+          <p>Mebendazole: {{Mebendazole}}</p>
+          <p>Visit:{{Visit}}</p>
+          <p>weight: {{weight}}</p>
+          <b><p>User Name: {{'user.first_name'}} {{'user.last_name'}}</p></b>
+          <b><p>department: {{'user.department'}}</p></b>
+          <b><p>Client Name: {{'client.first_name'}} {{'client.lats_name'}}</p></b>
+        <p>client Phone_no: {{'client.Phone_no'}}</p>
+    <hr>
+        {{else}}
+
+        <p>No Clients available</p>
+          {{/each}}
+            </div>
+           <div class="col-md-2"></div>
+           </div>
         </div>
     </div>
 </div>

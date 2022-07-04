@@ -1,5 +1,7 @@
 const Sequelize = require("sequelize");
 const ANCVisit = require("../model/ANCVisit");
+const User = require('../model/User');
+const Client = require('../model/Client');
 
 exports.getAncVisit = (req, res) => {
     res.render('anc', {
@@ -9,10 +11,29 @@ exports.getAncVisit = (req, res) => {
 }
 
 exports.getAncHistory = (req, res) => {
-  res.render("anc-history", {
-    style: "user.css",
-    title: "anc",
-  });
+  ANCVisit.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  }).then((result) => {
+    console.log(result);
+    res.render("anc-history", {
+        result:result,
+      style: "user.css",
+      title: "anc",
+      });
+  }).catch((err) => {
+    console.log(err);
+  });;
+
 }
 exports.addAncData = (req, res) => {
     let newAncData = {
