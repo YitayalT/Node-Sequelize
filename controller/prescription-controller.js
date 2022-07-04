@@ -1,5 +1,6 @@
 const Prescription = require('../model/Prescription');
 const User = require('../model/User');
+const Client = require('../model/Client');
 const {Sequelize} = require('sequelize');
 exports.getPrescription = (req, res) => {
     res.render('prescription', {
@@ -11,12 +12,14 @@ exports.prescription = (req, res) => {
      Prescription.findAll({
        order: [["createdAt", "DESC"]],
        limit: 4,
-       include: {
-         model: User,
-        //  where: {
-        //    user_id: Sequelize.col("prescription.UserId"),
-        //  },
-       },
+       include: [
+         {
+           model: User,
+         },
+         {
+           model: Client,
+         },
+       ],
        raw: true,
      })
        .then((result) => {
