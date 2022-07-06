@@ -23,7 +23,7 @@ exports.prescription = (req, res) => {
        raw: true,
      })
        .then((result) => {
-         console.log(result);
+        //  console.log(result);
          res.render("new-prescription", {
            result: result,
            style: "user.css",

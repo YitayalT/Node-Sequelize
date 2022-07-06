@@ -1,7 +1,8 @@
-const Sequelize = require("sequelize");
+
 const ANCVisit = require("../model/ANCVisit");
 const User = require('../model/User');
 const Client = require('../model/Client');
+const LabResult = require('../model/LabResult');
 
 exports.getAncVisit = (req, res) => {
     res.render('anc', {
@@ -24,7 +25,7 @@ exports.getAncHistory = (req, res) => {
     ],
     raw: true,
   }).then((result) => {
-    console.log(result);
+    // console.log(result);
     res.render("anc-history", {
         result:result,
       style: "user.css",
@@ -32,9 +33,37 @@ exports.getAncHistory = (req, res) => {
       });
   }).catch((err) => {
     console.log(err);
-  });;
-
+  });
 }
+
+exports.labHistory = (req, res) => {
+  
+    LabResult.findAll({
+      order: [["createdAt", "DESC"]],
+      limit: 4,
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Client,
+        },
+      ],
+      raw: true,
+    })
+      .then((result) => {
+        // console.log(result);
+        res.render("lab-history", {
+          result: result,
+          style: "user.css",
+          title: "lab result",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+}
+
 exports.addAncData = (req, res) => {
     let newAncData = {
       MRN: req.body.mrn,
