@@ -1,0 +1,27 @@
+<div class="page">
+    {{> header}}
+    {{> delivery-sidebar}}
+    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+        <div class="container-fluid p-5 my-5">
+           <h1>Delivery List</h1>
+
+           <div class="col-8 offset-3">
+            {{#each result}}
+         <p>Medical Record  Number: {{MRN}}</p>
+         <p>User Id : {{UID}}</p>
+         <p>ModeOfDelivery: {{ModeOfDelivery}}</p>
+         <p>MaternalStatus: {{MaternalStatus}}</p>
+         <p>AfterBirth: {{AfterBirth}}</p>
+         <p>Presentation: {{Presentation}}</p>
+         <p>DeliveryDuration: {{DeliveryDuration}}</p>
+         <p>Full Name: {{'user.first_name'}} {{'user.last_name'}}</p>
+         <p>department: {{'user.department'}}</p>
+          <p>Client fullName: {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p>
+          <p>Client Age: {{'client.Age'}}</p>
+            {{else}}
+
+            {{/each}}
+           </div>
+        </div>
+    </div>
+</div>

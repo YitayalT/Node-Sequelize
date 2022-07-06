@@ -1,10 +1,71 @@
 const Delivery = require('../model/Delivery');
+const User = require('../model/User');
+const Client = require('../model/Client');
+const NewBorn = require('../model/NewBorn');
+
 exports.getDelivery = (req, res) => {
     res.render('delivery', {
         style: 'user.css',
         title: 'delivery'
     });
 }
+
+exports.deliveryHistory = (req, res) => {
+    
+  Delivery.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("delivery-list", {
+        result: result,
+        style: "user.css",
+        title: "delivery list",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+exports.newBornHistory = (req, res) => {
+    
+     NewBorn.findAll({
+       order: [["createdAt", "DESC"]],
+       limit: 10,
+       include: [
+         {
+           model: User,
+         },
+         {
+           model: Client,
+         },
+       ],
+       raw: true,
+     })
+       .then((result) => {
+         console.log(result);
+         res.render("new-born-history", {
+           result: result,
+           style: "user.css",
+           title: "delivery list",
+         });
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+}
+
 
 exports.addDelivery = (req, res) => {
     let newDeliveryData = {

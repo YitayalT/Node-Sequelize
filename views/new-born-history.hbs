@@ -1,0 +1,24 @@
+<div class="page">
+    {{> header}}
+    {{> delivery-sidebar}}
+    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+        <div class="container-fluid p-5 my-5">
+           <h1>NewBorn List</h1>
+
+           <div class="col-8 offset-3">
+            {{#each result}}
+              <p>Medical Record Number: {{MRN}}</p>
+              <p>Mother FullName : {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p>
+              <p>Baby FullName: {{firstName}} {{fatherName}}</p>
+              <p>sex: {{sex}}</p>
+            {{else}}
+         <p>No registered child's are found!</p>
+
+            {{/each}}
+             
+           </div>
+
+           </div>
+           </div>
+           </div>
+           
