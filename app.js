@@ -9,18 +9,23 @@ const cookieParser = require("cookie-parser");
 const Handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
 const ClassifyingForm = require('./model/ClasifyingForm');
-// const NewBorn = require('./model/NewBorn');
-// const ancVisit = require('./model/ANCVisit');
-//const PreventiveCare = require('./model/PreventiveCare');
-// const Delivery = require('./model/Delivery');
-//const Message = require('./model/Message');
+
+// import models
+const NewBorn = require('./model/NewBorn');
+const ancVisit = require('./model/ANCVisit');
+const Delivery = require('./model/Delivery');
+const Message = require('./model/Message');
 const Prescription = require('./model/Prescription');
-// const Radiology = require('./model/Radiology');
-// const Bed = require('./model/Bed');
-// const Pnc = require('./model/PNC');
+const Radiology = require('./model/Radiology');
+const Bed = require('./model/Bed');
+const Pnc = require('./model/PNC');
 const Client = require('./model/Client');
 const User = require('./model/User');
 const LabResult = require('./model/LabResult');
+const PreventiveCare = require("./model/PreventiveCare");
+const AncVisit = require("./model/ANCVisit");
+
+// import routes
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
@@ -33,9 +38,6 @@ const delivery_route = require('./routes/delivery-route');
 const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
 const bedRoute = require('./routes/bed-route');
-const PreventiveCare = require('./model/PreventiveCare');
-const AncVisit = require('./model/ANCVisit');
-
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -154,8 +156,39 @@ User.hasMany(LabResult, {
 LabResult.belongsTo(User, {
   foreignKey: "UserId",
 });
+// Delivery relationship
+Client.hasMany(Delivery, {
+  foreignKey: "MRN",
+});
+Delivery.belongsTo(Client, {
+  foreignKey: "MRN",
+});
 
-//  LabResult.sync({force: true}).then( () =>{
+User.hasMany(Delivery, {
+  foreignKey: "UID",
+});
+
+Delivery.belongsTo(User, {
+  foreignKey: "UID",
+});
+
+// new born relationship
+Client.hasMany(NewBorn, {
+  foreignKey: "MRN",
+});
+NewBorn.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(NewBorn, {
+  foreignKey: "UID",
+});
+
+NewBorn.belongsTo(User, {
+  foreignKey: "UID",
+});
+
+//  NewBorn.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

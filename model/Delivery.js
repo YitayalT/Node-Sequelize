@@ -1,66 +1,79 @@
-const Sequelize = require("sequelize");
+const {Sequelize, DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
+const Client = require("./Client");
+const User = require("./User");
 
-const Delivery = db.define(
-  "delivery",
+class Delivery extends Model { }
+
+// const Delivery = db.define(
+//   "delivery",
+Delivery.init(
   {
     MRN: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
+      references: {
+        model: Client,
+        key: 'MRN'
+      }
     },
     UID: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
+      references: {
+        model: User,
+        key: 'user_id'
+      }
     },
-    Anc_no: {
-      type: Sequelize.STRING,
-    },
+  
     Date: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     PartographUsed: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     ModeOfDelivery: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     AMTSL: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Placenta: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     MaternalStatus: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Pre_eclampisa: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     Eclampisa: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     APH: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
 
     PPH: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     Referred: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     Others: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     AfterBirth: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Presentation: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     DeliveryDuration: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
   },
   {
+    sequelize: db,
+    modelName: 'delivery',
     freezeTableName: true,
   }
 );

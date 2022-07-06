@@ -1,4 +1,3 @@
-const Sequelize = require("sequelize");
 const User = require("../model/User");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
@@ -66,8 +65,6 @@ exports.addUser = (req, res) => {
    }).catch((err) => {
         console.log(err);
     });
-   
-  //  return res.redirect("/addUser");
 }
 
 exports.getLoggedIn = (req, res) => {
@@ -84,10 +81,6 @@ exports.login = (req, res) => {
                style: "user.css",
              });
         } else {
-          // let reqPass = req.body.password;
-          // console.log(reqPass);
-          // let userPass = user.password;
-          // console.log(userPass);
               bcrypt.compare(req.body.password, user.password).then((result) => {
                  if (result) {
                  const token = jwt.sign({
@@ -159,9 +152,6 @@ exports.login = (req, res) => {
                    }
                    
                  } else {
-                  //  res.status(400).json({
-                  //    message: 'Incorrect password'
-                  //  });
                    res.status(401).render("login", {
                      message: "Incorrect Password",
                      style: 'user.css'

@@ -1,69 +1,83 @@
-const Sequelize = require("sequelize");
+const {Sequelize, DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
+const Client = require("./Client");
+const User = require("./User");
 
-const NewBorn = db.define("newBorn",{
+class NewBorn extends Model {}
+// const NewBorn = db.define("newBorn",
+      NewBorn.init({
     UID: {
-      type: Sequelize.STRING,
+          type: DataTypes.STRING,
+          references: {
+            model: User,
+            key: 'user_id'
+      }
     },
     MRN: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
+      references: {
+        model: Client,
+        key: 'MRN'
+      }
     },
     babyId: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: true,
       primaryKey: true,
     },
     time: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     firstName: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     fatherName: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     sex: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     birthWeight: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     birthHeight: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     cephalicCircumference: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     stillBirth: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     alive: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     died: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     Ointment: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     BCGVaccine: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     PolioVaccine: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     HepatitisB: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     VitaminK: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     Chlorhexidine: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
   },
-  {
-    freezeTableName: true,
+        {
+          sequelize: db,
+          modelName: 'newBorn',
+          freezeTableName: true,
   }
 );
 

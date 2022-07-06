@@ -10,7 +10,6 @@ exports.addDelivery = (req, res) => {
     let newDeliveryData = {
       MRN: req.body.mrn,
       UID: req.body.user_id,
-      Anc_no: req.body.anc_no,
       Date: req.body.date,
       PartographUsed: req.body.partograph,
       ModeOfDelivery: req.body.mode_of_delivery,
