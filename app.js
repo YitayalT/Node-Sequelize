@@ -73,13 +73,29 @@ app.use(express.json());
 //      console.log(err)
 //     });
 
+Client.hasMany(Prescription, {
+  foreignKey: 'MRN'
+});
 
+Prescription.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+User.hasMany(Prescription, {
+  foreignKey: 'UserId'
+})
+Prescription.belongsTo(User, {
+  foreignKey: "UserId",
+});
 
-//  AncVisit.sync({force: true}).then( () =>{
-//     console.log('synced!');
-// }).catch( (err) =>{
-//     console.log(err);
-// });
+User.hasMany(Client, {
+  foreignKey: 'UserId'
+})
+
+ Prescription.sync({force: true}).then( () =>{
+    console.log('synced!');
+}).catch( (err) =>{
+    console.log(err);
+});
 
 
 app.get('/', (req, res) =>{

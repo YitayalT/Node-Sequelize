@@ -1,5 +1,7 @@
 const {Sequelize, DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
+const Client = require("./Client");
+const User = require("./User");
 
 class Prescription extends Model{}
 // const Prescription = db.define(
@@ -8,9 +10,18 @@ class Prescription extends Model{}
     {
       MRN: {
         type: DataTypes.STRING,
+        type: DataTypes.STRING,
+        references: {
+          model: Client,
+          key: "MRN",
+        },
       },
       UserId: {
         type: DataTypes.STRING,
+        references: {
+          model: User,
+          key: "user_id",
+        },
       },
       Date: {
         type: DataTypes.DATE,
