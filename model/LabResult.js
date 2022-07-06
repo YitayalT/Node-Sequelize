@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const db = require("../config/database");
+const Client = require("./Client");
+const User = require("./User");
 
 class LabResult extends Model {}
 
@@ -7,9 +9,17 @@ LabResult.init(
   {
     MRN: {
       type: DataTypes.STRING,
+      references: {
+        model: Client,
+        key: 'MRN'
+      }
     },
     UserId: {
       type: DataTypes.STRING,
+      references: {
+        model: User,
+        key: 'user_id'
+      }
     },
     DateOfExam: {
       type: DataTypes.DATE,

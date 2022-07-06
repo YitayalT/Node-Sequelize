@@ -20,7 +20,7 @@ const Prescription = require('./model/Prescription');
 // const Pnc = require('./model/PNC');
 const Client = require('./model/Client');
 const User = require('./model/User');
-//const LabResult = require('./model/LabResult');
+const LabResult = require('./model/LabResult');
 const care = require('./routes/preventive-care-route');
 const router = require('./routes/add_client');
 const user_route = require('./routes/user_route');
@@ -35,7 +35,7 @@ const message = require('./routes/message-route');
 const bedRoute = require('./routes/bed-route');
 const PreventiveCare = require('./model/PreventiveCare');
 const AncVisit = require('./model/ANCVisit');
-//const AncVisit = require('./model/ANCVisit');
+
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -73,6 +73,25 @@ app.use(express.json());
 //      console.log(err)
 //     });
 
+// Anc relationship
+Client.hasMany(AncVisit, {
+  foreignKey: "MRN",
+});
+
+AncVisit.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(AncVisit, {
+  foreignKey: "UserId",
+});
+
+AncVisit.belongsTo(User, {
+  foreignKey: "UserId",
+});
+
+// prescription relationship
+
 Client.hasMany(Prescription, {
   foreignKey: 'MRN'
 });
@@ -87,15 +106,60 @@ Prescription.belongsTo(User, {
   foreignKey: "UserId",
 });
 
-User.hasMany(Client, {
-  foreignKey: 'UserId'
-})
+// preventive care relationship
 
- Prescription.sync({force: true}).then( () =>{
-    console.log('synced!');
-}).catch( (err) =>{
-    console.log(err);
+Client.hasMany(PreventiveCare, {
+  foreignKey: 'MRN'
 });
+PreventiveCare.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(PreventiveCare, {
+  foreignKey: 'UserId'
+});
+PreventiveCare.belongsTo(User, {
+  foreignKey: "UserId",
+});
+
+// classifying form model
+
+Client.hasMany(ClassifyingForm, {
+  foreignKey: 'MRN'
+});
+ClassifyingForm.belongsTo(Client, {
+  foreignKey: 'MRN'
+});
+
+User.hasMany(ClassifyingForm, {
+  foreignKey: 'UserId'
+});
+
+ClassifyingForm.belongsTo(User, {
+  foreignKey: "UserId",
+});
+
+// LabResult result relationship
+Client.hasMany(LabResult, {
+  foreignKey: "MRN",
+});
+LabResult.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(LabResult, {
+  foreignKey: "UserId",
+});
+
+LabResult.belongsTo(User, {
+  foreignKey: "UserId",
+});
+
+//  LabResult.sync({force: true}).then( () =>{
+//     console.log('synced!');
+// }).catch( (err) =>{
+//     console.log(err);
+// });
 
 
 app.get('/', (req, res) =>{
@@ -103,7 +167,7 @@ app.get('/', (req, res) =>{
         style: 'user.css'
     });
 })
-
+// router middle wares
 app.use("", router);
 app.use("", user_route);
 app.use("", classifyingRoute);

@@ -1,5 +1,7 @@
 const {Sequelize, DataTypes, Model} = require("sequelize");
 const db = require("../config/database");
+const User = require('./User');
+const Client = require('./Client');
 
 class AncVisit extends Model{}
 // const AncVisit = db.define(
@@ -8,15 +10,18 @@ class AncVisit extends Model{}
     {
       MRN: {
         type: DataTypes.STRING,
+        references: {
+          model: Client,
+          key: "MRN",
+        },
       },
       UserId: {
         type: DataTypes.STRING,
+        references: {
+          model: User,
+          key: "user_id",
+        },
       },
-      // Anc_no: {
-      //   type: Sequelize.STRING,
-      //   primaryKey: true,
-      //   allowNull: false,
-      // },
       date_of_visit: {
         type: DataTypes.DATE,
       },
@@ -69,15 +74,12 @@ class AncVisit extends Model{}
       },
       Visit: {
         type: DataTypes.STRING,
-
       },
       Next_Appointment: {
         type: DataTypes.DATE,
-
       },
       weight: {
         type: DataTypes.STRING,
-
       },
     },
     {
