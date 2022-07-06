@@ -1,4 +1,4 @@
-
+const PreventiveCare = require('../model/PreventiveCare');
 const ANCVisit = require("../model/ANCVisit");
 const User = require('../model/User');
 const Client = require('../model/Client');
@@ -52,7 +52,7 @@ exports.labHistory = (req, res) => {
       raw: true,
     })
       .then((result) => {
-        // console.log(result);
+        console.log(result);
         res.render("lab-history", {
           result: result,
           style: "user.css",
@@ -62,6 +62,36 @@ exports.labHistory = (req, res) => {
       .catch((err) => {
         console.log(err);
       });
+}
+
+
+exports.preventiveCareHistory = (req, res) => {
+  
+ PreventiveCare.findAll({
+   order: [["createdAt", "DESC"]],
+   limit: 10,
+   include: [
+     {
+       model: User,
+     },
+     {
+       model: Client,
+     },
+   ],
+   raw: true,
+ })
+   .then((result) => {
+     console.log(result);
+     res.render("preventive-care-result", {
+       result: result,
+       style: "user.css",
+       title: "care",
+     });
+   })
+   .catch((err) => {
+     console.log(err);
+   });
+
 }
 
 exports.addAncData = (req, res) => {

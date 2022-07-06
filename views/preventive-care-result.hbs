@@ -1,0 +1,27 @@
+<div class="page">
+    {{> sidebar}}
+    {{> header}}
+    <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
+            <div class="container-fluid p-5 m-2">
+             <div class="col-2"></div>
+             <div class="col-8">
+                <h1 class="p-2">Preventive Care Assessment</h1>
+                {{#each result}}
+                <p>Medical Record Number: {{MRN}}</p>
+                <p>'client.first_name': {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p>
+                <p>User Id:{{UserId}}</p>
+                <p>User FullName: {{'user.first_name'}} {{'user.last_name'}}</p>
+                <p>Pallor: {{Pallor}}</p>
+                <p>Jaundice: {{Jaundice}}</p>
+                <p>Chest_Abn: {{Chest_Abn}}</p>
+                <p>Heart_Abn: {{Heart_Abn}}</p>
+                <p>HIV_Test_Performed:{{HIV_Test_Performed}}</p>
+                <hr>
+                {{else}}
+            <p>No results found!</p>
+                {{/each}}
+
+             </div>
+             </div>
+       </div>
+</div>

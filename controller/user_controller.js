@@ -2,18 +2,17 @@ const Sequelize = require("sequelize");
 const User = require("../model/User");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
-
-
 exports.getUser = (req, res) => {
-    User.findAll().then((user) => {
-        res.render('users', {
+    User.findAll()
+      .then((user) => {
+        res.render("users", {
           user: user,
-          style: 'user.css'
+          style: "user.css",
         });
-    }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
 }
 
 exports.usersAdd = (req, res) => {

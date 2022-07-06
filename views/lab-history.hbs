@@ -8,9 +8,26 @@
                 <h1 class="p-2">Lab Result</h1>
 
                 {{#each result}}
+                  <b><p>client first_name: {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p></b>
                   <p>Medical Record Number: {{MRN}}</p>
                   <p>User Id:{{UserId}}</p>
                   <p>Date of Exam: {{DateOfExam}}</p>
+                  <p>Total WBC: {{TotalWBC}}</p>
+                  <p>Neutrophils: {{Neutrophils}}</p>
+                  <p>Lymphocytes: {{Lymphocytes}}</p>
+                  <p>Eusinophils: {{Eusinophils}}</p>
+                  <p>Monocytes: {{Monocytes}}</p>
+                  <p>Basophils: {{Basophils}}</p>
+                  <p>Hemoglobin: {{Hemoglobin}}</p>
+                  <p>Malaria Parasite: {{MalariaParasite}}</p>
+                  <p>Random Blood Sugar: {{RandomBloodSugar}}</p>
+                  <p>Urea: {{Urea}}</p>
+                  <p>Creatinine: {{Creatinine}}</p>
+                  <p>SGPT: {{SGPT}}</p>
+                  <p>Mantoux Test: {{MantouxTest}}</p>
+                  <p>Finding: {{Finding}}</p>
+                  <p>User Department: {{'user.department'}}</p>
+                  <p>client.Age: {{'client.Age'}}</p>
                   {{ else}}
                   <p>No data is available</p>
                 {{/each}}
