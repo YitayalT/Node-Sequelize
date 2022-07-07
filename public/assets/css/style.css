@@ -17,13 +17,15 @@ img {
   max-width: 100%;
  }
 
-a {
+ul li a {
   text-decoration: none;
   outline: none;
   color: rgb(20, 17, 17); }
 
-a:hover {
-  color: rgb(18, 16, 16); }
+ul li a:hover {
+  color: rgb(137, 236, 220); 
+text-decoration: none;}
+  
 
 ul {
   margin-bottom: 0;
@@ -154,7 +156,7 @@ body {
 
 .form-control:focus {
   box-shadow: none !important;
-  border: 2px solid  #00a8df; }
+  border: 1px solid  #00a8df; }
 
 .btn-light {
   background-color: #FFF;
@@ -171,11 +173,11 @@ body {
   border: 1px solid #4562b8 !important; }
 
 .form-control {
-  background-color: #F8F8F8;
+  background-color: white;
   }
   .form-control:focus {
     background-color: #FFF;
-    border-color: #CCC; }
+    border-color: rgb(52, 22, 135); }
 
 /* ===================================== Header CSS ================================== */
 header {
@@ -225,7 +227,7 @@ header {
 
 /* ===================================== Slider CSS ================================== */
 .slider-detail {
-  padding-top: 128px; }
+  padding-top: 80px; }
   .slider-detail .carousel-caption {
     text-align: left;
     bottom: 110px; }
@@ -261,7 +263,7 @@ header {
     text-align: center;
     padding: 30px; }
     .key-features .single-key i {
-      background-color: #99cc43;
+      background-color: #00ab9f;
       padding: 20px;
       font-size: 42px;
       color: #FFF;
