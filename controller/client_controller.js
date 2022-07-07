@@ -2,7 +2,7 @@ const {Sequelize, Op} = require("sequelize");
 const Client = require("../model/Client");
 exports.getClient = (req, res) => {
   res.render("add_client", {
-    style: "user.css",
+    style: "home.css",
     script: "index.js",
   });
 };
@@ -14,7 +14,7 @@ exports.clients = (req, res) => {
     .then((result) => {
       res.render("client_list", {
         result: result,
-        style: "user.css",
+        style: "home.css",
         script: "index.js",
       });
     })
@@ -29,7 +29,7 @@ exports.addClient = (req, res) => {
         console.log("client already exist");
         return res.render("add_client", {
           existInfo: "client already exist!",
-          style: "user.css",
+          style: "home.css",
           script: "index.js",
         });
       } else {
@@ -86,7 +86,7 @@ exports.addClient = (req, res) => {
             console.log("client registered successfully!");
             return res.render("add_client", {
               message: "client registered successfully!",
-              style: "user.css",
+              style: "home.css",
               script: "index.js",
             });
           })
@@ -111,7 +111,7 @@ exports.search = (req, res) => {
     .then((result) => {
       res.render("client_list", {
         result: result,
-        style: 'user.css'
+        style: 'home.css'
       });
     })
     .catch((err) => {
@@ -129,7 +129,7 @@ exports.edit = (req, res) => {
       console.log(client);
       res.render("edit_client", {
         client: client,
-        style: "user.css",
+        style: "home.css",
       });
     })
     .catch((err) => {

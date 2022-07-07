@@ -2,7 +2,7 @@ const Message = require('../model/Message');
 
 exports.getMessages = (req, res) => {
     res.render('message', {
-        style: 'user.css'
+        style: 'home.css'
     });
 }
 
@@ -18,7 +18,7 @@ exports.sendMessage = (req, res) => {
       console.log('message added!');
        return res.render("message", {
          message: "Message sent successfully!",
-         style: "user.css",
+         style: "home.css",
          script: "index.js",
        });
     }).catch((err) => {
@@ -36,7 +36,7 @@ exports.message = (req, res) => {
       .then((result) => {
         res.render("incoming-message", {
           result: result,
-          style: "user.css",
+          style: "home.css",
           script: "index.js",
         });
       })
