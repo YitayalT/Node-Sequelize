@@ -1,0 +1,24 @@
+.container-fluid {
+    background-color: rgba(224, 232, 232, 0.798);
+
+}
+#services {
+  background-color: rgba(227, 233, 225, 0.85);
+  padding: 30px 0px;
+}
+#services h1{
+    text-align: center;
+    font-weight: 900;
+    color: green;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title{
+    padding: 25px 0px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.card-body{
+    box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.1);
+}

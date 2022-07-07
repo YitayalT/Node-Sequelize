@@ -197,7 +197,7 @@ NewBorn.belongsTo(User, {
 
 app.get('/', (req, res) =>{
     res.render('home', {
-        style: 'user.css'
+        style: 'home.css'
     });
 })
 // router middle wares
