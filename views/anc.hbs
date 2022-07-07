@@ -1,7 +1,7 @@
 <div class="page">
     {{> sidebar}}
     {{> header}}
-    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
+    <div class="content" style="padding-top: 50px; ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
             <div class="container-fluid p-5 mt-2">
              <form action="/ancVisit" method="post">
              {{!-- <div class="col-9" > --}}
@@ -73,18 +73,11 @@
                                     <td>Fetal Heart Beat</td>
                                     <td><input class="form-control shadow-none" type="text" name="fetal_heart_beat" id="fetal_heart_beat"></td>
                                 </tr>
-                                    <tr>
-                                    <td>Rapid syphilis test</td>
-                                    <td>
-                                        <select class="custom-select shadow-none" name="rapid_syphilis_test" id="rapid_syphilis_test"> 
-                                            <option value="negative">negative</option>
-                                            <option value="positive">positive</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                                   
                              </tbody>
                         </table>
                     </div>
+                        {{!-- second table --}}
                     <div class="col">
                    <table class="table table-borderless table-sm">
                             <thead>
@@ -93,10 +86,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                    
-                                {{!-- second table --}}
-
-
                                 <tr>
                                     <td>Hemoglobin</td>
                                     <td><input class="form-control shadow-none" type="text" name="hemoglobin" id="hemoglobin"></td>
@@ -117,9 +106,10 @@
                                         </select>
                                     </td>
                                 </tr>
+
                                 <tr>
-                                    <td>TT(dose)</td>
-                        <td><select class="custom-select shadow-none" name="tt" id="tt">
+                                 <td>TT(dose)</td>
+                                <td><select class="custom-select  shadow-none" name="tt" id="tt">
                                             <option value="Td1" >Td1</option>
                                             <option value="Td2" >Td2</option>
                                             <option value="Td3">Td3</option>
@@ -166,6 +156,16 @@
                                  <tr>
                                     <td>Weight(kg)</td>
                                     <td><input class="form-control shadow-none" type="text" name="weight" id="weight"></td>
+                                </tr>
+                                {{!-- newly added --}}
+                                 <tr>
+                                    <td>Rapid syphilis test</td>
+                                    <td>
+                                        <select class="custom-select shadow-none" name="rapid_syphilis_test" id="rapid_syphilis_test"> 
+                                            <option value="negative">negative</option>
+                                            <option value="positive">positive</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Visit</td>

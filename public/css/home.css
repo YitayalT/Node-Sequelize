@@ -228,7 +228,7 @@ body {
 
 .form-control:focus {
     box-shadow: none;
-    border: 1px solid #0d7a40 !important;
+    border: 1px solid #859ed7 !important;
 }
 
 .form-control {
@@ -238,7 +238,7 @@ body {
 
 .form-control:focus {
     background-color: #FFF;
-    border-color: #CCC;
+    border-color: rgb(101, 199, 226);
 }
 
 /* ===================================== Header CSS ================================== */
@@ -322,6 +322,7 @@ header .scroll-to-fixed-fixed {
 .slider-detail .carousel-caption h5 {
     font-size: 44px;
     margin-left: -40px;
+   
 }
 
 .slider-detail .carousel-caption p {

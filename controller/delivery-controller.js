@@ -5,7 +5,7 @@ const NewBorn = require('../model/NewBorn');
 
 exports.getDelivery = (req, res) => {
     res.render('delivery', {
-        style: 'user.css',
+        style: 'home.css',
         title: 'delivery'
     });
 }
@@ -29,7 +29,7 @@ exports.deliveryHistory = (req, res) => {
       console.log(result);
       res.render("delivery-list", {
         result: result,
-        style: "user.css",
+        style: "home.css",
         title: "delivery list",
       });
     })
@@ -57,7 +57,7 @@ exports.newBornHistory = (req, res) => {
          console.log(result);
          res.render("new-born-history", {
            result: result,
-           style: "user.css",
+           style: "home.css",
            title: "delivery list",
          });
        })
