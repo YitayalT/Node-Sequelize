@@ -2,7 +2,7 @@ const LabResult = require('../model/LabResult');
 
 exports.getLabRequest = (req, res) => {
     res.render('lab-exam', {
-        style: 'user.css'
+        style: 'style.css'
     });
 }
 

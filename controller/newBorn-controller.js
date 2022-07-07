@@ -2,7 +2,7 @@ const NewBorn = require("../model/NewBorn");
 
 exports.getNewBorn = (req, res) =>{
     res.render('new-born', {
-        style: 'user.css'
+        style: 'style.css'
     });
 }
 

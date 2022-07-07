@@ -4,7 +4,7 @@ const Client = require('../model/Client');
 const {Sequelize} = require('sequelize');
 exports.getPrescription = (req, res) => {
     res.render('prescription', {
-        style: 'home.css'
+        style: 'style.css'
     });
 }
 
@@ -26,7 +26,7 @@ exports.prescription = (req, res) => {
         //  console.log(result);
          res.render("new-prescription", {
            result: result,
-           style: "home.css",
+           style: "style.css",
            script: "index.js",
          });
        })
@@ -51,7 +51,7 @@ exports.addPrescription = (req, res) => {
         console.log('prescription added!!!');
          return res.render("prescription", {
            message: "prescribed successfully!",
-           style: "home.css",
+           style: "style.css",
            script: "index.js",
          });
     }).catch((err) => {

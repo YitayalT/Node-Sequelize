@@ -6,7 +6,7 @@ const LabResult = require('../model/LabResult');
 
 exports.getAncVisit = (req, res) => {
     res.render('anc', {
-        style: 'home.css',
+        style: 'style.css',
         title: 'anc'
     });
 }
@@ -28,7 +28,7 @@ exports.getAncHistory = (req, res) => {
     // console.log(result);
     res.render("anc-history", {
         result:result,
-      style: "home.css",
+      style: "style.css",
       title: "anc",
       });
   }).catch((err) => {
@@ -55,7 +55,7 @@ exports.labHistory = (req, res) => {
         console.log(result);
         res.render("lab-history", {
           result: result,
-          style: "home.css",
+          style: "style.css",
           title: "lab result",
         });
       })
@@ -84,7 +84,7 @@ exports.preventiveCareHistory = (req, res) => {
      console.log(result);
      res.render("preventive-care-result", {
        result: result,
-       style: "home.css",
+       style: "style.css",
        title: "care",
      });
    })
@@ -146,7 +146,7 @@ exports.addAncData = (req, res) => {
         console.log("data added successfully!");
         return res.render("anc", {
           message: "data inserted successfully!",
-          style: "home.css",
+          style: "style.css",
           script: "index.js",
         });
       })

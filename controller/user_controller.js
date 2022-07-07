@@ -6,7 +6,7 @@ exports.getUser = (req, res) => {
       .then((user) => {
         res.render("users", {
           user: user,
-          style: "home.css",
+          style: "style.css",
         });
       })
       .catch((err) => {
@@ -16,7 +16,7 @@ exports.getUser = (req, res) => {
 
 exports.usersAdd = (req, res) => {
     res.render('create_user', {
-        style: 'home.css',
+        style: 'style.css',
         script: 'index.js'
     });
 }
@@ -27,7 +27,7 @@ exports.addUser = (req, res) => {
          console.log('user already exist');
           return res.render("create_user", {
             existInfo: "user already exist!",
-            style: "home.css",
+            style: "style.css",
             script: "index.js",
           });
        } else {
@@ -52,7 +52,7 @@ exports.addUser = (req, res) => {
                 console.log("user registered successfully!");
                 return res.render("create_user", {
                   message: "user registered successfully!",
-                  style: "home.css",
+                  style: "style.css",
                   script: "index.js",
                 });
                   
@@ -69,7 +69,7 @@ exports.addUser = (req, res) => {
 
 exports.getLoggedIn = (req, res) => {
   res.render('login', {
-    style: 'home.css'
+    style: 'style.css'
   });
 }
 
@@ -78,7 +78,7 @@ exports.login = (req, res) => {
         if (!user) {
              res.status(401).render("login", {
                message: "User not found",
-               style: "home.css",
+               style: "style.css",
              });
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
@@ -135,26 +135,26 @@ exports.login = (req, res) => {
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
-                           style: "home.css",
+                           style: "style.css",
                          });
                        }
                      } else {
                        res.status(401).render("login", {
                          message: "Incorrect credentials",
-                         style: "home.css",
+                         style: "style.css",
                        });
                      }
                    } else {
                       res.status(401).render("login", {
                         message: "Not authenticated",
-                        style: "home.css",
+                        style: "style.css",
                       });
                    }
                    
                  } else {
                    res.status(401).render("login", {
                      message: "Incorrect Password",
-                     style: 'home.css'
+                     style: 'style.css'
                    });
                  } 
               }).catch((err) => {

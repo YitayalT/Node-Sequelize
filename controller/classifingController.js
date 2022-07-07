@@ -3,7 +3,7 @@ const ClassifyingForm = require('../model/ClasifyingForm');
 
 exports.classifying = (req, res) => {
     res.render('classifying_form', {
-        style: 'home.css'
+        style: 'style.css'
     });
 }
 
@@ -37,7 +37,7 @@ exports.fillForm = (req, res) => {
         console.log('added!');
          return res.render("classifying_form", {
            message: "successfully collect obstetric history!",
-           style: "home.css",
+           style: "style.css",
            script: "index.js",
          });
     }).catch((err) => {

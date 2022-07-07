@@ -2,7 +2,7 @@ const PNC = require('../model/PNC');
 
 exports.getPnc = (req, res) => {
     res.render('pnc', {
-        style: 'user.css'
+        style: 'style.css'
     });
 }
 

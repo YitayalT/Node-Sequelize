@@ -1,7 +1,7 @@
 const Radiology = require('../model/Radiology');
 exports.getRadiology = (req, res) => {
     res.render('radiology-exam', {
-        style: 'user.css'
+        style: 'style.css'
     });
 }
 

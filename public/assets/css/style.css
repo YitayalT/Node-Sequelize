@@ -1,11 +1,5 @@
-/* =======================================================================
-Template Name: Dil Hospital
-Author:  SmartEye Adminpanel
-Author URI: www.smarteyeapps.com
-Version: 1.0
-coder name:Prabin Raja
-Description: This Template is created for web template
-======================================================================= */
+
+
 /* ===================================== Import Less ================================== */
 @font-face {
   font-family: 'mouse-300';
@@ -20,15 +14,16 @@ Description: This Template is created for web template
   list-style: none; }
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+ }
 
 a {
   text-decoration: none;
   outline: none;
-  color: #444; }
+  color: rgb(20, 17, 17); }
 
 a:hover {
-  color: #444; }
+  color: rgb(18, 16, 16); }
 
 ul {
   margin-bottom: 0;
@@ -61,13 +56,16 @@ p {
   width: 100%; }
 
 .no-padding {
-  padding: 0px; }
+  padding: 0px; 
+}
 
 .no-margin {
-  margin: 0px; }
+  margin: 0px; 
+}
 
 .hid {
-  display: none; }
+  display: none; 
+}
 
 .top-mar {
   margin-top: 15px; }
@@ -122,44 +120,18 @@ body {
     width: 100%;
     text-align: center; }
 
-.page-nav {
-  padding: 40px;
-  text-align: center;
-  padding-top: 160px; }
-  .page-nav ul {
-    float: none;
-    margin: auto; }
-  .page-nav h2 {
-    font-size: 36px;
-    width: 100%;
-    color: #444; }
-    @media screen and (max-width: 600px) {
-      .page-nav h2 {
-        font-size: 26px; } }
-  .page-nav ul li {
-    float: left;
-    margin-right: 10px;
-    margin-top: 10px;
-    font-size: 16px; }
-    .page-nav ul li i {
-      width: 30px;
-      text-align: center;
-      color: #444; }
-    .page-nav ul li a {
-      color: #444; }
-
 .btn-success {
-  background-color: #00ab9f;
-  border-color: #00ab9f; }
+  background-color: #1aaa55;
+  border-color: #1aaa55; }
   .btn-success:hover {
-    background-color: #00ab9f !important;
-    border-color: #00ab9f !important; }
+    background-color: #1aaa55 !important;
+    border-color: #1aaa55 !important; }
   .btn-success:active {
-    background-color: #00ab9f !important;
-    border-color: #00ab9f !important; }
+    background-color: #1aaa55 !important;
+    border-color: #1aaa55 !important; }
   .btn-success:focus {
-    background-color: #00ab9f !important;
-    border-color: #00ab9f !important;
+    background-color: #1aaa55 !important;
+    border-color: #1aaa55 !important;
     box-shadow: none !important; }
 
 .btn-info {
@@ -196,11 +168,11 @@ body {
 
 .form-control:focus {
   box-shadow: none;
-  border: 2px solid #0d7a40 !important; }
+  border: 1px solid #4562b8 !important; }
 
 .form-control {
   background-color: #F8F8F8;
-  margin-bottom: 20px; }
+  }
   .form-control:focus {
     background-color: #FFF;
     border-color: #CCC; }
@@ -208,146 +180,76 @@ body {
 /* ===================================== Header CSS ================================== */
 header {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  position: relative;
+  position: absolute;
   width: 100%;
-  z-index: 999; }
-  header .header-nav {
-    background-color: #FFF;
-    width: 100%; }
-    header .header-nav .nav-item ul li {
+  z-index: 999;
+  background-color: #FFF; }
+  header .header-top {
+    background-color: #99cc43; }
+    header .header-top .left-item ul li {
       float: left;
-      font-family: "mouse-500", Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      padding: 28px; }
-      @media screen and (max-width: 998px) {
-        header .header-nav .nav-item ul li {
-          padding: 30px 18px; } }
-      @media screen and (max-width: 767px) {
-        header .header-nav .nav-item ul li {
-          float: none;
-          padding: 14px;
-          border-top: 1px solid #CCC; } }
-    header .header-nav .nav-img img {
-      width: 200px;
-      padding: 0px;
-      margin-top: 21px; }
-      @media screen and (max-width: 767px) {
-        header .header-nav .nav-img img {
-          margin-top: 0px;
-          padding: 10px; } }
-    header .header-nav .appoint {
-      padding-top: 21px; }
+      color: #FFF;
+      padding: 10px; }
+    header .header-top .right-item ul {
+      float: right; }
+      header .header-top .right-item ul li {
+        float: left;
+        color: #FFF;
+        padding: 10px; }
+  header .header-nav .nav-item ul li {
+    float: left;
+    font-family: "mouse-500", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding: 30px; }
+    @media screen and (max-width: 916px) {
+      header .header-nav .nav-item ul li {
+        padding: 30px 20px; } }
+    @media screen and (max-width: 767px) {
+      header .header-nav .nav-item ul li {
+        float: none;
+        padding: 14px;
+        border-top: 1px solid #CCC; } }
+  header .header-nav .nav-img img {
+    width: 200px;
+    padding: 10px; }
   header .scroll-to-fixed-fixed {
     background-color: #FFF;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .small-menu {
   float: right;
-  color: #1ac2f9;
+  color: #99cc43;
   font-size: 32px;
-  margin-top: 17px;
+  margin-top: 23px;
   margin-right: 12px; }
-  @media screen and (max-width: 767px) {
-    .small-menu {
-      margin-top: 11px; } }
 
 /* ===================================== Slider CSS ================================== */
-.slider {
-  width: 100%;
-  overflow: hidden;
-  height: 575px; }
-  @media screen and (max-width: 922px) {
-    .slider {
-      height: 400px; } }
-  .slider li {
-    width: 100%;
-    overflow: hidden;
-    height: 575px;
-    background-size: 100%;
-    ackground-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: right top;
-    position: absolute;
-    transition: visibility 0s, opacity 0.5s linear; }
-    .slider li .slider-layer {
-      background: rgba(197, 64, 102, 0.4);
-      background: -webkit-linear-gradient(top, rgba(0, 147, 173, 0.9), rgba(0, 171, 159, 0.4));
-      background: -moz-linear-gradient(top, rgba(0, 147, 173, 0.9), rgba(0, 171, 159, 0.4));
-      background: -o-linear-gradient(top, rgba(0, 147, 173, 0.9), rgba(0, 171, 159, 0.4));
-      background: -ms-linear-gradient(top, rgba(0, 147, 173, 0.9), rgba(0, 171, 159, 0.4));
-      background: linear-gradient(top, rgba(0, 147, 173, 0.9), rgba(0, 171, 159, 0.4));
-      width: 100%;
-      height: 575px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #FFFFFF;
-      padding-top: 80px; }
-      @media screen and (max-width: 922px) {
-        .slider li .slider-layer {
-          padding-top: 30px; } }
-      .slider li .slider-layer h1 {
-        font-size: 64px;
-        text-align: center;
-        margin-top: 30px;
-        font-family: 'alegreya_bold_italic', serif;
-        transition: width 2s, height 4s; }
-      .slider li .slider-layer p {
-        text-align: center;
-        font-size: 26px;
-        font-family: 'alegreya_bold_italic', serif; }
-      .slider li .slider-layer span {
-        float: right; }
-      .slider li .slider-layer .buttn-row {
-        margin-top: 60px;
-        text-align: center; }
-        .slider li .slider-layer .buttn-row .btn {
-          padding: 10px 20px;
-          background-color: #FFF;
-          color: #444444;
-          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-          border-radius: 2px;
-          font-weight: 600;
-          margin-left: 20px; }
-  @media screen and (max-width: 1199px) {
-    .slider li {
-      height: 600px; }
-      .slider li .slider-layer {
-        height: 600px; } }
-  @media screen and (max-width: 1105px) {
-    .slider li {
-      height: 500px; }
-      .slider li h1 {
-        font-size: 44px !important; }
-      .slider li p {
-        font-size: 22px !important; }
-    .slider .slider-layer {
-      padding-top: 30px !important;
-      height: 500px; } }
-  @media screen and (max-width: 922px) {
-    .slider li {
-      background-position: center;
-      background-size: cover;
-      height: 400px; } }
-  @media screen and (max-width: 580px) {
-    .slider li h1 {
-      font-size: 34px !important; }
-    .slider li p {
-      font-size: 20px !important; }
-    .slider li .buttn-row {
-      margin-top: 20px; }
-      .slider li .buttn-row .btn {
-        padding: 5px 10px !important;
-        font-size: 14px !important; } }
-  @media screen and (max-width: 400px) {
-    .slider li h1 {
-      font-size: 24px !important; }
-    .slider li p {
-      font-size: 18px !important; } }
+.slider-detail {
+  padding-top: 128px; }
+  .slider-detail .carousel-caption {
+    text-align: left;
+    bottom: 110px; }
+    .slider-detail .carousel-caption h5 {
+      font-size: 44px;
+      margin-left: -40px; }
+    .slider-detail .carousel-caption p {
+      margin-left: -40px;
+      font-weight: 600;
+      margin-top: 40px;
+      font-size: 19px; }
+  .slider-detail .vbh {
+    margin-left: -40px; }
+    .slider-detail .vbh .btn {
+      padding: 20px;
+      margin-top: 40px;
+      font-weight: 600;
+      font-size: 18px; }
+  .slider-detail .vdg-cur {
+    color: #1aaa55; }
 
 /* ===================================== Key Features CSS ================================== */
 .key-features {
-  padding: 80px 50px; }
+  padding: 50px; }
   @media screen and (max-width: 940px) {
     .key-features {
       padding: 30px 10px; } }
@@ -359,7 +261,7 @@ header {
     text-align: center;
     padding: 30px; }
     .key-features .single-key i {
-      background-color: #00ab9f;
+      background-color: #99cc43;
       padding: 20px;
       font-size: 42px;
       color: #FFF;
@@ -371,112 +273,99 @@ header {
       font-family: "mouse-300", Arial, Helvetica, sans-serif;
       font-size: 15px; }
 
-/* ===================================== With Medical CSS ================================== */
-.with-medical {
-  padding: 80px 50px;
-  background-color: #FFF; }
-  @media screen and (max-width: 940px) {
-    .with-medical {
-      padding: 30px 10px; } }
-  .with-medical .txtr {
-    padding: 10px; }
-    .with-medical .txtr h4 {
-      font-size: 32px; }
-      .with-medical .txtr h4 span {
-        color: #03509e; }
-    .with-medical .txtr p {
-      text-indent: 20px;
-      font-size: 1.1rem; }
-
-/* ===================================== Clinic Number Say CSS ================================== */
+/* ===================================== Doctor Say CSS ================================== */
 .doctor-message {
+  margin-top: 50px;
   background-image: url("../images/slider/slider_2.jpg");
   background-attachment: fixed;
   background-size: cover; }
   .doctor-message .inner-lay {
-    background-color: rgba(6, 79, 90, 0.8);
-    padding: 80px 50px;
+    background-color: rgba(153, 204, 67, 0.9);
+    padding: 50px;
+    padding-bottom: 0px;
     color: #FFF; }
     @media screen and (max-width: 940px) {
       .doctor-message .inner-lay {
         padding: 30px 10px; } }
-    .doctor-message .inner-lay .numb {
-      text-align: center;
-      padding: 30px; }
-      .doctor-message .inner-lay .numb h3 {
-        font-size: 42px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #CCC;
-        margin-bottom: 20px; }
+  .doctor-message .doc-img {
+    text-align: center; }
+    .doctor-message .doc-img img {
+      width: 400px;
+      margin-top: -140px; }
+  .doctor-message .doc-det h2 {
+    font-size: 42px;
+    margin-bottom: 0px; }
+  .doctor-message .doc-det span {
+    font-weight: 600;
+    margin-top: -5px; }
+  .doctor-message .doc-det p {
+    margin-top: 30px;
+    font-size: 18px;
+    text-indent: 20px; }
+  .doctor-message .doc-det h4 {
+    margin-top: 30px; }
 
-/*====================================== Blog Style ====================================*/
-.blog {
-  padding: 50px; }
-  @media screen and (max-width: 990px) {
-    .blog {
-      padding: 50px 10px; } }
-  @media screen and (max-width: 1199px) {
-    .blog .container {
-      max-width: 100%; } }
-  .blog .blog-singe {
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 2px;
-    background-color: #FFF;
-    margin-bottom: 30px; }
-    .blog .blog-singe .blog-img-tab {
-      padding: 0px; }
-    .blog .blog-singe .blog-content-tab {
-      padding: 15px; }
-      .blog .blog-singe .blog-content-tab h2 {
-        font-size: 19px; }
-      .blog .blog-singe .blog-content-tab i {
-        margin-right: 10px;
-        font-size: 12px; }
-        .blog .blog-singe .blog-content-tab i small {
-          margin-left: 5px;
-          font-size: 100%; }
-      .blog .blog-singe .blog-content-tab .blog-desic {
-        margin-top: 8px;
-        font-size: 12px;
-        text-indent: 20px;
-        margin-bottom: 10px; }
-      .blog .blog-singe .blog-content-tab a {
-        color: #06b2b6;
-        font-size: 12px; }
-        .blog .blog-singe .blog-content-tab a i {
-          margin-left: 15px;
-          font-size: 13px; }
-
-.blog-new-page {
-  background-color: #FFF; }
-
-/* ===================================== Our Team Style  ================================== */
+/* ===================================== Our Team CSS ================================== */
 .our-team {
-  padding: 80px 50px;
-  background-color: #FBFBFB; }
+  padding: 50px; }
   @media screen and (max-width: 940px) {
     .our-team {
       padding: 30px 10px; } }
-  .our-team .team-row {
-    margin-top: 20px; }
-    .our-team .team-row .single-usr {
-      box-shadow: 0 2px 6px 0 rgba(218, 218, 253, 0.65), 0 2px 6px 0 rgba(206, 206, 238, 0.54);
-      margin-bottom: 20px; }
-      .our-team .team-row .single-usr img {
+  .our-team .user-card {
+    background-color: #FFF;
+    padding: 10px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    margin-bottom: 20px; }
+    .our-team .user-card img {
+      width: 100%; }
+    .our-team .user-card .detfs {
+      text-align: center; }
+      .our-team .user-card .detfs ul {
+        margin-left: 10%;
         width: 100%; }
-      .our-team .team-row .single-usr .det-o {
-        padding: 20px;
-        background-color: #00ab9f; }
-        .our-team .team-row .single-usr .det-o h4 {
-          color: #FFF;
-          margin-bottom: 0px; }
-        .our-team .team-row .single-usr .det-o i {
-          color: #FFF; }
+        .our-team .user-card .detfs ul li {
+          float: left;
+          padding: 10px;
+          font-size: 13px; }
+      .our-team .user-card .detfs p {
+        margin-top: 17px; }
+
+/* ===================================== Our Blog CSS ================================== */
+.our-blog {
+  background-color: #FDFDFD;
+  padding: 40px; }
+  @media screen and (max-width: 967px) {
+    .our-blog {
+      padding: 30px 0px; } }
+  .our-blog .single-blog {
+    margin-bottom: 20px;
+    background-color: #FFF;
+    box-shadow: 0 2px 6px 0 rgba(218, 218, 253, 0.65), 0 2px 6px 0 rgba(206, 206, 238, 0.54); }
+    .our-blog .single-blog figure {
+      margin-bottom: 5px; }
+    .our-blog .single-blog .blog-detail {
+      padding: 15px; }
+    .our-blog .single-blog small {
+      color: #FFFFFF;
+      font-size: 12px; }
+    .our-blog .single-blog h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px; }
+    .our-blog .single-blog p {
+      text-align: justify;
+      text-indent: 20px; }
+    .our-blog .single-blog .link a {
+      font-size: 12px;
+      color: #FFFFFF; }
+    .our-blog .single-blog .link i {
+      padding-top: 6px;
+      margin-left: 5px;
+      color: #FFFFFF; }
 
 /* ===================================== Fooer CSS ================================== */
 .footer {
-  padding: 80px 50px;
-  padding: 30px;
+  padding: 50px;
   padding-bottom: 0px;
   background-color: #444;
   color: #FFF; }
@@ -500,8 +389,6 @@ header {
     font-weight: 600;
     font-size: 17px;
     padding-left: 20px; }
-  .footer address a {
-    color: #FFF; }
 
 .copy {
   padding: 20px;
@@ -514,14 +401,62 @@ header {
     .copy span i {
       margin-right: 20px; }
 
+.page-nav {
+  padding: 40px;
+  text-align: center;
+  padding-top: 170px; }
+  .page-nav ul {
+    float: none;
+    margin: auto; }
+  @media screen and (max-width: 409px) {
+    .page-nav {
+      padding-top: 210px; } }
+  .page-nav h2 {
+    font-size: 36px;
+    width: 100%;
+    color: #444; }
+    @media screen and (max-width: 600px) {
+      .page-nav h2 {
+        font-size: 26px; } }
+  .page-nav ul li {
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 16px; }
+    .page-nav ul li i {
+      width: 30px;
+      text-align: center;
+      color: #444; }
+    .page-nav ul li a {
+      color: #444; }
+
+/* ===================================== About Us Style  ================================== */
+.about-us {
+  padding: 50px;
+  background-color: #FFF; }
+  @media screen and (max-width: 1199px) {
+    .about-us .container {
+      max-width: 100%; } }
+  .about-us img {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFF;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
+  .about-us h2 {
+    font-size: 22px; }
+  .about-us p {
+    text-align: justify;
+    text-indent: 20px; }
+
 .kf-2 {
-  background-color: #FCFCFC;
-  padding: 80px 50px; }
+  background-color: #FCFCFC; }
+
+.contact-rooo {
+  padding: 50px;
+  background-color: #FFF; }
   @media screen and (max-width: 940px) {
-    .kf-2 {
+    .contact-rooo {
       padding: 30px 10px; } }
-  .kf-2 .single-key {
-    box-shadow: 0 2px 3px 0 rgba(218, 218, 253, 0.35), 0 0px 3px 0 rgba(206, 206, 238, 0.35); }
 
 /* ===================================== Gallery Style  ================================== */
 .gallery-filter {
@@ -536,7 +471,7 @@ header {
 
 .gallery-title {
   font-size: 36px;
-  color: #00ab9f;
+  color: #29509f;
   text-align: center;
   font-weight: 500;
   margin-bottom: 70px; }
@@ -547,26 +482,26 @@ header {
   width: 7.5%;
   left: 46.5%;
   height: 45px;
-  border-bottom: 1px solid #00ab9f; }
+  border-bottom: 1px solid #29509f; }
 
 .filter-button {
   font-size: 18px;
-  border: 1px solid #00ab9f;
+  border: 1px solid #29509f;
   border-radius: 5px;
   text-align: center;
-  color: #00ab9f;
+  color: #29509f;
   margin-bottom: 30px; }
 
 .filter-button:hover {
   font-size: 18px;
-  border: 1px solid #00ab9f;
+  border: 1px solid #29509f;
   border-radius: 5px;
   text-align: center;
   color: #ffffff;
-  background-color: #00ab9f; }
+  background-color: #29509f; }
 
 .btn-default:active .filter-button:active {
-  background-color: #00ab9f;
+  background-color: #29509f;
   color: white; }
 
 .port-image {
@@ -574,22 +509,5 @@ header {
 
 .gallery_product {
   margin-bottom: 30px; }
-
-.contact-rooo {
-  padding: 80px 50px;
-  background-color: #FFF; }
-  @media screen and (max-width: 940px) {
-    .contact-rooo {
-      padding: 30px 10px; } }
-
-.contact-us-single {
-  background-color: #FFF; }
-  .contact-us-single .cop-ck {
-    padding: 10px 30px; }
-    .contact-us-single .cop-ck h2 {
-      font-size: 22px;
-      margin-bottom: 20px; }
-  .contact-us-single .cf-ro {
-    margin-top: 10px; }
 
 /*# sourceMappingURL=style.css.map */

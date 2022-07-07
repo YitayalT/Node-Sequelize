@@ -3,7 +3,7 @@ const PreventiveCare = require("../model/PreventiveCare");
 
 exports.getPreventiveCare = (req, res) => {
   res.render("preventive-care", {
-    style: "home.css",
+    style: "style.css",
   });
 };
 
@@ -28,7 +28,7 @@ exports.addPreventiveCare = (req, res) => {
     console.log('data inserted successfully!');
      return res.render("preventive-care", {
        message: "data inserted successfully!",
-       style: "home.css",
+       style: "style.css",
        script: "index.js",
      });
   }).catch((err) => {
