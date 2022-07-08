@@ -1,23 +1,18 @@
 const {Op} = require("sequelize");
 const Client = require("../model/Client");
-const accessToken = require('./user_controller');
 
-var token = accessToken.authenticate;
 exports.getClient = (req, res) => {
-  console.log(token);
-  if (!token) {
-    res.status(200).redirect("/login");
-  }else{
-    res.render("add_client", {
+  
+  res.render("add_client", {
       style: "style.css",
       script: "index.js",
     });
-  }
+
 };
 exports.clients = (req, res) => {
   Client.findAll({
     order: [["createdAt", "DESC"]],
-    limit: 10,
+    limit: 5,
   })
     .then((result) => {
       res.render("client_list", {
@@ -105,21 +100,26 @@ exports.addClient = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-    }); //  res.status(200).redirect("/addClient");
+    }); 
 };
 
 exports.search = (req, res) => {
-  let  mrn  = req.query.mrn;
-  console.log(mrn);
-  // term = term.toLowerCase();
-  Client.findOne({
+  let  query  = req.body.mrn;
+  console.log(query);
+    
+  Client.findAll({
     where: {
-    MRN: { [Op.like]: '%' + mrn + '%' } 
-  }})
+      [Op.or]: [
+        { MRN: query },
+        { first_name:  query } 
+      ],
+    },
+    raw: true,
+  })
     .then((result) => {
       res.render("client_list", {
         result: result,
-        style: 'style.css'
+        style: "style.css",
       });
     })
     .catch((err) => {

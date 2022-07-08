@@ -2,13 +2,13 @@
 <div class="page">
  {{> header}}
  {{> receptionist-sidebar}}
-<div class="content" style="padding-top:100px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
- <div class="container-fluid mt-2" style="min-height:500px ;">
-     <div class="col-md-12">
+<div class="content" style="padding-top:100px ; font-size: medium; font-family: 'Times New Roman', Times, serif;">
+ <div class="container-fluid mt-2" style="min-height:510px ;">
+     <div class="col-md-12" style="margin-bottom:10px ;">
         <nav class="navbar">
             <div class="container-fluid mt-3">
-                <form class="d-flex" role="search" action= '/search'>
-                    <input class="form-control shadow-none me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" action= '/search' method="post">
+                    <input class="form-control shadow-none me-2" name="mrn" type="text" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success mx-3" type="submit">Search</button>
                 </form>
             </div>
@@ -46,7 +46,7 @@
                 <td> <a class ="btn btn-outline-danger btn-sm" href="#">Delete</a> </td>
               </tr>
               {{else}}
-          <p>No clients available</p>
+          <b><i><p style="color: red ; text-align: center; padding: 10px;">Such client is not found in the system! </p></i></b>
           {{/each}} 
             </tbody>
           </table>

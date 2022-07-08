@@ -6,7 +6,7 @@ const checkAuthMiddleware = require("../midleware/check-auth");
 router.get('/addClient',checkAuthMiddleware.checkAuth, client_router.getClient );
 router.post('/add', checkAuthMiddleware.checkAuth,client_router.addClient );
 router.get("/clients", checkAuthMiddleware.checkAuth, client_router.clients);
-router.get('/search', client_router.search);
+router.post('/search', client_router.search);
 router.get('/edit/:id', client_router.edit);
 router.post('/update/:id', client_router.updateClient);
 
