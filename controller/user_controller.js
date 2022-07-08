@@ -1,7 +1,12 @@
 const User = require("../model/User");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+const signIn = require('../midleware/check-auth')
+var token;
 exports.getUser = (req, res) => {
+  if (!token) {
+     res.status(200).redirect("/login");
+  }else{
     User.findAll()
       .then((user) => {
         res.render("users", {
@@ -12,13 +17,18 @@ exports.getUser = (req, res) => {
       .catch((err) => {
         console.log(err);
       });
+  }
 }
 
 exports.usersAdd = (req, res) => {
-    res.render('create_user', {
-        style: 'style.css',
-        script: 'index.js'
+  if (!token) {
+      res.status(200).redirect("/login");
+  }else{
+    res.render("create_user", {
+      style: "style.css",
+      script: "index.js",
     });
+  }
 }
 
 exports.addUser = (req, res) => {
@@ -83,7 +93,7 @@ exports.login = (req, res) => {
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
                  if (result) {
-                 const token = jwt.sign({
+                  token = jwt.sign({
                        user_name: user.user_name,
                        password: user.password,
                  }, "secret");
@@ -180,3 +190,4 @@ exports.logout = async (req, res) => {
   res.status(200).redirect("/login");
   console.log('successfully logged out');
 };
+

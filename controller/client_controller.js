@@ -1,5 +1,7 @@
-const {Sequelize, Op} = require("sequelize");
+const {Op} = require("sequelize");
 const Client = require("../model/Client");
+const accessToken = require('../midleware/check-auth');
+var token = accessToken.signIn;
 exports.getClient = (req, res) => {
   res.render("add_client", {
     style: "style.css",

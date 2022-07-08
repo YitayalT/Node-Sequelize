@@ -19,3 +19,14 @@ exports.checkAuth = async (req, res, next) => {
     //  });
    }
 }
+
+
+exports.signIn = (req, res) => {
+    
+                var  token = jwt.sign({
+                       user_name: user.user_name,
+                       password: user.password,
+                }, "secret");
+  console.log(token);
+  return token;
+}
