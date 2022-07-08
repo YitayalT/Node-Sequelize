@@ -1,12 +1,18 @@
 const {Op} = require("sequelize");
 const Client = require("../model/Client");
-const accessToken = require('../midleware/check-auth');
-var token = accessToken.signIn;
+const accessToken = require('./user_controller');
+
+var token = accessToken.authenticate;
 exports.getClient = (req, res) => {
-  res.render("add_client", {
-    style: "style.css",
-    script: "index.js",
-  });
+  console.log(token);
+  if (!token) {
+    res.status(200).redirect("/login");
+  }else{
+    res.render("add_client", {
+      style: "style.css",
+      script: "index.js",
+    });
+  }
 };
 exports.clients = (req, res) => {
   Client.findAll({

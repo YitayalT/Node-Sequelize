@@ -191,3 +191,6 @@ exports.logout = async (req, res) => {
   console.log('successfully logged out');
 };
 
+exports.authenticate = (req, res) => {
+  return token;
+}

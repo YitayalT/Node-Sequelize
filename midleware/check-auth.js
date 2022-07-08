@@ -10,8 +10,8 @@ exports.checkAuth = async (req, res, next) => {
      }
    } catch (error) {
       res.status(401).render("login", {
-        message: "user not authenticated!",
-        style: "user.css",
+        message: "You are not authenticated!",
+        style: "style.css",
       });
     //  return res.status(401).json({
     //    message: "user not authenticated!",
