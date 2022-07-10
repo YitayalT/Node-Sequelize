@@ -2,28 +2,117 @@
 <div class="page">
     {{> sidebar}}
    
-    <div class="content" style="padding-top:50px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
-            <div class="container-fluid p-5 mt-2">
-             <div class="col-2"></div>
-             <div class="col-8">
-                <h1 class="p-2">Preventive Care Assessment</h1>
-                {{#each result}}
-                <p>Medical Record Number: {{MRN}}</p>
-                <p>'client.first_name': {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p>
-                <p>User Id:{{UserId}}</p>
-                <p>User FullName: {{'user.first_name'}} {{'user.last_name'}}</p>
-                <p>Pallor: {{Pallor}}</p>
-                <p>Jaundice: {{Jaundice}}</p>
-                <p>Chest_Abn: {{Chest_Abn}}</p>
-                <p>Heart_Abn: {{Heart_Abn}}</p>
-                <p>HIV_Test_Performed:{{HIV_Test_Performed}}</p>
-                <hr>
-                {{else}}
-            <p>No results found!</p>
-                {{/each}}
+    <div class="content" style="padding-top:50px ; font-size: medium; font-family: 'Times New Roman', Times, serif;"> 
+             <div class="container-fluid p-5 mt-2" style="min-height: 560px;">
+       <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue;">
+           <nav class="navbar">
+            <div class="container-fluid mt-3">
+                <form class="d-flex" action= '/preventiveCareSearch' method="post">
+                    <input class="form-control shadow-none me-2" name="searchCare" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+              </div>
+        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Preventive Care Assessment</h1>
+        <div class="row" style="margin-bottom: 5px;">
+             
+             {{#each result}}
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">preventive care assessment</th>
+                  </thead>
+                  <tbody>
+                   <tr>
+                    <td>MRN:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{MRN}}</td>
+                   </tr>
+                   <tr>
+                    <td>Client fullName:</td>
+                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</td>
+                   </tr>
+                   <tr>
+                    <td>User Id:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UserId}}</td>
+                   </tr>
+                    <tr>
+                   <td>date of assessment:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{createdAt}}</td>
+                   </tr>
+                   <tr>
+                     <td>Pallor:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Pallor}}</td>
+                   </tr>
+                   <tr>
+                    <td>Jaundice:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Jaundice}}</td>
+                   </tr>
+                   <tr>
+                    <td>Chest_Abn:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Chest_Abn}}</td>
+                   </tr>
+                   <tr>
+                    <td>Heart_Abn:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Heart_Abn}}</td>                 
+                   </tr>
+                  </tbody>
+                </table>
+              </div>
 
-             </div>
-             </div>
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">preventive care assessment</th>
+                  </thead>
+     
+                 <tbody>
+                  
+                  <tr>
+                    <td>HIV_Test_Performed:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{HIV_Test_Performed}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>HIV_Test_result:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{HIV_Test_result}}</td>
+                   </tr>
+                   <tr>
+                    <td>Vulvar_Ulcer:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Vulvar_Ulcer}}</td>
+                   </tr>
+                   <tr>
+                    <td>vaginal_discharge:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{vaginal_discharge}}</td>
+                   </tr>
+                   <tr>
+                   <td>pelvic_mass:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{pelvic_mass}}</td>
+                   </tr>
+                   <tr>
+                   <td>Danger_Signs_Advised:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Danger_Signs_Advised}}</td>
+                   </tr>
+                   <tr>
+                  <td>Birth_preparedness_advised:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Birth_preparedness_advised}}</td>
+                   </tr>
+                   
+                  <td>Physician role:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'user.role'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Physician Name:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{'user.first_name'}} {{'user.last_name'}}</td>
+                   </tr>                 
+                   
+                 </tbody>
+                </table>
+              </div>
+           {{ else}}
+                  <p style="">No data is available</p>
+                {{/each}}
+       </div>
+      </div>
        </div>
 </div>
 

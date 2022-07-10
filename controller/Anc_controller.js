@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const PreventiveCare = require('../model/PreventiveCare');
 const ANCVisit = require("../model/ANCVisit");
 const User = require('../model/User');
@@ -25,7 +26,7 @@ exports.getAncHistory = (req, res) => {
     ],
     raw: true,
   }).then((result) => {
-    // console.log(result);
+    console.log(result);
     res.render("anc-history", {
         result:result,
       style: "style.css",
@@ -36,37 +37,36 @@ exports.getAncHistory = (req, res) => {
   });
 }
 
-exports.labHistory = (req, res) => {
-  
-    LabResult.findAll({
-      order: [["createdAt", "DESC"]],
-      limit: 4,
-      include: [
-        {
-          model: User,
-        },
-        {
-          model: Client,
-        },
-      ],
-      raw: true,
-    })
-      .then((result) => {
-        console.log(result);
-        res.render("lab-history", {
-          result: result,
-          style: "style.css",
-          title: "lab result",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-}
+exports.ancSearch = (req, res) => {
+  let query = req.body.searchAnc;
+  console.log(query);
 
+  ANCVisit.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("anc-history", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.preventiveCareHistory = (req, res) => {
-  
  PreventiveCare.findAll({
    order: [["createdAt", "DESC"]],
    limit: 10,
@@ -93,6 +93,35 @@ exports.preventiveCareHistory = (req, res) => {
    });
 
 }
+
+exports.PreventiveCareSearch = (req, res) => {
+  let query = req.body.searchCare;
+  console.log(query);
+
+  PreventiveCare.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("preventive-care-result", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.addAncData = (req, res) => {
     let newAncData = {
@@ -156,3 +185,59 @@ exports.addAncData = (req, res) => {
 
     // res.status(200).redirect("/ancVisit");
 }
+
+exports.labHistory = (req, res) => {
+  LabResult.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("lab-history", {
+        result: result,
+        style: "style.css",
+        title: "lab result",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.labHistorySearch = (req, res) => {
+  let query = req.body.labSearch;
+  console.log(query);
+
+  LabResult.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("lab-history", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

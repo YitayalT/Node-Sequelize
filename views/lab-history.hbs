@@ -1,23 +1,153 @@
 <div class="page">
     {{> sidebar}}
     {{> header}}
-    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;"> 
-            <div class="container-fluid p-5 mt-2">
-             <div class="col-2"></div>
-             <div class="col-8">
-                <h1 class="p-2">Lab Result</h1>
+    <div class="content" style="padding-top:50px ; font-size: medium; font-family: 'Times New Roman', Times, serif;"> 
+      <div class="container-fluid p-5 mt-2" style="min-height: 560px;">
+       <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue;">
+           <nav class="navbar">
+            <div class="container-fluid mt-3">
+                <form class="d-flex" action= '/labHistorySearch' method="post">
+                    <input class="form-control shadow-none me-2" name="labSearch" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+              </div>
+    <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Lab Result</h1>
+        <div class="row" style="margin-bottom: 5px;">
+             
+             {{#each result}}
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">lab result</th>
+                  </thead>
+                  <tbody>
+                   <tr>
+                    <td>MRN:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{MRN}}</td>
+                   </tr>
+                   <tr>
+                    <td>Client fullName:</td>
+                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</td>
+                   </tr>
+                   <tr>
+                    <td>User Id:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UserId}}</td>
+                   </tr>
+                    <tr>
+                   <td>Date of Exam:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{DateOfExam}}</td>
+                   </tr>
+                   <tr>
+                     <td>Total WBC:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{TotalWBC}}</td>
+                   </tr>
+                   <tr>
+                    <td>Neutrophils:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Neutrophils}}</td>
+                   </tr>
+                  
+                   <tr>
+                    <td>Lymphocytes:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Lymphocytes}}</td>
+                   </tr>
+                   <tr>
+                    <td>Eusinophils:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Eusinophils}}</td>
+                   </tr>
+                   <tr>
+                    <td>Monocytes:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Monocytes}}</td>                 
+                   </tr>
 
-                {{#each result}}
-                  <b><p>client first_name: {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p></b>
-                  <p>Medical Record Number: {{MRN}}</p>
-                  <p>User Id:{{UserId}}</p>
-                  <p>Date of Exam: {{DateOfExam}}</p>
-                  <p>Total WBC: {{TotalWBC}}</p>
-                  <p>Neutrophils: {{Neutrophils}}</p>
-                  <p>Lymphocytes: {{Lymphocytes}}</p>
-                  <p>Eusinophils: {{Eusinophils}}</p>
-                  <p>Monocytes: {{Monocytes}}</p>
-                  <p>Basophils: {{Basophils}}</p>
+                   <tr>
+                    <td>Basophils:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Basophils}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>Hemoglobin:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Hemoglobin}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>MalariaParasite:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{MalariaParasite}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>RandomBloodSugar:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{RandomBloodSugar}}</td>                 
+                   </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">lab result</th>
+                  </thead>
+     
+                 <tbody>
+                  
+                  <tr>
+                    <td>Urea:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Urea}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>Creatinine:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Creatinine}}</td>
+                   </tr>
+                   <tr>
+                    <td>SGPT:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{SGPT}}</td>
+                   </tr>
+                   <tr>
+                    <td>SGOT:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{SGOT}}</td>
+                   </tr>
+                   <tr>
+                   <td>RBC:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{RBC}}</td>
+                   </tr>
+                   <tr>
+                   <td>PregnancyTest:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{PregnancyTest}}</td>
+                   </tr>
+                   <tr>
+                  <td>PusCells:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{PusCells}}</td>
+                   </tr>
+                   <tr>
+                  <td>EpithelialCells:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{EpithelialCells}}</td>
+                   </tr>
+                   <tr>
+                  <td>Others:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Others}}</td>
+                   </tr>
+
+                    <tr>
+                  <td>MantouxTest:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{MantouxTest}}</td>
+                   </tr>
+                   <tr>
+                  <td>Finding:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Finding}}</td>
+                  </tr>
+                  <td>Examiner role:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'user.role'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Examiner Name:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{'user.first_name'}} {{'user.last_name'}}</td>
+                   </tr>                 
+                   
+                 </tbody>
+                </table>
+              </div>
+             {{!-- <div class="col-6" style="border: 1px solid blue;">
                   <p>Hemoglobin: {{Hemoglobin}}</p>
                   <p>Malaria Parasite: {{MalariaParasite}}</p>
                   <p>Random Blood Sugar: {{RandomBloodSugar}}</p>
@@ -28,14 +158,14 @@
                   <p>Finding: {{Finding}}</p>
                   <p>User Department: {{'user.department'}}</p>
                   <p>client.Age: {{'client.Age'}}</p>
-                  {{ else}}
+             </div> --}}
+           {{ else}}
                   <p>No data is available</p>
                 {{/each}}
-                </div>
-                <div class="col-2"></div>
-
-
-             </div>
+       </div>
       </div>
+    </div>
 
-      </div>
+</div>
+
+{{> footer}}

@@ -1,23 +1,11 @@
 <div class="page">
     {{> admin-sidebar}}
     {{> header}}
-    <div class="content" style="padding:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
-        <div class="container-fluid m-5 p-2">
-            {{!-- <div class="row"> --}}
-            {{!-- <div class="col-md-12" style="min-height: 500px;"> --}}
-           {{!-- <div class="col-md-4"></div> --}}
+    <div class="content" style="padding:50px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+        <div class="container-fluid m-5 p-2" style="min-height: 420px;">
+        
            <form id="form"  action="/addMessage" method="POST">
-           <h1>Fill Bed Details!</h1>
-               
-      {{!-- <div class="col-md-4">
-      <label for="role" class="form-label">Message Type</label>
-      <select class="custom-select shadow-none" id="message_type" name="message_type" required>
-        <option value="ANC">ANC</option>
-        <option value="Delivery">Delivery</option>
-        <option value="PNC">PNC</option>
-      </select>
-      </div> --}}
-
+           <h1style="color: rgb(41, 197, 158);">Fill Bed Details!</h1style=>
        <div class="col-md-4">
          <label for="blockName" class="form-label">Block name</label>
         <input type="text" class="form-control shadow-none" id="blockName" name="blockName" required>
@@ -28,30 +16,25 @@
                     <input type="text" class="form-control shadow-none" id="dormNumber" name="dormNumber" required>
                  
                   </div>
-                 <!-- registration date field -->
+                 <!-- bed number field -->
                   <div class="col-md-4">
                     <label for="bedNumber" class="form-label">Bed Number</label>
                     <input type="date" class="form-control shadow-none" id="bedNumber" name="bedNumber" required>
-                    </div>
-
-<div class="col-md-4">
-      <label for="role" class="form-label">Status</label>
-      <select class="custom-select shadow-none" id="message_type" name="message_type" required>
-        <option value="free">Free</option>
-        <option value="occupied">Occupied</option>
-        
-      </select>
-      </div>
-                  
+                  </div>
+                  {{!-- status field --}}
+           <div class="col-md-4">
+              <label for="role" class="form-label">Status</label>
+              <select class="custom-select shadow-none" id="message_type" name="message_type" required>
+                <option value="free">Free</option>
+                <option value="occupied">Occupied</option>       
+           </select>
+           </div>    
+           {{!-- add bed button field   --}}
                   <div class="col-md-4 mt-5">
                      <input type="submit"  value="Add Bed" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
-                  </div>
-                  
+                  </div>                 
                 <div class="col-md-4"></div>
             </form>
-            {{!-- </div> --}}
-          {{!-- </div> --}}
-
         </div>
     </div>
     {{> footer}}

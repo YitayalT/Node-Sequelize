@@ -5,7 +5,7 @@ exports.checkAuth = async (req, res, next) => {
      const decodedToken = await jwt.verify(token, "secret");
      if (decodedToken) {
        req.user = decodedToken;
-       console.log(req.user);
+      //  console.log(req.user);
        return next();
      }
    } catch (error) {
@@ -18,15 +18,4 @@ exports.checkAuth = async (req, res, next) => {
     //    error: error,
     //  });
    }
-}
-
-
-exports.signIn = (req, res) => {
-    
-                var  token = jwt.sign({
-                       user_name: user.user_name,
-                       password: user.password,
-                }, "secret");
-  console.log(token);
-  return token;
 }

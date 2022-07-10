@@ -8,5 +8,7 @@ router.get("/ancHistory",checkAuthMiddleware.checkAuth, anc_controller.getAncHis
 router.get("/PreventiveHistory",checkAuthMiddleware.checkAuth, anc_controller.preventiveCareHistory);
 router.post("/ancVisit",checkAuthMiddleware.checkAuth, anc_controller.addAncData);
 router.get('/labHistory',checkAuthMiddleware.checkAuth, anc_controller.labHistory);
-
+router.post("/labHistorySearch", checkAuthMiddleware.checkAuth, anc_controller.labHistorySearch);
+router.post("/ancSearch", checkAuthMiddleware.checkAuth, anc_controller.ancSearch);
+router.post("/preventiveCareSearch",checkAuthMiddleware.checkAuth, anc_controller.PreventiveCareSearch);
 module.exports = router;

@@ -1,13 +1,13 @@
 const User = require("../model/User");
+const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const signIn = require('../midleware/check-auth')
-var token;
+
 exports.getUser = (req, res) => {
-  if (!token) {
-     res.status(200).redirect("/login");
-  }else{
-    User.findAll()
+    User.findAll({
+      order: [["createdAt", "DESC"]],
+      limit: 5,
+    })
       .then((user) => {
         res.render("users", {
           user: user,
@@ -18,18 +18,36 @@ exports.getUser = (req, res) => {
         console.log(err);
       });
   }
-}
+
+
+exports.search = (req, res) => {
+  let query = req.body.users;
+  console.log(query);
+
+  User.findAll({
+    where: {
+      [Op.or]: [{ user_id: query }, { first_name: query }, {role: query}],
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("users", {
+        user: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.usersAdd = (req, res) => {
-  if (!token) {
-      res.status(200).redirect("/login");
-  }else{
     res.render("create_user", {
       style: "style.css",
       script: "index.js",
     });
   }
-}
+
 
 exports.addUser = (req, res) => {
    User.findOne({ where: { email: req.body.email } }).then((user) => {
@@ -93,7 +111,7 @@ exports.login = (req, res) => {
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
                  if (result) {
-                  token = jwt.sign({
+               let token = jwt.sign({
                        user_name: user.user_name,
                        password: user.password,
                  }, "secret");
@@ -101,42 +119,42 @@ exports.login = (req, res) => {
                    if (token) {
                      if (req.body.role === user.role) {
                        if (user.role === 'doctor') {
-                         console.log(token);
+                        //  console.log(token);
                          console.log("Doctor Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/preventiveCare");
                        } else if (user.role === "receptionist") {
-                         console.log(token);
+                        //  console.log(token);
                          console.log("Receptionist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/addClient");
                        } else if (user.role === "Admin") {
-                          console.log(token);
+                          // console.log(token);
                           console.log("Admin Authenticated!");
                           res.cookie("access-token", token, {
                             maxAge: 60 * 60 * 24 * 1000,
                           });
                           res.status(200).redirect("/addUser");
                        } else if (user.role === "laboratory") {
-                         console.log(token);
+                        //  console.log(token);
                          console.log("Laboratorist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/labExam");
                        } else if (user.role === "radiology") {
-                         console.log(token);
+                        //  console.log(token);
                          console.log("Radiology Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Radiology");
                        } else if (user.role === "pharmacist") {
-                         console.log(token);
+                        //  console.log(token);
                          console.log("Pharmacist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
@@ -190,7 +208,3 @@ exports.logout = async (req, res) => {
   res.status(200).redirect("/login");
   console.log('successfully logged out');
 };
-
-exports.authenticate = (req, res) => {
-  return token;
-}
