@@ -1,27 +1,137 @@
 <div class="page">
     {{> header}}
     {{> delivery-sidebar}}
-    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
-        <div class="container-fluid p-5 my-5">
-           <h1>Delivery List</h1>
+    <div class="content" style="padding-top:50px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+        
 
-           <div class="col-8 offset-3">
-            {{#each result}}
-         <p>Medical Record  Number: {{MRN}}</p>
-         <p>User Id : {{UID}}</p>
-         <p>ModeOfDelivery: {{ModeOfDelivery}}</p>
-         <p>MaternalStatus: {{MaternalStatus}}</p>
-         <p>AfterBirth: {{AfterBirth}}</p>
-         <p>Presentation: {{Presentation}}</p>
-         <p>DeliveryDuration: {{DeliveryDuration}}</p>
-         <p>Full Name: {{'user.first_name'}} {{'user.last_name'}}</p>
-         <p>department: {{'user.department'}}</p>
-          <p>Client fullName: {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p>
-          <p>Client Age: {{'client.Age'}}</p>
-            {{else}}
+          <div class="container-fluid p-5 mt-2" style="min-height: 560px;">
+       <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue;">
+           <nav class="navbar">
+            <div class="container-fluid mt-3">
+                <form class="d-flex" action= '/deliverySearch' method="post">
+                    <input class="form-control shadow-none me-2" name="mrn" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+       </div>
+        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Delivery Data</h1>
+        <div class="row" style="margin-bottom: 5px;">
+             
+             {{#each result}}
+              <div class="col-6" style="border: 1px solid blue; margin-bottom: 5px;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">anc history</th>
+                  </thead>
+                  <tbody>
+                   <tr>
+                    <td>MRN:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{MRN}}</td>
+                   </tr>
+                   <tr>
+                    <td>Client fullName:</td>
+                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</td>
+                   </tr>
+                   <tr>
+                    <td>User Id:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UID}}</td>
+                   </tr>
+                    <tr>
+                   <td>date of delivery:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Date}}</td>
+                   </tr>
+                   <tr>
+                     <td>PartographUsed:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{PartographUsed}}</td>
+                   </tr>
+                   <tr>
+                    <td>ModeOfDelivery:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{ModeOfDelivery}}</td>
+                   </tr>
+                   <tr>
+                    
+                   <tr>
+                    <td>AMTSL:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{AMTSL}}</td>                 
+                   </tr>
 
-            {{/each}}
-           </div>
+                   <tr>
+                    <td>Placenta:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Placenta}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>MaternalStatus:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{MaternalStatus}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>Pre_eclampisa:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Pre_eclampisa}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>Eclampisa:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Eclampisa}}</td>                 
+                   </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-6" style="border: 1px solid blue; margin-bottom: 5px;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">delivery data</th>
+                  </thead>
+     
+                 <tbody>
+                  
+                  <tr>
+                    <td>APH:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{APH}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>PPH:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{PPH}}</td>
+                   </tr>
+                   <tr>
+                    <td>Referred:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Referred}}</td>
+                   </tr>
+                   <tr>
+                    <td>Others:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Others}}</td>
+                   </tr>
+                   <tr>
+                   <td>AfterBirth:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{AfterBirth}}</td>
+                   </tr>
+                   <tr>
+                   <td>Presentation:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Presentation}}</td>
+                   </tr>
+                   <tr>
+                  <td>DeliveryDuration:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{DeliveryDuration}}</td>
+                   </tr>
+                  
+                   
+                  <td>Physician role:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'user.role'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Physician Name:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{'user.first_name'}} {{'user.last_name'}}</td>
+                   </tr>                 
+                   
+                 </tbody>
+                </table>
+              </div>
+           {{ else}}
+                  <p style="">No data is available</p>
+                {{/each}}
         </div>
+      </div>
+    
     </div>
 </div>

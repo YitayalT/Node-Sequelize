@@ -1,20 +1,20 @@
 <div class="page">
    {{> header}}
-   {{> pharma-sidebar}}
+  {{> radiology-sidebar}}
 <div class="content" style="padding:50px ; font-size: medium; font-family: 'Times New Roman', Times, serif;">
 
     <div class="container-fluid p-5 mt-2" style="min-height: 560px;" >
        <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue; mar">
            <nav class="navbar">
             <div class="container-fluid mt-3">
-                <form class="d-flex" action= '/searchPrescription' method="post">
+                <form class="d-flex" action= '/searchRadiology' method="post">
                     <input class="form-control shadow-none me-2" name="mrn" type="text" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success mx-3" type="submit">Search</button>
                 </form>
             </div>
         </nav>
       </div>
-        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Prescription</h1>
+        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Radiology Result</h1>
         <div class="row" style="margin-bottom: 5px;">
              
              {{#each result}}
@@ -22,7 +22,7 @@
               <div class="col-6" style="border: 1px solid blue; margin-bottom: 5px;">
                 <table class="table  table-borderless table-sm">
                   <thead>
-                    <th colspan="2">Prescription</th>
+                    <th colspan="2">Radiology Result</th>
                   </thead>
                   <tbody>
                    <tr>
@@ -38,29 +38,26 @@
                      <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UserId}}</td>
                    </tr>
                     <tr>
-                   <td>prescription date:</td>
-                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Date}}</td>
+                   <td>Date Of Exam:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{DateOfExam}}</td>
+                   </tr>
+                   
+                   <tr>
+                    <td>Type Of Exam:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{TypeOfExam}}</td>
                    </tr>
                    <tr>
-                     <td>DrugName:</td>
-                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{DrugName}}</td>
+                    <td>Technique:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Technique}}</td>
                    </tr>
                    <tr>
-                    <td>Dosage:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Dosage}}</td>
-                   </tr>
-                   <tr>
-                    <td>RouteTaken:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{RouteTaken}}</td>
-                   </tr>
-                   <tr>
-                    <td>Frequency:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Frequency}}</td>                 
+                    <td>Impression:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Impression}}</td>                 
                    </tr>
 
                    <tr>
-                    <td>AmountDispensed:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{AmountDispensed}}</td>                 
+                    <td>Finding:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Finding}}</td>                 
                    </tr>
                    
                      

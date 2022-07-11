@@ -9,6 +9,7 @@ router.post("/userSearch", user_controller.search);
 router.post("/login", user_controller.login);
 router.get("/users",checkAuthMiddleware.checkAuth, user_controller.getUser);
 router.get('/logout', user_controller.logout);
+// router.delete('delete/: mrn', user_controller.deleteUser);
 // router.get("/edit/:id", user_controller.edit);
 // router.post("/update/:id", user_controller.updateUser);
 

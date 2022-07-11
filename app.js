@@ -188,7 +188,23 @@ NewBorn.belongsTo(User, {
   foreignKey: "UID",
 });
 
-//  NewBorn.sync({force: true}).then( () =>{
+// Radiology Relationship
+Client.hasMany(Radiology, {
+  foreignKey: "MRN",
+});
+Radiology.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(Radiology, {
+  foreignKey: "UserId",
+});
+
+Radiology.belongsTo(User, {
+  foreignKey: "UserId",
+});
+
+//  Bed.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

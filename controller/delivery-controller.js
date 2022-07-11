@@ -38,6 +38,35 @@ exports.deliveryHistory = (req, res) => {
     });
 }
 
+exports.deliverySearch = (req, res) => {
+  let query = req.body.mrn;
+  console.log(query);
+
+  Delivery.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("delivery-list", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 exports.newBornHistory = (req, res) => {
     
      NewBorn.findAll({
@@ -66,6 +95,34 @@ exports.newBornHistory = (req, res) => {
        });
 }
 
+exports.newBornSearch = (req, res) => {
+  let query = req.body.mrn;
+  console.log(query);
+
+  NewBorn.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("new-born-history", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.addDelivery = (req, res) => {
     let newDeliveryData = {

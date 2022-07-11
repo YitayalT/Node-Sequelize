@@ -1,31 +1,33 @@
-const Sequelize = require('sequelize');
+const {DataTypes, Model }= require('sequelize');
 const db = require('../config/database');
 
-const Bed = db.define(
-  "bed",
+
+class Bed extends Model {}
+// const Bed = db.define(
+//   "bed",
+Bed.init(
   {
     bedNo: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
     dormNo: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:false,
         unique: true,
       },
       blockName: {
-          type: Sequelize.STRING,
+          type: DataTypes.STRING,
           allowNull:false,
-      },
-      MRN: {
-          type: Sequelize.STRING
-      },
-      UID: {
-          type: Sequelize.STRING
+    },
+    status: {
+        type: DataTypes.STRING
       }
   },
   {
+    modelName: 'bed',
+    sequelize: db,
     freezeTableName: true,
   }
 );

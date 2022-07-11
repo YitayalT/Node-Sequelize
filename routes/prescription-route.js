@@ -5,6 +5,7 @@ const checkAuthMiddleware = require("../midleware/check-auth");
 
 router.get('/getPrescription' ,checkAuthMiddleware.checkAuth, prescription_controller.getPrescription);
 router.post('/addPrescription' ,checkAuthMiddleware.checkAuth,checkAuthMiddleware.checkAuth ,prescription_controller.addPrescription);
+router.post('/searchPrescription' ,checkAuthMiddleware.checkAuth,checkAuthMiddleware.checkAuth ,prescription_controller.prescriptionSearch);
 router.get('/Prescription', prescription_controller.prescription);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const Prescription = require('../model/Prescription');
 const User = require('../model/User');
 const Client = require('../model/Client');
-const {Sequelize} = require('sequelize');
+const {Op} = require('sequelize');
 exports.getPrescription = (req, res) => {
     res.render('prescription', {
         style: 'style.css'
@@ -23,7 +23,7 @@ exports.prescription = (req, res) => {
        raw: true,
      })
        .then((result) => {
-        //  console.log(result);
+        console.log(result);
          res.render("new-prescription", {
            result: result,
            style: "style.css",
@@ -34,6 +34,35 @@ exports.prescription = (req, res) => {
          console.log(err);
        });
  }
+
+ exports.prescriptionSearch = (req, res) => {
+   let query = req.body.mrn;
+   console.log(query);
+
+   Prescription.findAll({
+     include: [
+       {
+         model: User,
+       },
+       {
+         model: Client,
+       },
+     ],
+     where: {
+       MRN: query,
+     },
+     raw: true,
+   })
+     .then((result) => {
+       res.render("new-prescription", {
+         result: result,
+         style: "style.css",
+       });
+     })
+     .catch((err) => {
+       console.log(err);
+     });
+ };
 
 exports.addPrescription = (req, res) => {
     let newPrescription = {

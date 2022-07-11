@@ -208,3 +208,13 @@ exports.logout = async (req, res) => {
   res.status(200).redirect("/login");
   console.log('successfully logged out');
 };
+
+// exports.deleteUser = (req, res) => {
+//   let id = req.params.mrn;
+//   User.destroy({ where: { user_id: id } }).then((result) => {
+//     console.log('deleted!');
+//   }).catch((err) => {
+//     console.log(err);
+//   });
+//   res.status(200).redirect("/users");
+// }
