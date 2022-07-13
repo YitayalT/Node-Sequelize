@@ -37,6 +37,35 @@ exports.deliveryAnc = (req, res) =>{
       });
 }
 
+exports.deliveryAncSearch = (req, res) => {
+  let query = req.body.searchAnc;
+  console.log(query);
+
+  ANCVisit.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("delivery-anc", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 exports.deliveryHistory = (req, res) => {
     
   Delivery.findAll({

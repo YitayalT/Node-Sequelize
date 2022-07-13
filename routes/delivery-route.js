@@ -9,4 +9,5 @@ router.get("/deliveryAnc", delivery_controller.deliveryAnc);
 router.post("/addDelivery", delivery_controller.addDelivery);
 router.post("/newBornSearch", delivery_controller.newBornSearch);
 router.post("/deliverySearch", delivery_controller.deliverySearch);
+router.post("/deliveryAncSearch", delivery_controller.deliveryAncSearch);
 module.exports = router;
