@@ -2,12 +2,39 @@ const Delivery = require('../model/Delivery');
 const User = require('../model/User');
 const Client = require('../model/Client');
 const NewBorn = require('../model/NewBorn');
+const ANCVisit = require('../model/ANCVisit');
 
 exports.getDelivery = (req, res) => {
     res.render('delivery', {
         style: 'style.css',
         title: 'delivery'
     });
+}
+exports.deliveryAnc = (req, res) =>{
+    ANCVisit.findAll({
+      order: [["createdAt", "DESC"]],
+      limit: 4,
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Client,
+        },
+      ],
+      raw: true,
+    })
+      .then((result) => {
+        console.log(result);
+        res.render("delivery-anc", {
+          result: result,
+          style: "style.css",
+          title: "anc",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 }
 
 exports.deliveryHistory = (req, res) => {

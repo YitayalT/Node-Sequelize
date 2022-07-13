@@ -1,0 +1,142 @@
+ <div class="container-fluid p-5 mt-2" style="min-height: 560px;">
+       <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue;">
+           <nav class="navbar">
+            <div class="container-fluid mt-3">
+                <form class="d-flex" action= '/ancSearch' method="post">
+                    <input class="form-control shadow-none me-2" name="searchAnc" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+              </div>
+        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">ANC History</h1>
+        <div class="row" style="margin-bottom: 5px;">
+             
+             {{#each result}}
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">anc history</th>
+                  </thead>
+                  <tbody>
+                   <tr>
+                    <td>MRN:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{MRN}}</td>
+                   </tr>
+                   <tr>
+                    <td>Client fullName:</td>
+                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</td>
+                   </tr>
+                   <tr>
+                    <td>User Id:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UserId}}</td>
+                   </tr>
+                    <tr>
+                   <td>date of visit:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{date_of_visit}}</td>
+                   </tr>
+                   <tr>
+                     <td>LMP:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{LMP}}</td>
+                   </tr>
+                   <tr>
+                    <td>BP:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{BP}}</td>
+                   </tr>
+                   <tr>
+                    <td>pallor:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{pallor}}</td>
+                   </tr>
+                   <tr>
+                    <td>Uterine_Height:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Uterine_Height}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>Fetal_Heart_Beat:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Fetal_Heart_Beat}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>Presentation:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Presentation}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>Urine_test_for_infection:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Urine_test_for_infection}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>Urine_test_for_protein:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Urine_test_for_protein}}</td>                 
+                   </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">anc history</th>
+                  </thead>
+     
+                 <tbody>
+                  
+                  <tr>
+                    <td>Rapid_syphilis_test:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Rapid_syphilis_test}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>Hemoglobin:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Hemoglobin}}</td>
+                   </tr>
+                   <tr>
+                    <td>BG_and_RH:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{BG_and_RH}}</td>
+                   </tr>
+                   <tr>
+                    <td>TT:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{TT}}</td>
+                   </tr>
+                   <tr>
+                   <td>Folic_Acid:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Folic_Acid}}</td>
+                   </tr>
+                   <tr>
+                   <td>Mebendazole:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Mebendazole}}</td>
+                   </tr>
+                   <tr>
+                  <td>Hepatitus:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Hepatitus}}</td>
+                   </tr>
+                   <tr>
+                  <td>Visit:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Visit}}</td>
+                   </tr>
+                   <tr>
+                  <td>Next_Appointment:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Next_Appointment}}</td>
+                   </tr>
+
+                    <tr>
+                  <td>weight:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{weight}}</td>
+                   </tr>
+                   
+                  <td>Physician role:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'user.role'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Physician Name:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{'user.first_name'}} {{'user.last_name'}}</td>
+                   </tr>                 
+                   
+                 </tbody>
+                </table>
+              </div>
+           {{ else}}
+                  <p style="">No data is available</p>
+                {{/each}}
+       </div>
+      </div>
