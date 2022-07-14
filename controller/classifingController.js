@@ -1,5 +1,8 @@
 const db = require('../config/database');
 const ClassifyingForm = require('../model/ClasifyingForm');
+const ANCVisit = require("../model/ANCVisit");
+const User = require('../model/User');
+const Client = require('../model/Client');
 
 exports.classifying = (req, res) => {
     res.render('classifying_form', {
@@ -46,3 +49,59 @@ exports.fillForm = (req, res) => {
 
     // res.status(200).redirect("/classifying");
 }
+
+exports.classifyingSearch = (req, res) => {
+  let query = req.body.mrn;
+  // console.log(query);
+  ClassifyingForm.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("classify-history", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.getClassifyingHistory = (req, res) => {
+  ClassifyingForm.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("classify-history", {
+        result: result,
+        style: "style.css",
+        title: "classifying",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
