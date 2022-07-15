@@ -41,7 +41,7 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    position: absolute;
+    /* position: absolute; */
     transition: all 0.3s ease;
 }
 
