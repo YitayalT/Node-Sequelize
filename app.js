@@ -204,19 +204,36 @@ Radiology.belongsTo(User, {
   foreignKey: "UserId",
 });
 
-//  Bed.sync({force: true}).then( () =>{
+// pnc relationship
+Client.hasMany(Pnc, {
+  foreignKey: "MRN",
+});
+Pnc.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(Pnc, {
+  foreignKey: "UserId",
+});
+
+Pnc.belongsTo(User, {
+  foreignKey: "UserId",
+});
+
+//  Pnc.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
 // });
 
-
+// home page route
 app.get('/', (req, res) => {
   res.render('home', {
     style: 'style.css'
   });
 });
 
+// service route
 app.get("/service", (req, res) => {
   res.render("services", {
     style: "style.css",

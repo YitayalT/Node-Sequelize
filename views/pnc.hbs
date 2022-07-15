@@ -5,6 +5,7 @@
         <div class="container-fluid p-5 my-5">
                 <form action="/addPnc" method="post">
                 <h3 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Pnc Visit</h3>
+                  {{> info}}
                 <div class="row">
                     <div class="col">
                         <table class="table table-borderless table-sm">
@@ -22,12 +23,6 @@
                                     <td>UserId</td>
                                     <td><input class="form-control shadow-none" type="text" name="uid" id="uid"></td>
                                 </tr>
-
-                                <tr>
-                                   <td>Anc Id</td>
-                                    <td><input class="form-control shadow-none" type="text" name="anc_no" id="anc_no"></td>
-                                </tr>
-                                <tr>
                                     <td>Date of Visit</td>
                                     <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date"></td>    
                                 </tr>
@@ -60,6 +55,10 @@
                                     <td><input class="form-control shadow-none" type="text" name="pelvicExam" id="pelvicExam"></td>
                                </tr>
 
+                             <tr>
+                                    <td>Breast</td>
+                                   <td><input class="form-control shadow-none" type="text" name="breast" id="breast"></td>
+                                </tr>
                             </tbody>
                          </table>
                       
@@ -72,10 +71,7 @@
                                 </tr>
                             </thead>
                             <tbody>                               
-                                <tr>
-                                    <td>Breast</td>
-                                   <td><input class="form-control shadow-none" type="text" name="breast" id="breast"></td>
-                                </tr>
+                                
                                 <tr>
                                     <td>VitaminA</td>
                                     <td><input class="form-control shadow-none" type="text" name="VitaminA" id="VitaminA"></td>
@@ -98,7 +94,12 @@
                                   </tr>
                                   <tr>  
                               <td>HIV Tasted</td>                                   
-                              <td><input class="form-control shadow-none" type="text" name="HIVTasted" id="HIVTasted"></td> 
+                              <td>
+                                <select class="custom-select shadow-none" name="HivTasted" id="HivTasted">
+                                            <option value="No"> No</option>
+                                            <option value="Yes">Yes</option> 
+                                        </select>
+                              </td> 
                              </tr>
                                 <tr>
                                     <td>HIV Test Result</td>
@@ -120,11 +121,7 @@
                                             <option value="1st" >1<sup>st</sup></option>
                                             <option value="2nd">2<sup>nd</sup></option>
                                             <option value="3rd">3<sup>rd</sup></option>
-                                            <option value="4th">4<sup>th</sup></option>
-                                            <option value="5th">5<sup>th</sup></option>
-                                            <option value="6th">6<sup>th</sup></option>
-                                            <option value="7th">7<sup>th</sup></option>
-                                            <option value="8th">8<sup>th</sup></option>
+                                            
                                         </select>
                                     </td>
                                     </tr>

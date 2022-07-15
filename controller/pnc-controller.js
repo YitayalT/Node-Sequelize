@@ -7,10 +7,12 @@ exports.getPnc = (req, res) => {
 }
 
 exports.addPnc = (req, res) => {
+    // console.log();
+    // var visitDate = new Date(req.body.visit_date).toLocaleDateString();
+    // console.log(visitDate);
     let newPncData = {
       MRN: req.body.mrn,
-      UID: req.body.uid,
-      Anc_no: req.body.anc_no,
+      UserId: req.body.uid,
       date: req.body.visit_date,
       BP: req.body.bp,
       TEMP: req.body.temp,
@@ -25,7 +27,7 @@ exports.addPnc = (req, res) => {
       BabyBreastFeeding: req.body.baby_feeding,
       BabyWt: req.body.BabyWt,
       Immunization: req.body.Immunization,
-      HIVTasted: req.body.HIVTasted,
+      HIVTasted: req.body.HivTasted,
       HIVTestResult: req.body.hiv_result,
       ARVPxForMother: req.body.ARVPxForMother,
       visit: req.body.visit,
@@ -34,9 +36,13 @@ exports.addPnc = (req, res) => {
 
     PNC.create(newPncData).then((result) => {
         console.log('pnc data added!');
+        res.render("pnc", {
+          message: "pnc data is added successfully!",
+          style: "style.css",
+        });
     }).catch((err) => {
         console.log(err);
     });
 
-    res.status(200).redirect("/getPnc");
+    // res.status(200).redirect("/getPnc");
 }

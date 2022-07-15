@@ -10,7 +10,6 @@ class Prescription extends Model{}
     {
       MRN: {
         type: DataTypes.STRING,
-        type: DataTypes.STRING,
         references: {
           model: Client,
           key: "MRN",

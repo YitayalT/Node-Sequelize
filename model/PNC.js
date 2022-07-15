@@ -1,79 +1,91 @@
-const Sequelize = require("sequelize");
+const {Sequelize, Model, DataTypes} = require("sequelize");
 const db = require("../config/database");
+const Client = require("./Client");
+const User = require("./User");
 
-const Pnc = db.define(
-  "pnc",
+// const Pnc = db.define(
+//   "pnc",
+class Pnc extends Model { }
+Pnc.init(
   {
     MRN: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
+      references: {
+        model: Client,
+        key: "MRN",
+      },
     },
-    UID: {
-      type: Sequelize.STRING,
+    UserId: {
+      type: DataTypes.STRING,
+      references: {
+        model: User,
+        key: "user_id",
+      },
     },
-    Anc_no: {
-      type: Sequelize.STRING,
-    },
+   
     date: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     BP: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     TEMP: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     lookForPPH: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.STRING,
     },
     Dribbling: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.STRING,
     },
     Anemia: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     VaginalDischarge: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.STRING,
     },
     pelvicExam: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.STRING,
     },
     Breast: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     VitaminA: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     BabyBreathing: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     BabyBreastFeeding: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     BabyWt: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Immunization: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     HIVTasted: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.STRING,
     },
     HIVTestResult: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     ARVPxForMother: {
-      type: Sequelize.STRING,
-      },
+      type: DataTypes.STRING,
+    },
     visit: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Next_Appointment: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },
   {
     freezeTableName: true,
+    modelName: "pnc",
+    sequelize: db,
   }
 );
 
