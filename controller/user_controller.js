@@ -160,6 +160,12 @@ exports.login = (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Prescription");
+                       } else if (user.role === "midwife") {
+                         console.log("midwife Authenticated!");
+                         res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.status(200).redirect("/getPnc");
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",

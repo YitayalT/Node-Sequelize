@@ -7,9 +7,6 @@ exports.getPnc = (req, res) => {
 }
 
 exports.addPnc = (req, res) => {
-    // console.log();
-    // var visitDate = new Date(req.body.visit_date).toLocaleDateString();
-    // console.log(visitDate);
     let newPncData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -43,6 +40,4 @@ exports.addPnc = (req, res) => {
     }).catch((err) => {
         console.log(err);
     });
-
-    // res.status(200).redirect("/getPnc");
 }

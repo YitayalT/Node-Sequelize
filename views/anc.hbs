@@ -1,6 +1,6 @@
-<div class="page">
-    {{> sidebar}}
     {{> header}}
+ <div class="page">
+    {{> sidebar}}
     <div class="content" style="font-size: medium; font-family: 'Times New Roman', Times, serif;"> 
             <div class="container-fluid p-5">
              <form action="/ancVisit" method="post">  
@@ -191,7 +191,6 @@
                     </div>
 
                 </div>
-            {{!-- </div> --}}
              <div class="row">
                 <div class="col-5"></div>
                 <div class="col-4">
@@ -201,11 +200,9 @@
            </div>
                 </div>
              </div>
-          
-            
-        </div>
-        </form>
+             </form>
+           </div>
+         {{> footer}}
     </div>
-  
 </div>
-  {{> footer}}
+ 
