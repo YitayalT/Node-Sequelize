@@ -24,7 +24,7 @@
 
 .page .sidebar {
     background: linear-gradient(35deg, #66fcf1, #45a29e);
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     width: 300px;
@@ -32,15 +32,16 @@
     overflow-y: auto;
     overflow-x: hidden;
     transition: all 0.3s ease;
+    float: left;
 }
 
 .page .content {
     padding-top: 80px;
     margin-left: 300px;
-    transition: all 0.3s ease;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: all 0.3s ease;
 }
 
 .sidebarToggle {
@@ -69,9 +70,9 @@
     border-radius: 5px;
 } */
 
-body.active .page .sidebar {
+/* body.active .page .sidebar {
     left: -300px;
-}
+} */
 
 body.active .page .content {
     margin-left: 0;
@@ -150,7 +151,7 @@ body.active .page .content {
     font-weight: 400;
     text-decoration: none;
     font-size: 16px;
-    font-family: "Roboto", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
 }
 
 .navigation-link i {
