@@ -202,7 +202,7 @@ exports.labHistory = (req, res) => {
   })
     .then((result) => {
       console.log(result);
-      res.render("lab-history", {
+      res.render("anc-lab", {
         result: result,
         style: "style.css",
         title: "lab result",
@@ -232,7 +232,7 @@ exports.labHistorySearch = (req, res) => {
     raw: true,
   })
     .then((result) => {
-      res.render("lab-history", {
+      res.render("anc-lab", {
         result: result,
         style: "style.css",
       });

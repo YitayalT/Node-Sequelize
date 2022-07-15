@@ -1,4 +1,7 @@
 const LabResult = require('../model/LabResult');
+const User = require('../model/User');
+const moment = require('moment');
+const Client = require('../model/Client');
 
 exports.getLabRequest = (req, res) => {
     res.render('lab-exam', {
@@ -7,6 +10,7 @@ exports.getLabRequest = (req, res) => {
 }
 
 exports.addLabResult = (req, res) => {
+
     let newLabResult = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -41,3 +45,60 @@ exports.addLabResult = (req, res) => {
 
     res.status(200).redirect('/labExam');
 }
+
+
+exports.labHistory = (req, res) => {
+  LabResult.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("lab-history", {
+        result: result,
+        style: "style.css",
+        title: "lab result",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.labHistorySearch = (req, res) => {
+  let query = req.body.labSearch;
+  console.log(query);
+
+  LabResult.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("lab-history", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
