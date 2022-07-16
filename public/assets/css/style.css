@@ -512,3 +512,31 @@ header {
 .gallery_product {
   margin-bottom: 30px; }
 
+    .contact-rooo {
+      padding: 80px 50px;
+      background-color: #FFF;
+    }
+  
+    @media screen and (max-width: 940px) {
+      .contact-rooo {
+        padding: 30px 10px;
+      }
+    }
+  
+    .contact-us-single {
+      background-color: #FFF;
+    }
+  
+    .contact-us-single .cop-ck {
+      padding: 10px 30px;
+    }
+  
+    .contact-us-single .cop-ck h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+  
+    .contact-us-single .cf-ro {
+      margin-top: 10px;
+    }
+
