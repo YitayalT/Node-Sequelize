@@ -174,7 +174,7 @@ exports.addAncData = (req, res) => {
       .then((result) => {
         console.log("data added successfully!");
         return res.render("anc", {
-          message: "data inserted successfully!",
+          message: "data submitted successfully!",
           style: "style.css",
           script: "index.js",
         });

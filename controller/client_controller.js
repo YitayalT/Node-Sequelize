@@ -95,11 +95,21 @@ exports.addClient = (req, res) => {
           })
           .catch((err) => {
             console.log(err);
+             return res.render("contact-us", {
+               wrong: "something goes wrong!",
+               style: "style.css",
+               script: "index.js",
+             });
           });
       }
     })
     .catch((err) => {
       console.log(err);
+    return res.render("contact-us", {
+      wrong: "something goes wrong!",
+      style: "style.css",
+      script: "index.js",
+    });
     }); 
 };
 

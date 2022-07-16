@@ -15,6 +15,7 @@ const NewBorn = require('./model/NewBorn');
 const ancVisit = require('./model/ANCVisit');
 const Delivery = require('./model/Delivery');
 const Message = require('./model/Message');
+const Feedback = require('./model/Feedback');
 const Prescription = require('./model/Prescription');
 const Radiology = require('./model/Radiology');
 const Bed = require('./model/Bed');
@@ -220,7 +221,7 @@ Pnc.belongsTo(User, {
   foreignKey: "UserId",
 });
 
-//  Pnc.sync({force: true}).then( () =>{
+//  Feedback.sync({force: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
@@ -240,11 +241,11 @@ app.get("/service", (req, res) => {
   });
 });
 // contact us route
-app.get("/contactUs", (req, res) => {
-  res.render("contact-us", {
-    style: "style.css",
-  });
-});
+// app.get("/contactUs", (req, res) => {
+//   res.render("contact-us", {
+//     style: "style.css",
+//   });
+// });
 // router middle wares
 app.use("", router);
 app.use("", user_route);
