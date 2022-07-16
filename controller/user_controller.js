@@ -2,6 +2,7 @@ const User = require("../model/User");
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+const Feedback = require('../model/Feedback');
 
 exports.getUser = (req, res) => {
     User.findAll({
@@ -224,3 +225,17 @@ exports.logout = async (req, res) => {
 //   });
 //   res.status(200).redirect("/users");
 // }
+
+exports.feedback = (req, res) => {
+  Feedback.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+  }).then((result) => {
+     res.render("feedback", {
+       user: result,
+       style: "style.css",
+     });
+  }).catch((err) => {
+    
+  });
+}

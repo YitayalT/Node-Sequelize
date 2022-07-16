@@ -13,8 +13,6 @@ router.get("/users",checkAuthMiddleware.checkAuth, user_controller.getUser);
 router.get('/logout', user_controller.logout);
 router.get("/contactUs", contactUs.contactUs);
 router.post("/contactUs", contactUs.giveFeedback);
-// router.delete('delete/: mrn', user_controller.deleteUser);
-// router.get("/edit/:id", user_controller.edit);
-// router.post("/update/:id", user_controller.updateUser);
+router.get("/feedback", user_controller.feedback);
 
 module.exports = router;
