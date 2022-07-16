@@ -12,7 +12,7 @@ exports.getClient = (req, res) => {
 exports.clients = (req, res) => {
   Client.findAll({
     order: [["createdAt", "DESC"]],
-    limit: 5,
+    limit: 10,
   })
     .then((result) => {
       res.render("client_list", {

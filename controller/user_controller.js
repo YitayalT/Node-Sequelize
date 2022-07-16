@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 exports.getUser = (req, res) => {
     User.findAll({
       order: [["createdAt", "DESC"]],
-      limit: 5,
+      limit: 10,
     })
       .then((user) => {
         res.render("users", {
