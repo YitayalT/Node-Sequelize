@@ -1,7 +1,7 @@
    {{> header}}
   <div class="page">
    {{> sidebar}}
-    <div class="content" style="padding-top:50px; font-size: small; font-family: 'Times New Roman', Times, serif;">   
+    <div class="content" style="padding-top:50px; font-family: 'Times New Roman', Times, serif;">   
         <div class="container-fluid p-5 mt-2">
         <form action="/preventiveCare" method="post">
          <div class="col-9">      
@@ -10,7 +10,7 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">
              <strong>{{message}}!</strong> 
              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+             <span aria-hidden="true">&times;</span>
             </button>
             </div>
               {{/if}}
@@ -141,11 +141,10 @@
                     </div>
                 </div>
          </div>
-          
-
-        </form>
-        </div>       
+         </form>
+        </div>  
+        {{> footer}}     
     </div>
 </div>
     
-    {{> footer}}
+    

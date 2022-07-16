@@ -1,12 +1,12 @@
    {{> header}}
    <div class="page">
      {{> sidebar}}
-<div class="content" style="padding-top:50px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+<div class="content" style="padding-top:50px ;font-family: 'Times New Roman', Times, serif;">
     <div class="container-fluid p-5 mt-2">
         <div class="row">
             <div class="col-md-12">
            <div class="col-md-4"></div>
-       <form id="form"  action="/addMessage" method="POST">
+         <form id="form"  action="/addMessage" method="POST">
         <h1 class="p-2">Messaging</h1>
         
         {{> info}}
@@ -40,12 +40,13 @@
                   </div>
                   
                 <div class="col-md-4"></div>
-            </form>
+         </form>
             </div>
         </div>            
-    </div>        
+    </div>
+   {{> footer}}
 </div>
  </div>
 
-   {{> footer}}
+   
   

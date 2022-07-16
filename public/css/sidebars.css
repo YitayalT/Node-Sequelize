@@ -33,6 +33,7 @@
     overflow-x: hidden;
     transition: all 0.3s ease;
     float: left;
+    font-size: 18px;
 }
 
 .page .content {
@@ -41,11 +42,12 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    font-size: 18px;
     /* position: absolute; */
     transition: all 0.3s ease;
 }
 
-/* .sidebarToggle {
+.sidebarToggle {
     font-size: 16px;
     color: rgba(10, 10, 10, 0.8);
     margin-left: 0px;
@@ -53,7 +55,7 @@
     border-radius: 50px;
     background-color: #b9b3b3;
     transition: all 0.3s ease;
-} */
+}
 
 /* .sidebarToggle.active {
     margin-left: 10px;
