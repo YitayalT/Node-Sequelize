@@ -1,24 +1,8 @@
-<div class="page">
     {{> header}}
+<div class="page">
     {{> delivery-sidebar}}
-    <div class="content" style="padding-top:10px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
-        {{!-- <div class="container-fluid p-5 my-5" style="min-height: 500px;">
-           <h1>NewBorn List</h1>
-           <div class="col-8 offset-3">
-            {{#each result}}
-              <p>Medical Record Number: {{MRN}}</p>
-              <p>Mother FullName : {{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</p>
-              <p>Baby FullName: {{firstName}} {{fatherName}}</p>
-              <p>sex: {{sex}}</p>
-            {{else}}
-         <p>No registered child's are found!</p>
-            {{/each}}
-             
-           </div>
-
-         </div> --}}
-
-         <div class="container-fluid p-5 mt-2" style="min-height: 560px;">
+    <div class="content" style="padding-top:10px; font-family: 'Times New Roman', Times, serif;">
+  <div class="container-fluid p-5 mt-2">
        <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue;">
            <nav class="navbar">
             <div class="container-fluid mt-3">
@@ -154,6 +138,7 @@
                 {{/each}}
        </div>
       </div>
+      {{> footer}}
     </div>
    </div>
-           {{> footer}}
+           
