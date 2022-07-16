@@ -24,7 +24,7 @@
 
 .page .sidebar {
     background: linear-gradient(35deg, #66fcf1, #45a29e);
-    position: sticky;
+    position: absolute;
     top: 0;
     left: 0;
     width: 300px;
@@ -33,7 +33,7 @@
     overflow-x: hidden;
     transition: all 0.3s ease;
     float: left;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .page .content {
