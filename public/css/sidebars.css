@@ -49,6 +49,16 @@
     transition: all 0.3s ease;
 }
 
+@media screen and (max-width: 513px){
+.page .sidebar{
+    width: 150px;
+}
+
+.page .content{
+    margin-left: 150px;
+}
+}
+
 .sidebarToggle {
     font-size: 16px;
     color: rgba(10, 10, 10, 0.8);
@@ -57,6 +67,13 @@
     border-radius: 50px;
     background-color: #b9b3b3;
     transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 513px){
+    .page .sidebar{
+        float: none;
+        
+    }
 }
 
 /* .sidebarToggle.active {

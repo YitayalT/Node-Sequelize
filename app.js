@@ -240,12 +240,7 @@ app.get("/service", (req, res) => {
     style: "style.css",
   });
 });
-// contact us route
-// app.get("/contactUs", (req, res) => {
-//   res.render("contact-us", {
-//     style: "style.css",
-//   });
-// });
+
 // router middle wares
 app.use("", router);
 app.use("", user_route);
