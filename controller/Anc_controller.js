@@ -181,9 +181,12 @@ exports.addAncData = (req, res) => {
       })
       .catch((err) => {
         console.log(err);
+        return res.render("anc", {
+          wrong: "something goes wrong. please, try again",
+          style: "style.css",
+          script: "index.js",
+        });
       });
-
-    // res.status(200).redirect("/ancVisit");
 }
 
 exports.labHistory = (req, res) => {

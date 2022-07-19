@@ -84,6 +84,11 @@ exports.addPrescription = (req, res) => {
            script: "index.js",
          });
     }).catch((err) => {
-        console.log(err);
+      console.log(err);
+       return res.render("prescription", {
+         wrong: "something goes wrong. please, try again",
+         style: "style.css",
+         script: "index.js",
+       });
     });
 }

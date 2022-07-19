@@ -33,6 +33,11 @@ exports.addPreventiveCare = (req, res) => {
      });
   }).catch((err) => {
     console.log(err);
+    return res.render("preventive-care", {
+      wrong: "something goes wrong, try again, please",
+      style: "style.css",
+      script: "index.js",
+    });
   });
 
 //  res.status(200).redirect("/preventiveCare");

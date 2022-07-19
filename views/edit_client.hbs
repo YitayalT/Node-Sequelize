@@ -1,9 +1,9 @@
  {{> header}}
  <div class="page">
  {{> receptionist-sidebar}}
-  <div class="content" style="padding:10px ;font-family: 'Times New Roman', Times, serif;">
+  <div class="content" style="padding-top:50px ;font-family: 'Times New Roman', Times, serif;">
     <div class="container-fluid p-5 m-2">
-         <h1>Modify Clients Data</h1>
+         <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Modify Clients Data</h1>
             {{#if client}}
             <form class="row g-3" action="/update/{{client.MRN}}" method="POST">
                 <!-- facility name field -->
