@@ -23,6 +23,11 @@ exports.addBed = (req, res) => {
         
     }).catch((err) => {
         console.log(err);
+        return res.render("bed", {
+          message: "something goes wrong. please try again!",
+          style: "style.css",
+          script: "index.js",
+        });
     });
 
 }

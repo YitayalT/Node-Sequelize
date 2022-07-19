@@ -33,10 +33,18 @@ exports.addNewborn = (req, res) => {
     NewBorn.create(newBornData).then((result) => {
         // console.log(result);
         console.log('new newBorn data added!!!');
+          return res.render("new-born", {
+            message: "data added successfully",
+            style: "style.css",
+            script: "index.js",
+          });
 
     }).catch((err) => {
         console.log(err);
+          return res.render("message", {
+            wrong: "something goes wrong!",
+            style: "style.css",
+            script: "index.js",
+          });
     });
-
-    res.status(200).redirect('/newBorn');
 }

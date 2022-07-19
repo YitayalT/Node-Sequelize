@@ -38,12 +38,22 @@ exports.addLabResult = (req, res) => {
     };
 
     LabResult.create(newLabResult).then((result) => {
-        console.log('lab result added!');
+      console.log('lab result added!');
+      return res.render("lab-exam", {
+        message: "data is added successfully",
+        style: "style.css",
+        script: "index.js",
+      });
     }).catch((err) => {
-        console.log(err);
+      console.log(err);
+      return res.render("lab-exam", {
+        wrong: "something goes wrong. please, try again!",
+        style: "style.css",
+        script: "index.js",
+      });
     });
 
-    res.status(200).redirect('/labExam');
+    // res.status(200).redirect('/labExam');
 }
 
 

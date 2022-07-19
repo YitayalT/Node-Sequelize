@@ -24,7 +24,7 @@ exports.giveFeedback = (req, res) => {
     }).catch((err) => {
         console.log(err);
           return res.render("contact-us", {
-            existInfo: "something goes wrong!",
+            wrong: "something goes wrong.please, try again!",
             style: "style.css",
             script: "index.js",
           });

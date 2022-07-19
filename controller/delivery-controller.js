@@ -203,11 +203,17 @@ exports.addDelivery = (req, res) => {
 
     Delivery.create(newDeliveryData).then((result) => {
         console.log('delivery data is added!');
+          return res.render("delivery", {
+            message: "data is submitted successfully",
+            style: "style.css",
+            script: "index.js",
+          });
     }).catch((err) => {
-        console.log(err);
+      console.log(err);
+       return res.render("delivery", {
+            message: "something goes wrong.please, try again!",
+            style: "style.css",
+            script: "index.js",
+          });
     });
-
-    res.status(200).redirect("/getDelivery");
-
-
 }

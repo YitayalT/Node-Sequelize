@@ -22,7 +22,12 @@ exports.sendMessage = (req, res) => {
          script: "index.js",
        });
     }).catch((err) => {
-        console.log(err);
+      console.log(err);
+       return res.render("message", {
+         wrong: "something goes wrong!",
+         style: "style.css",
+         script: "index.js",
+       });
     });
 
     // res.status(200).redirect('/getMessage');

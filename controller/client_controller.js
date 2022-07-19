@@ -96,7 +96,7 @@ exports.addClient = (req, res) => {
           .catch((err) => {
             console.log(err);
              return res.render("contact-us", {
-               wrong: "something goes wrong!",
+               wrong: "something goes wrong. please, try again!",
                style: "style.css",
                script: "index.js",
              });
