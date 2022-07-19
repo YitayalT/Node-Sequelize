@@ -41,7 +41,7 @@ exports.addNewborn = (req, res) => {
 
     }).catch((err) => {
         console.log(err);
-          return res.render("message", {
+          return res.render("new-born", {
             wrong: "something goes wrong!",
             style: "style.css",
             script: "index.js",

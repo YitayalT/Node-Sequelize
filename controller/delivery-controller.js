@@ -211,7 +211,7 @@ exports.addDelivery = (req, res) => {
     }).catch((err) => {
       console.log(err);
        return res.render("delivery", {
-            message: "something goes wrong.please, try again!",
+            wrong: "something goes wrong.please, try again!",
             style: "style.css",
             script: "index.js",
           });
