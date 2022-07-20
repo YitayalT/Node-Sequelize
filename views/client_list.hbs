@@ -1,7 +1,7 @@
 
- {{> header}}
+ {{!-- {{> header}}
  <div class="page">
- {{> receptionist-sidebar}}
+ {{> receptionist-sidebar}} --}}
 <div class="content" style="padding-top:100px ;font-family: 'Times New Roman', Times, serif;">
  <div class="container-fluid mt-2" style="min-height:510px ;">
      <div class="col-md-12" style="margin-bottom:10px ;">
@@ -30,11 +30,11 @@
               </tr>
             </thead>
             <tbody>
-                  {{#each result}}
+                  {{#each result as | res |}}
               <tr>
-                <th scope="row">{{name_of_facility}}</th>
-                <td>{{MRN}}</td>
-                <td>{{first_name}} {{lats_name}}</td>
+                <th scope="row">{{res.name_of_facility}}</th>
+                <td>{{res.MRN}}</td>
+                <td>{{res.first_name}} {{lats_name}}</td>
                 <td> {{Age}}</td>
                 <td>{{Sex}}</td>
                 <td>{{Region}}</td>
@@ -49,8 +49,8 @@
             </tbody>
           </table>
 </div>
- {{> footer}}
- {{> copy}} 
+ {{!-- {{> footer}}
+ {{> copy}}  --}}
  </div>
   </div>
  

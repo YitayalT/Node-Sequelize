@@ -39,6 +39,7 @@ const delivery_route = require('./routes/delivery-route');
 const labExamRoute = require('./routes/labExam-route');
 const message = require('./routes/message-route');
 const bedRoute = require('./routes/bed-route');
+const videoRoute = require('./routes/video-route');
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -255,6 +256,7 @@ app.use("", prescriptionRoute);
 app.use("", labExamRoute);
 app.use("", radiologyRoute);
 app.use("", bedRoute);
+app.use("", videoRoute);
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
