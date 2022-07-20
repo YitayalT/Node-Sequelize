@@ -1,0 +1,35 @@
+ {{> header}}
+ <div class="page">
+    {{> sidebar }}
+    <div class="content" style="padding-top:100px ; font-family: 'Times New Roman', Times, serif;">
+        <div class="container-fluid" style="min-height: 560px;">
+            {{> info}}
+            {{> error }}
+            <h1>Send SMS Notification</h1>
+            <form action="/appointment" method="post">
+    <div class="col-4">
+      <label for="fname" class="form-label">First name</label>
+      <input type="text" class="form-control shadow-none" id="fname" name="fname" required/>
+    </div>
+    <div class="col-4">
+       <div class="input-control">
+      <label for="message" class="form-label">Message</label>
+      <input type="text" class="form-control shadow-none" id="message" name="message" required />
+    </div>
+    </div>
+
+    <div class="col-4">
+      <label for="phone" class="form-label">Last name</label>
+      <input type="tel" class="form-control shadow-none" id="phone" name="phone" required/>
+    </div>
+
+        <div class="col-4 mt-5 ">
+         <input type="submit"  value="send notification" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
+        </div>
+            </form>
+        </div>
+
+        {{> footer }}
+        {{> copy }}
+    </div>
+ </div>
