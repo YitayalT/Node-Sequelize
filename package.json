@@ -24,6 +24,7 @@
     "moment": "^2.29.4",
     "mysql2": "^2.3.3",
     "puppeteer": "^15.4.0",
-    "sequelize": "^6.20.1"
+    "sequelize": "^6.20.1",
+    "twilio": "^3.79.0"
   }
 }

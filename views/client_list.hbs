@@ -30,11 +30,11 @@
               </tr>
             </thead>
             <tbody>
-                  {{#each result as | res |}}
+                  {{#each data }}
               <tr>
-                <th scope="row">{{res.name_of_facility}}</th>
-                <td>{{res.MRN}}</td>
-                <td>{{res.first_name}} {{lats_name}}</td>
+                <th scope="row">{{name_of_facility}}</th>
+                <td>{{MRN}}</td>
+                <td>{{first_name}} {{lats_name}}</td>
                 <td> {{Age}}</td>
                 <td>{{Sex}}</td>
                 <td>{{Region}}</td>
