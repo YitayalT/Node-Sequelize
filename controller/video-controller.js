@@ -13,9 +13,6 @@ const compile = async function (templateName, data) {
   return hbs.compile(html)({ data: data });
 };
 
-
-
-
 exports.report = async (req, res) => {
     try {
  
@@ -25,35 +22,32 @@ exports.report = async (req, res) => {
        
          const client = await Client.findAll({raw: true}).then((result) => {
            console.log('Congratulations!');
-           console.log(result);
-          return content = compile('client_list', result);
+          //  console.log(result);
+          return content = compile('client-report', result);
          }).then((content) => {
-           console.log('content', content);
+          //  console.log('content', content);
            return page.setContent(content);
          }).then((resu) => {
           //  console.log(resu);
          }).catch((err) => {
             console.log(err);
          });
-        // console.log('client',client)
- 
-        
- 
-      // console.log('content 2', content)
-
-        // await page.setContent(content);
- 
+      let rand = Math.random();
+      // console.log('randome', rand);
         await page.pdf({
-            path: 'client.pdf',
+            path: `report${rand}.pdf`,
             format: 'A4',
             printBackground: true
         })
  
         console.log("done creating pdf");
- 
-        await browser.close();
- 
-        process.exit();
+      let locate = path.dirname;
+      await browser.close();
+     return res.render("video_conference", {
+        style: "style.css",
+        script: "index.js",
+        message: 'report is downloaded at USER-AUTH folder'
+      });
         
     } catch (e) {
         console.log(e)

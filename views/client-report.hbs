@@ -1,0 +1,33 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Facility Name</th>
+      <th scope="col">Mrn</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Sex</th>
+      <th scope="col">region</th>
+      <th scope="col">woreda</th>
+      <th scope="col">phone No</th>
+   
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+      <tr>
+        <th scope="row">{{name_of_facility}}</th>
+        <td>{{MRN}}</td>
+        <td>{{first_name}} {{lats_name}}</td>
+        <td> {{Age}}</td>
+        <td>{{Sex}}</td>
+        <td>{{Region}}</td>
+        <td>{{Kebele}}</td>
+        <td>{{Phone_no}}</td>
+      </tr>
+    {{else}}
+      <b><i><p style="color: red ; text-align: center; padding: 10px;">Such
+            client is not found in the system!
+          </p></i></b>
+    {{/each}}
+  </tbody>
+</table>

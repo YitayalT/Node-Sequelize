@@ -1,7 +1,7 @@
 
- {{!-- {{> header}}
+ {{> header}} 
  <div class="page">
- {{> receptionist-sidebar}} --}}
+ {{> receptionist-sidebar}} 
 <div class="content" style="padding-top:100px ;font-family: 'Times New Roman', Times, serif;">
  <div class="container-fluid mt-2" style="min-height:510px ;">
      <div class="col-md-12" style="margin-bottom:10px ;">
@@ -30,7 +30,7 @@
               </tr>
             </thead>
             <tbody>
-                  {{#each data }}
+                  {{#each result }}
               <tr>
                 <th scope="row">{{name_of_facility}}</th>
                 <td>{{MRN}}</td>
@@ -49,8 +49,8 @@
             </tbody>
           </table>
 </div>
- {{!-- {{> footer}}
- {{> copy}}  --}}
+ {{> footer}}
+ {{> copy}} 
  </div>
   </div>
  
