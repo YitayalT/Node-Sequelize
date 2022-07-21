@@ -64,6 +64,7 @@ exports.prescription = (req, res) => {
      });
  };
 
+
 exports.addPrescription = (req, res) => {
     let newPrescription = {
       MRN: req.body.mrn,
@@ -92,3 +93,4 @@ exports.addPrescription = (req, res) => {
        });
     });
 }
+
