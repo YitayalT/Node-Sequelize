@@ -1,0 +1,49 @@
+
+     {{> header}}
+     <div class="container-fluid p-5">
+     <div class="container" style="padding:100px ; font-size: small; 'Times New Roman', Times, serif;">
+    <div >
+    <form id="form" class="row g-3" action="/ward" method="POST">
+
+    <div class="col-md-4 p-5">
+    <img src="/image/about-img.svg" alt="image not found" srcset="">
+    </div>
+    <div></div>
+    <div class="col-md-4 p-5">
+      <div class="row">
+           {{#if message }}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{message}}!</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    {{/if}}
+      </div>
+        
+      
+       <div class="form-group row">
+     <label for="wardCode" class="form-label">Ward Code</label>
+     <input type="text" class="form-control shadow-none" id="wardCode" name="wardCode" />
+      </div>
+      <div class="form-group row">
+      <label for="ward" class="form-label">Ward</label>
+      <select class="custom-select shadow-none" id="ward" name="ward" required>
+        <option value="anc">ANC</option>
+        <option value="delivery">delivery</option>
+        <option value="pnc">PNC</option>
+        
+      </select>
+      </div>
+       <input type="submit"  value="Go to ward" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
+    </div>
+
+    
+    <div class="col-md-4"></div>
+   
+    </form>
+  </div>
+</div>
+</div>
+{{> footer}}
+{{> copy}} 

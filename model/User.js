@@ -1,53 +1,63 @@
-const Sequelize = require("sequelize");
+const {Sequelize, Model, DataTypes} = require("sequelize");
 const db = require("../config/database");
 
-const User = db.define(
-  "user",
+class User extends Model {}
+// const User = db.define(
+//   "user",
+User.init(
   {
     user_id: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       primaryKey: true,
       allowNull: false,
     },
     first_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     last_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     user_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     City: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Age: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
     Sex: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Email: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     Phone_no: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     password: {
       type: Sequelize.STRING,
     },
     department: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     specialization: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     role: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
+    ward: {
+      type: DataTypes.STRING
+    },
+    wardCode: {
+      type: DataTypes.STRING
+    }
   },
   {
+    sequelize: db,
     freezeTableName: true,
+    modelName: 'user'
   }
 );
 module.exports = User;

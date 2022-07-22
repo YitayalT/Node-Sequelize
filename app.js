@@ -9,9 +9,10 @@ const classifyingRoute = require('./routes/classifying_route');
 const cookieParser = require("cookie-parser");
 const Handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
-const ClassifyingForm = require('./model/ClasifyingForm');
+
 
 // import models
+const ClassifyingForm = require("./model/ClasifyingForm");
 const NewBorn = require('./model/NewBorn');
 const ancVisit = require('./model/ANCVisit');
 const Delivery = require('./model/Delivery');
@@ -224,7 +225,7 @@ Pnc.belongsTo(User, {
   foreignKey: "UserId",
 });
 
-//  Feedback.sync({force: true}).then( () =>{
+//  User.sync({alter: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

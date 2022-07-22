@@ -123,54 +123,63 @@ exports.login = (req, res) => {
                    
                    if (token) {
                      if (req.body.role === user.role) {
-                       if (user.role === 'doctor') {
-                        //  console.log(token);
+                       if (user.role === process.env.RL_DOCTOR) {
+                         //  console.log(token);
                          console.log("Doctor Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/preventiveCare");
-                       } else if (user.role === "receptionist") {
-                        //  console.log(token);
+                        //  res.status(200).redirect("/ward");
+                         res.render("physician-role", {
+                           style: "style.css",
+                           user_name: user.user_name,
+                         });
+                       } else if (user.role === process.env.RL_RECEPTION) {
+                         //  console.log(token);
                          console.log("Receptionist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/addClient");
-                       } else if (user.role === "Admin") {
-                          // console.log(token);
-                          console.log("Admin Authenticated!");
-                          res.cookie("access-token", token, {
-                            maxAge: 60 * 60 * 24 * 1000,
-                          });
-                          res.status(200).redirect("/addUser");
-                       } else if (user.role === "laboratory") {
-                        //  console.log(token);
+                         
+                       } else if (user.role === process.env.RL_ADMIN) {
+                         // console.log(token);
+                         console.log("Admin Authenticated!");
+                         res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.status(200).redirect("/addUser");
+                       } else if (user.role === process.env.RL_LABORATORY) {
+                         //  console.log(token);
                          console.log("Laboratorist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/labExam");
-                       } else if (user.role === "radiology") {
-                        //  console.log(token);
+                         
+                       } else if (user.role === process.env.RL_RADIOLOGY) {
+                         //  console.log(token);
                          console.log("Radiology Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Radiology");
-                       } else if (user.role === "pharmacist") {
-                        //  console.log(token);
+                       } else if (user.role === process.env.RL_PHARMACY) {
+                         //  console.log(token);
                          console.log("Pharmacist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Prescription");
-                       } else if (user.role === "midwife") {
+                       } else if (user.role === process.env.RL_MIDWIFE) {
                          console.log("midwife Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/getPnc");
+                         //  res.status(200).redirect("/ward");
+                         res.render("physician-role", {
+                           style: "style.css",
+                         });
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
@@ -242,4 +251,36 @@ exports.feedback = (req, res) => {
   }).catch((err) => {
     
   });
+}
+
+
+exports.ward = (req, res) => {
+  res.render('physician-role', {
+    style: 'style.css',  
+  });
+}
+
+exports.goToWard = (req, res) => {
+  User.findOne({ where: { wardCode: req.body.wardCode } }).then((user) => {
+        if (!user) {
+          res.status(401).render("physician-role", {
+            message: "Invalid ward Code!",
+            style: "style.css",
+          });
+        } else if (user.ward === "pnc" && req.body.ward === "pnc") {
+          res.status(200).redirect("/getPnc");
+        } else if (user.ward === "anc" && req.body.ward === "anc") {
+          res.status(200).redirect("/classifying");
+        } else if (user.ward === "delivery" && req.body.ward === "delivery") {
+          res.status(200).redirect("/getDelivery");
+        } else {
+           res.status(401).render("physician-role", {
+             message: "Incorrect credentials!",
+             style: "style.css",
+           });
+        }
+  }).catch((err) => {
+    console.log(err);
+  });
+
 }
