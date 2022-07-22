@@ -238,6 +238,12 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/aboutUs', (req, res) => {
+  res.render('about-us', {
+    style: 'style.css'
+  });
+});
+
 // service route
 app.get("/service", (req, res) => {
   res.render("services", {
