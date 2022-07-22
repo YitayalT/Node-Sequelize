@@ -1,3 +1,4 @@
+require("dotenv").config();
 const User = require("../model/User");
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
@@ -112,10 +113,13 @@ exports.login = (req, res) => {
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
                  if (result) {
-               let token = jwt.sign({
-                       user_name: user.user_name,
-                       password: user.password,
-                 }, "secret");
+               let token = jwt.sign(
+                 {
+                   user_name: user.user_name,
+                   password: user.password,
+                 },
+                 process.env.JWT_SECRET_KEY
+               );
                    
                    if (token) {
                      if (req.body.role === user.role) {
