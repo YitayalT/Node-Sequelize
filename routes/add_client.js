@@ -9,6 +9,6 @@ router.get("/clients", checkAuthMiddleware.checkAuth, client_router.clients);
 router.post('/search', client_router.search);
 router.get('/edit/:id', client_router.edit);
 router.post('/update/:id', client_router.updateClient);
-
+router.get("/deleteClient/:id", client_router.deleteClient);
 
 module.exports = router;

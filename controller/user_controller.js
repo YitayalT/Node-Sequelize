@@ -231,15 +231,11 @@ exports.logout = async (req, res) => {
   console.log('successfully logged out');
 };
 
-// exports.deleteUser = (req, res) => {
-//   let id = req.params.mrn;
-//   User.destroy({ where: { user_id: id } }).then((result) => {
-//     console.log('deleted!');
-//   }).catch((err) => {
-//     console.log(err);
-//   });
-//   res.status(200).redirect("/users");
-// }
+exports.deleteUser = (req, res) => {
+  let id = req.params.id;
+  User.destroy({ where: { user_id: id }});
+  res.status(200).redirect("/users");
+}
 
 exports.feedback = (req, res) => {
   Feedback.findAll({

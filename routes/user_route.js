@@ -21,7 +21,7 @@ router.get("/appointment",checkAuthMiddleware.checkAuth, appointment.setAppointm
 router.post("/appointment" , checkAuthMiddleware.checkAuth, appointment.appointmentDate);
 router.get('/ward', checkAuthMiddleware.checkAuth, user_controller.ward);
 router.post('/ward',checkAuthMiddleware.checkAuth, user_controller.goToWard);
-
+router.get('/deleteUser/:id', user_controller.deleteUser);
 
 
 module.exports = router;

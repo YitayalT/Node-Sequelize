@@ -9,21 +9,26 @@ exports.getClient = (req, res) => {
     });
 
 };
-exports.clients = (req, res) => {
-  Client.findAll({
+exports.clients = async (req, res) => {
+  try {
+
+  const { count, rows } = await Client.findAndCountAll({
     order: [["createdAt", "DESC"]],
     limit: 10,
-  })
-    .then((result) => {
+  });
+  console.log('count', count);
+    // .then((result) => {
+      console.log(rows);
       res.render("client_list", {
-        result: result,
+        result: rows,
         style: "style.css",
         script: "index.js",
+        count: count
       });
-    })
-    .catch((err) => {
+    }
+    catch(err){
       console.log(err);
-    });
+    }
 };
 exports.addClient = (req, res) => {
   Client.findOne({ where: { MRN: req.body.mrn } })
@@ -172,21 +177,7 @@ exports.updateClient = (req, res) => {
     Woreda: req.body.city,
     Kebele: req.body.kebele,
   };
-//   let {
-//     name_of_facility,
-//     MRN,
-//     date_reg,
-//     first_name,
-//     lats_name,
-//     Grand_Father_name,
-//     Age,
-//     Sex,
-//     Email,
-//     Phone_no,
-//     Region,
-//     Woreda,
-//     Kebele,
-//   } = newClient;
+
 
   Client.update(newClient, {
     where: { MRN: id },
@@ -198,5 +189,11 @@ exports.updateClient = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+  res.status(200).redirect("/clients");
+};
+
+exports.deleteClient = (req, res) => {
+  let id = req.params.id;
+  Client.destroy({ where: { MRN: id } });
   res.status(200).redirect("/clients");
 };
