@@ -144,7 +144,7 @@ exports.edit = (req, res) => {
     raw: true,
   })
     .then((client) => {
-      console.log(client);
+      // console.log(client);
       res.render("edit_client", {
         client: client,
         style: "style.css",

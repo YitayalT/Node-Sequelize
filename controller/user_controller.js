@@ -75,6 +75,8 @@ exports.addUser = (req, res) => {
               department: req.body.department,
               specialization: req.body.specialization,
               role: req.body.role,
+              ward: req.body.ward,
+              wardCode: req.body.wardCode
             };
 
             User.create(newUser)
@@ -283,4 +285,52 @@ exports.goToWard = (req, res) => {
     console.log(err);
   });
 
+}
+
+
+exports.editUser = (req, res) => {
+  const id = req.params.id;
+  User.findOne({
+    where: { user_id: id },
+    raw: true,
+  }).then((user) => {
+    console.log(user);
+    res.render('edit-user', {
+      style: 'style.css',
+      user: user
+    })
+  }).catch((err) => {
+    console.log(err);
+  });;
+}
+
+exports.updateUser = (req, res) => {
+  const id = req.params.id;
+  let newUser = {
+    user_id: req.body.uid,
+    first_name: req.body.fname,
+    last_name: req.body.lname,
+    user_name: req.body.uname,
+    City: req.body.city,
+    Age: req.body.age,
+    Sex: req.body.gender,
+    Email: req.body.email,
+    Phone_no: req.body.phone,
+    password: bcrypt.hashSync(req.body.password, 8),
+    department: req.body.department,
+    specialization: req.body.specialization,
+    role: req.body.role,
+    ward: req.body.ward,
+    wardCode: req.body.wardCode,
+  };
+  User.update(newUser,{
+    where: {
+    user_id: id
+  }
+}).then((result) => {
+  console.log('updated!');
+}).catch((err) => {
+  console.log(err);
+});
+   res.status(200).redirect("/users");
 }

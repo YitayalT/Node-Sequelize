@@ -1,0 +1,101 @@
+    {{> header}}
+<div class="page">
+    {{> admin-sidebar}}
+<div class="content" style="padding-top:50px ; font-size: medium; font-family: 'Times New Roman', Times, serif;"> 
+ <div class="container-fluid p-5 ">
+    <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);"> update Users</h1>
+    {{#if user}}
+   <form id="form" class="row g-3" action="/updateUser/{{user.user_id}}" method="POST">
+     
+    <div class="col-md-4">
+       <div class="input-control">
+      <label for="uid" class="form-label">User Id</label>
+      <input type="text" class="form-control shadow-none" id="uid" name="uid" value="{{user.user_id}}" required />
+    </div>
+    </div>
+    <div class="col-md-4">
+      <label for="fname" class="form-label">First name</label>
+      <input type="text" class="form-control shadow-none" id="fname" name="fname" value="{{user.first_name}}" required/>
+    </div>
+    <div class="col-md-4">
+      <label for="lname" class="form-label">Last name</label>
+      <input type="text" class="form-control shadow-none" id="lname" name="lname" value="{{user.last_name}}" required/>
+    </div>
+    <div class="col-md-4">
+      <label for="uname" class="form-label">Username</label>
+      <input type="text" class="form-control shadow-none" id="uname" name="uname" value="{{user.user_name}}" required/>
+    </div>
+
+    <div class="col-md-4">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control shadow-none" id="city" name="city" value="{{user.City}}" required />
+    </div>
+    <div class="col-md-4">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control shadow-none" id="age" name="age" value="{{user.Age}}" required />
+    </div>
+    <div class="col-md-4">             
+   <label for="gender" class="form-label">Sex</label>
+   <select class="custom-select shadow-none" id="gender" name="gender" value="{{user.Sex}}" required>
+    <option value="female">Female</option>
+    <option value="male">Male</option> 
+   </select>
+    </div>
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control shadow-none" id="email" name="email" value="{{user.Email}}" />
+    </div>
+
+    <div class="col-md-4">
+      <label for="phone" class="form-label">Phone No.</label>
+      <input type="tel" class="form-control shadow-none" id="phone" name="phone" value="{{user.Phone_no}}"/>
+    </div>
+
+    <div class="col-md-4">
+      <label for="password" class="form-label">password</label>
+      <input type="password" class="form-control shadow-none" id="password" name="password" value="{{user.password}}"/>
+    </div>
+
+    <div class="col-md-4">
+      <label for="department" class="form-label">Department</label>
+      <input type="text" class="form-control shadow-none" id="department" name="department" value="{{user.department}}"/>
+    </div>
+    <div class="col-md-4">
+      <label for="specialization" class="form-label">Specialization</label>
+      <input type="text" class="form-control shadow-none" id="specialization" name="specialization" value="{{user.specialization}}"/>
+    </div>
+    <div class="col-md-4">
+      <label for="role" class="form-label">Role</label>
+      <select class="custom-select shadow-none" id="role" name="role" value="{{user.role}}" required>
+        <option value="doctor">Doctor</option>
+        <option value="midwife">Midwife</option>
+        <option value="receptionist">Receptionist</option>
+        <option value="laboratory">laboratory</option>
+        <option value="radiology">Radiologist</option>
+        <option value="pharmacist">Pharmacist</option>
+        <option value="Admin">Admin</option>
+      </select>
+    </div>
+   <div class="col-md-4">
+     <label for="specialization" class="form-label">Ward</label>
+      <input type="text" class="form-control shadow-none" id="ward" value="{{user.ward}}" name="ward"/>
+  </div>
+  <div class="col-md-4">
+   <label for="specialization" class="form-label">wardCode</label>
+      <input type="text" class="form-control shadow-none" id="wardCode" value="{{user.wardCode}}" name="wardCode"/>
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4 m-5 ">
+         <input type="submit"  value="Update User" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> &nbsp;&nbsp;&nbsp;&nbsp;
+  </div>       
+   </form>
+   {{/if}}
+</div>
+   {{> footer}}
+   {{> copy}} 
+</div>
+</div> 
+
+
+  
