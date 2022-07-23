@@ -118,6 +118,7 @@ exports.login = (req, res) => {
                userName: "user name is required",
                password: "password is required",
                style: "style.css",
+               script: 'index.js'
              });
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
@@ -188,30 +189,39 @@ exports.login = (req, res) => {
                          //  res.status(200).redirect("/ward");
                          res.render("physician-role", {
                            style: "style.css",
+                           script: 'index.js'
                          });
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
                            style: "style.css",
+                           script: 'index.js',
+                           validate: 'user.css'
                          });
                        }
                      } else {
                        res.status(401).render("login", {
                          message: "Incorrect credentials",
                          style: "style.css",
+                         script: "index.js",
+                         validate: "user.css",
                        });
                      }
                    } else {
                       res.status(401).render("login", {
                         message: "Not authenticated",
                         style: "style.css",
+                        script: "index.js",
+                        validate: "user.css",
                       });
                    }
                    
                  } else {
                    res.status(401).render("login", {
                      message: "Incorrect Password",
-                     style: 'style.css'
+                     style: 'style.css',
+                     script: 'index.js',
+                     validate: 'user.css'
                    });
                  } 
               }).catch((err) => {
@@ -272,11 +282,11 @@ exports.goToWard = (req, res) => {
             message: "Invalid ward Code!",
             style: "style.css",
           });
-        } else if (user.ward === "pnc" && req.body.ward === "pnc") {
+        } else if (user.ward === process.env.WARD_PNC && req.body.ward === process.env.WARD_PNC) {
           res.status(200).redirect("/getPnc");
-        } else if (user.ward === "anc" && req.body.ward === "anc") {
+        } else if (user.ward === process.env.WARD_ANC && req.body.ward ===  process.env.WARD_ANC) {
           res.status(200).redirect("/classifying");
-        } else if (user.ward === "delivery" && req.body.ward === "delivery") {
+        } else if (user.ward ===  process.env.WARD_DELIVERY && req.body.ward === process.env.WARD_DELIVERY) {
           res.status(200).redirect("/getDelivery");
         } else {
            res.status(401).render("physician-role", {

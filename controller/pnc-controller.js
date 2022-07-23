@@ -1,8 +1,10 @@
 const PNC = require('../model/PNC');
 
 exports.getPnc = (req, res) => {
-    res.render('pnc', {
-        style: 'style.css'
+    res.render("pnc", {
+      style: "style.css",
+      script: "pnc.js",
+      validate: 'pnc.css',
     });
 }
 
@@ -39,5 +41,9 @@ exports.addPnc = (req, res) => {
         });
     }).catch((err) => {
         console.log(err);
+        res.render("pnc", {
+          wrong: "something goes wrong please tyr again!",
+          style: "style.css",
+        });
     });
 }

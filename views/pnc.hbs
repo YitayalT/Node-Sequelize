@@ -1,11 +1,12 @@
    {{> header}}
 <div class="page">
     {{> pnc-sidebar}}
-    <div class="content" style="padding-top:50px ; font-size: small; font-family: 'Times New Roman', Times, serif;">
+    <div class="content" style="padding-top:50px ; font-family: 'Times New Roman', Times, serif;">
         <div class="container-fluid p-5 my-5">
                 <form action="/addPnc" method="post">
                 <h3 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Pnc Visit</h3>
                   {{> info}}
+                  {{> error}}
                 <div class="row">
                     <div class="col">
                         <table class="table table-borderless table-sm">
@@ -17,47 +18,47 @@
                             <tbody>
                                 <tr>
                                     <td>MRN</td>
-                                    <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn"></td>
+                                    <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn" required></td>
                                 </tr>
                                 <tr>  
                                     <td>UserId</td>
-                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid" required></td>
                                 </tr>
                                     <td>Date of Visit</td>
-                                    <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date"></td>    
+                                    <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date" required></td>    
                                 </tr>
                                 <tr>
                                     <td>Blood pressure</td>
-                                    <td><input class="form-control shadow-none" type="text" id="bp" name="bp"></td>
+                                    <td><input class="form-control shadow-none" type="text" id="bp" name="bp" required></td>
                                 </tr>
                                 <tr>
                                     <td>Temprature</td>
-                                    <td><input class="form-control shadow-none" type="text" id="temp" name="temp"></td>
+                                    <td><input class="form-control shadow-none" type="text" id="temp" name="temp" required></td>
                                 </tr>
                                 <tr>
                                     <td>look for pph</td>
-                                    <td><input class="form-control shadow-none" type="text" id="pph" name="pph"></td>
+                                    <td><input class="form-control shadow-none" type="text" id="pph" name="pph" required></td>
                                 </tr>
                                 <tr>
                                    <td>Dribbling</td>
-                                    <td><input class="form-control shadow-none" type="text" name="dribbling" id="dribbling"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="dribbling" id="dribbling" required></td>
                                 </tr>
                                 <tr>
                                     <td>Anemia</td>
-                                    <td><input class="form-control shadow-none" type="text" name="anemia" id="anemia"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="anemia" id="anemia" required></td>
                                  </tr>
                                  <tr>   
                                     <td>Vaginal Discharge</td>
-                                    <td><input class="form-control shadow-none" type="text" name="VaginalDischarge" id="VaginalDischarge"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="VaginalDischarge" id="VaginalDischarge" required></td>
                                 </tr>
                                 <tr>
                                     <td>pelvic Exam</td>
-                                    <td><input class="form-control shadow-none" type="text" name="pelvicExam" id="pelvicExam"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="pelvicExam" id="pelvicExam" required></td>
                                </tr>
 
                              <tr>
                                     <td>Breast</td>
-                                   <td><input class="form-control shadow-none" type="text" name="breast" id="breast"></td>
+                                   <td><input class="form-control shadow-none" type="text" name="breast" id="breast" required></td>
                                 </tr>
                             </tbody>
                          </table>
@@ -74,28 +75,28 @@
                                 
                                 <tr>
                                     <td>VitaminA</td>
-                                    <td><input class="form-control shadow-none" type="text" name="VitaminA" id="VitaminA"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="VitaminA" id="VitaminA" required></td>
                                  </tr>
                                  <tr>
                                     <td>Baby Breathing</td>                                   
-                                    <td><input class="form-control shadow-none" type="text" name="baby_breathing" id="baby_breathing"></td>                               
+                                    <td><input class="form-control shadow-none" type="text" name="baby_breathing" id="baby_breathing" required></td>                               
                                 </tr>
                                 <tr>
                                     <td>Baby Breast Feeding</td>
-                                    <td><input class="form-control shadow-none" type="text" name="baby_feeding" id="baby_feeding"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="baby_feeding" id="baby_feeding" required></td>
                                 </tr>
                                 <tr>
                                     <td>BabyWt</td>
-                                    <td><input class="form-control shadow-none" type="text" name="BabyWt" id="BabyWt"></td>                                   
+                                    <td><input class="form-control shadow-none" type="text" name="BabyWt" id="BabyWt" required></td>                                   
                                 </tr>
                                 <tr>
                                     <td>Immunization</td>
-                                   <td><input class="form-control shadow-none" type="text" name="Immunization" id="Immunization"></td> 
+                                   <td><input class="form-control shadow-none" type="text" name="Immunization" id="Immunization" required></td> 
                                   </tr>
                                   <tr>  
                               <td>HIV Tasted</td>                                   
                               <td>
-                                <select class="custom-select shadow-none" name="HivTasted" id="HivTasted">
+                                <select class="custom-select shadow-none" name="HivTasted" id="HivTasted" required>
                                             <option value="No"> No</option>
                                             <option value="Yes">Yes</option> 
                                         </select>
@@ -104,7 +105,7 @@
                                 <tr>
                                     <td>HIV Test Result</td>
                                     <td>
-                                        <select class="custom-select shadow-none" name="hiv_result" id="hiv_result">
+                                        <select class="custom-select shadow-none" name="hiv_result" id="hiv_result" required>
                                             <option value="Negative"> Negative</option>
                                             <option value="Positive">Positive A</option> 
                                         </select>
@@ -112,12 +113,12 @@
                                 </tr>
                                 <tr>
                                     <td>ARVPx For Mother</td>
-                                    <td><input class="form-control shadow-none" type="text" name="ARVPxForMother" id="ARVPxForMother"></td>
+                                    <td><input class="form-control shadow-none" type="text" name="ARVPxForMother" id="ARVPxForMother" required></td>
                                 </tr>
                                 <tr>
                                     <td>Visit</td>
                                     <td>
-                                        <select class="custom-select shadow-none" name="visit" id="visit">
+                                        <select class="custom-select shadow-none" name="visit" id="visit" required>
                                             <option value="1st" >1<sup>st</sup></option>
                                             <option value="2nd">2<sup>nd</sup></option>
                                             <option value="3rd">3<sup>rd</sup></option>
@@ -127,7 +128,7 @@
                                     </tr>
                                     <tr>
                                     <td>Next Appointment</td>
-                                    <td><input class="form-control shadow-none" type="date" name="appointment" id="appointment"></td>
+                                    <td><input class="form-control shadow-none" type="date" name="appointment" id="appointment" required></td>
                                  </tr>
                             
                             </tbody>

@@ -25,23 +25,27 @@
      {{/if}}
    <form id="form" class="row g-3" action="/addUser" method="POST">
      
-    <div class="col-md-4">
-       <div class="input-control">
+    <div class="col-md-4 input-control">
+       {{!-- <div class="input-control"> --}}
       <label for="uid" class="form-label">User Id</label>
-      <input type="text" class="form-control shadow-none" id="uid" name="uid" required />
+      <input type="text" class="form-control shadow-none" id="uid" name="uid" />
+      <small class="error"></small>
+    {{!-- </div> --}}
     </div>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-4 input-control">
       <label for="fname" class="form-label">First name</label>
       <input type="text" class="form-control shadow-none" id="fname" name="fname" required/>
+     <small class="error"></small>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 input-control">
       <label for="lname" class="form-label">Last name</label>
       <input type="text" class="form-control shadow-none" id="lname" name="lname" required/>
+     <small class="error"></small>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 input-control">
       <label for="uname" class="form-label">Username</label>
       <input type="text" class="form-control shadow-none" id="uname" name="uname" required/>
+      <small class="error"></small>
     </div>
 
     <div class="col-md-4">
