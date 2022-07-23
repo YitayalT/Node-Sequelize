@@ -14,23 +14,26 @@
            {{#if message }}
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>{{message}}!</strong> 
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <button type="button" id="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
     {{/if}}
       </div>
-      <div class="form-group row">
+      <div class="form-group row input-control">
       <label for="uname" class="form-label">Username</label>
-      <input type="text" class="form-control shadow-none" id="uname" name="uname" required/>
+      <input type="text" class="form-control shadow-none" id="uname" name="uname"/>
+       <small class="error text-danger">{{userName}}</small>
       </div>
-       <div class="form-group row">
+
+       <div class="form-group row input-control">
      <label for="password" class="form-label">password</label>
      <input type="password" class="form-control shadow-none" id="password" name="password" />
+      <small class="error text-danger">{{password}}</small>
       </div>
-      <div class="form-group row">
+      <div class="form-group row input-control">
       <label for="role" class="form-label">Role</label>
-      <select class="custom-select shadow-none" id="role" name="role" required>
+      <select class="custom-select shadow-none" id="role" name="role" >
         <option value="doctor">Doctor</option>
         <option value="midwife">Midwife</option>
         <option value="receptionist">Receptionist</option>
@@ -40,6 +43,7 @@
         <option value="HmisOfficer">HMIS officer</option>
         <option value="Admin">Admin</option>
       </select>
+      <small class="error"></small>
       </div>
        <input type="submit"  value="Login" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
     </div>

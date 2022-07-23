@@ -5,20 +5,23 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const Feedback = require('../model/Feedback');
 
-exports.getUser = (req, res) => {
-    User.findAll({
+exports.getUser = async (req, res) => {
+  try {
+    const { count, rows } = await User.findAndCountAll({
       order: [["createdAt", "DESC"]],
       limit: 10,
-    })
-      .then((user) => {
-        res.render("users", {
-          user: user,
-          style: "style.css",
-        });
-      })
-      .catch((err) => {
+    });
+    // .then((user) => {
+    console.log('count', count);
+    console.log(rows);
+     res.render("users", {
+      user: rows,
+      style: "style.css",
+      count: count
+    });
+  }  catch(err) {
         console.log(err);
-      });
+      }
   }
 
 
@@ -101,7 +104,9 @@ exports.addUser = (req, res) => {
 
 exports.getLoggedIn = (req, res) => {
   res.render('login', {
-    style: 'style.css'
+    style: 'style.css',
+    validate: 'user.css',
+    script: 'index.js'
   });
 }
 
@@ -110,6 +115,8 @@ exports.login = (req, res) => {
         if (!user) {
              res.status(401).render("login", {
                message: "User not found",
+               userName: "user name is required",
+               password: "password is required",
                style: "style.css",
              });
         } else {

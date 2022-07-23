@@ -1,18 +1,4 @@
-.container{
-    background-color: rgba(224, 232, 232, 0.798);
-}
-.container-fluid{
-    background-color: rgba(224, 232, 232, 0.798);
-   
-}
-h1{
-    color:brown ;
-    text-align: center;
-}
 
-.input-control input:focus {
-    outline: 0;
-}
 
 .input-control.success input {
     border-color: #09c372;
@@ -22,8 +8,13 @@ h1{
     border-color: #ff3860;
 }
 
-.input-control .error {
+.input-control small {
     color: #ff3860;
-    font-size: 9px;
-    height: 13px;
+    position: relative;
+    
+    visibility: hidden;
+}
+
+.input-control.error small{
+    visibility: visible;
 }
