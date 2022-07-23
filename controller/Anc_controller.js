@@ -25,17 +25,19 @@ exports.getAncHistory = (req, res) => {
       },
     ],
     raw: true,
-  }).then((result) => {
-    console.log(result);
-    res.render("anc-history", {
-        result:result,
-      style: "style.css",
-      title: "anc",
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("anc-history", {
+        result: result,
+        style: "style.css",
+        title: "anc",
       });
-  }).catch((err) => {
-    console.log(err);
-  });
-}
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.ancSearch = (req, res) => {
   let query = req.body.searchAnc;

@@ -7,9 +7,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+   
     <link rel="stylesheet" href="/assets/css/{{style}}" />
       <link rel="stylesheet" href="/css/sidebars.css" />
+      {{#if validate}}
        <link rel="stylesheet" href="/css/{{validate}}" />
+       {{/if }}
     {{! <link rel="stylesheet" href="/js/index.js"> }}
     <link rel="shortcut icon" href="/assets/images/fav.jpg">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
@@ -35,6 +38,8 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
 <script src="/assets/js/script.js"></script>
+{{#if script}}
 <script src="/js/{{script}}"></script>
+{{/if }}
   </body>
 </html>

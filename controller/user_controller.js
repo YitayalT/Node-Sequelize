@@ -189,7 +189,7 @@ exports.login = (req, res) => {
                          //  res.status(200).redirect("/ward");
                          res.render("physician-role", {
                            style: "style.css",
-                           script: 'index.js'
+                          
                          });
                        } else {
                          res.status(401).render("login", {

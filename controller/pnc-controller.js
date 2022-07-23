@@ -1,4 +1,8 @@
 const PNC = require('../model/PNC');
+const ANCVisit = require('../model/ANCVisit');
+const Delivery = require('../model/Delivery');
+const Client = require('../model/Client');
+const User = require("../model/User");
 
 exports.getPnc = (req, res) => {
     res.render("pnc", {
@@ -7,6 +11,64 @@ exports.getPnc = (req, res) => {
       validate: 'pnc.css',
     });
 }
+
+exports.ancHistory  = (req, res) =>{
+   ANCVisit.findAll({
+     order: [["createdAt", "DESC"]],
+     limit: 4,
+     include: [
+       {
+         model: User,
+       },
+       {
+         model: Client,
+       },
+     ],
+     raw: true,
+   })
+     .then((result) => {
+       console.log(result);
+       res.render("pnc-anc", {
+         result: result,
+         style: "style.css",
+         title: "anc",
+       });
+     })
+     .catch((err) => {
+       console.log(err);
+     });
+
+}
+
+
+exports.ancSearch = (req, res) => {
+  let query = req.body.searchAnc;
+  console.log(query);
+
+  ANCVisit.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("pnc-anc", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.addPnc = (req, res) => {
     let newPncData = {
