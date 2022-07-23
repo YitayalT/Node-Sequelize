@@ -109,3 +109,60 @@ exports.addPnc = (req, res) => {
         });
     });
 }
+
+exports.deliveryHistory = (req, res) => {
+  Delivery.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("pnc-delivery", {
+        result: result,
+        style: "style.css",
+        title: "delivery history",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+exports.deliverySearch = (req, res) => {
+  let query = req.body.mrn;
+  console.log(query);
+
+  Delivery.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("pnc-delivery", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
