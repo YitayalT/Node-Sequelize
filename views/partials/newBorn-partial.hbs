@@ -1,0 +1,124 @@
+<h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">New Born Data</h1>
+        <div class="row" style="margin-bottom: 5px;">
+             
+             {{#each result}}
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2"> {{'client.first_name'}}'s Baby data</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <td>Baby FullName:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{firstName}} {{fatherName}}</td>
+                   </tr>
+                    <tr>
+                    <td>Baby Id:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{babyId}}</td>
+                   </tr>
+                   <tr>
+                    <td>Baby Gender:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{sex}}</td>
+                   </tr>
+                   <tr>
+                    <td>MRN:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{MRN}}</td>
+                   </tr>
+                   <tr>
+                    <td>Client fullName:</td>
+                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</td>
+                   </tr>
+                   <tr>
+                    <td>User Id:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UID}}</td>
+                   </tr>
+
+                    <tr>
+                   <td>Born date:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{time}}</td>
+                   </tr>
+                   <tr>
+                     <td>birthWeight:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{birthWeight}}</td>
+                   </tr>
+                   <tr>
+                    <td>birthHeight:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{birthHeight}}</td>
+                   </tr>
+                   <tr>
+                    <td>cephalicCircumference:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{cephalicCircumference}}</td>
+                   </tr>
+                   <tr>
+                    <td>stillBirth:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{stillBirth}}</td>                 
+                   </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-6" style="border: 1px solid blue;">
+                <table class="table  table-borderless table-sm">
+                  <thead>
+                    <th colspan="2">{{'client.first_name'}}'s Baby data</th>
+                  </thead>
+     
+                 <tbody>
+                  
+                  <tr>
+                    <td>alive::</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{alive:}}</td>                 
+                   </tr>
+                   <tr>
+                    <td>died:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{died}}</td>
+                   </tr>
+                   <tr>
+                    <td>Ointment:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Ointment}}</td>
+                   </tr>
+                   <tr>
+                    <td>BCGVaccine:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{BCGVaccine}}</td>
+                   </tr>
+                   <tr>
+                   <td>PolioVaccine:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{PolioVaccine}}</td>
+                   </tr>
+                   <tr>
+                   <td>HepatitisB:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{HepatitisB}}</td>
+                   </tr>
+                   <tr>
+                  <td>VitaminK:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{VitaminK}}</td>
+                   </tr>
+                   <tr>
+                  <td>Visit:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Visit}}</td>
+                   </tr>
+                   <tr>
+                  <td>Chlorhexidine:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Chlorhexidine}}</td>
+                   </tr>
+
+                    <tr>
+                  <td>Mother Age</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'client.Age'}}</td>
+                   </tr>
+                   
+                  <td>Physician role:</td>
+                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'user.role'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Physician Name:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{'user.first_name'}} {{'user.last_name'}}</td>
+                   </tr>                 
+                   
+                 </tbody>
+                </table>
+              </div>
+           {{ else}}
+                  <p style="">No data is available</p>
+                {{/each}}
+       </div>

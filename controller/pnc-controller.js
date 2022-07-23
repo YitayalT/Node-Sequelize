@@ -3,6 +3,8 @@ const ANCVisit = require('../model/ANCVisit');
 const Delivery = require('../model/Delivery');
 const Client = require('../model/Client');
 const User = require("../model/User");
+const NewBorn = require("../model/NewBorn");
+
 
 exports.getPnc = (req, res) => {
     res.render("pnc", {
@@ -158,6 +160,62 @@ exports.deliverySearch = (req, res) => {
   })
     .then((result) => {
       res.render("pnc-delivery", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.newBornHistory = (req, res) => {
+  NewBorn.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("pnc-newBorn", {
+        result: result,
+        style: "style.css",
+        title: "newBorn History",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.newBornSearch = (req, res) => {
+  let query = req.body.mrn;
+  console.log(query);
+
+  NewBorn.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("pnc-newBorn", {
         result: result,
         style: "style.css",
       });

@@ -8,6 +8,8 @@ router.get("/ancPnc", pncController.ancHistory);
 router.post('/ancHistoryPnc', pncController.ancSearch);
 router.get("/deliveryPnc", pncController.deliveryHistory);
 router.post("/deliveryHistoryPnc", pncController.deliverySearch);
+router.get("/newBornPnc", pncController.newBornHistory);
+router.post("/newBornHistoryPnc", pncController.newBornSearch);
 
 
 module.exports = router;
