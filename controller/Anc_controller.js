@@ -31,7 +31,7 @@ exports.getAncHistory = (req, res) => {
       res.render("anc-history", {
         result: result,
         style: "style.css",
-        title: "anc",
+        title: "anc history",
       });
     })
     .catch((err) => {
