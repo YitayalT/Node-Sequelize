@@ -5,9 +5,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
-let server = require("http").Server(app);
-let io = require("socket.io")(server);
-let stream = require("./streamHelper/stream");
 
 const db = require('./config/database');
 const dotenv = require('dotenv');
@@ -274,8 +271,7 @@ app.use("", radiologyRoute);
 app.use("", bedRoute);
 app.use("", videoRoute);
 app.use("", reportRoute);
-// socket
-io.of("/stream").on("connection", stream);
+
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
