@@ -3,6 +3,12 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
+const app = express();
+
+let server = require("http").Server(app);
+let io = require("socket.io")(server);
+let stream = require("./streamHelper/stream");
+
 const db = require('./config/database');
 const dotenv = require('dotenv');
 const classifyingRoute = require('./routes/classifying_route');
@@ -44,7 +50,7 @@ const bedRoute = require('./routes/bed-route');
 const videoRoute = require('./routes/video-route');
 const reportRoute = require('./routes/report-route');
 
-const app = express();
+
 dotenv.config({ path: './.env' });
 //Handlebars
 app.engine("hbs",
@@ -251,6 +257,7 @@ app.get("/service", (req, res) => {
   });
 });
 
+
 // router middle wares
 app.use("", router);
 app.use("", user_route);
@@ -267,6 +274,8 @@ app.use("", radiologyRoute);
 app.use("", bedRoute);
 app.use("", videoRoute);
 app.use("", reportRoute);
+// socket
+io.of("/stream").on("connection", stream);
 // listening the server
 app.listen(3000, () =>{
     console.log('server is started at port 3000');
