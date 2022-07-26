@@ -8,7 +8,7 @@ const LabResult = require('../model/LabResult');
 exports.getAncVisit = (req, res) => {
     res.render('anc', {
         style: 'style.css',
-        title: 'anc'
+        title: 'anc visit'
     });
 }
 

@@ -33,7 +33,7 @@
     overflow-x: hidden;
     transition: all 0.3s ease;
     float: left;
-    font-size: 28px;
+    font-size: 18px;
 }
 
 .page .content {
@@ -172,7 +172,7 @@
     letter-spacing: 0.5px;
     font-weight: 400;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     /* font-family: "Roboto", sans-serif; */
 }
 
@@ -195,26 +195,26 @@
     margin-bottom: 25px;
 } */
 
-.teams-title {
+/* .teams-title {
     letter-spacing: 0.5px;
     font-size: 17px;
     color: rgb(31, 40, 51, 0.8);
     font-family: "Roboto", sans-serif;
-}
+} */
 
-.teams-list {
+/* .teams-list {
     padding-left: 32px;
     list-style-type: none;
-}
-
+} */
+/* 
 .teams-item {
     letter-spacing: 0.5px;
     font-size: 16px;
     color: rgb(31, 40, 51, 0.8);
     font-family: "Roboto", sans-serif;
     margin-bottom: 30px;
-}
+} */
 
-.teams-item i {
+/* .teams-item i {
     font-size: 12px;
-}
+} */

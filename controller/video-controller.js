@@ -57,7 +57,5 @@ exports.report = async (req, res) => {
 exports.videoConference = (req, res) => {
   res.render("video_conference", {
     style: "style.css",
-    styleVideo: 'app.css',
-    script: "index.js",
   });
 };
