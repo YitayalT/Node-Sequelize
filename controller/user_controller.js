@@ -49,7 +49,7 @@ exports.search = (req, res) => {
 exports.usersAdd = (req, res) => {
     res.render("create_user", {
       style: "style.css",
-      script: "index.js",
+      script: 'addUser.js'
     });
   }
 
@@ -61,7 +61,6 @@ exports.addUser = (req, res) => {
           return res.render("create_user", {
             existInfo: "user already exist!",
             style: "style.css",
-            script: "index.js",
           });
        } else {
             let newUser = {
@@ -88,17 +87,24 @@ exports.addUser = (req, res) => {
                 return res.render("create_user", {
                   message: "user registered successfully!",
                   style: "style.css",
-                  script: "index.js",
                 });
                   
               })
               .catch((err) => {
                 console.log(err);
+                return res.render("create_user", {
+                  wrong: "something goes wrong, please try again!",
+                  style: "style.css",
+                });
               });
       }
         
    }).catch((err) => {
-        console.log(err);
+     console.log(err);
+     return res.render("create_user", {
+       wrong: "something goes wrong, please try again!",
+       style: "style.css",
+     });
     });
 }
 

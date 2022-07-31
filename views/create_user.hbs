@@ -28,63 +28,88 @@
     <div class="col-md-4 input-control">
        {{!-- <div class="input-control"> --}}
       <label for="uid" class="form-label">User Id</label>
-      <input type="text" class="form-control shadow-none" id="uid" name="uid" />
+      <input type="text" class="form-control  shadow-none" id="uid" name="uid" required/>
       <small class="error"></small>
+      {{!-- <span class="invalid-feedback">
+        user id is required!
+      </span> --}}
     {{!-- </div> --}}
     </div>
     <div class="col-md-4 input-control">
       <label for="fname" class="form-label">First name</label>
-      <input type="text" class="form-control shadow-none" id="fname" name="fname" required/>
-     <small class="error"></small>
+      <input type="text" class="form-control  shadow-none" id="fname" name="fname" required/>
+   
     </div>
     <div class="col-md-4 input-control">
       <label for="lname" class="form-label">Last name</label>
-      <input type="text" class="form-control shadow-none" id="lname" name="lname" required/>
-     <small class="error"></small>
+      <input type="text" class="form-control  shadow-none" id="lname" name="lname" required/>
+     {{!-- <span class="invalid-feedback">
+        last name is required!
+      </span> --}}
     </div>
     <div class="col-md-4 input-control">
       <label for="uname" class="form-label">Username</label>
-      <input type="text" class="form-control shadow-none" id="uname" name="uname" required/>
-      <small class="error"></small>
+      <input type="text" class="form-control  shadow-none" id="uname" name="uname" required/>
+      {{!-- <span class="invalid-feedback">
+        user name is required!
+      </span> --}}
+   
     </div>
 
     <div class="col-md-4">
       <label for="city" class="form-label">City</label>
-      <input type="text" class="form-control shadow-none" id="city" name="city" required />
+      <input type="text" class="form-control  shadow-none" id="city" name="city" required />
+       {{!-- <span class="invalid-feedback">
+        city is required!
+      </span> --}}
     </div>
     <div class="col-md-4">
       <label for="age" class="form-label">Age</label>
-      <input type="number" class="form-control shadow-none" id="age" name="age" required />
+      <input type="number" class="form-control  shadow-none" id="age" name="age" required />
+       {{!-- <span class="invalid-feedback">
+        Age is required!
+      </span> --}}
     </div>
     <div class="col-md-4">             
    <label for="gender" class="form-label">Sex</label>
-   <select class="custom-select shadow-none" id="gender" name="gender" required>
+   <select class="custom-select  shadow-none" id="gender" name="gender" required>
     <option value="female">Female</option>
     <option value="male">Male</option> 
    </select>
     </div>
     <div class="col-md-4">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control shadow-none" id="email" name="email" />
+      <input type="email" class="form-control  shadow-none" id="email" name="email" />
+    {{!-- <span class="invalid-feedback">
+        Email is required!
+      </span> --}}
     </div>
 
     <div class="col-md-4">
       <label for="phone" class="form-label">Phone No.</label>
-      <input type="tel" class="form-control shadow-none" id="phone" name="phone" />
+      <input type="tel" class="form-control  shadow-none" id="phone" name="phone" />
+      {{!-- <span class="invalid-feedback">
+        Phone no is required!
+      </span> --}}
     </div>
 
     <div class="col-md-4">
       <label for="password" class="form-label">password</label>
       <input type="password" class="form-control shadow-none" id="password" name="password" />
+    {{!-- <span class="invalid-feedback"> password is required!</span> --}}
     </div>
 
     <div class="col-md-4">
       <label for="department" class="form-label">Department</label>
-      <input type="text" class="form-control shadow-none" id="department" name="department"/>
+      <input type="text" class="form-control  shadow-none" id="department" name="department"/>
+           {{!-- <span>department is required!</span> --}}
     </div>
     <div class="col-md-4">
       <label for="specialization" class="form-label">Specialization</label>
       <input type="text" class="form-control shadow-none" id="specialization" name="specialization"/>
+       {{!-- <span class="invalid-feedback">
+        specialization is required!
+      </span> --}}
     </div>
     <div class="col-md-4">
       <label for="role" class="form-label">Role</label>
@@ -100,11 +125,11 @@
     </div>
    <div class="col-md-4">
      <label for="specialization" class="form-label">Ward</label>
-      <input type="text" class="form-control shadow-none" id="ward" name="ward"/>
+      <input type="text" class="form-control  shadow-none" id="ward" name="ward"/>
   </div>
   <div class="col-md-4">
    <label for="specialization" class="form-label">wardCode</label>
-      <input type="text" class="form-control shadow-none" id="wardCode" name="wardCode"/>
+      <input type="text" class="form-control  shadow-none" id="wardCode" name="wardCode"/>
   </div>
   <div class="col-md-4">
   </div>
