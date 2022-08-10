@@ -2,6 +2,7 @@ const {Op} = require("sequelize");
 const Client = require("../model/Client");
 
 
+
 exports.getClient = (req, res) => {
   
   res.render("add_client", {
@@ -10,6 +11,7 @@ exports.getClient = (req, res) => {
     });
 
 };
+
 exports.clients = async (req, res) => {
   try {
 
@@ -31,6 +33,7 @@ exports.clients = async (req, res) => {
       console.log(err);
     }
 };
+
 exports.addClient = (req, res) => {
   Client.findOne({ where: { MRN: req.body.mrn } })
     .then((client) => {
@@ -198,3 +201,21 @@ exports.deleteClient = (req, res) => {
   Client.destroy({ where: { MRN: id } });
   res.status(200).redirect("/clients");
 };
+
+
+exports.clientList = async (req, res) => {
+ try {
+
+  const { count, rows } = await Client.findAndCountAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+  });
+  console.log('count', count);
+    // .then((result) => {
+      console.log(rows);
+    res.json(rows);
+    }
+    catch(err){
+      console.log(err);
+    }
+}

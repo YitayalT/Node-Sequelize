@@ -213,7 +213,7 @@ exports.login = (req, res) => {
                          validate: "user.css",
                        });
                      }
-                   } else {
+                  } else {
                       res.status(401).render("login", {
                         message: "Not authenticated",
                         style: "style.css",
