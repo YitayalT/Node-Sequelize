@@ -33,7 +33,7 @@
     overflow-x: hidden;
     transition: all 0.3s ease;
     float: left;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .page .content {
@@ -60,7 +60,7 @@
 }
 
 .sidebarToggle {
-    font-size: 16px;
+    font-size: 20px;
     color: rgba(10, 10, 10, 0.8);
     margin-left: 0px;
     z-index: 999;
@@ -172,12 +172,12 @@
     letter-spacing: 0.5px;
     font-weight: 400;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 20px;
     /* font-family: "Roboto", sans-serif; */
 }
 
 .navigation-link i {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .navigation-list-item:hover .navigation-link {
