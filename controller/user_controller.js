@@ -25,6 +25,9 @@ exports.getUser = async (req, res) => {
       }
   }
 
+exports.goToHmis = (req, res) => {
+  res.render('hmis');
+}
 
 exports.search = async (req, res) => {
   
@@ -190,6 +193,13 @@ exports.login = (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Prescription");
+                       } else if (user.role === process.env.RL_HMIS) {
+                         //  console.log(token);
+                         console.log("HMIS Authenticated!");
+                         res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.status(200).redirect("/hmis");
                        } else if (user.role === process.env.RL_MIDWIFE) {
                          console.log("midwife Authenticated!");
                          res.cookie("access-token", token, {
@@ -198,13 +208,12 @@ exports.login = (req, res) => {
                          //  res.status(200).redirect("/ward");
                          res.render("physician-role", {
                            style: "style.css",
-                          
                          });
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
-                           style: "style.css",                         
-                           validate: 'user.css'
+                           style: "style.css",
+                           validate: "user.css",
                          });
                        }
                      } else {
@@ -354,3 +363,79 @@ exports.updateUser = (req, res) => {
 });
    res.status(200).redirect("/users");
 }
+
+
+
+exports.mobileAuth = (req, res) => {
+ 
+  User.findOne({ where: { user_name: req.body.uname } })
+    .then((user) => {
+      if (!user) {
+       return res.status(401).json({
+           message: "User not found!",         
+         });
+      } else {
+        bcrypt
+          .compare(req.body.password, user.password)
+          .then((result) => {
+            if (result) {
+              let token = jwt.sign(
+                {
+                  user_name: user.user_name,
+                  password: user.password,
+                },
+                process.env.JWT_SECRET_KEY
+              );
+
+              if (token) {
+                if (req.body.role === user.role) {
+                  if (user.role === process.env.RL_RECEPTION) {
+                    //  console.log(token);
+                    console.log("receptionist Authenticated!");
+                    res.cookie("access-token", token, {
+                      maxAge: 60 * 60 * 24 * 1000,
+                    });
+                    //  res.status(200).redirect("/ward");
+                    return res.status(200).json({
+                      user: user,
+                    });
+                  } else {
+                    return res.status(401).json({
+                      message: "Incorrect Credentials!",
+                      error: error,
+                    });
+                  }
+                } else {
+                  return res.status(401).json({
+                    message: "User not found!",
+                  });
+              
+                }
+              } else {
+                return res.status(401).json({
+                  message: "token not found!",
+             
+                });
+              }
+            } else {
+               return res.status(401).json({
+                 message: "Incorrect password !",
+                 
+               });
+            }
+          })
+          .catch((err) => {
+            //  res.status(401).render("login", {
+            //    message: "something goes wrong",
+            //    style: "user.css",
+            //  });
+            console.log(err);
+          });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+ 

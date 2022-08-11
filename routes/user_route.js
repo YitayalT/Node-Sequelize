@@ -22,6 +22,8 @@ router.post("/appointment" , checkAuthMiddleware.checkAuth, appointment.appointm
 router.get('/ward', checkAuthMiddleware.checkAuth, user_controller.ward);
 router.post('/ward',checkAuthMiddleware.checkAuth, user_controller.goToWard);
 router.get('/deleteUser/:id', user_controller.deleteUser);
+router.get('/hmis', user_controller.goToHmis);
+router.post('/mobileLogin', user_controller.mobileAuth);
 
 
 module.exports = router;

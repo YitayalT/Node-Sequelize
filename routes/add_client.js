@@ -11,5 +11,6 @@ router.get('/edit/:id', client_router.edit);
 router.post('/update/:id', client_router.updateClient);
 router.get("/deleteClient/:id", client_router.deleteClient);
 router.get('/clientList', client_router.clientList);
+router.post('/mobileRegister', client_router.mobileRegister);
 
 module.exports = router;

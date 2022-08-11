@@ -106,7 +106,7 @@ exports.addClient = (req, res) => {
           })
           .catch((err) => {
             console.log(err);
-            return res.render("contact-us", {
+            return res.render("add_client", {
               wrong: "something goes wrong. please, try again!",
               style: "style.css",
               script: "index.js",
@@ -222,3 +222,85 @@ exports.clientList = async (req, res) => {
       console.log(err);
     }
 }
+
+
+exports.mobileRegister = (req, res) => {
+   Client.findOne({
+     where: { [Op.or]: [{ MRN: req.body.mrn }, { Phone_no: req.body.phone }] },
+   })
+     .then((client) => {
+       if (client) {
+         console.log("client already exist");
+         return res.status(401).json({
+           message: "client already exist!",
+         });
+       } else {
+         let newClient = {
+           UserId: req.body.userId,
+           name_of_facility: req.body.facility_name,
+           MRN: req.body.mrn,
+           date_reg: req.body.date_of_reg,
+           first_name: req.body.fname,
+           lats_name: req.body.lname,
+           Grand_Father_name: req.body.gfname,
+           Age: req.body.age,
+           Sex: req.body.gender,
+           Email: req.body.email,
+           Phone_no: req.body.phone,
+           Region: req.body.region,
+           Woreda: req.body.city,
+           Kebele: req.body.kebele,
+         };
+         let {
+           UserId,
+           name_of_facility,
+           MRN,
+           date_reg,
+           first_name,
+           lats_name,
+           Grand_Father_name,
+           Age,
+           Sex,
+           Email,
+           Phone_no,
+           Region,
+           Woreda,
+           Kebele,
+         } = newClient;
+
+         Client.create({
+           UserId,
+           name_of_facility,
+           MRN,
+           date_reg,
+           first_name,
+           lats_name,
+           Grand_Father_name,
+           Age,
+           Sex,
+           Email,
+           Phone_no,
+           Region,
+           Woreda,
+           Kebele,
+         })
+           .then((data) => {
+             console.log("client registered successfully!");
+             return res.status(200).json({
+               message: "client registered successfully!",
+             });
+           })
+           .catch((err) => {
+           console.log(err);
+           });
+       }
+     })
+     .catch((err) => {
+       console.log(err);
+       
+      return res.status(201).json({
+        message: "something goes wrong!",
+      });
+     });
+
+}; 
