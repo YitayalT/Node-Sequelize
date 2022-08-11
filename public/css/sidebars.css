@@ -30,7 +30,7 @@
     width: 300px;
     height: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: scroll;
     transition: all 0.3s ease;
     float: left;
     font-size: 22px;
@@ -43,8 +43,8 @@
     padding-bottom: 0;
     height: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
-    font-size: 16px;
+    overflow-x: scroll;
+    font-size: 18px;
     /* position: absolute; */
     transition: all 0.3s ease;
 }

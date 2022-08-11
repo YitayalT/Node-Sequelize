@@ -27,6 +27,9 @@ exports.getAncHistory = (req, res) => {
     raw: true,
   })
     .then((result) => {
+      if (result) {
+        console.log(result.BP);
+      }
       console.log(result);
       res.render("anc-history", {
         result: result,

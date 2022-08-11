@@ -2,8 +2,8 @@
 <div class="page">
    {{> sidebar}}
 <div class="content" style="padding-top:50px ; font-family: 'Times New Roman', Times, serif;">
-<div class="container-fluid p-5 m-2">
-       <h1 class="p-2">Prescription</h1>
+<div class="container-fluid p-5 m-2" style="min-height:520px;">
+      <u style="color: rgb(41, 197, 158);"> <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Prescription</h1></u>
        {{> info}}  
        {{> error}}   
   <form id="form"  class="row g-2" action="/addPrescription" method="POST">        
@@ -54,6 +54,7 @@
          <div class="col-md-4"></div>
         <div class="col-md-4 mt-5 ">
          <input type="submit"  value="Prescribe" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
+         <input type="reset"  value="Reset" class="btn btn-outline-primary btn-sm" style="margin: auto ;"> 
         </div>
 
        </form>

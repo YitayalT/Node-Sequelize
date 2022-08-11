@@ -35,7 +35,9 @@ exports.clients = async (req, res) => {
 };
 
 exports.addClient = (req, res) => {
-  Client.findOne({ where: { MRN: req.body.mrn } })
+  Client.findOne({
+    where: { [Op.or]: [{ MRN: req.body.mrn }, { Phone_no: req.body.phone }] },
+  })
     .then((client) => {
       if (client) {
         console.log("client already exist");
@@ -104,21 +106,21 @@ exports.addClient = (req, res) => {
           })
           .catch((err) => {
             console.log(err);
-             return res.render("contact-us", {
-               wrong: "something goes wrong. please, try again!",
-               style: "style.css",
-               script: "index.js",
-             });
+            return res.render("contact-us", {
+              wrong: "something goes wrong. please, try again!",
+              style: "style.css",
+              script: "index.js",
+            });
           });
       }
     })
     .catch((err) => {
       console.log(err);
-    return res.render("contact-us", {
-      wrong: "something goes wrong!",
-      style: "style.css",
-      script: "index.js",
-    });
+      return res.render("contact-us", {
+        wrong: "something goes wrong!",
+        style: "style.css",
+        script: "index.js",
+      });
     }); 
 };
 
@@ -130,7 +132,8 @@ exports.search = (req, res) => {
     where: {
       [Op.or]: [
         { MRN: query },
-        { first_name:  query } 
+        { first_name:  query } ,
+        { Phone_no:  query } ,
       ],
     },
     raw: true,

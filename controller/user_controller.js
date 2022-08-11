@@ -13,7 +13,8 @@ exports.getUser = async (req, res) => {
     });
     // .then((user) => {
     console.log('count', count);
-    console.log(rows);
+    
+    // console.log(rows.Sex);
      res.render("users", {
       user: rows,
       style: "style.css",
@@ -25,25 +26,27 @@ exports.getUser = async (req, res) => {
   }
 
 
-exports.search = (req, res) => {
-  let query = req.body.users;
-  console.log(query);
-
-  User.findAll({
-    where: {
-      [Op.or]: [{ user_id: query }, { first_name: query }, {role: query}],
-    },
-    raw: true,
-  })
-    .then((result) => {
-      res.render("users", {
-        user: result,
-        style: "style.css",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
+exports.search = async (req, res) => {
+  
+  try {
+    let query = req.body.users;
+    // console.log(query);
+    const { count, rows } = await User.findAndCountAll({
+      where: {
+        [Op.or]: [{ user_id: query }, { first_name: query }, { role: query },{user_name: query}, {Sex:query},{department: query}],
+      },
+      raw: true,
     });
+    // .then((result) => {
+    res.render("users", {
+      user: rows,
+      style: "style.css",
+      count: count,
+    });
+    // })
+  } catch(err){
+      console.log(err);
+    }
 };
 
 exports.usersAdd = (req, res) => {
@@ -112,7 +115,7 @@ exports.getLoggedIn = (req, res) => {
   res.render('login', {
     style: 'style.css',
     validate: 'user.css',
-    script: 'index.js'
+   
   });
 }
 
@@ -124,7 +127,7 @@ exports.login = (req, res) => {
                userName: "user name is required",
                password: "password is required",
                style: "style.css",
-               script: 'index.js'
+               
              });
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
@@ -200,16 +203,14 @@ exports.login = (req, res) => {
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
-                           style: "style.css",
-                           script: 'index.js',
+                           style: "style.css",                         
                            validate: 'user.css'
                          });
                        }
                      } else {
                        res.status(401).render("login", {
                          message: "Incorrect credentials",
-                         style: "style.css",
-                         script: "index.js",
+                         style: "style.css",                        
                          validate: "user.css",
                        });
                      }
@@ -217,8 +218,7 @@ exports.login = (req, res) => {
                       res.status(401).render("login", {
                         message: "Not authenticated",
                         style: "style.css",
-                        script: "index.js",
-                        validate: "user.css",
+                         validate: "user.css",
                       });
                    }
                    
@@ -226,7 +226,7 @@ exports.login = (req, res) => {
                    res.status(401).render("login", {
                      message: "Incorrect Password",
                      style: 'style.css',
-                     script: 'index.js',
+                     
                      validate: 'user.css'
                    });
                  } 
@@ -289,6 +289,7 @@ exports.goToWard = (req, res) => {
             style: "style.css",
           });
         } else if (user.ward === process.env.WARD_PNC && req.body.ward === process.env.WARD_PNC) {
+          console.log(user.ward);
           res.status(200).redirect("/getPnc");
         } else if (user.ward === process.env.WARD_ANC && req.body.ward ===  process.env.WARD_ANC) {
           res.status(200).redirect("/classifying");

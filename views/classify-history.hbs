@@ -1,5 +1,5 @@
      {{> header}}
- <div class="page">
+   <div class="page">
     {{> sidebar}}
     <div class="content" style="padding-top:50px ; font-family: 'Times New Roman', Times, serif;">
       <div class="container-fluid p-5 mt-2" style="min-height: 560px;">
@@ -18,10 +18,10 @@
         <div class="row" style="margin-bottom: 5px;">
              
              {{#each result}}
-              <div class="col-6" style="border: 1px solid blue;">
+              <div class="col-6" style="border: 1px solid blue; margin-bottom: 5px;">
                 <table class="table  table-borderless table-sm">
                   <thead>
-                    <th colspan="2">classifying history</th>
+                    <th colspan="2">{{'client.first_name'}} {{'client.lats_name'}}'s classifying history</th>
                   </thead>
                   <tbody>
                    <tr>
@@ -79,10 +79,10 @@
                 </table>
               </div>
 
-              <div class="col-6" style="border: 1px solid blue;">
+              <div class="col-6" style="border: 1px solid blue; margin-bottom: 5px;">
                 <table class="table  table-borderless table-sm">
                   <thead>
-                    <th colspan="2">classifying history</th>
+                    <th colspan="2"> {{'client.first_name'}} {{'client.lats_name'}}'s classifying history</th>
                   </thead>
      
                  <tbody>
