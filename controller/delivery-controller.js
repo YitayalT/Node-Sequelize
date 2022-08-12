@@ -3,6 +3,7 @@ const User = require('../model/User');
 const Client = require('../model/Client');
 const NewBorn = require('../model/NewBorn');
 const ANCVisit = require('../model/ANCVisit');
+const Request = require('../model/Request');
 
 exports.getDelivery = (req, res) => {
     res.render('delivery', {
@@ -224,4 +225,41 @@ exports.deliveryToLab = (req, res) => {
     style: 'style.css'
   });
 
+}
+
+exports.requestToLab = (req, res) => {
+  let data = {
+    MRN: req.body.mrn,
+    UserId: req.body.userId,
+    From: req.body.from,
+    To: req.body.to,
+    FullName: req.body.fullName,
+    Case: req.body.case,
+    RequestDate: req.body.date,
+  };
+ Request.create(data).then((result) => {
+   return res.status(200).render("delivery-to-lab", {
+     style: 'style.css',
+     message: 'request sent!'
+   });
+ }).catch((err) => {
+   console.log(err);
+   return res.status(200).render("delivery-to-lab", {
+     style: "style.css",
+     wrong: "something goes wrong!",
+   });
+ });
+
+}
+
+exports.getLabRequest  = (req, res) => {
+  Request.findAll({ where: { To: 'lab' } }).then((result) => {
+    console.log(result);
+    res.status(200).render('request-to-lab', {
+      style: 'style.css',
+      result: result
+    })
+  }).catch((err) => {
+    console.log(err);
+  });
 }

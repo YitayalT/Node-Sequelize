@@ -24,6 +24,7 @@ const Feedback = require('./model/Feedback');
 const Prescription = require('./model/Prescription');
 const Radiology = require('./model/Radiology');
 const Bed = require('./model/Bed');
+const Request = require('./model/Request');
 const Pnc = require('./model/PNC');
 const Client = require('./model/Client');
 const User = require('./model/User');
@@ -228,7 +229,22 @@ Pnc.belongsTo(User, {
   foreignKey: "UserId",
 });
 
-//  User.sync({alter: true}).then( () =>{
+// Request relationship
+Client.hasMany(Request, {
+  foreignKey: "MRN",
+});
+Request.belongsTo(Client, {
+  foreignKey: "MRN",
+});
+
+User.hasMany(Request, {
+  foreignKey: "UserId",
+});
+
+Request.belongsTo(User, {
+  foreignKey: "UserId",
+});
+//  Request.sync({alter: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

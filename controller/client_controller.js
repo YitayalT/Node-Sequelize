@@ -1,8 +1,6 @@
 const {Op} = require("sequelize");
 const Client = require("../model/Client");
 
-
-
 exports.getClient = (req, res) => {
   
   res.render("add_client", {
@@ -305,3 +303,4 @@ exports.mobileRegister = (req, res) => {
      });
 
 }; 
+
