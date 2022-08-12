@@ -390,7 +390,7 @@ exports.mobileAuth = (req, res) => {
               if (token) {
                 if (req.body.role === user.role) {
                   if (user.role === process.env.RL_RECEPTION) {
-                    //  console.log(token);
+                     console.log('token is:',token, 'end here');
                     console.log("receptionist Authenticated!");
                     res.cookie("access-token", token, {
                       maxAge: 60 * 60 * 24 * 1000,

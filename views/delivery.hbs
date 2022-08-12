@@ -17,11 +17,11 @@
                     <tbody>
                          <tr>
                             <td>MRN</td>
-                            <td><input class="form-control shadow-none" type="text" name="mrn" id="mrn"></td>
+                            <td><input class="form-control shadow-none" type="text" name="mrn" id="mrn" required></td>
                         </tr>
                         <tr>
                             <td>User ID</td>
-                            <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id"></td>
+                            <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id" required></td>
                         </tr>
                        
                         {{!-- <tr>
@@ -30,7 +30,7 @@
                         </tr> --}}
                         <tr>
                             <td>Date</td>
-                            <td><input class="form-control shadow-none" name="date" id="date" type="date"></td>
+                            <td><input class="form-control shadow-none" name="date" id="date" type="date" required></td>
                         </tr>
                         <tr>
                             <td><label for="gender" class="form-label">Partograph Used </label></td>
@@ -165,7 +165,8 @@
             <div class="row">
                 <div class="col-5"></div>
                 <div class="col-4">
-                     <input type="submit" value="Submit" class="btn btn-outline-primary btn-sm">         
+                     <input type="submit" value="Submit" class="btn btn-outline-primary btn-sm">
+                     <input type="reset" value="Reset" class="btn btn-outline-primary btn-sm">         
                 </div>
             </div>
         </form>

@@ -211,8 +211,9 @@ exports.clientList = async (req, res) => {
 
   const { count, rows } = await Client.findAndCountAll({
     order: [["createdAt", "DESC"]],
-    limit: 10,
+    
   });
+   
   console.log('count', count);
     // .then((result) => {
       console.log(rows);

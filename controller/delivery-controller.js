@@ -217,3 +217,11 @@ exports.addDelivery = (req, res) => {
           });
     });
 }
+
+exports.deliveryToLab = (req, res) => {
+ 
+  res.render('delivery-to-lab', {
+    style: 'style.css'
+  });
+
+}
