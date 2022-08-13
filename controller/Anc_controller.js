@@ -4,6 +4,7 @@ const ANCVisit = require("../model/ANCVisit");
 const User = require('../model/User');
 const Client = require('../model/Client');
 const LabResult = require('../model/LabResult');
+const Radiology = require('../model/Radiology');
 
 exports.getAncVisit = (req, res) => {
     res.render('anc', {
@@ -241,6 +242,61 @@ exports.labHistorySearch = (req, res) => {
   })
     .then((result) => {
       res.render("anc-lab", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.radiologyResult = (req, res) => {
+  Radiology.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("rad-at-anc", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.radiologySearch = (req, res) => {
+  let query = req.body.mrn;
+  console.log(query);
+
+  Radiology.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("rad-at-anc", {
         result: result,
         style: "style.css",
       });

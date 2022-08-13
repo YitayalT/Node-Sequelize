@@ -10,5 +10,7 @@ router.post("/ancVisit",checkAuthMiddleware.checkAuth, anc_controller.addAncData
 router.get('/ancLab',checkAuthMiddleware.checkAuth, anc_controller.labHistory);
 router.post("/ancLabSearch", checkAuthMiddleware.checkAuth, anc_controller.labHistorySearch);
 router.post("/ancSearch", checkAuthMiddleware.checkAuth, anc_controller.ancSearch);
-router.post("/preventiveCareSearch",checkAuthMiddleware.checkAuth, anc_controller.PreventiveCareSearch);
+router.post("/preventiveCareSearch", checkAuthMiddleware.checkAuth, anc_controller.PreventiveCareSearch);
+router.get('/radAtAnc', anc_controller.radiologyResult);
+router.post("/radAtAnc", anc_controller.radiologySearch);
 module.exports = router;
