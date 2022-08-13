@@ -261,7 +261,8 @@ header {
     border-radius: 2px;
     margin-bottom: 30px;
     text-align: center;
-    padding: 30px; }
+    padding: 30px;
+  height: 300px; }
     .key-features .single-key i {
       background-color: #00ab9f;
       padding: 20px;

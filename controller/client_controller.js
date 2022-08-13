@@ -33,93 +33,106 @@ exports.clients = async (req, res) => {
 };
 
 exports.addClient = (req, res) => {
-  Client.findOne({
-    where: { [Op.or]: [{ MRN: req.body.mrn }, { Phone_no: req.body.phone }] },
-  })
-    .then((client) => {
-      if (client) {
-        console.log("client already exist");
-        return res.render("add_client", {
-          existInfo: "client already exist!",
-          style: "style.css",
-          script: "index.js",
-        });
-      } else {
-        let newClient = {
-          UserId: req.body.userId,
-          name_of_facility: req.body.facility_name,
-          MRN: req.body.mrn,
-          date_reg: req.body.date_of_reg,
-          first_name: req.body.fname,
-          lats_name: req.body.lname,
-          Grand_Father_name: req.body.gfname,
-          Age: req.body.age,
-          Sex: req.body.gender,
-          Email: req.body.email,
-          Phone_no: req.body.phone,
-          Region: req.body.region,
-          Woreda: req.body.city,
-          Kebele: req.body.kebele,
-        };
-        let {
-          UserId,
-          name_of_facility,
-          MRN,
-          date_reg,
-          first_name,
-          lats_name,
-          Grand_Father_name,
-          Age,
-          Sex,
-          Email,
-          Phone_no,
-          Region,
-          Woreda,
-          Kebele,
-        } = newClient;
+    var yourPhone = req.body.phone;
+    var phoneNo = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+    if (yourPhone.match(phoneNo)) {
+      Client.findOne({
+        where: {
+          [Op.or]: [{ MRN: req.body.mrn }, { Phone_no: req.body.phone }],
+        },
+      })
+        .then((client) => {
+          if (client) {
+            console.log("client already exist");
+            return res.render("add_client", {
+              existInfo: "client already exist!",
+              style: "style.css",
+              script: "index.js",
+            });
+          } else {
+            let newClient = {
+              UserId: req.body.userId,
+              name_of_facility: req.body.facility_name,
+              MRN: req.body.mrn,
+              date_reg: req.body.date_of_reg,
+              first_name: req.body.fname,
+              lats_name: req.body.lname,
+              Grand_Father_name: req.body.gfname,
+              Age: req.body.age,
+              Sex: req.body.gender,
+              Email: req.body.email,
+              Phone_no: yourPhone,
+              Region: req.body.region,
+              Woreda: req.body.city,
+              Kebele: req.body.kebele,
+            };
+            let {
+              UserId,
+              name_of_facility,
+              MRN,
+              date_reg,
+              first_name,
+              lats_name,
+              Grand_Father_name,
+              Age,
+              Sex,
+              Email,
+              Phone_no,
+              Region,
+              Woreda,
+              Kebele,
+            } = newClient;
 
-        Client.create({
-          UserId,
-          name_of_facility,
-          MRN,
-          date_reg,
-          first_name,
-          lats_name,
-          Grand_Father_name,
-          Age,
-          Sex,
-          Email,
-          Phone_no,
-          Region,
-          Woreda,
-          Kebele,
+            Client.create({
+              UserId,
+              name_of_facility,
+              MRN,
+              date_reg,
+              first_name,
+              lats_name,
+              Grand_Father_name,
+              Age,
+              Sex,
+              Email,
+              Phone_no,
+              Region,
+              Woreda,
+              Kebele,
+            })
+              .then((data) => {
+                console.log("client registered successfully!");
+                return res.render("add_client", {
+                  message: "client registered successfully!",
+                  style: "style.css",
+                  script: "index.js",
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+                return res.render("add_client", {
+                  wrong: "something goes wrong. please, try again!",
+                  style: "style.css",
+                  script: "index.js",
+                });
+              });
+          }
         })
-          .then((data) => {
-            console.log("client registered successfully!");
-            return res.render("add_client", {
-              message: "client registered successfully!",
-              style: "style.css",
-              script: "index.js",
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-            return res.render("add_client", {
-              wrong: "something goes wrong. please, try again!",
-              style: "style.css",
-              script: "index.js",
-            });
+        .catch((err) => {
+          console.log(err);
+          return res.render("contact-us", {
+            wrong: "something goes wrong!",
+            style: "style.css",
+            script: "index.js",
           });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      return res.render("contact-us", {
-        wrong: "something goes wrong!",
+        });
+    } else {
+      return res.render("add_client", {
+        wrong: "Phone Number Not in the correct format. Try again please",
         style: "style.css",
-        script: "index.js",
       });
-    }); 
+    }
+  
+  
 };
 
 exports.search = (req, res) => {

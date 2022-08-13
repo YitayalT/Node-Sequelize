@@ -61,57 +61,74 @@ exports.usersAdd = (req, res) => {
 
 
 exports.addUser = (req, res) => {
-   User.findOne({ where: { email: req.body.email } }).then((user) => {
-     if (user) {
-         console.log('user already exist');
+   var yourPhone = req.body.phone;
+    var phoneNo = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+  if (yourPhone.match(phoneNo)) {
+    User.findOne({
+      where: {
+        [Op.or]: [
+          { user_name: req.body.uname },
+          { Email: req.body.email },
+          { Phone_no: yourPhone },
+        ],
+      },
+    })
+      .then((user) => {
+        if (user) {
+          console.log("user already exist");
           return res.render("create_user", {
-            existInfo: "user already exist!",
+            wrong: "user already exist!",
             style: "style.css",
           });
-       } else {
-            let newUser = {
-              user_id: req.body.uid,
-              first_name: req.body.fname,
-              last_name: req.body.lname,
-              user_name: req.body.uname,
-              City: req.body.city,
-              Age: req.body.age,
-              Sex: req.body.gender,
-              Email: req.body.email,
-              Phone_no: req.body.phone,
-              password: bcrypt.hashSync(req.body.password, 8),
-              department: req.body.department,
-              specialization: req.body.specialization,
-              role: req.body.role,
-              ward: req.body.ward,
-              wardCode: req.body.wardCode
-            };
+        } else {
+          let newUser = {
+            user_id: req.body.uid,
+            first_name: req.body.fname,
+            last_name: req.body.lname,
+            user_name: req.body.uname,
+            City: req.body.city,
+            Age: req.body.age,
+            Sex: req.body.gender,
+            Email: req.body.email,
+            Phone_no: yourPhone,
+            password: bcrypt.hashSync(req.body.password, 8),
+            department: req.body.department,
+            specialization: req.body.specialization,
+            role: req.body.role,
+            ward: req.body.ward,
+            wardCode: req.body.wardCode,
+          };
 
-            User.create(newUser)
-              .then((result) => {
-                console.log("user registered successfully!");
-                return res.render("create_user", {
-                  message: "user registered successfully!",
-                  style: "style.css",
-                });
-                  
-              })
-              .catch((err) => {
-                console.log(err);
-                return res.render("create_user", {
-                  wrong: "something goes wrong, please try again!",
-                  style: "style.css",
-                });
+          User.create(newUser)
+            .then((result) => {
+              console.log("user registered successfully!");
+              return res.render("create_user", {
+                message: "user registered successfully!",
+                style: "style.css",
               });
-      }
-        
-   }).catch((err) => {
-     console.log(err);
+            })
+            .catch((err) => {
+              console.log(err);
+              return res.render("create_user", {
+                wrong: "something goes wrong, please try again!",
+                style: "style.css",
+              });
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.render("create_user", {
+          wrong: "something goes wrong, please try again!",
+          style: "style.css",
+        });
+      });
+  } else {
      return res.render("create_user", {
-       wrong: "something goes wrong, please try again!",
+       wrong: "Phone Number Not in the correct format. Try again please",
        style: "style.css",
      });
-    });
+  }  
 }
 
 exports.getLoggedIn = (req, res) => {
@@ -127,8 +144,6 @@ exports.login = (req, res) => {
         if (!user) {
              res.status(401).render("login", {
                message: "User not found",
-               userName: "user name is required",
-               password: "password is required",
                style: "style.css",
                
              });
@@ -235,7 +250,6 @@ exports.login = (req, res) => {
                    res.status(401).render("login", {
                      message: "Incorrect Password",
                      style: 'style.css',
-                     
                      validate: 'user.css'
                    });
                  } 
