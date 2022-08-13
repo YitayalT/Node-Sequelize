@@ -14,72 +14,7 @@
             </div>
         </nav>
       </div>
-        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Radiology Result</h1>
-        <div class="row" style="margin-bottom: 5px;">
-             
-             {{#each result}}
-             <div class="col-3"></div>
-              <div class="col-6" style="border: 1px solid blue; margin-bottom: 5px;">
-                <table class="table  table-borderless table-sm">
-                  <thead>
-                    <th colspan="2">Radiology Result</th>
-                  </thead>
-                  <tbody>
-                   <tr>
-                    <td>MRN:</td>
-                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{MRN}}</td>
-                   </tr>
-                   <tr>
-                    <td>Client fullName:</td>
-                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{'client.first_name'}} {{'client.lats_name'}} {{'client.Grand_Father_name'}}</td>
-                   </tr>
-                   <tr>
-                    <td>User Id:</td>
-                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{UserId}}</td>
-                   </tr>
-                    <tr>
-                   <td>Date Of Exam:</td>
-                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{DateOfExam}}</td>
-                   </tr>
-                   
-                   <tr>
-                    <td>Type Of Exam:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{TypeOfExam}}</td>
-                   </tr>
-                   <tr>
-                    <td>Technique:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Technique}}</td>
-                   </tr>
-                   <tr>
-                    <td>Impression:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Impression}}</td>                 
-                   </tr>
-
-                   <tr>
-                    <td>Finding:</td>
-                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{Finding}}</td>                 
-                   </tr>
-                   
-                     
-                  <td>Physician role:</td>
-                  <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{'user.role'}}</td>
-                  </tr>
-                  <tr>
-                    <td>Physician Name:</td>
-                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{'user.first_name'}} {{'user.last_name'}}</td>
-                   </tr> 
-                   
-
-                  
-                  
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-3"></div>
-           {{ else}}
-                  <p style="">No data is available</p>
-                {{/each}}
-       </div>
+        {{> radiology-partial}}
       </div> 
       {{> footer}}
       {{> copy}} 
