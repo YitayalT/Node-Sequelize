@@ -7,5 +7,7 @@ router.get('/Radiology', checkAuthMiddleware.checkAuth, radiologyController.getR
 router.get('/radiologyHistory' ,checkAuthMiddleware.checkAuth, radiologyController.radiologyResult);
 router.post('/Radiology', checkAuthMiddleware.checkAuth, radiologyController.addRadiology);
 router.post('/searchRadiology', checkAuthMiddleware.checkAuth, radiologyController.radiologySearch);
+router.get('/radiologyRequest', radiologyController.getLabRequest);
+router.post('/radiologyRequest', radiologyController.labRequestSearch);
 
 module.exports = router;

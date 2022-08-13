@@ -5,8 +5,8 @@
  <div class="container-fluid p-5 ">
     <u style="color: rgb(41, 197, 158);"><h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);"> Add Users</h1></u>
     {{!-- <div class="row"> --}}
-          {{#if message }}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+       {{#if message }}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{{message}}!</strong> 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -15,14 +15,7 @@
    {{!-- </div> --}}
     {{/if}}
     {{!-- existInfo --}}
-      {{#if existInfo }}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>{{existInfo}}!</strong> 
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-    </div>
-     {{/if}}
+      {{> error }}
    <form id="form" class="row g-3" action="/addUser" method="POST">
      
     <div class="col-md-4 input-control">

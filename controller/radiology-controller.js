@@ -1,6 +1,10 @@
+
+const { Op } = require('sequelize');
 const Radiology = require('../model/Radiology');
 const User = require('../model/User');
 const Client = require("../model/Client");
+const Request = require('../model/Request');
+
 exports.getRadiology = (req, res) => {
     res.render('radiology-exam', {
         style: 'style.css'
@@ -91,3 +95,34 @@ exports.addRadiology = (req, res) => {
        });
     });
 }
+
+exports.getLabRequest = (req, res) => {
+  Request.findAll({ where: { To: "radiology" } })
+    .then((result) => {
+      console.log(result);
+      res.status(200).render("radiology-request", {
+        style: "style.css",
+        result: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.labRequestSearch = (req, res) => {
+  let query = req.body.mrn;
+  Request.findAll({
+    where: { [Op.or]: [{ MRN: query }, { FullName: query }] },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("radiology-request", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

@@ -32,7 +32,7 @@ Request.init({
     type: DataTypes.STRING,
   },
   RequestDate: {
-    type: DataTypes.STRING,
+    type: DataTypes.DATEONLY,
     },
     
 },

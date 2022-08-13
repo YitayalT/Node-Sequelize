@@ -4,6 +4,7 @@ const Client = require('../model/Client');
 const NewBorn = require('../model/NewBorn');
 const ANCVisit = require('../model/ANCVisit');
 const Request = require('../model/Request');
+const { Op } = require('sequelize');
 
 exports.getDelivery = (req, res) => {
     res.render('delivery', {
@@ -262,4 +263,21 @@ exports.getLabRequest  = (req, res) => {
   }).catch((err) => {
     console.log(err);
   });
+}
+
+exports.labRequestSearch = (req, res) => {
+  let query = req.body.mrn;
+  Request.findAll({
+    where: { [Op.or]: [{ MRN: query }, { FullName: query }] },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("request-to-lab", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }

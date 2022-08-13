@@ -23,10 +23,10 @@ class AncVisit extends Model{}
         },
       },
       date_of_visit: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
       },
       LMP: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
       },
       BP: {
         type: Sequelize.STRING,
@@ -76,7 +76,7 @@ class AncVisit extends Model{}
         type: DataTypes.STRING,
       },
       Next_Appointment: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
       },
       weight: {
         type: DataTypes.STRING,

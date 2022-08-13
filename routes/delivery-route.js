@@ -9,6 +9,7 @@ router.get("/deliveryAnc", delivery_controller.deliveryAnc);
 router.get("/deliveryToLab", delivery_controller.deliveryToLab);
 router.post("/deliveryToLab", delivery_controller.requestToLab);
 router.get("/requestToLab", delivery_controller.getLabRequest);
+router.post("/requestSearch", delivery_controller.labRequestSearch);
 router.post("/addDelivery", delivery_controller.addDelivery);
 router.post("/newBornSearch", delivery_controller.newBornSearch);
 router.post("/deliverySearch", delivery_controller.deliverySearch);

@@ -18,7 +18,7 @@ Client.init(
       allowNull: false,
     },
     date_reg: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     first_name: {
       type: DataTypes.STRING,

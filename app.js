@@ -244,7 +244,7 @@ User.hasMany(Request, {
 Request.belongsTo(User, {
   foreignKey: "UserId",
 });
-//  Request.sync({alter: true}).then( () =>{
+//  Client.sync({alter: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
