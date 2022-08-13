@@ -9,7 +9,11 @@ router.post("/pncHistorySearch", pncController.pncSearch);
 router.get("/ancPnc", pncController.ancHistory);
 router.post('/ancHistoryPnc', pncController.ancSearch);
 router.get("/deliveryPnc", pncController.deliveryHistory);
+router.get("/LabPnc", pncController.labHistory);
+router.get("/RadPnc", pncController.radiologyResult);
+router.post("/RadPnc", pncController.radiologySearch);
 router.post("/deliveryHistoryPnc", pncController.deliverySearch);
+router.post("/LabPnc", pncController.labHistorySearch);
 router.get("/newBornPnc", pncController.newBornHistory);
 router.post("/newBornHistoryPnc", pncController.newBornSearch);
 

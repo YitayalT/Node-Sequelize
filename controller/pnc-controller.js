@@ -4,6 +4,8 @@ const Delivery = require('../model/Delivery');
 const Client = require('../model/Client');
 const User = require("../model/User");
 const NewBorn = require("../model/NewBorn");
+const LabResult = require('../model/LabResult');
+const Radiology = require('../model/Radiology');
 
 
 exports.getPnc = (req, res) => {
@@ -272,6 +274,120 @@ exports.newBornSearch = (req, res) => {
   })
     .then((result) => {
       res.render("pnc-newBorn", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+exports.labHistory = (req, res) => {
+  LabResult.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("pnc-lab", {
+        result: result,
+        style: "style.css",
+        title: "lab result",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.labHistorySearch = (req, res) => {
+  let query = req.body.labSearch;
+  console.log(query);
+
+  LabResult.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("pnc-lab", {
+        result: result,
+        style: "style.css",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+exports.radiologyResult = (req, res) => {
+  Radiology.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 4,
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    raw: true,
+  })
+    .then((result) => {
+      console.log(result);
+      res.render("pnc-rad", {
+        result: result,
+        style: "style.css",
+        
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.radiologySearch = (req, res) => {
+  let query = req.body.mrn;
+  console.log(query);
+
+  Radiology.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Client,
+      },
+    ],
+    where: {
+      MRN: query,
+    },
+    raw: true,
+  })
+    .then((result) => {
+      res.render("pnc-rad", {
         result: result,
         style: "style.css",
       });

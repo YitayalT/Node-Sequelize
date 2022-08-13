@@ -17,7 +17,7 @@ Message.init(
       allowNull: true,
     },
     Date: {
-      type:DataTypes.DATE,
+      type:DataTypes.DATEONLY,
       allowNull: true,
     },
   },

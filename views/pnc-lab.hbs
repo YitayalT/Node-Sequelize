@@ -1,0 +1,22 @@
+<div class="page">
+    {{> header}}
+    {{> pnc-sidebar}}
+    <div class="content" style="padding-top:50px ; font-family: 'Times New Roman', Times, serif;">
+        <div class="container-fluid p-5 my-5">
+         <div class="col-md-12" style="margin-bottom:10px ; border-bottom: 1px solid blue;">
+           <nav class="navbar">
+            <div class="container-fluid mt-3">
+                <form class="d-flex" action= '/LabPnc' method="post">
+                    <input class="form-control shadow-none me-2" name="labSearch" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        </div>
+           {{> lab-partial}}
+        </div>
+
+    {{> footer }}
+    {{> copy }}
+    </div>
+    </div>

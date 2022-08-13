@@ -36,7 +36,7 @@ exports.sendMessage = (req, res) => {
 exports.message = (req, res) => {
     Message.findAll({
         order: [["createdAt", "DESC"]],
-        limit: 4
+        limit: 15
     })
       .then((result) => {
         res.render("incoming-message", {

@@ -4,8 +4,6 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-
-
 const db = require('./config/database');
 const dotenv = require('dotenv');
 const classifyingRoute = require('./routes/classifying_route');
@@ -244,7 +242,7 @@ User.hasMany(Request, {
 Request.belongsTo(User, {
   foreignKey: "UserId",
 });
-//  Client.sync({alter: true}).then( () =>{
+//  Message.sync({alter: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

@@ -1,6 +1,6 @@
 const LabResult = require('../model/LabResult');
 const User = require('../model/User');
-const moment = require('moment');
+// const moment = require('moment');
 const Client = require('../model/Client');
 
 exports.getLabRequest = (req, res) => {
