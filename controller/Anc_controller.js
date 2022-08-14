@@ -6,14 +6,18 @@ const Client = require('../model/Client');
 const LabResult = require('../model/LabResult');
 const Radiology = require('../model/Radiology');
 
-exports.getAncVisit = (req, res) => {
+exports.getAncVisit = async (req, res) => {
+  const token = await req.cookies["access-token"];
+  console.log('token is:', token);
     res.render('anc', {
         style: 'style.css',
-        title: 'anc visit'
+        title: 'anc visit',
+        token: token
     });
 }
 
-exports.getAncHistory = (req, res) => {
+exports.getAncHistory = async (req, res) => {
+   const token = await req.cookies["access-token"];
   ANCVisit.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -36,6 +40,7 @@ exports.getAncHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "anc history",
+        token: token
       });
     })
     .catch((err) => {
@@ -43,7 +48,8 @@ exports.getAncHistory = (req, res) => {
     });
 };
 
-exports.ancSearch = (req, res) => {
+exports.ancSearch = async (req, res) => {
+   const token = await req.cookies["access-token"];
   let query = req.body.searchAnc;
   console.log(query);
 
@@ -65,6 +71,7 @@ exports.ancSearch = (req, res) => {
       res.render("anc-history", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -72,7 +79,8 @@ exports.ancSearch = (req, res) => {
     });
 };
 
-exports.preventiveCareHistory = (req, res) => {
+exports.preventiveCareHistory = async (req, res) => {
+   const token = await req.cookies["access-token"];
  PreventiveCare.findAll({
    order: [["createdAt", "DESC"]],
    limit: 10,
@@ -92,6 +100,7 @@ exports.preventiveCareHistory = (req, res) => {
        result: result,
        style: "style.css",
        title: "care",
+       token: token
      });
    })
    .catch((err) => {
@@ -100,10 +109,10 @@ exports.preventiveCareHistory = (req, res) => {
 
 }
 
-exports.PreventiveCareSearch = (req, res) => {
+exports.PreventiveCareSearch = async (req, res) => {
+   const token = await req.cookies["access-token"];
   let query = req.body.searchCare;
   console.log(query);
-
   PreventiveCare.findAll({
     include: [
       {
@@ -122,6 +131,7 @@ exports.PreventiveCareSearch = (req, res) => {
       res.render("preventive-care-result", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -129,7 +139,8 @@ exports.PreventiveCareSearch = (req, res) => {
     });
 };
 
-exports.addAncData = (req, res) => {
+exports.addAncData = async (req, res) => {
+   const token = await req.cookies["access-token"];
     let newAncData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -183,6 +194,7 @@ exports.addAncData = (req, res) => {
           message: "data submitted successfully!",
           style: "style.css",
           script: "index.js",
+          token: token
         });
       })
       .catch((err) => {
@@ -191,11 +203,13 @@ exports.addAncData = (req, res) => {
           wrong: "something goes wrong. please, try again",
           style: "style.css",
           script: "index.js",
+          token:token
         });
       });
 }
 
-exports.labHistory = (req, res) => {
+exports.labHistory = async (req, res) => {
+   const token = await req.cookies["access-token"];
   LabResult.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -215,6 +229,7 @@ exports.labHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "lab result",
+        token: token
       });
     })
     .catch((err) => {
@@ -222,7 +237,8 @@ exports.labHistory = (req, res) => {
     });
 };
 
-exports.labHistorySearch = (req, res) => {
+exports.labHistorySearch = async (req, res) => {
+   const token = await req.cookies["access-token"];
   let query = req.body.labSearch;
   console.log(query);
 
@@ -244,6 +260,7 @@ exports.labHistorySearch = (req, res) => {
       res.render("anc-lab", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -251,7 +268,8 @@ exports.labHistorySearch = (req, res) => {
     });
 };
 
-exports.radiologyResult = (req, res) => {
+exports.radiologyResult = async (req, res) => {
+   const token = await req.cookies["access-token"];
   Radiology.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -270,6 +288,7 @@ exports.radiologyResult = (req, res) => {
       res.render("rad-at-anc", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -277,7 +296,8 @@ exports.radiologyResult = (req, res) => {
     });
 };
 
-exports.radiologySearch = (req, res) => {
+exports.radiologySearch = async (req, res) => {
+   const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   console.log(query);
 
@@ -299,6 +319,7 @@ exports.radiologySearch = (req, res) => {
       res.render("rad-at-anc", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {

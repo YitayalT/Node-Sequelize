@@ -5,13 +5,16 @@ const User = require('../model/User');
 const Client = require("../model/Client");
 const Request = require('../model/Request');
 
-exports.getRadiology = (req, res) => {
+exports.getRadiology = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('radiology-exam', {
-        style: 'style.css'
+      style: 'style.css',
+      token: token
     });
 }
 
-exports.radiologyResult = (req, res) => {
+exports.radiologyResult = async (req, res) => {
+  const token = await req.cookies["access-token"];
     Radiology.findAll({
       order: [["createdAt", "DESC"]],
       limit: 4,
@@ -31,6 +34,7 @@ exports.radiologyResult = (req, res) => {
             result: result,
             style: "style.css",
             script: "index.js",
+            token: token
           });
       })
       .catch((err) => {
@@ -39,7 +43,8 @@ exports.radiologyResult = (req, res) => {
 
 };
 
- exports.radiologySearch = (req, res) => {
+exports.radiologySearch = async (req, res) => {
+   const token = await req.cookies["access-token"];
    let query = req.body.mrn;
    console.log(query);
 
@@ -61,6 +66,7 @@ exports.radiologyResult = (req, res) => {
        res.render("radiology-result", {
          result: result,
          style: "style.css",
+         token: token
        });
      })
      .catch((err) => {
@@ -68,7 +74,8 @@ exports.radiologyResult = (req, res) => {
      });
  };
 
-exports.addRadiology = (req, res) => {
+exports.addRadiology = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let newRadiologyData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -85,6 +92,7 @@ exports.addRadiology = (req, res) => {
          message: "data submitted successfully",
          style: "style.css",
          script: "index.js",
+         token: token
        });
     }).catch((err) => {
       console.log(err);
@@ -92,17 +100,20 @@ exports.addRadiology = (req, res) => {
          wrong: "something goes wrong, try again, please",
          style: "style.css",
          script: "index.js",
+         token: token
        });
     });
 }
 
-exports.getLabRequest = (req, res) => {
+exports.getLabRequest = async (req, res) => {
+  const token = await req.cookies["access-token"];
   Request.findAll({ where: { To: "radiology" } })
     .then((result) => {
       console.log(result);
       res.status(200).render("radiology-request", {
         style: "style.css",
         result: result,
+        token: token
       });
     })
     .catch((err) => {
@@ -110,7 +121,8 @@ exports.getLabRequest = (req, res) => {
     });
 };
 
-exports.labRequestSearch = (req, res) => {
+exports.labRequestSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   Request.findAll({
     where: { [Op.or]: [{ MRN: query }, { FullName: query }] },
@@ -120,6 +132,7 @@ exports.labRequestSearch = (req, res) => {
       res.render("radiology-request", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {

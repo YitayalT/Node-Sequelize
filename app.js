@@ -249,22 +249,28 @@ Request.belongsTo(User, {
 // });
 
 // home page route
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  const token = await req.cookies["access-token"];
   res.render('home', {
-    style: 'style.css'
+    style: 'style.css',
+    token: token
   });
 });
 
-app.get('/aboutUs', (req, res) => {
+app.get('/aboutUs', async (req, res) => {
+  const token = await req.cookies["access-token"];
   res.render('about-us', {
-    style: 'style.css'
+    style: 'style.css',
+    token: token
   });
 });
 
 // service route
-app.get("/service", (req, res) => {
+app.get("/service", async  (req, res) => {
+  const token = await req.cookies["access-token"];
   res.render("services", {
     style: "style.css",
+    token: token
   });
 });
 

@@ -1,16 +1,17 @@
 const LabResult = require('../model/LabResult');
 const User = require('../model/User');
-// const moment = require('moment');
 const Client = require('../model/Client');
 
-exports.getLabRequest = (req, res) => {
+exports.getLabRequest = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('lab-exam', {
-        style: 'style.css'
+      style: 'style.css',
+      token: token
     });
 }
 
-exports.addLabResult = (req, res) => {
-
+exports.addLabResult = async (req, res) => {
+const token = await req.cookies["access-token"];
     let newLabResult = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -43,6 +44,7 @@ exports.addLabResult = (req, res) => {
         message: "data is added successfully",
         style: "style.css",
         script: "index.js",
+        token:token
       });
     }).catch((err) => {
       console.log(err);
@@ -50,6 +52,7 @@ exports.addLabResult = (req, res) => {
         wrong: "something goes wrong. please, try again!",
         style: "style.css",
         script: "index.js",
+        token:token
       });
     });
 
@@ -57,7 +60,8 @@ exports.addLabResult = (req, res) => {
 }
 
 
-exports.labHistory = (req, res) => {
+exports.labHistory = async (req, res) => {
+  const token = await req.cookies["access-token"];
   LabResult.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -77,6 +81,7 @@ exports.labHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "lab result",
+        token: token
       });
     })
     .catch((err) => {
@@ -84,7 +89,8 @@ exports.labHistory = (req, res) => {
     });
 };
 
-exports.labHistorySearch = (req, res) => {
+exports.labHistorySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.labSearch;
   console.log(query);
 
@@ -106,6 +112,7 @@ exports.labHistorySearch = (req, res) => {
       res.render("lab-history", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {

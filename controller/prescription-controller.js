@@ -1,14 +1,18 @@
 const Prescription = require('../model/Prescription');
 const User = require('../model/User');
 const Client = require('../model/Client');
-const {Op} = require('sequelize');
-exports.getPrescription = (req, res) => {
+const { Op } = require('sequelize');
+
+exports.getPrescription = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('prescription', {
-        style: 'style.css'
+      style: 'style.css',
+      token: token
     });
 }
 
-exports.prescription = (req, res) => {
+exports.prescription = async (req, res) => {
+  const token = await req.cookies["access-token"];
      Prescription.findAll({
        order: [["createdAt", "DESC"]],
        limit: 4,
@@ -28,6 +32,7 @@ exports.prescription = (req, res) => {
            result: result,
            style: "style.css",
            script: "index.js",
+           token: token
          });
        })
        .catch((err) => {
@@ -35,7 +40,8 @@ exports.prescription = (req, res) => {
        });
  }
 
- exports.prescriptionSearch = (req, res) => {
+exports.prescriptionSearch = async (req, res) => {
+   const token = await req.cookies["access-token"];
    let query = req.body.mrn;
    console.log(query);
 
@@ -57,6 +63,7 @@ exports.prescription = (req, res) => {
        res.render("new-prescription", {
          result: result,
          style: "style.css",
+         token: token
        });
      })
      .catch((err) => {
@@ -65,7 +72,8 @@ exports.prescription = (req, res) => {
  };
 
 
-exports.addPrescription = (req, res) => {
+exports.addPrescription = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let newPrescription = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -83,6 +91,7 @@ exports.addPrescription = (req, res) => {
            message: "prescribed successfully!",
            style: "style.css",
            script: "index.js",
+           token: token
          });
     }).catch((err) => {
       console.log(err);
@@ -90,6 +99,7 @@ exports.addPrescription = (req, res) => {
          wrong: "something goes wrong. please, try again",
          style: "style.css",
          script: "index.js",
+         token: token
        });
     });
 }

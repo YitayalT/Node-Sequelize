@@ -8,15 +8,18 @@ const LabResult = require('../model/LabResult');
 const Radiology = require('../model/Radiology');
 
 
-exports.getPnc = (req, res) => {
+exports.getPnc = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render("pnc", {
       style: "style.css",
       script: "pnc.js",
       validate: 'pnc.css',
+      token: token
     });
 }
 
-exports.ancHistory  = (req, res) =>{
+exports.ancHistory = async (req, res) => {
+  const token = await req.cookies["access-token"];
    ANCVisit.findAll({
      order: [["createdAt", "DESC"]],
      limit: 4,
@@ -36,6 +39,7 @@ exports.ancHistory  = (req, res) =>{
          result: result,
          style: "style.css",
          title: "anc",
+         token: token
        });
      })
      .catch((err) => {
@@ -45,7 +49,8 @@ exports.ancHistory  = (req, res) =>{
 }
 
 
-exports.ancSearch = (req, res) => {
+exports.ancSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.searchAnc;
   console.log(query);
 
@@ -67,6 +72,7 @@ exports.ancSearch = (req, res) => {
       res.render("pnc-anc", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -74,7 +80,8 @@ exports.ancSearch = (req, res) => {
     });
 };
 
-exports.addPnc = (req, res) => {
+exports.addPnc = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let newPncData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -104,6 +111,7 @@ exports.addPnc = (req, res) => {
         res.render("pnc", {
           message: "pnc data is added successfully!",
           style: "style.css",
+          token: token
         });
     }).catch((err) => {
         console.log(err);
@@ -114,7 +122,8 @@ exports.addPnc = (req, res) => {
     });
 }
 
-exports.pncHistory = (req, res) => {
+exports.pncHistory = async  (req, res) => {
+  const token = await req.cookies["access-token"];
   PNC.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -134,6 +143,7 @@ exports.pncHistory = (req, res) => {
          result: result,
          style: "style.css",
          title: "pnc history",
+         token: token
        });
     })
     .catch((err) => {
@@ -141,7 +151,8 @@ exports.pncHistory = (req, res) => {
     });
 }
 
-exports.pncSearch = (req, res) => {
+exports.pncSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   console.log(query);
 
@@ -163,6 +174,7 @@ exports.pncSearch = (req, res) => {
       res.render("pnc-history", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -170,7 +182,8 @@ exports.pncSearch = (req, res) => {
     });
 };
 
-exports.deliveryHistory = (req, res) => {
+exports.deliveryHistory = async  (req, res) => {
+  const token = await req.cookies["access-token"];
   Delivery.findAll({
     order: [["createdAt", "DESC"]],
     limit: 10,
@@ -190,6 +203,7 @@ exports.deliveryHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "delivery history",
+        token: token
       });
     })
     .catch((err) => {
@@ -198,7 +212,8 @@ exports.deliveryHistory = (req, res) => {
 };
 
 
-exports.deliverySearch = (req, res) => {
+exports.deliverySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   console.log(query);
 
@@ -220,6 +235,7 @@ exports.deliverySearch = (req, res) => {
       res.render("pnc-delivery", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -227,7 +243,8 @@ exports.deliverySearch = (req, res) => {
     });
 };
 
-exports.newBornHistory = (req, res) => {
+exports.newBornHistory = async (req, res) => {
+  const token = await req.cookies["access-token"];
   NewBorn.findAll({
     order: [["createdAt", "DESC"]],
     limit: 10,
@@ -247,6 +264,7 @@ exports.newBornHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "newBorn History",
+        token: token
       });
     })
     .catch((err) => {
@@ -254,7 +272,8 @@ exports.newBornHistory = (req, res) => {
     });
 };
 
-exports.newBornSearch = (req, res) => {
+exports.newBornSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   console.log(query);
 
@@ -276,6 +295,7 @@ exports.newBornSearch = (req, res) => {
       res.render("pnc-newBorn", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -284,7 +304,8 @@ exports.newBornSearch = (req, res) => {
 };
 
 
-exports.labHistory = (req, res) => {
+exports.labHistory = async  (req, res) => {
+  const token = await req.cookies["access-token"];
   LabResult.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -304,6 +325,7 @@ exports.labHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "lab result",
+        token: token
       });
     })
     .catch((err) => {
@@ -311,7 +333,8 @@ exports.labHistory = (req, res) => {
     });
 };
 
-exports.labHistorySearch = (req, res) => {
+exports.labHistorySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.labSearch;
   console.log(query);
 
@@ -333,6 +356,7 @@ exports.labHistorySearch = (req, res) => {
       res.render("pnc-lab", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -341,7 +365,8 @@ exports.labHistorySearch = (req, res) => {
 };
 
 
-exports.radiologyResult = (req, res) => {
+exports.radiologyResult = async (req, res) => {
+  const token = await req.cookies["access-token"];
   Radiology.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -360,7 +385,7 @@ exports.radiologyResult = (req, res) => {
       res.render("pnc-rad", {
         result: result,
         style: "style.css",
-        
+        token: token
       });
     })
     .catch((err) => {
@@ -368,7 +393,8 @@ exports.radiologyResult = (req, res) => {
     });
 };
 
-exports.radiologySearch = (req, res) => {
+exports.radiologySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   console.log(query);
 
@@ -390,6 +416,7 @@ exports.radiologySearch = (req, res) => {
       res.render("pnc-rad", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {

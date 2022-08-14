@@ -4,13 +4,16 @@ const ANCVisit = require("../model/ANCVisit");
 const User = require('../model/User');
 const Client = require('../model/Client');
 
-exports.classifying = (req, res) => {
+exports.classifying = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('classifying_form', {
-        style: 'style.css'
+      style: 'style.css',
+      token: token
     });
 }
 
-exports.fillForm = (req, res) => {
+exports.fillForm = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let newData = {
         MRN: req.body.mrn,
         UserId: req.body.userId,
@@ -42,6 +45,7 @@ exports.fillForm = (req, res) => {
            message: "successfully collect obstetric history!",
            style: "style.css",
            script: "index.js",
+           token: token
          });
     }).catch((err) => {
       console.log(err);
@@ -49,13 +53,15 @@ exports.fillForm = (req, res) => {
          wrong: "something goes wrong.please, try again",
          style: "style.css",
          script: "index.js",
+         token: token
        });
     });
 
     // res.status(200).redirect("/classifying");
 }
 
-exports.classifyingSearch = (req, res) => {
+exports.classifyingSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   // console.log(query);
   ClassifyingForm.findAll({
@@ -76,6 +82,7 @@ exports.classifyingSearch = (req, res) => {
       res.render("classify-history", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -83,7 +90,8 @@ exports.classifyingSearch = (req, res) => {
     });
 };
 
-exports.getClassifyingHistory = (req, res) => {
+exports.getClassifyingHistory = async (req, res) => {
+  const token = await req.cookies["access-token"];
   ClassifyingForm.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -103,6 +111,7 @@ exports.getClassifyingHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "classifying",
+        token: token
       });
     })
     .catch((err) => {

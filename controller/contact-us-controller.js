@@ -1,12 +1,15 @@
 
 const Feedback = require('../model/Feedback');
-exports.contactUs = (req, res) => {
+exports.contactUs = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('contact-us',{
-    style: "style.css",
+      style: "style.css",
+      token: token
   });
 }
 
-exports.giveFeedback = (req, res) => {
+exports.giveFeedback = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let feedback = {
       FullName: req.body.name,
       Email: req.body.email,
@@ -20,6 +23,7 @@ exports.giveFeedback = (req, res) => {
             message: "data submitted successfully!",
             style: "style.css",
             script: "index.js",
+            token: token
           });
     }).catch((err) => {
         console.log(err);
@@ -27,6 +31,7 @@ exports.giveFeedback = (req, res) => {
             wrong: "something goes wrong.please, try again!",
             style: "style.css",
             script: "index.js",
+            token: token
           });
     });
 }

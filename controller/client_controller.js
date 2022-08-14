@@ -1,16 +1,19 @@
 const {Op} = require("sequelize");
 const Client = require("../model/Client");
 
-exports.getClient = (req, res) => {
-  
+exports.getClient = async (req, res) => {
+  const token = await req.cookies["access-token"];
   res.render("add_client", {
       style: "style.css",
-      script: "index.js",
+    script: "index.js",
+    token: token
+      
     });
 
 };
 
 exports.clients = async (req, res) => {
+  const token = await req.cookies["access-token"];
   try {
 
   const { count, rows } = await Client.findAndCountAll({
@@ -24,7 +27,8 @@ exports.clients = async (req, res) => {
         result: rows,
         style: "style.css",
         script: "index.js",
-        count: count
+        count: count,
+        token: token
       });
     }
     catch(err){
@@ -32,7 +36,8 @@ exports.clients = async (req, res) => {
     }
 };
 
-exports.addClient = (req, res) => {
+exports.addClient = async (req, res) => {
+  const token = await req.cookies["access-token"];
     var yourPhone = req.body.phone;
     var phoneNo = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
     if (yourPhone.match(phoneNo)) {
@@ -48,6 +53,7 @@ exports.addClient = (req, res) => {
               existInfo: "client already exist!",
               style: "style.css",
               script: "index.js",
+              token: token
             });
           } else {
             let newClient = {
@@ -105,6 +111,7 @@ exports.addClient = (req, res) => {
                   message: "client registered successfully!",
                   style: "style.css",
                   script: "index.js",
+                  token: token
                 });
               })
               .catch((err) => {
@@ -113,6 +120,7 @@ exports.addClient = (req, res) => {
                   wrong: "something goes wrong. please, try again!",
                   style: "style.css",
                   script: "index.js",
+                  token: token
                 });
               });
           }
@@ -123,19 +131,22 @@ exports.addClient = (req, res) => {
             wrong: "something goes wrong!",
             style: "style.css",
             script: "index.js",
+            token: token
           });
         });
     } else {
       return res.render("add_client", {
         wrong: "Phone Number Not in the correct format. Try again please",
         style: "style.css",
+        token: token
       });
     }
   
   
 };
 
-exports.search = (req, res) => {
+exports.search = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let  query  = req.body.mrn;
   console.log(query);
     
@@ -153,6 +164,7 @@ exports.search = (req, res) => {
       res.render("client_list", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -160,7 +172,8 @@ exports.search = (req, res) => {
     });
 };
 
-exports.edit = (req, res) => {
+exports.edit = async (req, res) => {
+  const token = await req.cookies["access-token"];
   const id = req.params.id;
   Client.findOne({
     where: { MRN: id },
@@ -171,6 +184,7 @@ exports.edit = (req, res) => {
       res.render("edit_client", {
         client: client,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -179,6 +193,7 @@ exports.edit = (req, res) => {
 };
 
 exports.updateClient = (req, res) => {
+  
   const id = req.params.id;
   let newClient = {
     name_of_facility: req.body.facility_name,
@@ -303,7 +318,10 @@ exports.mobileRegister = (req, res) => {
              });
            })
            .catch((err) => {
-           console.log(err);
+             console.log(err);
+             return res.status(200).json({
+               message: "something goes wrong!",
+             });
            });
        }
      })

@@ -1,12 +1,15 @@
 const Message = require('../model/Message');
 
-exports.getMessages = (req, res) => {
+exports.getMessages = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('message', {
-        style: 'style.css'
+      style: 'style.css',
+      token: token
     });
 }
 
-exports.sendMessage = (req, res) => {
+exports.sendMessage = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let newMessage = {
       messageType: req.body.message_type,
       fullName: req.body.fullName,
@@ -20,6 +23,7 @@ exports.sendMessage = (req, res) => {
          message: "Message sent successfully!",
          style: "style.css",
          script: "index.js",
+         token: token
        });
     }).catch((err) => {
       console.log(err);
@@ -27,13 +31,15 @@ exports.sendMessage = (req, res) => {
          wrong: "something goes wrong!",
          style: "style.css",
          script: "index.js",
+         token: token
        });
     });
 
     // res.status(200).redirect('/getMessage');
 }
 
-exports.message = (req, res) => {
+exports.message = async (req, res) => {
+  const token = await req.cookies["access-token"];
     Message.findAll({
         order: [["createdAt", "DESC"]],
         limit: 15
@@ -43,6 +49,7 @@ exports.message = (req, res) => {
           result: result,
           style: "style.css",
           script: "index.js",
+          token: token
         });
       })
       .catch((err) => {

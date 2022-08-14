@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const Feedback = require('../model/Feedback');
 
 exports.getUser = async (req, res) => {
+  const token = await req.cookies["access-token"];
   try {
     const { count, rows } = await User.findAndCountAll({
       order: [["createdAt", "DESC"]],
@@ -18,7 +19,8 @@ exports.getUser = async (req, res) => {
      res.render("users", {
       user: rows,
       style: "style.css",
-      count: count
+       count: count,
+      token: token
     });
   }  catch(err) {
         console.log(err);
@@ -30,7 +32,7 @@ exports.goToHmis = (req, res) => {
 }
 
 exports.search = async (req, res) => {
-  
+  const token = await req.cookies["access-token"];
   try {
     let query = req.body.users;
     // console.log(query);
@@ -45,6 +47,7 @@ exports.search = async (req, res) => {
       user: rows,
       style: "style.css",
       count: count,
+      token: token
     });
     // })
   } catch(err){
@@ -52,15 +55,18 @@ exports.search = async (req, res) => {
     }
 };
 
-exports.usersAdd = (req, res) => {
+exports.usersAdd = async (req, res) => {
+   const token = await req.cookies["access-token"];
     res.render("create_user", {
       style: "style.css",
-      script: 'addUser.js'
+      script: 'addUser.js',
+      token: token
     });
   }
 
 
-exports.addUser = (req, res) => {
+exports.addUser = async (req, res) => {
+  const token = await req.cookies["access-token"];
    var yourPhone = req.body.phone;
     var phoneNo = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
   if (yourPhone.match(phoneNo)) {
@@ -79,6 +85,7 @@ exports.addUser = (req, res) => {
           return res.render("create_user", {
             wrong: "user already exist!",
             style: "style.css",
+            token: token
           });
         } else {
           let newUser = {
@@ -105,6 +112,7 @@ exports.addUser = (req, res) => {
               return res.render("create_user", {
                 message: "user registered successfully!",
                 style: "style.css",
+                token: token
               });
             })
             .catch((err) => {
@@ -112,6 +120,7 @@ exports.addUser = (req, res) => {
               return res.render("create_user", {
                 wrong: "something goes wrong, please try again!",
                 style: "style.css",
+                token: token
               });
             });
         }
@@ -121,31 +130,33 @@ exports.addUser = (req, res) => {
         return res.render("create_user", {
           wrong: "something goes wrong, please try again!",
           style: "style.css",
+          token: token
         });
       });
   } else {
      return res.render("create_user", {
        wrong: "Phone Number Not in the correct format. Try again please",
        style: "style.css",
+       token: token
      });
   }  
 }
 
-exports.getLoggedIn = (req, res) => {
+exports.getLoggedIn =  (req, res) => {
   res.render('login', {
     style: 'style.css',
-    validate: 'user.css',
-   
+    validate: 'user.css',    
   });
 }
 
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
+  const token = await req.cookies["access-token"];
     User.findOne({ where: { user_name: req.body.uname } }).then((user) => {
         if (!user) {
              res.status(401).render("login", {
                message: "User not found",
                style: "style.css",
-               
+               token: token
              });
         } else {
               bcrypt.compare(req.body.password, user.password).then((result) => {
@@ -170,6 +181,7 @@ exports.login = (req, res) => {
                          res.render("physician-role", {
                            style: "style.css",
                            user_name: user.user_name,
+                           token: token
                          });
                        } else if (user.role === process.env.RL_RECEPTION) {
                          //  console.log(token);
@@ -223,12 +235,14 @@ exports.login = (req, res) => {
                          //  res.status(200).redirect("/ward");
                          res.render("physician-role", {
                            style: "style.css",
+                           token: token
                          });
                        } else {
                          res.status(401).render("login", {
                            message: "No such role",
                            style: "style.css",
                            validate: "user.css",
+                           token: token
                          });
                        }
                      } else {
@@ -236,6 +250,7 @@ exports.login = (req, res) => {
                          message: "Incorrect credentials",
                          style: "style.css",                        
                          validate: "user.css",
+                         token: token
                        });
                      }
                   } else {
@@ -243,6 +258,7 @@ exports.login = (req, res) => {
                         message: "Not authenticated",
                         style: "style.css",
                          validate: "user.css",
+                         token: token
                       });
                    }
                    
@@ -250,7 +266,8 @@ exports.login = (req, res) => {
                    res.status(401).render("login", {
                      message: "Incorrect Password",
                      style: 'style.css',
-                     validate: 'user.css'
+                     validate: 'user.css',
+                     token: token
                    });
                  } 
               }).catch((err) => {
@@ -283,7 +300,8 @@ exports.deleteUser = (req, res) => {
   res.status(200).redirect("/users");
 }
 
-exports.feedback = (req, res) => {
+exports.feedback = async (req, res) => {
+  const token = await req.cookies["access-token"];
   Feedback.findAll({
     order: [["createdAt", "DESC"]],
     limit: 10,
@@ -291,25 +309,30 @@ exports.feedback = (req, res) => {
      res.render("feedback", {
        user: result,
        style: "style.css",
+       token: token
      });
   }).catch((err) => {
-    
+    console.log(err);
   });
 }
 
 
-exports.ward = (req, res) => {
+exports.ward = async (req, res) => {
+  const token = await req.cookies["access-token"];
   res.render('physician-role', {
-    style: 'style.css',  
+    style: 'style.css',
+    token: token
   });
 }
 
-exports.goToWard = (req, res) => {
+exports.goToWard = async (req, res) => {
+  const token = await req.cookies["access-token"];
   User.findOne({ where: { wardCode: req.body.wardCode } }).then((user) => {
         if (!user) {
           res.status(401).render("physician-role", {
             message: "Invalid ward Code!",
             style: "style.css",
+            token: token
           });
         } else if (user.ward === process.env.WARD_PNC && req.body.ward === process.env.WARD_PNC) {
           console.log(user.ward);
@@ -322,6 +345,7 @@ exports.goToWard = (req, res) => {
            res.status(401).render("physician-role", {
              message: "Incorrect credentials!",
              style: "style.css",
+             token: token
            });
         }
   }).catch((err) => {
@@ -331,7 +355,8 @@ exports.goToWard = (req, res) => {
 }
 
 
-exports.editUser = (req, res) => {
+exports.editUser = async (req, res) => {
+  const token = await req.cookies["access-token"];
   const id = req.params.id;
   User.findOne({
     where: { user_id: id },
@@ -340,7 +365,8 @@ exports.editUser = (req, res) => {
     console.log(user);
     res.render('edit-user', {
       style: 'style.css',
-      user: user
+      user: user,
+      token: token
     })
   }).catch((err) => {
     console.log(err);

@@ -1,13 +1,15 @@
 const Bed = require('../model/Bed');
 
-exports.getBed = (req, res) => {
+exports.getBed = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('bed', {
-        style: 'style.css'
+      style: 'style.css',
+      token: token
     });
 }
 
-exports.addBed = (req, res) => {
-    
+exports.addBed = async (req, res) => {
+    const token = await req.cookies["access-token"];
     let bedData = {
       bedNo: req.body.bedNumber,
       dormNo: req.body.dormNumber,
@@ -19,6 +21,7 @@ exports.addBed = (req, res) => {
           message: "bed details are added successfully!",
           style: "style.css",
           script: "index.js",
+          token: token
         });
         
     }).catch((err) => {
@@ -27,6 +30,7 @@ exports.addBed = (req, res) => {
           message: "something goes wrong. please try again!",
           style: "style.css",
           script: "index.js",
+          token: token
         });
     });
 

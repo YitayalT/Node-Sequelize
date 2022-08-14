@@ -11,15 +11,18 @@ const client = require("twilio")(accountSid, authToken);
 //   apiKey: "57c0aa17",
 //   apiSecret: "krOSrHSaF2t9K2ek",
 // });
-exports.setAppointment = (req, res) => {
+exports.setAppointment = async (req, res) => {
+  const token = await req.cookies["access-token"];
      res.render("notification", {
        style: "style.css",
        script: "index.js",
+       token: token
        
      });
 }
 
-exports.appointmentDate = (req, res) => {
+exports.appointmentDate = async (req, res) => {
+  const token = await req.cookies["access-token"];
     const fName = req.body.fname;
     const message = req.body.message;
     const tel = req.body.phone;
@@ -35,6 +38,7 @@ exports.appointmentDate = (req, res) => {
         style: "style.css",
         script: "index.js",
         message: "notification sent successfully",
+        token: token
       });
     })
     .catch((err) => {

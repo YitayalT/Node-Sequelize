@@ -13,9 +13,13 @@
                             <li><a href="/aboutUs">About Us</a></li>
                             <li><a href="/service">Services</a></li>
                             {{!-- <li><a href="/about">Blog</a></li> --}}
-                            <li><a href="/login">Log in</a></li>
-                            <li><a href="/logout">Logout</a></li>
                             <li><a href="/contactUs">Contact Us</a></li>
+                            {{#if token }}
+                            <li><a href="/logout">Logout</a></li>
+                            {{ else }}
+                             <li><a href="/login">Log in</a></li>
+                            {{/if}}
+                          
                         </ul>
                     </div>
                 </div>

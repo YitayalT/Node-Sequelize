@@ -8,13 +8,16 @@ const LabResult = require("../model/LabResult");
 const { Op } = require('sequelize');
 const Radiology = require('../model/Radiology');
 
-exports.getDelivery = (req, res) => {
+exports.getDelivery = async (req, res) => {
+  const token = await req.cookies["access-token"];
     res.render('delivery', {
         style: 'style.css',
-        title: 'delivery'
+      title: 'delivery',
+        token: token
     });
 }
-exports.deliveryAnc = (req, res) =>{
+exports.deliveryAnc = async (req, res) => {
+  const token = await req.cookies["access-token"];
     ANCVisit.findAll({
       order: [["createdAt", "DESC"]],
       limit: 4,
@@ -34,6 +37,7 @@ exports.deliveryAnc = (req, res) =>{
           result: result,
           style: "style.css",
           title: "anc",
+          token: token
         });
       })
       .catch((err) => {
@@ -41,10 +45,10 @@ exports.deliveryAnc = (req, res) =>{
       });
 }
 
-exports.deliveryAncSearch = (req, res) => {
+exports.deliveryAncSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.searchAnc;
   console.log(query);
-
   ANCVisit.findAll({
     include: [
       {
@@ -63,6 +67,7 @@ exports.deliveryAncSearch = (req, res) => {
       res.render("delivery-anc", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -70,8 +75,8 @@ exports.deliveryAncSearch = (req, res) => {
     });
 };
 
-exports.deliveryHistory = (req, res) => {
-    
+exports.deliveryHistory = async (req, res) => {
+    const token = await req.cookies["access-token"];
   Delivery.findAll({
     order: [["createdAt", "DESC"]],
     limit: 10,
@@ -91,6 +96,7 @@ exports.deliveryHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "delivery list",
+        token: token
       });
     })
     .catch((err) => {
@@ -98,10 +104,9 @@ exports.deliveryHistory = (req, res) => {
     });
 }
 
-exports.deliverySearch = (req, res) => {
+exports.deliverySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
-  console.log(query);
-
   Delivery.findAll({
     include: [
       {
@@ -120,6 +125,7 @@ exports.deliverySearch = (req, res) => {
       res.render("delivery-list", {
         result: result,
         style: "style.css",
+        token:  token
       });
     })
     .catch((err) => {
@@ -127,8 +133,8 @@ exports.deliverySearch = (req, res) => {
     });
 };
 
-exports.newBornHistory = (req, res) => {
-    
+exports.newBornHistory = async (req, res) => {
+    const token = await req.cookies["access-token"];
      NewBorn.findAll({
        order: [["createdAt", "DESC"]],
        limit: 10,
@@ -148,6 +154,7 @@ exports.newBornHistory = (req, res) => {
            result: result,
            style: "style.css",
            title: "delivery list",
+           token: token
          });
        })
        .catch((err) => {
@@ -155,11 +162,10 @@ exports.newBornHistory = (req, res) => {
        });
 }
 
-exports.newBornSearch = (req, res) => {
+exports.newBornSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
-  console.log(query);
-
-  NewBorn.findAll({
+    NewBorn.findAll({
     include: [
       {
         model: User,
@@ -177,6 +183,7 @@ exports.newBornSearch = (req, res) => {
       res.render("new-born-history", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -184,7 +191,8 @@ exports.newBornSearch = (req, res) => {
     });
 };
 
-exports.addDelivery = (req, res) => {
+exports.addDelivery = async (req, res) => {
+  const token = await req.cookies["access-token"];
     let newDeliveryData = {
       MRN: req.body.mrn,
       UID: req.body.user_id,
@@ -211,6 +219,7 @@ exports.addDelivery = (req, res) => {
             message: "data is submitted successfully",
             style: "style.css",
             script: "index.js",
+            token: token
           });
     }).catch((err) => {
       console.log(err);
@@ -218,19 +227,22 @@ exports.addDelivery = (req, res) => {
             wrong: "something goes wrong.please, try again!",
             style: "style.css",
             script: "index.js",
+            token: token
           });
     });
 }
 
-exports.deliveryToLab = (req, res) => {
- 
+exports.deliveryToLab = async (req, res) => {
+ const token = await req.cookies["access-token"];
   res.render('delivery-to-lab', {
-    style: 'style.css'
+    style: 'style.css',
+    token: token
   });
 
 }
 
-exports.requestToLab = (req, res) => {
+exports.requestToLab = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let data = {
     MRN: req.body.mrn,
     UserId: req.body.userId,
@@ -243,31 +255,36 @@ exports.requestToLab = (req, res) => {
  Request.create(data).then((result) => {
    return res.status(200).render("delivery-to-lab", {
      style: 'style.css',
-     message: 'request sent!'
+     message: 'request sent!',
+     token: token
    });
  }).catch((err) => {
    console.log(err);
    return res.status(200).render("delivery-to-lab", {
      style: "style.css",
      wrong: "something goes wrong!",
+     token: token
    });
  });
 
 }
 
-exports.getLabRequest  = (req, res) => {
+exports.getLabRequest = async (req, res) => {
+  const token = await req.cookies["access-token"];
   Request.findAll({ where: { To: 'lab' } }).then((result) => {
     console.log(result);
     res.status(200).render('request-to-lab', {
       style: 'style.css',
-      result: result
+      result: result,
+      token: token
     })
   }).catch((err) => {
     console.log(err);
   });
 }
 
-exports.labRequestSearch = (req, res) => {
+exports.labRequestSearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   Request.findAll({
     where: { [Op.or]: [{ MRN: query }, { FullName: query }] },
@@ -277,6 +294,7 @@ exports.labRequestSearch = (req, res) => {
       res.render("request-to-lab", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -285,7 +303,8 @@ exports.labRequestSearch = (req, res) => {
 }
 
 
-exports.labHistory = (req, res) => {
+exports.labHistory = async (req, res) => {
+  const token = await req.cookies["access-token"];
   LabResult.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -305,6 +324,7 @@ exports.labHistory = (req, res) => {
         result: result,
         style: "style.css",
         title: "lab result",
+        token:token
       });
     })
     .catch((err) => {
@@ -312,7 +332,8 @@ exports.labHistory = (req, res) => {
     });
 };
 
-exports.labHistorySearch = (req, res) => {
+exports.labHistorySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.labSearch;
   console.log(query);
 
@@ -334,6 +355,7 @@ exports.labHistorySearch = (req, res) => {
       res.render("lab-at-delivery", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
@@ -341,7 +363,8 @@ exports.labHistorySearch = (req, res) => {
     });
 };
 
-exports.radiologyResult = (req, res) => {
+exports.radiologyResult = async (req, res) => {
+  const token = await req.cookies["access-token"];
   Radiology.findAll({
     order: [["createdAt", "DESC"]],
     limit: 4,
@@ -360,7 +383,7 @@ exports.radiologyResult = (req, res) => {
       res.render("rad-at-delivery", {
         result: result,
         style: "style.css",
-       
+       token: token
       });
     })
     .catch((err) => {
@@ -368,7 +391,8 @@ exports.radiologyResult = (req, res) => {
     });
 };
 
-exports.radiologySearch = (req, res) => {
+exports.radiologySearch = async (req, res) => {
+  const token = await req.cookies["access-token"];
   let query = req.body.mrn;
   console.log(query);
 
@@ -390,6 +414,7 @@ exports.radiologySearch = (req, res) => {
       res.render("rad-at-delivery", {
         result: result,
         style: "style.css",
+        token: token
       });
     })
     .catch((err) => {
