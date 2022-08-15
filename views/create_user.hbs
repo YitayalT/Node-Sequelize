@@ -12,9 +12,16 @@
      
     <div class="col-md-4 input-control">
        {{!-- <div class="input-control"> --}}
+
+        {{#if userID }}
       <label for="uid" class="form-label">User Id</label>
+      <input type="text" class="form-control  shadow-none" id="uid" name="uid" value="{{userID}}" required/>
+      <small class="error"></small>
+      {{ else }}
+<label for="uid" class="form-label">User Id</label>
       <input type="text" class="form-control  shadow-none" id="uid" name="uid" required/>
       <small class="error"></small>
+      {{/if }}
       {{!-- <span class="invalid-feedback">
         user id is required!
       </span> --}}

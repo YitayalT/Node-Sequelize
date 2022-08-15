@@ -1,16 +1,19 @@
 const NewBorn = require("../model/NewBorn");
 
 exports.getNewBorn = async (req, res) => {
+  const userID = await req.cookies["userID"];
   const token = await req.cookies["access-token"];
     res.render('new-born', {
       style: 'style.css',
-      token: token
+      token: token,
+      userID: userID
     });
 }
 
 
 exports.addNewborn = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     let newBornData = {
       UID: req.body.user_id,
       MRN: req.body.mrn,
@@ -40,7 +43,8 @@ exports.addNewborn = async (req, res) => {
             message: "data added successfully",
             style: "style.css",
             script: "index.js",
-            token: token
+            token: token,
+            userID: userID
           });
 
     }).catch((err) => {
@@ -49,7 +53,8 @@ exports.addNewborn = async (req, res) => {
             wrong: "something goes wrong!",
             style: "style.css",
             script: "index.js",
-            token: token
+            token: token,
+            userID: userID
           });
     });
 }

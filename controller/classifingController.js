@@ -6,14 +6,17 @@ const Client = require('../model/Client');
 
 exports.classifying = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     res.render('classifying_form', {
       style: 'style.css',
-      token: token
+      token: token,
+      userID: userID
     });
 }
 
 exports.fillForm = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     let newData = {
         MRN: req.body.mrn,
         UserId: req.body.userId,
@@ -45,7 +48,8 @@ exports.fillForm = async (req, res) => {
            message: "successfully collect obstetric history!",
            style: "style.css",
            script: "index.js",
-           token: token
+           token: token,
+           userID: userID
          });
     }).catch((err) => {
       console.log(err);
@@ -53,7 +57,8 @@ exports.fillForm = async (req, res) => {
          wrong: "something goes wrong.please, try again",
          style: "style.css",
          script: "index.js",
-         token: token
+         token: token,
+         userID: userID
        });
     });
 

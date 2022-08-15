@@ -2,15 +2,18 @@ const Sequelize = require("sequelize");
 const PreventiveCare = require("../model/PreventiveCare");
 
 exports.getPreventiveCare = async (req, res) => {
+  const userID = await req.cookies["userID"];
   const token = await req.cookies["access-token"];
   res.render("preventive-care", {
     style: "style.css",
-    token: token
+    token: token,
+    userID: userID
   });
 };
 
 exports.addPreventiveCare = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     let careData = {
       MRN: req.body.mrn,
       UserId: req.body.userId,
@@ -33,7 +36,8 @@ exports.addPreventiveCare = async (req, res) => {
        message: "data inserted successfully!",
        style: "style.css",
        script: "index.js",
-       token: token
+       token: token,
+       userID: userID
      });
   }).catch((err) => {
     console.log(err);
@@ -41,7 +45,8 @@ exports.addPreventiveCare = async (req, res) => {
       wrong: "something goes wrong, try again, please",
       style: "style.css",
       script: "index.js",
-      token: token
+      token: token,
+      userID: userID
     });
   });
 

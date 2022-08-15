@@ -3,10 +3,12 @@ const Client = require("../model/Client");
 
 exports.getClient = async (req, res) => {
   const token = await req.cookies["access-token"];
+   const userID = await req.cookies["userID"];
   res.render("add_client", {
       style: "style.css",
     script: "index.js",
-    token: token
+    token: token,
+    userID: userID
       
     });
 
@@ -38,6 +40,8 @@ exports.clients = async (req, res) => {
 
 exports.addClient = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
+  console.log(userID);
     var yourPhone = req.body.phone;
     var phoneNo = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
     if (yourPhone.match(phoneNo)) {
@@ -53,7 +57,8 @@ exports.addClient = async (req, res) => {
               existInfo: "client already exist!",
               style: "style.css",
               script: "index.js",
-              token: token
+              token: token,
+              userID: userID
             });
           } else {
             let newClient = {
@@ -111,7 +116,8 @@ exports.addClient = async (req, res) => {
                   message: "client registered successfully!",
                   style: "style.css",
                   script: "index.js",
-                  token: token
+                  token: token,
+                  userID: userID
                 });
               })
               .catch((err) => {
@@ -120,7 +126,8 @@ exports.addClient = async (req, res) => {
                   wrong: "something goes wrong. please, try again!",
                   style: "style.css",
                   script: "index.js",
-                  token: token
+                  token: token,
+                  userID: userID
                 });
               });
           }
@@ -131,14 +138,16 @@ exports.addClient = async (req, res) => {
             wrong: "something goes wrong!",
             style: "style.css",
             script: "index.js",
-            token: token
+            token: token,
+            userID: userID
           });
         });
     } else {
       return res.render("add_client", {
         wrong: "Phone Number Not in the correct format. Try again please",
         style: "style.css",
-        token: token
+        token: token,
+        userId: userID
       });
     }
   

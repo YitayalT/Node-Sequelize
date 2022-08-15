@@ -4,15 +4,20 @@
    {{> radiology-sidebar}}
 <div class="content" style="padding-top:50px ;  font-family: 'Times New Roman', Times, serif;">
 <div class="container-fluid p-5 m-2" style="min-height: 500px;">
-         <h1>Radiology Exam</h1>
+         <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Radiology Exam</h1>
           <form id="form" class="row g-2" action="/Radiology" method="POST">
       <div class="col-md-4">
         <label for="uid" class="form-label">MRN</label>
         <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>        
         </div>
          <div class="col-md-4">
+          {{#if userID}}
         <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
+        <input type="text" class="form-control shadow-none" id="uid" name="uid" value="{{userID}}" required>        
+         {{ else }}
+          <label for="uid" class="form-label">User Id</label>
+        <input type="text" class="form-control shadow-none" id="uid" name="uid"  required>
+        {{/if }}
         </div>
 
         <div class="col-md-4">

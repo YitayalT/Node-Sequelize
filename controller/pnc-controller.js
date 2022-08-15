@@ -10,11 +10,13 @@ const Radiology = require('../model/Radiology');
 
 exports.getPnc = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     res.render("pnc", {
       style: "style.css",
       script: "pnc.js",
       validate: 'pnc.css',
-      token: token
+      token: token,
+      userID: userID
     });
 }
 
@@ -82,6 +84,7 @@ exports.ancSearch = async (req, res) => {
 
 exports.addPnc = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     let newPncData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -111,13 +114,16 @@ exports.addPnc = async (req, res) => {
         res.render("pnc", {
           message: "pnc data is added successfully!",
           style: "style.css",
-          token: token
+          token: token,
+          userID: userID
         });
     }).catch((err) => {
         console.log(err);
         res.render("pnc", {
           wrong: "something goes wrong please tyr again!",
           style: "style.css",
+          token: token,
+          userID: userID
         });
     });
 }

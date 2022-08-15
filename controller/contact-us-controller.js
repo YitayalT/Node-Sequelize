@@ -35,3 +35,27 @@ exports.giveFeedback = async (req, res) => {
           });
     });
 }
+
+exports.sendFeedback = async (req, res) => {
+  const token = await req.cookies["access-token"];
+  let feedback = {
+    FullName: req.body.name,
+    Email: req.body.email,
+    phone: req.body.phone,
+    feedback: req.body.feedback,
+  };
+
+  Feedback.create(feedback)
+    .then((result) => {
+      console.log("data submitted successfully!");
+      res.status(200).json({
+        message: 'thanks for your valuable feedback!'
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(401).json({
+        message: 'error'
+      })
+    });
+};

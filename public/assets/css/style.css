@@ -543,3 +543,9 @@ header {
       margin-top: 10px;
     }
 
+ /* @media screen and (max-width: 470px) {
+  .login{
+    padding: 10px;
+    width: 100%;
+  }
+ } */

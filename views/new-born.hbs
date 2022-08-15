@@ -17,8 +17,13 @@
              </thead>
                <tbody>
              <tr>
-                <td>User ID</td>
-                    <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id" required></td>
+                {{#if userID }}
+                    <td>User ID</td>
+                    <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id" value="{{userID}}" required></td>
+                 {{ else }}
+                   <td>User ID</td>
+                    <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id"  required></td>
+                 {{/if}}
                 </tr>
                 <tr>
                 <td>MRN</td>

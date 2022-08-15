@@ -36,9 +36,13 @@
         </div>
 
         <div class="col-md-4">
+            {{#if userID}}
                     <label for="mrn" class="form-label">UserId</label>
-                    <input type="text" class="form-control shadow-none" id="userId" name="userId">
-                 
+                    <input type="text" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}" required>
+           {{ else }} 
+             <label for="mrn" class="form-label">UserId</label>
+                    <input type="text" class="form-control shadow-none" id="userId" name="userId"  required>
+           {{/if }}     
         </div>
 
         <div class="col-md-4">

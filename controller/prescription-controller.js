@@ -5,9 +5,11 @@ const { Op } = require('sequelize');
 
 exports.getPrescription = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     res.render('prescription', {
       style: 'style.css',
-      token: token
+      token: token,
+      userID: userID
     });
 }
 
@@ -15,7 +17,7 @@ exports.prescription = async (req, res) => {
   const token = await req.cookies["access-token"];
      Prescription.findAll({
        order: [["createdAt", "DESC"]],
-       limit: 4,
+       limit: 10,
        include: [
          {
            model: User,
@@ -74,6 +76,7 @@ exports.prescriptionSearch = async (req, res) => {
 
 exports.addPrescription = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     let newPrescription = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -91,7 +94,8 @@ exports.addPrescription = async (req, res) => {
            message: "prescribed successfully!",
            style: "style.css",
            script: "index.js",
-           token: token
+           token: token,
+           userID: userID
          });
     }).catch((err) => {
       console.log(err);
@@ -99,7 +103,8 @@ exports.addPrescription = async (req, res) => {
          wrong: "something goes wrong. please, try again",
          style: "style.css",
          script: "index.js",
-         token: token
+         token: token,
+         userID: userID
        });
     });
 }

@@ -8,11 +8,13 @@ const Radiology = require('../model/Radiology');
 
 exports.getAncVisit = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
   console.log('token is:', token);
     res.render('anc', {
         style: 'style.css',
         title: 'anc visit',
-        token: token
+      token: token,
+        userID: userID
     });
 }
 
@@ -140,7 +142,8 @@ exports.PreventiveCareSearch = async (req, res) => {
 };
 
 exports.addAncData = async (req, res) => {
-   const token = await req.cookies["access-token"];
+  const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     let newAncData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -194,7 +197,8 @@ exports.addAncData = async (req, res) => {
           message: "data submitted successfully!",
           style: "style.css",
           script: "index.js",
-          token: token
+          token: token,
+          userID: userID
         });
       })
       .catch((err) => {
@@ -203,7 +207,8 @@ exports.addAncData = async (req, res) => {
           wrong: "something goes wrong. please, try again",
           style: "style.css",
           script: "index.js",
-          token:token
+          token: token,
+          userID: userID
         });
       });
 }

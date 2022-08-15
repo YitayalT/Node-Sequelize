@@ -24,6 +24,8 @@ router.post('/ward',checkAuthMiddleware.checkAuth, user_controller.goToWard);
 router.get('/deleteUser/:id', user_controller.deleteUser);
 router.get('/hmis', user_controller.goToHmis);
 router.post('/mobileLogin', user_controller.mobileAuth);
+router.get("/getFeedback", user_controller.mobileFeedback);
+router.post("/sendFeedback", contactUs.sendFeedback);
 
 
 module.exports = router;

@@ -10,10 +10,12 @@ const Radiology = require('../model/Radiology');
 
 exports.getDelivery = async (req, res) => {
   const token = await req.cookies["access-token"];
+ const userID = await req.cookies["userID"];
     res.render('delivery', {
         style: 'style.css',
-      title: 'delivery',
-        token: token
+        title: 'delivery',
+        token: token,
+        userID: userID
     });
 }
 exports.deliveryAnc = async (req, res) => {
@@ -192,6 +194,7 @@ exports.newBornSearch = async (req, res) => {
 };
 
 exports.addDelivery = async (req, res) => {
+  const userID = await req.cookies["userID"];
   const token = await req.cookies["access-token"];
     let newDeliveryData = {
       MRN: req.body.mrn,
@@ -219,7 +222,8 @@ exports.addDelivery = async (req, res) => {
             message: "data is submitted successfully",
             style: "style.css",
             script: "index.js",
-            token: token
+            token: token,
+            userID: userID
           });
     }).catch((err) => {
       console.log(err);
@@ -227,7 +231,8 @@ exports.addDelivery = async (req, res) => {
             wrong: "something goes wrong.please, try again!",
             style: "style.css",
             script: "index.js",
-            token: token
+            token: token,
+            userID: userID
           });
     });
 }
@@ -243,6 +248,8 @@ exports.deliveryToLab = async (req, res) => {
 
 exports.requestToLab = async (req, res) => {
   const token = await req.cookies["access-token"];
+   const userID = await req.cookies["userID"];
+  
   let data = {
     MRN: req.body.mrn,
     UserId: req.body.userId,
@@ -256,14 +263,16 @@ exports.requestToLab = async (req, res) => {
    return res.status(200).render("delivery-to-lab", {
      style: 'style.css',
      message: 'request sent!',
-     token: token
+     token: token,
+     userID: userID
    });
  }).catch((err) => {
    console.log(err);
    return res.status(200).render("delivery-to-lab", {
      style: "style.css",
      wrong: "something goes wrong!",
-     token: token
+     token: token,
+     userID: userID
    });
  });
 

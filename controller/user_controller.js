@@ -19,7 +19,7 @@ exports.getUser = async (req, res) => {
      res.render("users", {
       user: rows,
       style: "style.css",
-       count: count,
+      count: count,
       token: token
     });
   }  catch(err) {
@@ -56,11 +56,13 @@ exports.search = async (req, res) => {
 };
 
 exports.usersAdd = async (req, res) => {
-   const token = await req.cookies["access-token"];
+  const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     res.render("create_user", {
       style: "style.css",
       script: 'addUser.js',
-      token: token
+      token: token,
+  
     });
   }
 
@@ -151,6 +153,7 @@ exports.getLoggedIn =  (req, res) => {
 
 exports.login = async (req, res) => {
   const token = await req.cookies["access-token"];
+   const userID = await req.cookies["userID"];
     User.findOne({ where: { user_name: req.body.uname } }).then((user) => {
         if (!user) {
              res.status(401).render("login", {
@@ -189,7 +192,14 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/addClient");
+                         res.cookie("userID", user.user_id);
+                        //  res.status(200).redirect("/addClient");
+                          res.status(200).render("add_client", {
+                            style: "style.css",
+                            script: "index.js",
+                            token: token,
+                            userID: user.user_id
+                          });
                          
                        } else if (user.role === process.env.RL_ADMIN) {
                          // console.log(token);
@@ -197,14 +207,28 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/addUser");
+                        //  res.status(200).redirect("/addUser");
+                         res.cookie("userID", user.user_id);
+                         res.status(200).render("create_user", {
+                           style: "style.css",
+                           script: "index.js",
+                           token: token,
+                           
+                         });
                        } else if (user.role === process.env.RL_LABORATORY) {
                          //  console.log(token);
                          console.log("Laboratorist Authenticated!");
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/labExam");
+                         res.cookie("userID", user.user_id);
+                        //  res.status(200).redirect("/labExam");
+                           res.status(200).render("lab-exam", {
+                             style: "style.css",
+                             script: "index.js",
+                             token: token,
+                             userID: user.user_id,
+                           });
                          
                        } else if (user.role === process.env.RL_RADIOLOGY) {
                          //  console.log(token);
@@ -212,7 +236,15 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/Radiology");
+                        //  res.status(200).redirect("/Radiology");
+                          res.cookie("userID", user.user_id);
+                          //  res.status(200).redirect("/labExam");
+                          res.status(200).render("radiology-exam", {
+                            style: "style.css",
+                            script: "index.js",
+                            token: token,
+                            userID: user.user_id,
+                          });
                        } else if (user.role === process.env.RL_PHARMACY) {
                          //  console.log(token);
                          console.log("Pharmacist Authenticated!");
@@ -220,6 +252,7 @@ exports.login = async (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Prescription");
+                         res.cookie("userID", user.user_id);
                        } else if (user.role === process.env.RL_HMIS) {
                          //  console.log(token);
                          console.log("HMIS Authenticated!");
@@ -233,6 +266,7 @@ exports.login = async (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          //  res.status(200).redirect("/ward");
+                         res.cookie("userID", user.user_id);
                          res.render("physician-role", {
                            style: "style.css",
                            token: token
@@ -290,6 +324,11 @@ exports.logout = async (req, res) => {
     httpOnly: true,
   });
 
+  res.cookie("userID", "logout", {
+    expires: new Date(Date.now() + 2 * 1000),
+    httpOnly: true,
+  });
+
   res.status(200).redirect("/login");
   console.log('successfully logged out');
 };
@@ -327,6 +366,7 @@ exports.ward = async (req, res) => {
 
 exports.goToWard = async (req, res) => {
   const token = await req.cookies["access-token"];
+  
   User.findOne({ where: { wardCode: req.body.wardCode } }).then((user) => {
         if (!user) {
           res.status(401).render("physician-role", {
@@ -479,3 +519,16 @@ exports.mobileAuth = (req, res) => {
 }
 
  
+exports.mobileFeedback = async (req, res) => {
+  // const token = await req.cookies["access-token"];
+  Feedback.findAll({
+    order: [["createdAt", "DESC"]],
+    
+  })
+    .then((result) => {
+      res.status(200).json(result,);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

@@ -7,9 +7,11 @@ const Request = require('../model/Request');
 
 exports.getRadiology = async (req, res) => {
   const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
     res.render('radiology-exam', {
       style: 'style.css',
-      token: token
+      token: token,
+      userID: userID
     });
 }
 
@@ -76,6 +78,7 @@ exports.radiologySearch = async (req, res) => {
 
 exports.addRadiology = async (req, res) => {
   const token = await req.cookies["access-token"];
+   const userID = await req.cookies["userID"];
     let newRadiologyData = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -92,7 +95,8 @@ exports.addRadiology = async (req, res) => {
          message: "data submitted successfully",
          style: "style.css",
          script: "index.js",
-         token: token
+         token: token,
+         userID: userID
        });
     }).catch((err) => {
       console.log(err);
@@ -100,7 +104,8 @@ exports.addRadiology = async (req, res) => {
          wrong: "something goes wrong, try again, please",
          style: "style.css",
          script: "index.js",
-         token: token
+         token: token,
+         userID: userID
        });
     });
 }

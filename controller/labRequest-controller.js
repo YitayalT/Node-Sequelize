@@ -4,14 +4,17 @@ const Client = require('../model/Client');
 
 exports.getLabRequest = async (req, res) => {
   const token = await req.cookies["access-token"];
+     const userID = await req.cookies["userID"];
     res.render('lab-exam', {
       style: 'style.css',
-      token: token
+      token: token,
+      userID: userID
     });
 }
 
 exports.addLabResult = async (req, res) => {
-const token = await req.cookies["access-token"];
+  const token = await req.cookies["access-token"];
+   const userID = await req.cookies["userID"];
     let newLabResult = {
       MRN: req.body.mrn,
       UserId: req.body.uid,
@@ -44,7 +47,8 @@ const token = await req.cookies["access-token"];
         message: "data is added successfully",
         style: "style.css",
         script: "index.js",
-        token:token
+        token: token,
+        userID: userID
       });
     }).catch((err) => {
       console.log(err);
@@ -52,7 +56,8 @@ const token = await req.cookies["access-token"];
         wrong: "something goes wrong. please, try again!",
         style: "style.css",
         script: "index.js",
-        token:token
+        token: token,
+        userID: userID
       });
     });
 
