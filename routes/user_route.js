@@ -4,6 +4,7 @@ const user_controller = require("../controller/user_controller");
 const checkAuthMiddleware = require('../midleware/check-auth');
 const contactUs = require('../controller/contact-us-controller');
 const appointment = require('../controller/appointment');
+const hmisController = require('../controller/hmis-controller');
 
 router.get('/addUser',checkAuthMiddleware.checkAuth, user_controller.usersAdd);
 router.post("/addUser",checkAuthMiddleware.checkAuth,user_controller.addUser);
@@ -26,6 +27,7 @@ router.get('/hmis', user_controller.goToHmis);
 router.post('/mobileLogin', user_controller.mobileAuth);
 router.get("/getFeedback", user_controller.mobileFeedback);
 router.post("/sendFeedback", contactUs.sendFeedback);
+router.post('/hmisAnalysis', hmisController.analyzeResult);
 
 
 module.exports = router;

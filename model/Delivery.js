@@ -25,7 +25,7 @@ Delivery.init(
     },
   
     Date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     PartographUsed: {
       type: DataTypes.BOOLEAN,

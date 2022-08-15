@@ -4,6 +4,7 @@ const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const Feedback = require('../model/Feedback');
+const Client = require('../model/Client');
 
 exports.getUser = async (req, res) => {
   const token = await req.cookies["access-token"];
@@ -27,8 +28,24 @@ exports.getUser = async (req, res) => {
       }
   }
 
-exports.goToHmis = (req, res) => {
-  res.render('hmis');
+exports.goToHmis =  async (req, res) => {
+  const token = await req.cookies["access-token"];
+  try {
+     const { count, rows } = await Client.findAndCountAll({
+       order: [["createdAt", "DESC"]],
+       limit: 10,
+     });
+    res.render("hmis", {
+      style: "style.css",
+      rows: rows,
+      token: token,
+      ward: "Total Clients",
+      count: count,
+    });
+  } catch (error) {
+    
+  }
+  
 }
 
 exports.search = async (req, res) => {
