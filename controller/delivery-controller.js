@@ -10,7 +10,8 @@ const Radiology = require('../model/Radiology');
 
 exports.getDelivery = async (req, res) => {
   const token = await req.cookies["access-token"];
- const userID = await req.cookies["userID"];
+  const userID = await req.cookies["userID"];
+  console.log(userID);
     res.render('delivery', {
         style: 'style.css',
         title: 'delivery',

@@ -18,11 +18,16 @@
                             <tbody>
                                 <tr>
                                     <td>MRN</td>
-                                    <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn"></td>
+                                    <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn" required></td>
                                   </tr>
                                   <tr>
-                                    <td>UserId</td>
-                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid"></td>
+                                    {{#if userID }}
+                                    {{!-- <td>UserId</td> --}}
+                                    <td><input class="form-control shadow-none" type="hidden" name="uid" value="{{userID}}" id="uid" required></td>
+                                    {{ else }}
+ <td>UserId</td>
+                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid" required></td>
+                                    {{/if}}
                                   </tr>
 
                                 <tr>

@@ -15,15 +15,17 @@
         <input type="text" class="form-control shadow-none" id="mrn" name="mrn" required>        
         </div>
         
-         <div class="col-md-4">
+         
           {{#if userID }}
-        <label for="uid" class="form-label">User Id</label>
-        <input type="text" class="form-control shadow-none" id="uid" name="uid" value="{{userID}}" required>        
+        {{!-- <label for="uid" class="form-label">User Id</label> --}}
+        <input type="hidden" class="form-control shadow-none" id="uid" name="uid" value="{{userID}}" required>        
          {{ else }}
+         <div class="col-md-4">
          <label for="uid" class="form-label">User Id</label>
          <input type="text" class="form-control shadow-none" id="uid" name="uid" required>        
+             </div>
          {{/if }}
-        </div>
+        
        
           <div class="col-md-4">
         <label for="date" class="form-label">Date of Exam</label>

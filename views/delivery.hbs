@@ -21,10 +21,10 @@
                         </tr>
                         <tr>
                             {{#if userID }}
-                            <td>User ID</td>
-                            <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id" value="{{userID}}"></td>
+                            {{!-- <td>User ID</td> --}}
+                            <td><input class="form-control shadow-none" type="hidden" name="user_id" id="user_id" value="{{userID}}"></td>
                             {{ else }}
- <td>User ID</td>
+                             <td>User ID</td>
                             <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id" required></td>
                             {{/if }}
                         </tr>

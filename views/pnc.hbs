@@ -21,8 +21,13 @@
                                     <td><input class="form-control shadow-none" type="text" id="mrn" name="mrn" required></td>
                                 </tr>
                                 <tr>  
-                                    <td>UserId</td>
-                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid" required></td>
+                                    {{#if userID }}
+                                    {{!-- <td>UserId</td> --}}
+                                    <td><input class="form-control shadow-none" type="hidden" name="uid" id="uid" value="{{userID}}" required></td>
+                                    {{ else }}
+ <td>UserId</td>
+                                    <td><input class="form-control shadow-none" type="text" name="uid" id="uid"  required></td>
+                                    {{/if}}
                                 </tr>
                                     <td>Date of Visit</td>
                                     <td><input class="form-control shadow-none" type="date" name="visit_date" id="visit_date" required></td>    

@@ -207,6 +207,9 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
+                         res.cookie("userID", user.user_id, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
                         //  res.status(200).redirect("/ward");
                          res.render("physician-role", {
                            style: "style.css",
@@ -219,7 +222,9 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.cookie("userID", user.user_id);
+                         res.cookie("userID", user.user_id, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
                         //  res.status(200).redirect("/addClient");
                           res.status(200).render("add_client", {
                             style: "style.css",
@@ -235,12 +240,13 @@ exports.login = async (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                         //  res.status(200).redirect("/addUser");
-                         res.cookie("userID", user.user_id);
+                         res.cookie("userID", user.user_id, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
                          res.status(200).render("create_user", {
                            style: "style.css",
                            script: "index.js",
-                           token: token,
-                           
+                           token: token,                        
                          });
                        } else if (user.role === process.env.RL_LABORATORY) {
                          //  console.log(token);
@@ -248,7 +254,9 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.cookie("userID", user.user_id);
+                         res.cookie("userID", user.user_id, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
                         //  res.status(200).redirect("/labExam");
                            res.status(200).render("lab-exam", {
                              style: "style.css",
@@ -264,7 +272,9 @@ exports.login = async (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                         //  res.status(200).redirect("/Radiology");
-                          res.cookie("userID", user.user_id);
+                          res.cookie("userID", user.user_id, {
+                            maxAge: 60 * 60 * 24 * 1000,
+                          });
                           //  res.status(200).redirect("/labExam");
                           res.status(200).render("radiology-exam", {
                             style: "style.css",
@@ -279,11 +289,16 @@ exports.login = async (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/Prescription");
-                         res.cookie("userID", user.user_id);
+                         res.cookie("userID", user.user_id, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
                        } else if (user.role === process.env.RL_HMIS) {
                          //  console.log(token);
                          console.log("HMIS Authenticated!");
                          res.cookie("access-token", token, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
+                         res.cookie("userID", user.user_id, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          res.status(200).redirect("/hmis");
@@ -293,13 +308,15 @@ exports.login = async (req, res) => {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
                          //  res.status(200).redirect("/ward");
-                         res.cookie("userID", user.user_id);
+                         res.cookie("userID", user.user_id, {
+                           maxAge: 60 * 60 * 24 * 1000,
+                         });
                          res.render("physician-role", {
                            style: "style.css",
                            token: token
                          });
                        } else {
-                         res.status(401).render("login", {
+                         res.status(404).render("login", {
                            message: "No such role",
                            style: "style.css",
                            validate: "user.css",
@@ -393,7 +410,8 @@ exports.ward = async (req, res) => {
 
 exports.goToWard = async (req, res) => {
   const token = await req.cookies["access-token"];
-  
+  const userId = await req.cookies['userID'];
+
   User.findOne({ where: { wardCode: req.body.wardCode } }).then((user) => {
         if (!user) {
           res.status(401).render("physician-role", {
@@ -403,11 +421,26 @@ exports.goToWard = async (req, res) => {
           });
         } else if (user.ward === process.env.WARD_PNC && req.body.ward === process.env.WARD_PNC) {
           console.log(user.ward);
-          res.status(200).redirect("/getPnc");
+          // res.status(200).redirect("/getPnc");
+          res.status(200).render("pnc", {
+            style: "style.css",
+            token: token,
+            userID: user.user_id,
+          });
         } else if (user.ward === process.env.WARD_ANC && req.body.ward ===  process.env.WARD_ANC) {
-          res.status(200).redirect("/classifying");
+          // res.status(200).redirect("/classifying");
+           res.status(200).render("classifying_form", {
+             style: "style.css",
+             token: token,
+             userID: user.user_id,
+           });
         } else if (user.ward ===  process.env.WARD_DELIVERY && req.body.ward === process.env.WARD_DELIVERY) {
-          res.status(200).redirect("/getDelivery");
+          // res.status(200).redirect("/getDelivery");
+           res.status(200).render("delivery", {
+             style: "style.css",
+             token: token,
+             userID: user.user_id,
+           });
         } else {
            res.status(401).render("physician-role", {
              message: "Incorrect credentials!",

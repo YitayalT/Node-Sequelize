@@ -71,9 +71,14 @@
                         </table>
                     </div>
                     <div class="col">
-                        <label for="userId" class="form-label">User Id</label>
-                        <input type="text" class="form-control shadow-none" id="userId" name="userId" required>
-                        <table class="table table-borderless table-sm">
+                        {{#if userID }}
+                        {{!-- <label for="userId" class="form-label">User Id</label> --}}
+                        <input type="hidden" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}" required>
+                        {{ else }}
+                       <label for="userId" class="form-label">User Id</label>
+                        <input type="text" class="form-control shadow-none" id="userId" name="userId"  required>
+                        {{/if }}
+                        <table class="table table-borderless table-sm mt-5">
                             <thead>
                                 <tr>
                                     <th colspan="2">GYN EXAM</th>

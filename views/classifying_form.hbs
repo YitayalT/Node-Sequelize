@@ -149,9 +149,13 @@
 
 
     <div class="col-md-4">
-        
+            {{#if userID }}
+                   {{!-- <label for="userId" class="form-label">User Id</label> --}}
+                    <input type="hidden" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}" required>
+            {{ else }}
                    <label for="userId" class="form-label">User Id</label>
                     <input type="text" class="form-control shadow-none" id="userId" name="userId" required>
+            {{/if }}
     <table class="table table-striped table-borderless">
         <thead>
             <tr>

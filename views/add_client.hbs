@@ -11,16 +11,18 @@
    </div>
             <form id="form" class="row g-3" action="/add" method="POST">
                  
-                <div class="col-md-4">
+                
                    {{#if userID }}
-                    <label for="userId" class="form-label">User Id</label>
-                    <input type="text" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}"  required>
+                    {{!-- <label for="userId" class="form-label">User Id</label> --}}
+                    <input type="hidden" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}"  required>
                   {{!-- <div class="error"></div> --}}
                   {{ else }}
+                  <div class="col-md-4"></div>
                     <label for="userId" class="form-label">User Id</label>
                     <input type="text" class="form-control shadow-none" id="userId" name="userId" required>
+                 </div>
                   {{/if }}
-                  </div>
+                  
                 <!-- facility name field -->
                 
                 <div class="col-md-4">
