@@ -24,6 +24,8 @@ router.get('/ward', checkAuthMiddleware.checkAuth, user_controller.ward);
 router.post('/ward',checkAuthMiddleware.checkAuth, user_controller.goToWard);
 router.get('/deleteUser/:id', user_controller.deleteUser);
 router.get('/hmis', user_controller.goToHmis);
+router.get('/hmisUser', hmisController.users);
+router.post("/hmisUserSearch", hmisController.searchUser);
 router.post('/mobileLogin', user_controller.mobileAuth);
 router.get("/getFeedback", user_controller.mobileFeedback);
 router.post("/sendFeedback", contactUs.sendFeedback);

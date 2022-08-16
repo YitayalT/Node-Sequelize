@@ -52,10 +52,20 @@ exports.search = async (req, res) => {
   const token = await req.cookies["access-token"];
   try {
     let query = req.body.users;
+    let workers = req.body.userSearch;
     // console.log(query);
     const { count, rows } = await User.findAndCountAll({
       where: {
-        [Op.or]: [{ user_id: query }, { first_name: query }, { role: query },{user_name: query}, {Sex:query},{department: query}],
+        [Op.or]: [
+          { user_id: query },
+          { user_id: workers },
+          { first_name: query },
+          { role: query },
+          { role: workers },
+          { user_name: query },
+          { Sex: query },
+          { Sex: workers },
+        ],
       },
       raw: true,
     });
