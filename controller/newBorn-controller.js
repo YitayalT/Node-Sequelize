@@ -34,6 +34,7 @@ exports.addNewborn = async (req, res) => {
       HepatitisB: req.body.HepatitisB,
       VitaminK: req.body.VitaminK,
       Chlorhexidine: req.body.Chlorhexidine,
+      Status: req.body.status,
     };
 
     NewBorn.create(newBornData).then((result) => {

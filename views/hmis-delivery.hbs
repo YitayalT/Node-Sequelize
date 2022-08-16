@@ -1,0 +1,110 @@
+<div class="page">
+ {{> header }}
+ {{> hmis-sidebar}}
+<div class="content" style="font-family: 'Times New Roman', Times, serif;">
+<div class="div p-5" style="min-height: 520px;">
+   <form class="m-3" role="search" action= "/DeliveryHmis" method="post">              
+        <div class="row">
+            <div class="col-3">
+                  <select name="issueDelivery" id="issueDelivery" class="custom-select shadow-none">
+                    <option value="#">select here </option>
+                        <option value="Mother">Mother</option>
+                        <option value="NewBorn">NewBorn</option>
+                   </select>
+             </div>
+              <div class="col-3">
+                    <select name="userSearch" class="custom-select shadow-none" id="userSearch">
+                        <option value="#">select here </option>
+                        <option value="Stable">Stable</option>
+                        <option value="unstable">Unstable</option>
+                        <option value="died">Died</option>
+                    </select>                   
+            </div>
+            <div class="col-2">
+             <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+             </div>
+            <div class="col-4">
+            <button type="button" class="btn btn-success position-relative">
+            <i class="fas fa-users"></i> &nbsp;Total Health Workers
+           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+           {{count}}  
+           </span>
+            </button>
+            </div>
+        </div>
+    </form>
+     <hr style="background-color: rgb(23, 154, 149);">
+     {{#if mother }}
+        <table class="table  table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Mrn</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Sex</th>
+                <th scope="col">region</th>
+                <th scope="col">woreda</th>
+                <th scope="col">phone No</th>
+                <th scope="col">TreatedBy</th>
+              </tr>
+            </thead>
+            <tbody>            
+                  {{#each user }}
+                <tr>
+                <td >{{'client.date_reg'}}</td>
+                <td>{{'client.MRN'}}</td>
+                <td>{{'client.first_name'}} {{'client.lats_name'}}</td>
+                <td> {{'client.Age'}}</td>
+                <td>{{'client.Sex'}}</td>
+                <td>{{'client.Region'}}</td>
+                <td>{{'client.Kebele'}}</td>
+                <td>{{'client.Phone_no'}}</td>
+                 <td>{{ 'user.first_name'}} {{ 'user.last_name'}} </td>
+              </tr>
+              {{else}}
+          <b><i><p style="color: red ; text-align: center; padding: 10px;">No client found! </p></i></b>
+          {{/each}} 
+            
+            </tbody>
+          </table>
+      {{ else }}
+      <table class="table  table-striped table-bordered">
+        <thead>
+              <tr>
+                <th scope="col">Birth Date</th>             
+                <th scope="col">Full Name</th>
+                <th scope="col">Mother Name</th>
+                <th scope="col">Sex</th>
+                <th scope="col">Status</th>
+                <th scope="col">TreatedBy</th>
+                <th scope="col">Mother Address</th>
+                <th scope="col">Mother Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                  {{#each user }}
+                <tr>
+                <td >{{time}}</td>        
+                <td>{{firstName}} {{fatherName}}</td>
+                <td> {{'client.first_name'}} {{'client.lats_name'}}</td>
+                <td>{{sex}}</td>
+                <td>{{Status}}</td>
+                <td>{{ 'user.first_name'}} {{ 'user.last_name'}}</td>
+                <td> {{'client.Woreda'}}</td>
+                <td>{{'client.Phone_no'}}</td>
+                 
+              </tr>
+              {{else}}
+          <b><i><p style="color: red ; text-align: center; padding: 10px;">No babies found! </p></i></b>
+          {{/each}} 
+            
+            </tbody>
+      </table>
+      {{/if}}
+</div>
+{{> footer }}
+{{> copy }}
+</div>
+</div>

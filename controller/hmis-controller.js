@@ -4,6 +4,7 @@ const ANCVisit = require('../model/ANCVisit');
 const Delivery = require('../model/Delivery');
 const PNC = require('../model/PNC');
 const { Op } = require('sequelize');
+const NewBorn = require('../model/NewBorn');
 
 exports.analyzeResult = async (req, res) => {
   const token = await req.cookies["access-token"];
@@ -99,7 +100,6 @@ exports.analyzeResult = async (req, res) => {
     
 }
 
-
 exports.users = async (req, res) => {
   const token = await req.cookies["access-token"];
   try {
@@ -153,6 +153,99 @@ exports.searchUser = async (req, res) => {
     });
     // })
   } catch (err) {
-    console.log(err);
+    
+     res.render("hmis-user", {
+       style: "style.css",
+       count: 0,
+       token: token,
+       
+     });
+     console.log(err);
   }
 };
+
+exports.hmisDelivery = async (req, res) => {
+  const token = await req.cookies["access-token"];
+  const motherStatus = req.body.userSearch;
+  const motherOrNewBorn = req.body.issueDelivery;
+  try {
+    if( motherOrNewBorn === 'Mother'){
+      const { count, rows } = await Delivery.findAndCountAll({
+        include: [
+          {
+            model: User,
+          },
+          {
+            model: Client,
+          },
+        ],
+        where: {
+          MaternalStatus: motherStatus,
+        },
+        raw: true,
+      });
+      console.log(rows);
+      res.render("hmis-delivery", {
+        style: "style.css",
+        token: token,
+        count: count,
+        user: rows,
+        mother: motherOrNewBorn,
+      });
+    } else {
+        const { count, rows } = await NewBorn.findAndCountAll({
+          include: [
+            {
+              model: User,
+            },
+            {
+              model: Client,
+            },
+          ],
+          where: {
+            Status: motherStatus,
+          },
+          raw: true,
+        });
+        console.log(rows);
+        res.render("hmis-delivery", {
+          style: "style.css",
+          token: token,
+          count: count,
+          user: rows,
+          newBorn: motherOrNewBorn,
+        });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  
+}
+
+exports.atDelivery = async (req, res) => {
+  const token = await req.cookies["access-token"];
+ try {
+    const { count, rows } = await Delivery.findAndCountAll({
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Client,
+        },
+      ],
+     
+      raw: true,
+    });
+    
+    console.log(rows);
+
+    res.render("hmis-delivery", {
+      style: "style.css",
+      token: token,
+      count: 0,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}

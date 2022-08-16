@@ -242,7 +242,7 @@ User.hasMany(Request, {
 Request.belongsTo(User, {
   foreignKey: "UserId",
 });
-//  Delivery.sync({alter: true}).then( () =>{
+//  NewBorn.sync({alter: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);

@@ -18,8 +18,8 @@
                <tbody>
              <tr>
                 {{#if userID }}
-                    <td>User ID</td>
-                    <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id" value="{{userID}}" required></td>
+                    
+                    <td><input class="form-control shadow-none" type="hidden" name="user_id" id="user_id" value="{{userID}}" required></td>
                  {{ else }}
                    <td>User ID</td>
                     <td><input class="form-control shadow-none" type="text" name="user_id" id="user_id"  required></td>
@@ -88,8 +88,15 @@
                             <td><input class="form-check-input" type="checkbox" name="alive" value="1"></td>
                         </tr>
                         <tr>
-                            <td>died</td>
-                            <td><input class="form-check-input" type="checkbox" name="died" value="1"></td>
+                            <td>Status</td>
+                            <td>
+                                <select name="status" class="custom-select shadow-none" id="userSearch" required>
+                                     <option value="#">select here </option>
+                                     <option value="Stable">Stable</option>
+                                     <option value="unstable">Unstable</option>
+                                     <option value="died">Died</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>Ointment</td>

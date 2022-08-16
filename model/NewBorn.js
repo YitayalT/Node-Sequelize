@@ -26,7 +26,7 @@ class NewBorn extends Model {}
       primaryKey: true,
     },
     time: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -49,11 +49,8 @@ class NewBorn extends Model {}
     stillBirth: {
       type: DataTypes.BOOLEAN,
     },
-    alive: {
-      type: DataTypes.BOOLEAN,
-    },
-    died: {
-      type: DataTypes.BOOLEAN,
+    Status: {
+      type: DataTypes.STRING,
     },
     Ointment: {
       type: DataTypes.BOOLEAN,
