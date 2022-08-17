@@ -1,0 +1,67 @@
+   {{> header}}
+  <div class="page">
+   {{> profile-sidebar}}
+    <div class="content" style="padding-top:50px; font-family: 'Times New Roman', Times, serif;">   
+        <div class="container-fluid p-5 mt-2" style="min-height: 530px;">
+          {{> error }}
+             {{#each user}}
+               <u style="color: rgb(12, 134, 128);"><h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);"> {{ first_name }}'s profile</h1></u>
+               <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-6">
+              <table class="table  table-borderless">
+                  {{!-- <thead>
+                    <th colspan="2">Prescription</th>
+                  </thead> --}}
+                  <tbody>
+                   <tr>
+                   <td>UserId:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{user_id}}</td>
+                   </tr>
+                   <tr>
+                    <td>Full Name:</td>
+                    <td style="border-bottom:1px solid rgb(0, 0, 0) ;">{{ first_name }} {{last_name}}</td>
+                   </tr>
+                   <tr>
+                    <td>Username:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{user_name}}</td>
+                   </tr>
+                    <tr>
+                   <td>City:</td>
+                   <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{City}}</td>
+                   </tr>
+                   <tr>
+                     <td>Email:</td>
+                     <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{Email}}</td>
+                   </tr>
+                   <tr>
+                    <td>Phone No:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{Phone_no}}</td>
+                   </tr>
+                   <tr>
+                    <td>department: </td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{department}}</td>
+                   </tr>
+                   <tr>
+                    <td>specialization: </td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;">{{specialization}}</td>                 
+                   </tr>
+
+                   <tr>
+                    <td>role:</td>
+                    <td style="border-bottom:1px solid rgb(11, 4, 4) ;"> {{role}}</td>                 
+                   </tr> 
+                  </tbody>
+               </table>
+             {{ else}}
+            <p>no user data</p>
+            {{/each}}
+                </div>
+               </div>
+             
+             
+        </div>
+{{> footer }}
+{{> copy }}
+    </div>
+</div>

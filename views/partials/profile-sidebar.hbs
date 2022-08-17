@@ -1,0 +1,81 @@
+<div class="sidebar mt-5">
+  <div class="sidebar-body" style="font-family: 'Times New Roman', Times, serif;">
+    <ul class="navigation-list">
+         <li class="navigation-list-item">
+        <a class="navigation-link" href="#">
+          <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-9 mt-5">
+              <img src="image/doctor_1.jpg" alt="No image" style="height: 100px; width: 100px; border-radius: 50px;" >
+            </div>
+          </div>
+        </a>
+      </li>
+      {{!-- <li class="navigation-list-item">
+        <a class="navigation-link" href="#">
+          <div class="row">
+            <div class="col-2">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <div class="col-9">
+              change password
+            </div>
+          </div>
+        </a>
+      </li> --}}
+       <!-- Button trigger modal -->
+       <li class="navigation-list-item">
+        {{!-- <a class="navigation-link" href="/changeP"> --}}
+          <div class="row">
+            <div class="col-2">
+              {{!-- <i class="fas fa-tachometer-alt"></i> --}}
+            </div>
+            <div class="col-9">
+              <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+               Change Password
+                </button>
+            </div>
+          </div>
+        {{!-- </a> --}}
+      </li>
+
+<form action="/changeP" method="post">
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="font-size: medium;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+          <div class="row">
+            <div class="col">
+              <label for="old_password">Old Password</label>
+              <input type="text" class="form-control shadow-none" name="old_password" id="old_password">
+            </div>
+            <div class="col">
+              <label for="new_password">New Password</label>
+              <input type="text" class="form-control shadow-none" name="new_password" id="new_password">
+            </div>
+          </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ </form>
+    
+     
+
+    </ul>
+  </div>
+</div>

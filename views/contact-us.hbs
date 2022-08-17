@@ -23,32 +23,21 @@
       <div class="row cf-ro">
         <div class="col-3"><label>Enter Name :</label></div>
         <div class="col-8">
-          <input type="text" placeholder="Enter Name" name="name" class="form-control"/></div>
+          <input type="text" placeholder="Enter Name" name="name" class="form-control" required/></div>
       </div>
       <div class="row cf-ro">
         <div class="col-3"><label>Email Address :</label></div>
-        <div class="col-8"><input
-            type="text"
-            name="email"
-            placeholder="Enter Email Address"
-            class="form-control"
-          /></div>
+        <div class="col-8"><input type="text" name="email" placeholder="Enter Email Address" required class="form-control"/></div>
       </div>
       <div class="row cf-ro">
         <div class="col-3"><label>Mobile Number:</label></div>
         <div class="col-8">
-          <input type="text" name="phone" placeholder="Enter Mobile Number" class="form-control"/></div>
+          <input type="tel" name="phone" placeholder="Enter Mobile Number" class="form-control" min="10" max="13" required/></div>
       </div>
       <div class="row cf-ro">
         <div class="col-3"><label>Enter Message:</label></div>
         <div class="col-8">
-          <textarea
-            rows="5"
-            placeholder="Enter Your Message"
-            class="form-control"
-            name="feedback"
-          ></textarea>
-        </div>
+          <textarea rows="5" placeholder="Enter Your Message" class="form-control" name="feedback" required ></textarea></div>
       </div>
       <div class="row cf-ro">
         <div class="col-sm-3"><label></label></div>

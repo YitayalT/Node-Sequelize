@@ -178,6 +178,77 @@ exports.getLoggedIn =  (req, res) => {
   });
 }
 
+exports.changePassword = async (req, res) => {
+  const userID = await req.cookies["userID"]; 
+  const token = await req.cookies["access-token"];
+  const oldPassword = req.body.old_password;
+  const newPassword = bcrypt.hashSync(req.body.new_password, 8);
+  User.findOne({ where: { user_id: userID } }).then((user) => {
+    console.log('user',user);
+    if (user) {
+      bcrypt.compare(oldPassword, user.password).then((result) => {
+        console.log('result', result);
+        if (result) {
+          User.update({ password: newPassword },{
+            
+            where: {
+              user_id: userID,
+            },
+          })
+            .then((result) => {
+              console.log("updated!");
+              console.log(result);
+              res.redirect('/profile');
+            })
+            .catch((err) => {
+              console.log(err);
+               res.render("profile", {
+                 style: "style.css",
+                 token: token,
+                 wrong: "something goes wrong!",
+                 userId: userID,
+               });
+            });
+        } else {
+          console.log('password do not match!');
+          res.render("profile", {
+            style: "style.css",
+            token: token,
+            wrong: "password do not match!",
+            userId: userID,
+          });
+        }
+      }).catch((err) => {
+        console.log(err);
+        res.render("profile", {
+          style: "style.css",
+          token: token,
+          wrong: "something goes wrong!",
+          userId: userID,
+        });
+      });
+    } else {
+      console.log('user not found!');
+      res.render("profile", {
+        style: "style.css",
+        token: token,
+        wrong: "user not found!",
+        userId: userID,
+      });
+    }
+    
+  }).catch((err) => {
+    console.log(err);
+    res.render("profile", {
+      style: "style.css",
+      token: token,
+      wrong: "something goes wrong!",
+      userId: userID,
+    });
+  });
+
+}
+
 exports.login = async (req, res) => {
   const token = await req.cookies["access-token"];
    const userID = await req.cookies["userID"];
@@ -288,10 +359,11 @@ exports.login = async (req, res) => {
                          res.cookie("access-token", token, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
-                         res.status(200).redirect("/Prescription");
+                         
                          res.cookie("userID", user.user_id, {
                            maxAge: 60 * 60 * 24 * 1000,
                          });
+                         res.status(200).redirect("/Prescription");
                        } else if (user.role === process.env.RL_HMIS) {
                          //  console.log(token);
                          console.log("HMIS Authenticated!");
@@ -367,6 +439,9 @@ exports.logout = async (req, res) => {
     expires: new Date(Date.now() + 2 * 1000),
     httpOnly: true,
   });
+
+  // res.clearCookie("access-token");
+  // res.clearCookie("userID");
 
   res.cookie("userID", "logout", {
     expires: new Date(Date.now() + 2 * 1000),
@@ -473,7 +548,10 @@ exports.editUser = async (req, res) => {
   });;
 }
 
-exports.updateUser = (req, res) => {
+exports.updateUser = async (req, res) => {
+  const token = await req.cookies["access-token"];
+   const userID = await req.cookies["userID"];
+
   const id = req.params.id;
   let newUser = {
     user_id: req.body.uid,
@@ -592,3 +670,31 @@ exports.mobileFeedback = async (req, res) => {
       console.log(err);
     });
 };
+
+exports.profile = async  (req, res) => {
+ const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
+  
+  User.findAll({
+    where: {
+      user_id: userID
+    },
+    raw: true
+  }).then((result) => {
+    console.log(result);
+    console.log(result.first_name);
+    res.render("profile", {
+      style: "style.css",
+      token: token,
+      userId: userID,
+      user: result,
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.render("profile", {
+      style: "style.css",
+      token: token,
+
+    });
+  });
+}
