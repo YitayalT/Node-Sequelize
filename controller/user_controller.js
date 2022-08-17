@@ -487,7 +487,7 @@ exports.goToWard = async (req, res) => {
   const token = await req.cookies["access-token"];
   const userId = await req.cookies['userID'];
 
-  User.findOne({ where: { wardCode: req.body.wardCode } }).then((user) => {
+  User.findOne({ where: { [Op.and]: [{wardCode: req.body.wardCode},{user_id: userId}] } }).then((user) => {
         if (!user) {
           res.status(401).render("physician-role", {
             message: "Invalid ward Code!",

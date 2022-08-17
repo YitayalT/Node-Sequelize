@@ -239,10 +239,12 @@ exports.addDelivery = async (req, res) => {
 }
 
 exports.deliveryToLab = async (req, res) => {
+  const userID = await req.cookies["userID"];
  const token = await req.cookies["access-token"];
   res.render('delivery-to-lab', {
     style: 'style.css',
-    token: token
+    token: token,
+    userID: userID
   });
 
 }

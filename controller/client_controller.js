@@ -238,10 +238,11 @@ exports.deleteClient =   (req, res) => {
   let id = req.params.id;
   Client.findByPk(id).then((result) => {
       Client.destroy({ where: { MRN: id } });
-  // res.status(200).redirect("/clients");
+  res.status(200).redirect("/clients");
     console.log('deleted successfully!');
   }).catch((err) => {
     console.log(err);
+    res.status(200).redirect("/clients");
   });
 
 };

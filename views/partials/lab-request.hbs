@@ -1,11 +1,4 @@
- <div class="container-fluid p-5 mt-2">
-        <div class="row">
-            <div class="col-md-12">
-           <div class="col-md-4"></div>
-        <form id="form"  action="/deliveryToLab" method="POST">
-        <h1 class="p-2" style="text-align: center ; color: rgb(41, 197, 158);">Lab request Form</h1>
-        
-        {{> info}}
+<div class="row">
       <div class="col-md-4">
       <label for="role" class="form-label">From</label>
       <select class="custom-select shadow-none" id="from" name="from" required>
@@ -35,15 +28,17 @@
                  
         </div>
 
-        <div class="col-md-4">
+       
             {{#if userID}}
-                    <label for="mrn" class="form-label">UserId</label>
-                    <input type="text" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}" required>
+                    {{!-- <label for="mrn" class="form-label">UserId</label> --}}
+                    <input type="hidden" class="form-control shadow-none" id="userId" name="userId" value="{{userID}}" required>
            {{ else }} 
+            <div class="col-md-4">
              <label for="mrn" class="form-label">UserId</label>
-                    <input type="text" class="form-control shadow-none" id="userId" name="userId"  required>
+              <input type="text" class="form-control shadow-none" id="userId" name="userId"  required>
+               </div>
            {{/if }}     
-        </div>
+        
 
         <div class="col-md-4">
                     <label for="mrn" class="form-label">Case</label>
@@ -61,7 +56,5 @@
        </div>
                   
         <div class="col-md-4"></div>
-         </form>
-            </div>
-        </div>            
-    </div>
+ </div>
+         
