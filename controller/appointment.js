@@ -35,7 +35,7 @@ exports.appointmentDate = async (req, res) => {
   client.messages.create({
       body: "Hello, Gelila. Your appointment date is tomorrow at 4:00. FHCSH.",
       from: "+12569801297",
-      to: "+251928577562",
+      to: "+251928577562",  
     })
     .then((message) => {
       console.log(message);

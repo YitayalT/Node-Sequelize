@@ -64,6 +64,7 @@ exports.search = async (req, res) => {
           { role: workers },
           { user_name: query },
           { Sex: query },
+          { Phone_no: query },
           { Sex: workers },
         ],
       },
@@ -495,7 +496,7 @@ exports.goToWard = async (req, res) => {
             token: token
           });
         } else if (user.ward === process.env.WARD_PNC && req.body.ward === process.env.WARD_PNC) {
-          console.log(user.ward);
+          // console.log(user.ward);
           // res.status(200).redirect("/getPnc");
           res.status(200).render("pnc", {
             style: "style.css",

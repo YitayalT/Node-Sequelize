@@ -10,11 +10,11 @@ const Request = require('../model/Request');
 exports.getAncVisit = async (req, res) => {
   const token = await req.cookies["access-token"];
   const userID = await req.cookies["userID"];
-  console.log('token is:', token);
+  // console.log('token is:', token);
     res.render('anc', {
         style: 'style.css',
         title: 'anc visit',
-      token: token,
+        token: token,
         userID: userID
     });
 }
@@ -35,10 +35,8 @@ exports.getAncHistory = async (req, res) => {
     raw: true,
   })
     .then((result) => {
-      if (result) {
-        console.log('result ', result.BP);
-      }
-      console.log(result);
+
+      // console.log(result);
       res.render("anc-history", {
         result: result,
         style: "style.css",
