@@ -59,6 +59,7 @@ exports.report = async (req, res) => {
 
 
 exports.prescriptionReport = async (req, res) => {
+  const token = await req.cookies["access-token"];
     try {
     const browser = await puppeteer.launch();
       let query = req.body.mrn;
@@ -88,6 +89,7 @@ exports.prescriptionReport = async (req, res) => {
                  style: "style.css",
                  script: "index.js",
                  result: result,
+                 token: token,
                  message: "report is downloaded at USER-AUTH folder",
                });
             return (content = compile("prescription-report", result));

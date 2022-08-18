@@ -16,6 +16,8 @@ router.post("/deliveryHistoryPnc", pncController.deliverySearch);
 router.post("/LabPnc", pncController.labHistorySearch);
 router.get("/newBornPnc", pncController.newBornHistory);
 router.post("/newBornHistoryPnc", pncController.newBornSearch);
+router.get('/pncToLab', pncController.pncToLab);
+router.post("/pncToLab", pncController.requestToLab);
 
 
 module.exports = router;

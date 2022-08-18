@@ -19,6 +19,7 @@ exports.getDelivery = async (req, res) => {
         userID: userID
     });
 }
+
 exports.deliveryAnc = async (req, res) => {
   const token = await req.cookies["access-token"];
     ANCVisit.findAll({
@@ -283,16 +284,22 @@ exports.requestToLab = async (req, res) => {
 
 exports.getLabRequest = async (req, res) => {
   const token = await req.cookies["access-token"];
-  Request.findAll({ where: { To: 'lab' } }).then((result) => {
-    console.log(result);
-    res.status(200).render('request-to-lab', {
-      style: 'style.css',
-      result: result,
-      token: token
+  Request.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+    where: { To: "lab" },
+  })
+    .then((result) => {
+      console.log(result);
+      res.status(200).render("request-to-lab", {
+        style: "style.css",
+        result: result,
+        token: token,
+      });
     })
-  }).catch((err) => {
-    console.log(err);
-  });
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 exports.labRequestSearch = async (req, res) => {
@@ -313,7 +320,6 @@ exports.labRequestSearch = async (req, res) => {
       console.log(err);
     });
 }
-
 
 exports.labHistory = async (req, res) => {
   const token = await req.cookies["access-token"];
@@ -379,7 +385,7 @@ exports.radiologyResult = async (req, res) => {
   const token = await req.cookies["access-token"];
   Radiology.findAll({
     order: [["createdAt", "DESC"]],
-    limit: 4,
+    limit: 10,
     include: [
       {
         model: User,

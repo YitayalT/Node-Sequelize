@@ -112,13 +112,17 @@ exports.addRadiology = async (req, res) => {
 
 exports.getLabRequest = async (req, res) => {
   const token = await req.cookies["access-token"];
-  Request.findAll({ where: { To: "radiology" } })
+  Request.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10,
+    where: { To: "radiology" },
+  })
     .then((result) => {
       console.log(result);
       res.status(200).render("radiology-request", {
         style: "style.css",
         result: result,
-        token: token
+        token: token,
       });
     })
     .catch((err) => {

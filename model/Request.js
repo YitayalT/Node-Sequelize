@@ -25,9 +25,6 @@ Request.init({
   To: {
     type: DataTypes.STRING,
   },
-  FullName: {
-    type: DataTypes.STRING,
-  },
   Case: {
     type: DataTypes.STRING,
   },

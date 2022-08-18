@@ -6,6 +6,7 @@ const User = require("../model/User");
 const NewBorn = require("../model/NewBorn");
 const LabResult = require('../model/LabResult');
 const Radiology = require('../model/Radiology');
+const Request = require('../model/Request');
 
 
 exports.getPnc = async (req, res) => {
@@ -427,5 +428,48 @@ exports.radiologySearch = async (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+
+exports.pncToLab = async (req, res) => {
+  const userID = await req.cookies["userID"];
+  const token = await req.cookies["access-token"];
+  res.render("pnc-to-lab", {
+    style: "style.css",
+    token: token,
+    userID: userID,
+  });
+};
+
+exports.requestToLab = async (req, res) => {
+  const token = await req.cookies["access-token"];
+  const userID = await req.cookies["userID"];
+
+  let data = {
+    MRN: req.body.mrn,
+    UserId: req.body.userId,
+    From: req.body.from,
+    To: req.body.to,
+    Case: req.body.case,
+    RequestDate: req.body.date,
+  };
+  Request.create(data)
+    .then((result) => {
+      return res.status(200).render("pnc-to-lab", {
+        style: "style.css",
+        message: "request sent!",
+        token: token,
+        userID: userID,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(200).render("delivery-to-lab", {
+        style: "style.css",
+        wrong: "something goes wrong!",
+        token: token,
+        userID: userID,
+      });
     });
 };

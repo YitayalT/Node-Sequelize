@@ -202,7 +202,6 @@ exports.edit = async (req, res) => {
 };
 
 exports.updateClient = (req, res) => {
-  
   const id = req.params.id;
   let newClient = {
     name_of_facility: req.body.facility_name,
@@ -220,12 +219,11 @@ exports.updateClient = (req, res) => {
     Kebele: req.body.kebele,
   };
 
-
   Client.update(newClient, {
     where: { MRN: id },
   })
     .then((data) => {
-      console.log("registered!");
+      console.log("updated!");
       //  res.redirect('add_client');
     })
     .catch((err) => {

@@ -48,6 +48,7 @@ const reportRoute = require('./routes/report-route');
 
 
 dotenv.config({ path: './.env' });
+
 //Handlebars
 app.engine("hbs",
   exphbs.engine({
@@ -81,6 +82,7 @@ app.use(express.json());
 // .catch( (err) =>{
 //      console.log(err)
 //     });
+
 
 // Anc relationship
 Client.hasMany(AncVisit, {
@@ -242,7 +244,7 @@ User.hasMany(Request, {
 Request.belongsTo(User, {
   foreignKey: "UserId",
 });
-//  NewBorn.sync({alter: true}).then( () =>{
+//  Request.sync({alter: true}).then( () =>{
 //     console.log('synced!');
 // }).catch( (err) =>{
 //     console.log(err);
